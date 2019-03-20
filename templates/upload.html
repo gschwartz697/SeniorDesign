@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <style>
+      body {
+        background-color: #e5efff;
+      }
+      #container {
+        margin: 100px auto;
+        text-align: center;
+        width: 500px;
+        border: 1px #b6b7ba solid;
+        border-radius: 20px;
+        padding-top: 30px;
+        padding-bottom: 50px;
+      }
+      #csvFileUpload {
+        width: 200px;
+        text-align: center;
+        margin: 0 auto;
+      }
+      #form {
+        margin-top: 20px;
+      }
+      #submit {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+   <body>
+      <div id="container" class="form-group">
+        <h1>Piazza Analyzer</h1>
+        <br>
+        <br>
+        <h4>Upload your csv here:</h4>
+
+        <form action="/" method="post" enctype="multipart/form-data" id="form">
+          <input type="file" name="file" id="csvFileUpload" accept=".csv"/>
+          <input type="submit" name="submit" value="Submit" id="submit" class="btn btn-primary"/>
+        </form>
+      </div>
+
+      <footer class="page-footer text-center font-small">
+        A senior design project by Mara Levy, Gabriella Schwartz, Stella Ge, and Anastasia Efremkina.
+      </footer>
+   </body>
+</html>

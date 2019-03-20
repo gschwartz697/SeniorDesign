@@ -1,0 +1,195 @@
+"	Hi,
+Can I defined channel as an object of a tuple of a User (as an object) and TreeMap? Or does channel itself has to be one of the three data structures in the instruction?"
+"	Hello! I've looked at the Piazza posts and even actually asked a private post about this but still can't fix the issue (although I think I now identified it).
+
+I think the reason why my thickness toggle is also making the borders thick is because I change the thickness of the entire paint.thickness thick so that when we repaint, the borders all come out as thick. 
+
+I am stuck on how to fix that issue, namely, how to just change the thickness of the things being drawn in the canvas and not the other widgets. (For some weird reason only my borders are being drawn that way.. probably because they are being drawn in paint.m;)  I've command'f ed all the places that color goes into and made sure that my thickness behaves the same. I also add new shapes to the deque with current thickness and draw them each with the correct thickness. I've been stuck on this for quite a while, but would it be possible to receive a bit of help to identify where I am making a mistake? It would help tremendously if someone could look at my code :( Sorry if it's a bit much I am asking. 
+
+Thank You! "
+	Shouldn't this problem be very easy given we've already defined an add function (and thus can just add each element of the list to a set?Or am  I missing something
+"	I am doing pacman and when I eat the big pip i want the ghosts color to change to blue, but for some reason the png file doesn't change even after i change the IMG_FILE for the class in the function and reread the file. Any help?"
+"	I was just thinking of a way to fix my code for Question 5. When the list matches [ ], I want the concatenation to stop. For example, my current function fails the first test case because it produces ""a,b,c,"" instead of ""a,b,c"". There is an extra comma at the end "
+"	Hello,
+
+I am trying to compare the int value of Head to the first element of the ensuing Tail...how can I do that since Head is an int and Tail is an int list? It won't allow me to do ""head &lt; function_name Tail"" since the function returns a Bool instead of an int...
+
+Thanks!"
+"	Is this also a valid solution for 1e (the question above)?
+
+let length (q: 'a ceque) : int =    begin match q.head with    | None -&gt; 0    | Some n -&gt;	 let rec loop (qno: 'a cqnode option) (acc: int) : int =		begin match qno with		| None -&gt; failwith ""invariants violated""		| Some m -&gt; if qno == n.prev then acc + 1			    else loop m.next (acc + 1)		end in	  loop q.head 0	end
+	Would this also be a correct solution? 
+let length (q: 'a ceque) : int =
+    begin match q.head with
+    | None -&gt; 0
+    | Some n -&gt;
+	 let rec loop (qno: 'a cqnode option) (acc: int) : int =
+		begin match qno with
+		| None -&gt; failwith ""invariants violated""
+		| Some m -&gt; if m.next == q.head then acc + 1
+			    else loop m.next (acc + 1)
+		end in
+	  loop Some n 0
+	end
+ Also, in the answer key, why does it call loop n.next instead of loop Some n 0 or loop q.head 0? 	For the last part of this question, can I just use ""loop q.head 0"" instead of the answer key's ""loop n.next 1""?
+
+
+
+Where would this loop end? Wouldn't the recursive call keep going up and never get to 0 (loop 10, loop 11, loop 12...)?"
+"	I get this error when I am submitting my zip file. It also says ERROR: compilation failed. Do you know what is wrong with my code?
+src/ManipulateTest.java:19: error: duplicate class: ManipulateTest
+public class ManipulateTest {
+       ^
+1 error
+
+	Help, I'm trying to submit and I get this error. What does it mean?
+
+src/ManipulateTest.java:19: error: duplicate class: ManipulateTest
+public class ManipulateTest {
+       ^
+1 error
+I've checked my zip file and there is in fact only one copy of ManipulateTest."
+"	This didn't work. It says that the game was submitted successfully. Does this mean that my game could still be run at my game demo?
+
+"
+"	My code works perfectly on eclipse but on codio when I try to run it, it doesn't seem like anything is going on."
+"	What should we pattern match the None to?	Is it possible to use the results of a pattern match later on in a function? When I try to put in after the end of a pattern match, it doesn't let me use the values attained through the pattern match later on in the function, and I instead create a helper function to do the pattern matching which seems to work. Is there a way to write code after pattern matches without creating these helper functions?"
+"	When I'm trying to create a new class on Eclipse, it only lets me click on public. How do I make a ""private class"" as per the instructions?"
+"	For Tree_of_list, can we assume that we will never input a list that has duplicates?	For set_of_list, does ""arbitrary input of type `'a list`"" mean that the input list may be unordered and have duplicates?
+
+Does this mean returning the same list as the input list?"
+"	I'm a little confused about what the labeled tree is. Can someone give an example of one?	Are we defining complexity of a tree as height of the tree?	I'm confused what it means to ""fill in the tree for the lesser apes, also from the same figure,"" for the definition of the function lesser_apes. Do we fill it out based on how many similarities each type of monkey (that wasn't used in tree greater_apes)  has with humans, where the two most similar would be a bottom of the tree, where humans and chimps are in greater_apes?	Yeah thanks! I asked because I'm confused on how to implement the simplest tree function if I can't store the simplest tree thus far in a variable. Is there a way to store and update a variable within a recursive function without it being overwritten every time?	In question 7 when I uncommented the given code to print out the computed evolutionary tree for greater apes, it prints a tree with the same hierarchy levels and apes as Figure A, but the left/right branches of the tree are swapped...is this ok? 
+
+Thank you 	This is the comment written before the printing of the simplest lesser apes tree:
+
+""However, trying this out for lesser apes produces something close, but not * quite exactly what we wanted. Uncomment the printing commands below to see * how close we get.""
+
+My greater apes tree matches the one from the problem but my lesser apes one doesn't. Does this comment mean that it's ok if our lesser apes tree doesn't exactly fit the lesser apes tree from figure A?	what does the tree in your example look like? would the node have two branching leaves and if so why do we not have to specify a value for it?	If the tree I printed out for greater apes is the exact mirror of Figure A, do I need to worry anything about it? They feel identical to me. 	But then in problem 7, didn’t the lesser apes tree show that the smallest difference didn’t necessarily lead to the expected result? 	I have all my tests passed for problem 1 to 7. However, the printed tree is flipped in greater apes. Any hint on where to find the error? Thanks!	What's the best way to test trees in this part of the homework? Do we have to redefine the type "" 'a tree"" a the top of the setTest tab? 	ocamlbuild -lib graphics tree.native+ /home/codio/.opam/4.04.0/bin/ocamlopt.opt -c -o tree.cmx tree.mlFile ""tree.ml"", line 1:Error: The implementation tree.ml does not match the interface tree.cmi: Values do not match: val delete : ('a tree -&gt; 'a) -&gt; ('a tree -&gt; 'a) tree -&gt; ('a tree -&gt; 'a) tree is not included in val delete : 'a -&gt; 'a tree -&gt; 'a tree File ""tree.ml"", line 302, characters 8-14: Actual declarationCommand exited with code 2.Compilation unsuccessful after building 12 targets (11 cached) in 00:00:00.make: *** [tree.native] Error 10codio@stretch-robot:~/workspace$
+
+
+What does this error mean	for tree_max should we assume the tree is complete or no? 	So, what does it mean when the directions say the function should "" return all of the elements of a binary search tree sorted in ascending order?""	When tree max, the following error appears:
+Error: The implementation tree.ml does not match the interface tree.cmi:                                                    Values do not match: 
+val tree_max : int tree -&gt; int, is not included in                                                                                                    val tree_max : 'a tree -&gt; 'a
+
+This is really strange since I thought a generic 'a would accept any type	Hello, I receive this error in my code: 
+
+File ""tree.ml"", line 1:Error: The implementation tree.ml does not match the interface tree.cmi: Values do not match: val delete : int -&gt; int tree -&gt; int tree is not included in val delete : 'a -&gt; 'a tree -&gt; 'a tree
+
+What does this mean? Thank you.	If  tree_max should return a failwith on an Empty tree, what does the problem mean when they hint that you should think about the base case of recursion? Doesn't the base case involve changing what Empty returns to if it's already returning a failwith?	What exactly are errors in the autograder? I had 0 failures in my submission, but 2 errors. The first ""failure"" was ""cannot take max of empty tree"" which is the failwith text I used for trying to perform max on an empty tree in tree_max from problem 3. Were we supposed to have used a different message? 	What should we return for the edge case that in_order's input is an empty tree?	When I tried to compile my tree.ml, the following error shows up:
+
+Error: The implementation tree.ml does not match the interface tree.cmi: Values do not match: val delete : int -&gt; int tree -&gt; int tree is not included in val delete : 'a -&gt; 'a tree -&gt; 'a tree File ""tree.ml"", line 238, characters 8-14: Actual declaration
+
+	As per the instructions, 
+
+""Because an empty tree does not have a maximum element, you should call `failwith` if `tree_max` is passed an empty tree""
+
+So, when I submit my code, why does this get flagged?
+
+First failure: no max of empty tree	I think I might've accidentally deleted a problem in my tree.ml file. I've saved already, so ctrl + z isn't an option. What were the list of problems in tree.ml? Or, if you're able to, can someone take a look at my file to see if the problems are right?	I just submitted my homework and I got an error -- called on empty tree for my binary trees. I am not really sure wha this means. Does this mean that I called it on an empty tree somewhere in my code? Or does it mean something happened in one of your test cases that resulted in a call on an empty tree when it shouldn't have? 	I had created a size helper function in tree.ml 
+When I tried to use it in treeSet.ml, so as to not repeat code, it did not work (resulting in an infinite loop). Is this because the function was not listed in tree.mli? And if I were to change tree.mli would that mess up the automatic grader?	When I submit, it says that I have 2 errors for tree and 2 failures for ordered list. But it says my first failure is ""empty tree."" By failure, does that mean that something in my ordered list is failing? Where would there be a tree in ordered list? 	So does the first failure actually refer to the error in tree? 	This is the return when I submitted the homework:
+Overall:
+	Score: 82.8 of 85
+	Successes: 140
+	Failures: 1
+	Errors: 3
+First failure: empty tree
+What does First failure mean? Is it the function empty tree that is wrong, or is it that a test is wrong? Where is it getting the string ""empty tree"" from?	Hi,
+
+I just submitted homework 3, and I get 2 errors (not failures) when I get to tree_max. However, I notice that it refers to a failwith case when passing an Empty tree, which is required for the function to work as stated by the problem. Is there something wrong with the way I did my pattern match ?
+	Should is_complete return true if inputing an empty tree?
+Should look_up return false if asked to look something up in an empty tree?	Hi,
+In problem 6, I received a failure saying empty tree. But I'm a bit confused what this failure messages refers to because problem 6 doesn't have anything to do with trees as an OLset. Thank you!	the test case starts with not but looks up a value that is, indeed in the example tree. is this supposed to be this way?	On Harder WS for Recitation 2,
+number 7
+Why does the Empty match case return true?
+also are you assuming that the tree is invariant (ordered)?	i'm confused how we can pattern match on n (to keep track of depth) in the solution if the type 'a in the tree does not exist as (value, depth)?
+
+	but doesn't lookup have the inputs of a 'a tree and 'a instead of a 'a tree and a ('a * 'a) tuple? (for 6b)
+
+	Also another question, in line 54, does m replace n in the previous tree?"
+"	For this test: 
+The dictionary file contains a blank line in the middle. (Remember: You can always make new .txt files to help write test cases.)
+Are we just checking to see if a word in the dictionary still exists despite there being a space break in the text file?
+
+For this test: 
+The dictionary file has words with whitespace around them, and you check if one of those words is in the dictionary.
+Are we testing a word like ""A pp le"" with space between letters? If so, should that return false or true if ""apple"" does exist in the file?"
+"	When a person successfully changes their nickname, should they them-self also receive a broadcast that their name has been changed or should the broadcast only be received by other clients who are in the same channel as the person who's nickname got changed?	Do we need to include the user whose nickname was changed in the collection of users who receive the message that the user's nickname was changed (in Broadcast.okay)?	For NickNameCommand and CreateCommand, if the nickname is successfully changed or a new channel is successfully created, we have to use Broadcast and inform a certain set of users. I know how to create that new set of users to pass into Broadcast.okay, but how do we add certain users to that set? 	I'm a bit uncertain about who gets the broadcast for a user's nickname change - 
+all users on the server or just the ones that are in the same channel as the user whose name is changed? 
+
+Thank you! 	Should all the users in the server know if a user changed his/her nickname or should only the channel users know?"
+"	for the checkbox part of task 5, I am trying to make the bool value_controller and I tried passing in status.contents into make_control at the very end but I get the error unbound record field status- why is that?
+
+let checkbox (init: bool) (s: string)
+  : widget * bool value_controller =
+  let r = {contents = s} in
+  let status = {contents = init} in
+  {
+  repaint = (fun (g: Gctx.gctx) -&gt; if !status
+             then (Gctx.draw_line (Gctx.with_color g Gctx.black) (0, 1) (9, 10);
+                  Gctx.draw_line (Gctx.with_color g Gctx.black) (0, 10) (9, 1))
+             else ();
+             Gctx.draw_string g (11, 0) r.contents);
+
+  handle = (fun (g: Gctx.gctx) (e: Gctx.event) -&gt; if Gctx.event_type e = Gctx.MouseDown
+            then status.contents &lt;- (not status.contents)
+            else ());
+  size = (fun () -&gt;
+              let (x1, y1) = (Gctx.text_size r.contents) in
+              let (x2, y2) = (11, 11) in
+              ((x1 + x2), max y1 y2))
+  },
+  {make_control status.contents}
+	I am struggling with modifying my size function for checkbox since there is an issue in lightbulb. currently my checkbox function reads as follows below but the colors only change if I click within the text and the area where a little cross appears and disappears. there is still a mass of space below where it is supposed to change the light if clicked but I think the issue may be because I hard coded the size of the widget- am I supposed to hard code the size function to the size of this lightbulb widget? I am not sure how to pass in the size of this lightbulb widget (or a general widget) to modify my size function
+
+let checkbox (init: bool) (s: string)
+  : widget * bool value_controller =
+  let r = {contents = s} in
+  let check_control = make_control init in
+  {
+  repaint = (fun (g: Gctx.gctx) -&gt; if (not (check_control.get_value ()))
+             then (Gctx.draw_line (Gctx.with_color g Gctx.black) (0, 1) (9, 10);
+                  Gctx.draw_line (Gctx.with_color g Gctx.black) (0, 10) (9, 1))
+             else ();
+             Gctx.draw_string g (11, 0) r.contents);
+
+  handle = (fun (g: Gctx.gctx) (e: Gctx.event) -&gt; if Gctx.event_type e = Gctx.MouseDown
+            then check_control.change_value (not (check_control.get_value ()))
+            else ());
+  size = (fun () -&gt;
+              let (x1, y1) = (Gctx.text_size r.contents) in
+              let (x2, y2) = (11, 11) in
+              ((x1 + x2), max y1 y2))
+  }, check_control
+
+"
+"	I'm very confused about the checkbox. Could someone explain the concept, relating it to the button?"
+"	For problem 3 I'm not passing any tests and I want to see what my function is outputting. But I don't know how to do that since the print_endline command needs a string....  
+
+Is there a generic print command that will just spit out the function value (like python??)
+
+How do I debug if I don't know what's in my function?	What does this mean? I'm getting the same error and I don't understand how I could've written delete so that 'a ""must be 'a tree -&gt; 'a"".  I didn't change the declaration for the function so I don't know why it doesn't work when I call the function with ints and int trees.	I'm having the same issue and don't see anything in my pattern matching that would restict the type of 'a.  I would understand if I had something like a + operator but I don't see why this error is happening. 	for delete don't i need to know if I'm deleting the first element or last element so i can fix the pointers accordingly?	I have a type mismatch error for my code so it won't compile but I don't really know what is wrong with it and how to fix it?	I don't understand what this failure means? 
+delete_last 1 from 1	I don't think I see anything - so probably nothing? 	Any tips on how I should debug this? I don't know why it thinks I'm trying to make an int value_controller...
+	I'm extremely confused about why my drag and drop portion of task 2 doesn't work, and don't know how to go about fixing it.	I have make_control in both the files but I still get this error and I don't know why.	I keep getting a syntax error for repaint in checkbox, but I don't know what's wrong with it. Can someone please help :( 	I don't understand why the error saying that I did not define my size field when I did. I don't know what I'm doing wrong. 
+
+I have this error when submitting. But my paint works fine, so I don't know how to solve this issue.
+
+	When I submit my file, I am failing one test on blur, but I checked over my code and I don't know what it is. Could you give me any hints on what this error may be?	Thanks that worked. I don't know why but it did.	I have the following for my border function:
+
+ Screen_Shot_20181026_at_6.07.09_PM.png
+
+I feel like what I'm doing is kind of similar in format to the rotate functions so I don't know why this doesn't compile. I also don't know what the error means.
+Also when I tried to make the layout the same as FAQ, there appear the red crosses. I don't know why. Is there a way to fix this? 	So my code is passing all of the tests for PennPals except for ""testNickBroadcastsToChannelWhereMemeber"". It was passing before and I did some things to help my nickname code pass that made it fail. The error message it is giving is old nick not in channel. 
+
+I know that this is super vague and there probably is not much help you can give me, but I don't even know what exactly that test is testing and I can't really glean from the test code. If anyone could give me a hint as to what function it probably pertains to, that would be super helpful so I can try to trace through and find it. 
+
+Thanks!	I get that widgets all have a repaint, handle, and size parameters, each which are functions. But since they are functions, they don't run unless we call on them. But I don't recall ever calling them. So how do widgets know when to repaint, handle events, and figure their size?	I know where B6 is but don't know where this room is. Is it still on the ground floor?	I don't know why this keeps happening when I tried to import - I did everything exactly like the instructions told me to. Any ideas on how to fix this? Thank you so much!
+
+
+	No, I don't	Therefore, if we don't write any tests, we get 5/5 for testing?Because we are supposed to ""test whatever we don't feel confident with""	Okay, thank you! Sorry to bother you further, however, I have some written tests, but I don't know how to write a test for this because I don't understand the intended outcome. What does it mean when it says, ""deregister sends disconnected appropriately to multiple channels""?	What is the basis for the encapsulation test on the submission? I keep getting tests failing in this section and I don't know how to fix it (because I don't know what it's testing for...)	For the last test, I am getting an error. I don't know why. Please help. I just want to get the size of the channels collection. I don't know why it's not working.
+
+
+Hi, I've been working on this method for over one hour, and I know it shouldn't take this long but it just cannot work out. I don't know where I did wrong. Could you plz help me with this? Thank you.	filecorr_outer_whitespace_ignored:
+So I keep on failing this test case and I don't really understand what it means. Before I had submitted, I had tried putting whitespace all over the file but my individual tests still passed so I don't know what to do about it.
+	I’m still getting a timeout on Gettysburg Swap, yet the other two tests are passing for SpellChecker - any tips in debugging besides checking for efficiency in loops? I don’t think that’s the issue but don’t really know where to start in terms of looking...	Oh god, I don't know if I can handle that. I mean I feel like I need to use that, but where do I even start?????	I keep getting a NullPointerException whenever I call anything related to java I/O. I'm using BufferedReader and BufferedWriter and tried to just catch the exception but that is not the root of the problem. Do you have any suggestions for finding where my error is? I don't feel like I know of many ways to test my java I/O functions.	I changed something that has made my code crash in a way that i don't know how to fix but it was working perfectly a few minutes ago -- is there a way i could go back to that version of my code? 	Hi I'm getting this error and I don't know why!? 
+
+"
