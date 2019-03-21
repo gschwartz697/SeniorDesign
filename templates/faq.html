@@ -9,10 +9,10 @@
         var myChart = new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: {{labels | safe}},
             datasets: [{
               label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
+              data: {{values | safe}},
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -70,7 +70,7 @@
         border-radius: 10px;
       }
       #myChart {
-        width: 400px !important;
+        width: 600px !important;
         height: 400px !important;
         margin: 0 auto;
         margin-bottom: 20px;

@@ -3,11 +3,13 @@ import json
 import csv
 import cgi
 import os
+import datetime
 
 from flask import Flask, request, render_template, redirect, url_for
 from werkzeug.utils import secure_filename
+from datetime import timedelta, date, time
 
-UPLOAD_FOLDER = '/Users/stellage/Documents/YEAR4/Piazza-SeniorDesign/DatabaseCode'
+UPLOAD_FOLDER = 'PythonScripts'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'csv'])
 
 app = Flask(__name__)
@@ -17,6 +19,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 f = open('results.csv')
+hw_timestamps_file = open('PythonScripts/hw_timestamps.csv')
 
 @app.route("/", methods=['GET', 'POST'])
 def main():
@@ -46,14 +49,55 @@ def show_results():
     data = list(reader)
     print(len(data))
     #render the results page
-    labels = ["January","February","March","April","May","June","July","August"]
-    values = [10,9,8,7,6,4,7,8]
+    labels_and_values = get_chart_labels(0)
+    labels = labels_and_values[0]
+    values = labels_and_values[1]
     return render_template('faq.html',
         questions_list=data,
         num_clusters=len(data),
         labels=labels,
         values=values)
 
+def get_chart_labels(topic_number):
+    # read from generated file
+    hw_timestamps_reader = csv.reader(hw_timestamps_file)
+
+    line_count = 0
+    for row in hw_timestamps_reader:
+        if line_count == topic_number:
+            # get range of dates
+            dates = row[1].split(',')
+            first = datetime.datetime.strptime(dates[0], "%m/%d/%Y")
+            last = datetime.datetime.strptime(dates[len(dates) - 2], "%m/%d/%Y")
+
+            # create labels (all dates in range)
+            labels = []
+            for dt in daterange(first, last):
+                labels.append(dt.strftime("%m/%d/%Y"))
+                print(dt.strftime("%m/%d/%Y"))
+
+            # assign values from given info
+            values = [0] * len(labels)
+            index = 0
+            for post_date in dates:
+                if index < len(dates) - 1:
+                    date_index = labels.index(post_date)
+                    values[date_index] += 1
+                    index += 1
+                else:
+                    index += 1
+
+            print(labels)
+            print(values)
+            return [labels, values]
+
+            line_count += 1
+        else:
+            line_count += 1
+
+def daterange(date1, date2):
+    for n in range(int ((date2 - date1).days)+1):
+        yield date1 + timedelta(n)
 
 def allowed_file(filename):
     return '.' in filename and \
