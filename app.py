@@ -3,11 +3,13 @@ import json
 import csv
 import cgi
 import os
+import datetime
 
 from flask import Flask, request, render_template, redirect, url_for
 from werkzeug.utils import secure_filename
+from datetime import timedelta, date, time
 
-UPLOAD_FOLDER = '/Users/stellage/Documents/YEAR4/Piazza-SeniorDesign/DatabaseCode'
+UPLOAD_FOLDER = 'PythonScripts'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'csv'])
 
 app = Flask(__name__)
@@ -17,6 +19,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 f = open('results.csv')
+hw_timestamps_file = open('PythonScripts/hw_timestamps.csv')
 
 @app.route("/", methods=['GET', 'POST'])
 def main():
@@ -38,22 +41,85 @@ def main():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # need to parse saved file here
             print("showing results")
-            return show_results()
+            return show_results(0)
 
 @app.route("/results", methods=['GET, POST'])
-def show_results():
+def show_results(topic_num):
     reader = csv.reader(f)
     data = list(reader)
-    print(len(data))
-    #render the results page
-    labels = ["January","February","March","April","May","June","July","August"]
-    values = [10,9,8,7,6,4,7,8]
+
+
+    # render the results page
+    labels_and_values = get_chart_labels(topic_num)
+    print(labels_and_values)
+    topics = labels_and_values[0]
+    labels = labels_and_values[1]
+    values = labels_and_values[2]
     return render_template('faq.html',
+        curr_topic = topics[topic_num],
         questions_list=data,
         num_clusters=len(data),
+        topics=topics,
         labels=labels,
         values=values)
 
+# getting chart for specific topic
+@app.route("/chart/<int:topic_num>", methods=['GET'])
+def get_new_chart(topic_num):
+    hw_timestamps_file.seek(0)
+    return show_results(topic_num)
+
+def get_chart_labels(topic_number):
+    # read from generated file
+    hw_timestamps_reader = csv.reader(hw_timestamps_file)
+
+    line_count = 0
+    topics = []
+    labels = []
+    final_values = []
+
+    for row in hw_timestamps_reader:
+        # add to list of topics
+        topics.append(row[0])
+        if line_count == topic_number:
+            # get range of dates
+            dates = row[1].split(',')
+            dates.pop(len(dates) - 1)
+            dates.sort()
+            first = datetime.datetime.strptime(dates[0], "%m/%d/%Y")
+            last = datetime.datetime.strptime(dates[len(dates) - 1], "%m/%d/%Y")
+
+            # create labels (all dates in range)
+            for dt in daterange(first, last):
+                labels.append(dt.strftime("%m/%d/%Y"))
+                print(dt.strftime("%m/%d/%Y"))
+
+            print(labels)
+
+            # assign values from given info
+            values = [0] * len(labels)
+            index = 0
+            for post_date in dates:
+                if index < len(dates) - 1:
+                    date_index = labels.index(post_date)
+                    values[date_index] += 1
+                    index += 1
+                else:
+                    index += 1
+
+            print(labels)
+            print(values)
+            final_values = values
+
+            line_count += 1
+        else:
+            line_count += 1
+
+    return [topics, labels, final_values]
+
+def daterange(date1, date2):
+    for n in range(int ((date2 - date1).days)+1):
+        yield date1 + timedelta(n)
 
 def allowed_file(filename):
     return '.' in filename and \
