@@ -41,40 +41,60 @@ def main():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # need to parse saved file here
             print("showing results")
-            return show_results()
+            return show_results(0)
 
 @app.route("/results", methods=['GET, POST'])
-def show_results():
+def show_results(topic_num):
     reader = csv.reader(f)
     data = list(reader)
-    print(len(data))
-    #render the results page
-    labels_and_values = get_chart_labels(0)
-    labels = labels_and_values[0]
-    values = labels_and_values[1]
+
+
+    # render the results page
+    labels_and_values = get_chart_labels(topic_num)
+    print(labels_and_values)
+    topics = labels_and_values[0]
+    labels = labels_and_values[1]
+    values = labels_and_values[2]
     return render_template('faq.html',
+        curr_topic = topics[topic_num],
         questions_list=data,
         num_clusters=len(data),
+        topics=topics,
         labels=labels,
         values=values)
+
+# getting chart for specific topic
+@app.route("/chart/<int:topic_num>", methods=['GET'])
+def get_new_chart(topic_num):
+    hw_timestamps_file.seek(0)
+    return show_results(topic_num)
 
 def get_chart_labels(topic_number):
     # read from generated file
     hw_timestamps_reader = csv.reader(hw_timestamps_file)
 
     line_count = 0
+    topics = []
+    labels = []
+    final_values = []
+
     for row in hw_timestamps_reader:
+        # add to list of topics
+        topics.append(row[0])
         if line_count == topic_number:
             # get range of dates
             dates = row[1].split(',')
+            dates.pop(len(dates) - 1)
+            dates.sort()
             first = datetime.datetime.strptime(dates[0], "%m/%d/%Y")
-            last = datetime.datetime.strptime(dates[len(dates) - 2], "%m/%d/%Y")
+            last = datetime.datetime.strptime(dates[len(dates) - 1], "%m/%d/%Y")
 
             # create labels (all dates in range)
-            labels = []
             for dt in daterange(first, last):
                 labels.append(dt.strftime("%m/%d/%Y"))
                 print(dt.strftime("%m/%d/%Y"))
+
+            print(labels)
 
             # assign values from given info
             values = [0] * len(labels)
@@ -89,11 +109,13 @@ def get_chart_labels(topic_number):
 
             print(labels)
             print(values)
-            return [labels, values]
+            final_values = values
 
             line_count += 1
         else:
             line_count += 1
+
+    return [topics, labels, final_values]
 
 def daterange(date1, date2):
     for n in range(int ((date2 - date1).days)+1):
