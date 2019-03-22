@@ -117,6 +117,11 @@ def get_chart_labels(topic_number):
 
     return [topics, labels, final_values]
 
+# getting graph for referenced homeworks
+@app.route("/graph", methods=['GET'])
+def show_graph():
+    return render_template('graph.html')
+
 def daterange(date1, date2):
     for n in range(int ((date2 - date1).days)+1):
         yield date1 + timedelta(n)
