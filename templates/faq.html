@@ -3,32 +3,21 @@
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
     <script>
       $(document).ready(function() {
+        // create chart
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: {{labels | safe}},
             datasets: [{
-              label: '# of Votes',
+              label: '# of Posts',
               data: {{values | safe}},
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-              ],
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor:'rgba(255, 99, 132, 1)',
               borderWidth: 1
             }]
           },
@@ -39,13 +28,17 @@
                   beginAtZero: true
                 }
               }]
+            },
+            title: {
+              display: true,
+              text: 'Post Frequency of TAG_NAME'
             }
           }
         });
       });
 
     </script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+
     <style>
       body {
         background-color: #e5efff;
@@ -70,10 +63,13 @@
         border-radius: 10px;
       }
       #myChart {
-        width: 600px !important;
-        height: 400px !important;
+        width: 620px !important;
+        height: 413px !important;
         margin: 0 auto;
         margin-bottom: 20px;
+      }
+      .dropdown {
+        text-align: center;
       }
     </style>
   </head>
@@ -82,7 +78,17 @@
     <div id="container">
       <h1 id="title">Results of Analysis</h1>
 
-      <canvas id="myChart" width="200" height="200"></canvas>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Topic
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+        </ul>
+      </div>
+
+      <canvas id="myChart" width="300px" height="200px"></canvas>
 
       <div class="section" id="stats">
         <h4>{{num_clusters}} FAQs found</h4>
