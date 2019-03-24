@@ -20,6 +20,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 f = open('results.csv')
 hw_timestamps_file = open('PythonScripts/hw_timestamps.csv')
+references_file = open('PythonScripts/references.csv')
 
 @app.route("/", methods=['GET', 'POST'])
 def main():
@@ -120,7 +121,39 @@ def get_chart_labels(topic_number):
 # getting graph for referenced homeworks
 @app.route("/graph", methods=['GET'])
 def show_graph():
-    return render_template('graph.html')
+    references_reader = csv.reader(references_file)
+    nodes = []
+    edges = []
+
+    for row in references_reader:
+        original_string = row[0]
+        original_string = original_string[1: len(original_string) - 1]
+        original_string = original_string.replace("[", "")
+        original_string = original_string.replace("]", "")
+
+        ids = original_string.split(',')
+        source = ids[0]
+        soure = source.replace(" ", "")
+        ids.pop(0)
+
+        if source not in nodes:
+            if source != '-1':
+                nodes.append(source)
+
+        if source != '-1':
+            for id in ids:
+                id = id.replace(" ", "")
+                if id != '-1':
+                    if id not in nodes:
+                        nodes.append(id)
+                    edges.append([source, id])
+
+    print(nodes)
+    print(edges)
+
+    return render_template('graph.html',
+        nodes = nodes,
+        edges = edges)
 
 def daterange(date1, date2):
     for n in range(int ((date2 - date1).days)+1):
