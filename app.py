@@ -44,11 +44,9 @@ def main():
             print("showing results")
             return show_results(0)
 
-@app.route("/results", methods=['GET, POST'])
 def show_results(topic_num):
     reader = csv.reader(f)
     data = list(reader)
-
 
     # render the results page
     labels_and_values = get_chart_labels(topic_num)
@@ -72,48 +70,51 @@ def get_new_chart(topic_num):
 
 def get_chart_labels(topic_number):
     # read from generated file
+    hw_timestamps_file.seek(0)
     hw_timestamps_reader = csv.reader(hw_timestamps_file)
 
     line_count = 0
     topics = []
     labels = []
     final_values = []
+    print(topic_number)
 
     for row in hw_timestamps_reader:
+        print(line_count)
         # add to list of topics
-        topics.append(row[0])
-        if line_count == topic_number:
-            # get range of dates
-            dates = row[1].split(',')
-            dates.pop(len(dates) - 1)
-            dates.sort()
-            first = datetime.datetime.strptime(dates[0], "%m/%d/%Y")
-            last = datetime.datetime.strptime(dates[len(dates) - 1], "%m/%d/%Y")
+        print(row)
+        if row != []:
+            topics.append(row[0])
+            if line_count == topic_number:
+                print("hitting line count == topic number")
+                # get range of dates
+                dates = row[1].split(',')
+                dates.pop(len(dates) - 1)
+                dates.sort()
+                first = datetime.datetime.strptime(dates[0], "%m/%d/%Y")
+                last = datetime.datetime.strptime(dates[len(dates) - 1], "%m/%d/%Y")
 
-            # create labels (all dates in range)
-            for dt in daterange(first, last):
-                labels.append(dt.strftime("%m/%d/%Y"))
-                print(dt.strftime("%m/%d/%Y"))
+                # create labels (all dates in range)
+                for dt in daterange(first, last):
+                    labels.append(dt.strftime("%m/%d/%Y"))
+                    #print(dt.strftime("%m/%d/%Y"))
 
-            print(labels)
+                #print(labels)
 
-            # assign values from given info
-            values = [0] * len(labels)
-            index = 0
-            for post_date in dates:
-                if index < len(dates) - 1:
-                    date_index = labels.index(post_date)
-                    values[date_index] += 1
-                    index += 1
-                else:
-                    index += 1
+                # assign values from given info
+                values = [0] * len(labels)
+                index = 0
+                for post_date in dates:
+                    if index < len(dates) - 1:
+                        date_index = labels.index(post_date)
+                        values[date_index] += 1
+                        index += 1
+                    else:
+                        index += 1
 
-            print(labels)
-            print(values)
-            final_values = values
-
-            line_count += 1
-        else:
+                #print(labels)
+                #print(values)
+                final_values = values
             line_count += 1
 
     return [topics, labels, final_values]
