@@ -120,37 +120,45 @@ def get_chart_labels(topic_number):
     return [topics, labels, final_values]
 
 # getting graph for referenced homeworks
-@app.route("/graph", methods=['GET'])
-def show_graph():
+@app.route("/graph/<curr_topic>", methods=['GET'])
+def show_graph(curr_topic):
     references_reader = csv.reader(references_file)
     nodes = []
     edges = []
+    in_topic = False
 
     for row in references_reader:
-        original_string = row[0]
-        original_string = original_string[1: len(original_string) - 1]
-        original_string = original_string.replace("[", "")
-        original_string = original_string.replace("]", "")
+        if row != []:
+            if row[0] == curr_topic:
+                in_topic = True
+            elif in_topic:
+                # check if line starts with a number
+                str = row[0]
+                if str[0].isdigit():
+                    # add nodes and edges
+                    source = str
+                    ids = row[1]
+                    ids = ids.replace("[", "")
+                    ids = ids.replace("]", "")
+                    dests = ids.split(',')
 
-        ids = original_string.split(',')
-        source = ids[0]
-        soure = source.replace(" ", "")
-        ids.pop(0)
+                    if source not in nodes:
+                        if source != '-1':
+                            nodes.append(source)
 
-        if source not in nodes:
-            if source != '-1':
-                nodes.append(source)
-
-        if source != '-1':
-            for id in ids:
-                id = id.replace(" ", "")
-                if id != '-1':
-                    if id not in nodes:
-                        nodes.append(id)
-                    edges.append([source, id])
-
-    print(nodes)
-    print(edges)
+                    if source != '-1':
+                        for id in dests:
+                            id = id.replace(" ", "")
+                            if id != '-1':
+                                if id not in nodes:
+                                    nodes.append(id)
+                                edges.append([source, id])
+                else:
+                    # end of the current topic
+                    in_topic = False
+                    break
+    #print(nodes)
+    #print(edges)
 
     return render_template('graph.html',
         nodes = nodes,
