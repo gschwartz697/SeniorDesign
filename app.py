@@ -122,6 +122,7 @@ def get_chart_labels(topic_number):
 # getting graph for referenced homeworks
 @app.route("/graph/<curr_topic>", methods=['GET'])
 def show_graph(curr_topic):
+    references_file.seek(0)
     references_reader = csv.reader(references_file)
     nodes = []
     edges = []
@@ -157,8 +158,8 @@ def show_graph(curr_topic):
                     # end of the current topic
                     in_topic = False
                     break
-    #print(nodes)
-    #print(edges)
+    print(nodes)
+    print(edges)
 
     return render_template('graph.html',
         nodes = nodes,
