@@ -1,0 +1,96 @@
+"In problem #5 (exercise 3.7 from chapter 3), if a node A has a strong tie to B and a strong tie to C, but the path between B and C consists of two edges instead of one weak or strong edge, does node A still satisfy the strong triadic closure property?","If there is no direct edge from node A to node B, but there is an intermediary node C that has edges to A and to B, does that count as an edge between A and B (in terms of strong triadic closure)?"
+"Hello! I was wondering how much is expected of us in terms of writing up answers. For some questions, I have 2-3 sentences, while for one like the one below, I have a paragraph. Would this constitute a thorough answer? Thank you!
+
+ Explain why Dijkstra’s works correctly in certain cases and incorrectly in others. (5 points)
+ 
+Dijkstra’s algorithm consistently works if edge weights are not negative. However, if edge weights are negative, the properties of a greedy algorithm can sway the correctness of the shortest path. Specifically, the algorithm chooses the best choice “at the moment”. Thus, it does not take any measures that would indicate that adding an edge to the graph could reduce the length of the path. However, in the case of graphs with negative edge weights, a negative weight could change the path length of nodes already marked visited.
+","I think I am misunderstanding Dijkstra's algorithm because I don't see any issue with negative edge weights. What determines if a node is ""finished"" by this algorithm?"
+"I'm confused about what we are being asked to do. Are we just adjusting parameters when making a new Schelling object to test out a certain segmentation?
+
+For example, if I wanted to see how people in different economical classes segment, would I just be changing the class size? Or would I have to make more adjustments to the program? 
+
+","Hi, I'm not really sure what to do for the coding portion of the homework. When it wants us to test a sociological question and expand parameters, does it mean that we should modify one of the parameters passed into the SchellingSimulator object or should we create a new parameter and modify all of the methods to take into account the effect of the new parameter? If it is the latter, I'm not really sure how I should modify the other methods. ","For part 2 I think I misinterpreted the question. I thought we were supposed to modify the actual model instead of just expanding the set of parameters. I modified the program to see if segregation still occurs as much if instead of considering the nodes that are directly up, down, left, right, and diagonal to be a neighbor, we just considered diagonal nodes as neighbors. Is what I did wrong and should I redo this part of the assignment?"
+"Is there a built-in way to change the size of the population for each class (ie, class A has 10 people, B has 20, C has 30)? Can I implement this myself within populate()",Is there a way to change the population size for each class (for it's not a 50/50 split)?
+"Are we to assume that in the directed graph G, the only node that has a path to node B is node A?","In a directed graph G, if there is a path from node A to node B, then in any DFS on G, the start time of B must be less than or equal to the finish time of A"
+"Do the Schelling programs count 8 neighbors as the max, or are they only counting the adjacent ones (so maximum of 4 like neighbors?)","In CIS 121, we learned that the topological sort algorithm is
+1) Run DFS
+2) Return the nodes in reverse postorder (reverse order of the DFS finish times)
+
+Should we use this or the method from class which was
+1) Remove the nodes and all their edges in order of increasing in-degree (ex. start with those with 0 incoming edges, etc.)
+?
+
+I know both are conceptually the same, but since we are choosing nodes alphabetically, the result changes.
+For example, does that mean choose the nodes alphabetically while doing DFS? Or does it mean choose alphabetically when choosing which remaining node of minimum in-degree?"
+Do we need to justify why the graph is incorrect or correct?,Can we just draw a graph where we get the incorrect shortest path or do we need to show why it gives us the wrong path? 
+"Hi guys! My board gets populated, but not in the quantities that I want it to per class. I am trying the following modification to populate(), is there anything super obvious that I am missing? 
+
+	private void populate() {
+		if (population &gt; width * height)
+			throw new RuntimeException(""Only "" + width * height + "" cells exist!"");
+		
+		for (int i = 0; i &lt; population; i++) {
+			int xChoice;
+			int yChoice;
+			
+			int input = randGen.nextInt(classes) + 1;
+			int c1 = 0;
+			int c2 = 0;
+			int c3 = 0;
+			
+			do {
+				xChoice = randGen.nextInt(width);
+				yChoice = randGen.nextInt(height);
+			} while (grid[xChoice][yChoice] != 0);
+			
+			if(input == 1 &amp;&amp; c1 &lt;= Math.ceil(population*.48)){
+			 grid[xChoice][yChoice] =  input;
+			 c1++;
+			} else if (input == 2 &amp;&amp; c2 &lt;= Math.ceil(population*.43)){
+			 grid[xChoice][yChoice] =  input;
+			 c2++;
+			} else if (input == 3 &amp;&amp; c3 &lt;= Math.ceil(population*.09)){
+			 grid[xChoice][yChoice] =  input;
+			 c3++;
+			} else {grid[xChoice][yChoice] = 0;}
+			
+		}
+	}
+","Can someone explain the following syntax to me?
+
+private void simulateUntilHappy() {  while (!movementRound())    ;}
+
+I understand that putting movementRound() while condition will run the method, and then check to see the value it returns. Why is there a sole ';' inside the brackets, however?"
+"Was there somewhere on the homework 2 instructions where it said the hypothesis and conclusion had to be interesting? I thought that our conclusion had to explain the data we gathered and support our hypothesis, and I did not know that it would be subjectively graded.","Was there somewhere on the homework 2 instructions where it said the hypothesis and conclusion had to be interesting? I thought that our conclusion had to explain the data we gathered and support our hypothesis, and I did not know that it would be subjectively graded."
+"When I try to run this program with the following arguments, the program stops running before it does all 100 trials and the visual representation doesn't show up. Any idea why? I increased the number of classes argument by 1 and kept the other arguments the same.
+simulator = new SchellingSimulator(1, 3, (int) (50 * 50 * 0.92), 4, 50, 50);","For some cases, I get NAN as output
+simulator = new SchellingSimulator(50, 2, 20, 2, 10, 10);
+
+What should I do?"," simulator = new SchellingSimulator(100, 3, 20000, 4, 150, 150);
+How come I only see two colors yellow and blue? The black denotes empty spaces right?"
+"So I was messing around with the simulator for part 2, and changing the number of groups. I realized that when I increased the number of groups, the simulator wouldn't get through all 100 trials and would get stuck in an infinite loop within the simulate function. However, what I really thought was interesting is that it seems to get stuck on the same trial number each time I run the program. But if it's actually randomly populating the grid each time simulate runs, shouldn't it also randomly get stuck on a certain trial?","I'm working on the Schelling Model for HW 2 am confused about what the question is asking. It asks to model some sociological question with the simulator, which I understand. However, after doing this and making comparisons, do I need to compare the results of the simulation to what actually ended up happening in real life? Or should I just analyze the results of the model and explain why they are what they are?"
+"Two questions:
+
+1). I wanted to run an experiment that needs to consider an increasing number of populations (ranging from 3-5 populations instead of 2 like the examples you gave in the file), but it doesn't open the visualizer or finish any of the tests. I saw @110, but do you have any suggestions for this in particular that might help some more? 
+
+2). Could you explain what the seed number does and how a lower/higher number might change my tests?","I wanted to know if this counted as something to experiment--I wanted to test a different definition of happiness (to include people a distance of 2 or 4 away instead of just 1 away) with different minNeighbor thresholds. This doesn't really require me to change much code (only the isHappy() function), but does this count as a valid experiment?","I was wondering how complex the question we would like to answer would need to be. I was originally thinking of increasing the class size to 4 and comparing the number of segmented chunks for every run using a different number for minNeighbors. I wasn't sure if this would be sufficient enough.
+
+Another idea I had was to have a different minNeighbors value for different classes. So class 1 would need 3 like people, class 2 4 people, etc. This idea would require much more to implement.
+
+Would either of these ideas be enough for the project?"
+The default code provided doesn't go past trial 738 -- is this intended? ,"How do we run the program? When I try to run it, Eclipse returns a message that says ""Editor does not contain a main type"" even though the main method is very obviously declared in it.
+
+"
+"The question says that when we have a choice, we should go for the node that appears earlier in the alphabet. Is this talking about when we are implementing DFS? Or how the final outcome should look like?
+
+For example, should we start our DFS with $$m$$ because it goes earlier in the alphabet? Or start our DFS with $$z$$ so that the final outcome puts $$z$$ towards the end, like in the alphabet?","Why is the answer false? My thinking was as follows:
+
+We have $$A, B$$, such that $$A \implies B$$, that is $$A$$ is connected to $$B$$. Consider the point in our algorithm where we first reach $$A$$. We have two cases:
+
+Case 1: We've seen $$B$$ already. In this case, the start time of $$B$$ is less than the start time of $$A$$, which must be less than the finish time of $$A$$. Therefore, we are done.
+
+Case 2: We haven't seen $$B$$ yet. In this case, we know that visiting $$A$$ will lead us to $$B$$, as $$B$$ is an unseen neighbor of $$A$$. Therefore, the start time of $$B$$ must come before traversal of $$A$$ finishes.
+
+Where does this logic break down? Would also appreciate a counter example."
+"Should we only be turning in the two PDF files (theory and experiment), or should we turn in code as well?",Is it necessary to zip up the files in one folder? Or can we submit the java files and the write up separately? Do we need a ReadMe for the java files? 
+"What was the correct solution for homework 2, question 2?","What was the correct solution for homework 2, question 2?"
