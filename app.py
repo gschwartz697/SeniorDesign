@@ -49,7 +49,7 @@ def show_results(topic_num):
     reader = csv.reader(f)
     data = ["Sample question 1", "Sample question 2", "Sample question 3"]
 
-    get_faq()
+    questions_list = get_faq()
 
     # render the results page
     labels_and_values = get_chart_labels(topic_num)
@@ -59,7 +59,7 @@ def show_results(topic_num):
     values = labels_and_values[2]
     return render_template('faq.html',
         curr_topic = topics[topic_num],
-        questions_list=data,
+        questions_list=questions_list,
         num_clusters=len(data),
         topics=topics,
         labels=labels,
@@ -68,19 +68,24 @@ def show_results(topic_num):
 def get_faq():
     output_reader = csv.reader(output_file)
     topics_to_questions = []
-    new_topic = True
     current_topic = []
     for row in output_reader:
         if not row[1]:
             # start of a new topic
-            new_topic = True
-            print(current_topic)
             topics_to_questions.append(current_topic)
             current_topic = []
+            current_topic.append(row[0])
         if row[1]:
-            # add questions to the current topic
+            # add questions to the current cluster
+            current_cluster = []
             for col in row:
-                current_topic.append(col)
+                if col != '':
+                    current_cluster.append(col)
+
+            current_topic.append(current_cluster)
+    topics_to_questions.pop(0)
+    print(topics_to_questions[0])
+    return topics_to_questions
 
 # getting chart for specific topic
 @app.route("/chart/<int:topic_num>", methods=['GET'])

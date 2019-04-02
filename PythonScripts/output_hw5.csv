@@ -1,0 +1,17 @@
+"For question 6, since the box office sales have many variations in how they display $ sales, do we need to have 3 separate cases (written in millions, billions, and completely written out)? Or should we just go with millions because that's the most commonly used notation?","The textbook just defines this as n-1/n+1 with n as the number of bidders, but obviously this does not calculate out correctly in the context of our problems. Is there a different formula we should be using?"
+"Could we scrape data to do an empirical analysis project, or do we have to use a pre-existing dataset?",Is it ok if we import outside libraries to utilize certain algorithms? 
+"If our data set is extremely large (&gt;1 GB), would it be alright to include a link to the data on SNAP in the summary.txt file instead of including the entire dataset?","The graphs (up to 8748x4359 pixels) and logs (as many as 700 pages for one file) produced in my study were too large to include comfortably fit into the report itself, so I have them in separate folders (the directory structure is explainedin summary.txt) and referenced specific parts where appropriate - is this okay with the instructors?"
+"Hi! I'm interested in doing an analysis of people's reactions to the NHL playoffs on Twitter based on their location (or some similar question, i haven't quite settled on specific topic yet). In class, Professor Swapneel mentioned that people did similar projects, but I have no idea how those people were able to gather the data for this. Are there any applications that they used? What's the best way to collect and analyze this sort of information? I imagine that there would be a lot of information to collect, so what's the best way to compile it all?","Hi, 
+
+For HW5, my group is analyzing Amazon data (~500,000 products). I implemented Dijkstra's algorithm to calculate the average shortest path length between all pairs of products. I was going to compare that value with the average shortest path length between all products and the product with the best sales rank. However, my runtime is horrible and I can't figure out how to improve it. I've tested the code on small inputs (~30 products) and it works, but it's been running for 12.5hrs and it's only calculated ~5,000 shortest paths. Do you have any advice? I've attached my code for Dijkstra's, in case that helps. My underlying graph is a HashMap, so lookup is constant, and my Item objects store neighbors in HashMaps as well. I'm using Iterators to get the objects for calculating the paths. 
+
+Thanks
+
+Dijkstra.txt"
+"When submitting the proposal, should everyone on the team submit the same proposal on canvas? or should one representative from each team submit the proposal on canvas?","Submitting Final Project
+
+Do we have to submit all individually the same files?
+Or could one person submit the files as a representative."
+"For EC 2, is player 1 the (LCR) player or the (UMD) player, for clarification?","For EC 2, are we supposed to be using a weak or strict strategy for deletion?"
+"For mixed strategy Nash Equilibrium, must the resulting pair of coordinates add up to 1?","For mixed strategy Nash Equilibrium, must the resulting pair of coordinates add up to 1?"
+Is it possible that we can get the deadline extended to midnight on the 5th rather than noon?,Is it possible that we can get the deadline extended to midnight on the 5th rather than noon?
