@@ -67,12 +67,20 @@ def show_results(topic_num):
 
 def get_faq():
     output_reader = csv.reader(output_file)
+    topics_to_questions = []
+    new_topic = True
+    current_topic = []
     for row in output_reader:
         if not row[1]:
-            
-
-        print(row[0])
-        print(row[1])
+            # start of a new topic
+            new_topic = True
+            print(current_topic)
+            topics_to_questions.append(current_topic)
+            current_topic = []
+        if row[1]:
+            # add questions to the current topic
+            for col in row:
+                current_topic.append(col)
 
 # getting chart for specific topic
 @app.route("/chart/<int:topic_num>", methods=['GET'])
