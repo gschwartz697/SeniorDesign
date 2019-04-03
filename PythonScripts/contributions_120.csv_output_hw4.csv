@@ -1,0 +1,616 @@
+"When writing Some x, is it better style to write it as Some x or Some (x) ? How about for trees, options, and other datatypes that have more than one of element?","We have operations like x:=y, !x, ref x, but are these shortcuts only for the 'a ref datatype? Or can I use them for any single mutable field data type?"
+"Hi,
+
+I'm getting an error for the code found in the attached image. The error I am getting is ""expression of type int but expressions was expected of type 'a list"". This is found in the test case that was given to us. What could be causing this error?
+
+Screen_Shot_20181001_at_13.06.42.png","Hi,
+
+I'm getting an error for the code found in the attached image. The error I am getting is ""expression of type int but expressions was expected of type 'a list"". This is found in the test case that was given to us. What could be causing this error?
+
+Screen_Shot_20181001_at_13.06.42.png"
+"After writing my function for cat_option, and not modifying the test case, red error lines appear saying ""this expression has type int but an expression was expected of type 'a option."" Why is this happening? I pasted the test case I'm referring to below. My code will not compile. 
+
+let test () : bool =  cat_option [ Some 1; None; Some 2; Some 0; None; None] = [1;2;0];; run_test ""cat_option list contains Some and None options"" test
+","I am getting this failure in LinkedQueue when I submit hw04. However, I have confused because enq was prewritten for us in linkedQueue.ml. Also, is this perhaps a test error since the test reads 1, instead of 1; ?
+
+First failure: enq 1,2;3;4; contains 1 &amp;&amp; contains 2 &amp;&amp; contains 3 &amp;&amp; contains 4"
+"Even though I have written the swap function, I keep getting an error in my test which says swap value is unbound. Does anyone know why this is happening? I have tried rebuilding the project but it has not helped but it goes away after I put a ; after a variable declaration but then I get an error on the ;","I implemented insert_head as I saw fit and it compiled without errors, but when I try to test it, it is saying the queue is not valid giving the error ""insert_head into singleton` reported `insert_head: given invalid deque"" To me this seems like an error with the tests, but this test was given to us so I am not sure what is going on. Any help is appreciated!"
+"Hi, 
+
+Some of my tests for delete_last are reporting 'out of memory' errors...I know the FAQ suggests that this may be because I am incorrectly checking for structural equality, but the instructions for this function explicitly say to use structural equality. ","I'm having trouble writing test cases for delete_last. My instinct was to create a new deque that has the same dqnodes connected in the same way as the deque I just deleted from, but I'm not sure how to set the two equal, because when I use structural equality, I get an Out of Memory error, since deques are cyclical. Any advice would be appreciated. Thank you!"
+"I am trying to store a value in a variable so that I can use it later on in the function, something like this:
+
+let x = r1.contents in r2.contents &lt;- r1.contents; x &lt;- r2.contents;
+
+I get an error on the 3rd line that says x is not an instance variable. What does that mean?","let ref_incr (r : int ref) : int =
+  !r
+  ;; r := !r + 1
+It says that the bug is in the 2nd line that r is not an instance variable. I was wondering what that meant! "
+What should happen if delete_last or delete_first is given an empty deque?,"What should we do if the 'a chosen for delete_last is not in the deque or if the deque is empty? 
+Should there be a failure or should nothing happen?"
+"Are strings referentially equal to each other in OCaml?
+
+For example, would ""hi"" == ""hi"" be true?
+
+Thank you!","In linkedQueue can you use referential equality to determine if something is the head? For example, n == q.head?"
+"I'm working on from_list for SimpleQueue...
+when initially making a record component within a function as the item that you are returning, how do you make it mutable? I tried {mutable data = l} but Codio underlines mutable in red and says that it's a syntax error after unclosed {, expecting 'LIDENT' .Is this because it is already assumed that the one element for simple queue is always mutable?","After completing simpleQueue, I ran queueTest, but some functions not written by me has failed some of the tests provided. For instance, to_list failed the ""to_list non-empty"" test, all the deq tests have errors saying that ""deq called on empty queue,"" and all of the enq tests failed. How should I fix that? Is it all because enq is not implemented correctly? "
+"Hi!
+
+I submitted my HW #4 the first time and did not receive any compiler errors, but then decided to resubmit because I used append on to_list in deque. I did have a bug in my to_list function when I submitted it the second time which resulted in 3 failures, but I ended up getting a 4th failure on my deque - reverse function which I did not receive before.  I did not change anything in my reverse function from submission to submission and I checked over it again, so is it possible that this was a glitch? 
+
+Thanks,Charitha ","Hello,
+
+So I submitted right before the deadline and got a 0.4 out of 100 with not all my test working. Went back, edited my code and made sure all my tests worked and just resubmitted and i again got a 0.4 out of 100. My code compiles and everything but I do not want to resubmit without first making sure everythig is ok with all my files because i only have one more submission. I have lecture at 12 and then recitation at 2 so I can just ask for the professors help tomorow after class if that works please let me know as i will be unavailable after recitation and need to submit this!
+
+"
+"Does ""your job here is to finish writing tests for `truncate` and `delete`"" mean that we don't have to write tests for the other functions in the queue interface? 
+
+What about writing tests for 'create' and 'valid'? I did not see any tests for those in queueTest.ml.","1. Will we be graded on tests outside of problems 4 and 7?
+2. In problem 4, it says that our job is to finish writing test cases for truncate and delete. Does this mean that it is only necessary for us to add additional test cases to these two functions? Or are we expected to add on to the existing test cases for the other functions as well?"
+Why are we using structural equality for delete but referential for other things like truncate?,"In writing the truncate function, do I have to use a higher order function like fold?"
+"Hi, could you please take a look at my code and help me figure out why it's failing the simplest truncate test: 
+
+let truncate (elt: 'a) (q: 'a queue) : unit =  if not (valid q) then failwith ""truncate: given invalid queue"";  let rec loop (e: 'a) (x: 'a qnode option) : unit =     begin match x with    | None -&gt; ()    | Some r -&gt; if e == r.v then r.next &lt;- None else loop e r.next     end in loop elt q.head","Hi! I'm having trouble figuring out why my code for truncate isn't passing my tests:
+  let truncate (elt: 'a) (q: 'a queue) : unit =
+    if not (valid q) then failwith ""truncate: given invalid queue"";
+    if not (contains elt q) then failwith ""truncate: element not in queue"";
+    let rec loop (opt : 'a qnode option) : unit = 
+      begin match opt with
+      | None -&gt; ()
+      | Some x -&gt; if x.v == elt then  
+                    (x.next &lt;- None;
+                    q.tail &lt;- x.next)
+                    else loop x.next 
+      end
+    in
+    loop q.head
+Am I forgetting to redirect something? Thanks!","
+I wrote my truncate function and when I run it, the test fails before ever reaching truncate, with an error: ""truncate 4-elements reported 'to_list: given invalid queue'
+
+Truncate Function:
+
+let truncate (elt: 'a) (q: 'a queue) : unit = if not (valid q) then failwith ""truncate: given invalid queue""; let rec loop (no: 'a qnode option) : unit = begin match no with | None -&gt; () | Some n -&gt; if n.v == elt then n.next &lt;- None else loop n.next end in loop q.head
+
+This is my test:
+
+let test () : bool = let q = from_list [2; 3; 5; 7] in truncate 3 q; to_list q = [2; 3] ;; run_test ""truncate 4-elements"" test","
+I wrote my truncate function and when I run it, the test fails before ever reaching truncate, with an error: ""truncate 4-elements reported 'to_list: given invalid queue'
+
+Truncate Function:
+
+let truncate (elt: 'a) (q: 'a queue) : unit = if not (valid q) then failwith ""truncate: given invalid queue""; let rec loop (no: 'a qnode option) : unit = begin match no with | None -&gt; () | Some n -&gt; if n.v == elt then n.next &lt;- None else loop n.next end in loop q.head
+
+This is my test:
+
+let test () : bool = let q = from_list [2; 3; 5; 7] in truncate 3 q; to_list q = [2; 3] ;; run_test ""truncate 4-elements"" test"
+"  let truncate (elt: 'a) (q: 'a queue) : unit =
+    if not (valid q) then failwith ""truncate: given invalid queue"";
+    let rec loop (no: 'a qnode option) : unit =
+      begin match no with
+      | None -&gt; () 
+      | Some n -&gt; 
+        if n.v == elt then n.next &lt;- None; 
+        q.tail &lt;- Some n;
+        else loop n.next
+      end
+    in loop q.head
+The if then else part of my pattern matching is returning an error.. it says that the begin is not closed. How would I fix this? ","  let truncate (elt: 'a) (q: 'a queue) : unit =
+    if not (valid q) then failwith ""truncate: given invalid queue"";
+    let rec loop (no: 'a qnode option) : unit =
+      begin match no with
+      | None -&gt; () 
+      | Some n -&gt; 
+        if n.v == elt then n.next &lt;- None; 
+        q.tail &lt;- Some n;
+        else loop n.next
+      end
+    in loop q.head
+The if then else part of my pattern matching is returning an error.. it says that the begin is not closed. How would I fix this? "
+"I posted this already as a followup post, but this should probably be a separate post--
+
+For my truncate function, in the commands, should I not be doing 
+| Some n -&gt; if n.v == elt then (n.next &lt;- None; q.tail &lt;- Some n)
+since I'm setting q.tail to a new option?","In the delete / truncate functions of LinkedQueue, is it ok, when updating q.tail to set q.tail &lt;- Some n or is that bad because it is a new option? It passes the tests, but I was wondering if what I have written for code would be considered following the ""in place"" requirement..."
+are we allowed to call a helper function/ insert an inner-function that uses recursion for the truncate function (in simpleQueue)?,Are we permitted to use a helper function with recursion to implement this?
+Are we allowed to use helper functions in SimpleQueue because when I wrote one it says unbound value for that helper and I don't know why that is so,Are we allowed to use helper functions in SimpleQueue because when I wrote one it says unbound value for that helper and I don't know why that is so
+"For a function like contains in linked queue, why can't we just check the the value of node using structural equality (qn.v = elt)? aren't we just checking that in the function there exists a node that has the same value as elt? Why would we have to check referential equality of the entire node?","what is this function supposed to do?
+in the first test case why is remove_head d = 1
+if the head is removed shouldn't it be ()?"
+"I saw this in the textbook notes, how does the following line makes sense: 
+
+let () = print_string ""hello""
+
+isn't () the actual value of a type unit? So would this not have to be 
+
+let x : () = print_string ""hello""
+","When do we need to use ""in"" after defining a variable? For example, in the powerpoint example: 
+
+let red : rgb = {r=255; g=0; b=0}
+
+why wasn't there ""in"" at the end? When do we use ""in"" and when not?"
+"I looked through the threads of solving this type of error and I already tried logging in/out several times and both building and cleaning my project and no luck. It seems the main error is on line 84 but I don't know what ""syntax error after unclosed begin, expecting 'in"" means in terms of what I need to look for when de-bugging my code. Thanks!","After submitting my first revision of the hw4, I looked at the first failure which appears to happen in my linkedqueue module. It's says ""First failure: length: given invalid queue"" which has me really confused considering we didn't have to implement this function for homework, and I didn't use the function beside the two standard test cases provided. Am I interpreting something wrong here?"
+Why do we reverse the list in the implementation of to_list in linkedQueue? If we just keep following the next pointers shouldn't we get the list in order?,Why does the to_list function for linkedQueue have List.rev included when pattern matching against None? Wouldn't you just return [ ] to end the function?
+"I am getting an infinite loop in my code and I can't figure out where. I checked the FAQ and still can't figure it out:
+
+let from_list (l: 'a list) : 'a queue =  let q = create () in  let rec create_list (data: 'a list) : unit =     begin match l with     |[] -&gt; ()    |x::rest -&gt; (enq x q; create_list rest)    end   in   create_list l;   q
+","Hello! I keep getting an error that's marked as a syntax error for the swap function, but I can't figure out why. Here is the code: 
+let swap (r1: 'a ref) (r2: 'a ref) : unit =
+  let x : 'a = !r1 in
+  let y : 'a = !r2 in
+  !r1 &lt;- y;
+  !r2 &lt;- x
+It doesn't show up on the second &lt;-, just the first one, so I've been pretty confused about it. Thanks!"
+"let ref_incr (r : int ref) : int =
+  r.contents &lt;- r + 1 ; 
+  r.contents
+Shouldn't this be returning int? Why am I getting an error?","let ref_incr (r : int ref) : int =
+  let x = r.contents in 
+    r.contents &lt;- x + 1;
+    xlet ref_incr (r : int ref) : int =
+  let x = !r in 
+    !r &lt;- x + 1;
+    x
+I am a little bit confused as my 1st bit of code runs and passes the test while the 2nd bit returns an error from the compiler. Isn't r.contents equivalent to !r? "
+"
+
+For my delete function in LinkedQueue, I tried to do it like this above with 2 matches, but it doesn't seem to work (because of the Some n &lt;- n.next is not right..). I'm a bit confused, am I on the right track? How do I fix this? 
+
+Thanks!! ","In delete in my if then statements, since I'm checking for referential equality, is there a way for me to check if q.head == n.v or n.next? I know I am comparing two different types (that is the error I am getting, but q.head.v or q.tail.v both don't seem to work. Any help with this would be appreciated!!"
+"For my deque delete_last function, all of my conditions are passing except for the condition where the only match in the deque is the head (so the function would remove the head and make the new head the node after head); I feel like my logic is right but something isn't working there. I would really appreciate it if someone could point me in the right direction.",My delete_last is giving me an out of memory error when I call it on a deque which does not contain the argument.  I have written out the case and read the FAQ and other posts and I still cannot figure out the issue. My recursive call passes in the previous dqnode and this gets pattern matched with None and Some where the None case returns ().  I thought it would match with None when the head of the deque is passed in.  I can't figure out where my logic in that case has gone wrong.  What should I do to find the error?  
+"I don't understand how I can return the value of the old r.contents before I update it. The only other post about it here mentions storing the old r.contents first. So I tried to do this by assigning it to a variable, then updating r.contents by one and just returning the previously assigned variable. 
+
+But the test fails. Is this not the correct approach?",I'm trying to figure out how to delete a qnode in the middle of the queue. In order to do that I need to be able to update the n.next pointer of the node before the one I want to delete with the node after the one I want to delete. I don't understand how to do this because we can't do something like n.next &lt;- n.next.next apparently. Is there some piece of information I'm missing here?
+"Can a linkedQueue have one element in it? If so, would head and tail be pointing to the same thing (ie. Head points to an 'a option that contains v and .next is None AND Tail points to that same 'a option)? ","If a queue has a cycle does that mean that its tail points to the qnode option whose next is a node that was already seen? Or can the tail be pointed to a separate isolated qnode option?
+
+Thanks"
+"I'm confused when the directions say you will only get full points if you use tail call recursion. Is this considered tail recursion?
+
+let rec to_list_helper (dqn: 'a dqnode option) : 'a list =  begin match dqn with  | None -&gt; [] | Some n -&gt; n.v :: (to_list_helper n.next) end","I'm not completely clear on what the instructions mean when tail recursion has to be implemented for to_list in deque. The following is my code (should I be using cons?):
+
+let to_list (q: 'a deque) : 'a list =  if not (valid q) then failwith ""to_list: given invalid deque"";  let rec loop (q: 'a dqnode option) (acc: 'a list): 'a list =     begin match q with     | None -&gt; []    | Some r -&gt; loop r.next acc    end in loop q.head []","In the check_to_tail helper function for valid for deque, why is checking contains_alias curr necessary? Why is the deque invalid if that is true?
+
+let check_to_tail (n: 'a dqnode) : 'a dqnode option =
+  let rec loop (curr: 'a dqnode) (seen: 'a dqnode list) : 'a dqnode option =
+    begin match curr.next with
+    | None -&gt; Some curr
+    | Some m -&gt;
+        begin match m.prev with
+        | None -&gt; None
+        | Some mp -&gt;
+            if mp != curr || contains_alias curr seen
+            then None
+            else loop m (curr :: seen)
+        end
+    end
+  in loop n []
+","In the check_to_tail helper function for valid for deque, why is checking contains_alias curr necessary? Why is the deque invalid if that is true?
+
+let check_to_tail (n: 'a dqnode) : 'a dqnode option =
+  let rec loop (curr: 'a dqnode) (seen: 'a dqnode list) : 'a dqnode option =
+    begin match curr.next with
+    | None -&gt; Some curr
+    | Some m -&gt;
+        begin match m.prev with
+        | None -&gt; None
+        | Some mp -&gt;
+            if mp != curr || contains_alias curr seen
+            then None
+            else loop m (curr :: seen)
+        end
+    end
+  in loop n []
+"
+"If you create one dqnode (let's say with v = 1) whose next value points to another dqnode (say v = 2), and the prev value of the v = 2 dqnode has to point back to the v=1 dqnode, how do you initialize those together? Right now I have something like
+
+let n1 = { v = 1; prev = None; next = Some n2 } in
+let n2 = { v = 2; prev = Some n1; next = None } in
+","If i begin match q.tail with some n and I create a new node and set its prev value to Some n, will it reference the same value of the original some n or will it create another value in the heap. It should reference the same value right? 
+
+"
+"  let delete (elt: 'a) (q: 'a queue) : unit =
+    if not (valid q) then failwith ""delete: given invalid queue"";
+    let rec loop (e: 'a) (h: 'a qnode option) (prev: 'a qnode option): unit =
+      begin match h, prev with 
+      | Some n, None -&gt; (if n.v == e then q.head &lt;- n.next); loop e n.next h 
+      | Some n, Some n2 -&gt; if n.v == e then (n2.next &lt;- n.next; 
+      if n.next = None then q.tail &lt;- prev; loop e n.next prev) 
+      else loop e n.next h
+      | _, _ -&gt; ()
+      end
+    in loop elt q.head None
+I have this right now and it has been approved by a TA but still does not pass the test where all elements must be deleted. 
+I am pretty sure there is an error in the Some n, Some n2 match case but cannot figure out exactly what I'm missing. ","I keep getting failures that say 'Out of memory.' I am not sure why this is.
+
+
+let delete_last (v: 'a) (q: 'a deque) : unit =
+  if not (valid q) then failwith ""delete_last: given invalid deque"";
+ 
+      let rec loop (prev: 'a dqnode option) (curr: 'a dqnode option)
+      (next: 'a dqnode option) (elt: 'a)
+      : unit=
+        begin match (prev, curr, next) with
+           |(None, Some a, None)-&gt;if a.v==elt then (q.head&lt;-None; q.tail&lt;-None)
+                                  
+           |(Some c, None, None)-&gt;()
+           |(Some b,Some c,None)-&gt;if c.v==elt then (b.next&lt;-None; q.tail&lt;-prev)
+                                   else loop b.prev prev curr elt
+           |(Some a,Some b,Some c)-&gt;if b.v==elt then (a.next&lt;-b.next; c.prev&lt;-b.prev)
+                                    else loop a.prev prev curr elt
+           |(None,Some a,Some b)-&gt;if a.v==elt then (q.head&lt;-next; b.prev&lt;-None)
+           |(None, None, Some a)-&gt;()
+           |(_,_,_)-&gt;()
+        end
+       in
+       
+  begin match q.tail with
+   |None-&gt;()
+   |Some a-&gt; loop a.prev q.tail None v
+  end
+","let insert_head (x: 'a) (q: 'a deque) : unit =
+  if not (valid q) then failwith ""insert_head: given invalid deque"";
+  let newnode = Some { v = x; prev = None; next = None } in 
+  begin match q.head with 
+    | None -&gt; 
+        q.head &lt;- newnode;
+        q.tail &lt;- newnode
+    | Some n -&gt;
+        n.prev &lt;- newnode;
+        newnode.next &lt;- Some n;
+        q.head &lt;- newnode
+  end 
+Hello! I'm getting a typecheck error in ""newnode.next &lt;- Some n"" and was wondering about how to fix it. How else would we change the new head's next and successfully insert it? "
+For the function delete-if we are deleting from an empty queue can we just not modify the queue and allow for no operation to occur?,"if the given queue is empty, does the funtion delete (for linkedqueue specifically) return a failure or it just keeps the queue as emtpy? "
+What are the invariants of a queue?,What are the invariants for the simple queue?
+"I'm trying to figure out the linkedQueue contains function. I wrote out an implementation and it seems totally fine, but it's not working for the non-empty true test case.
+
+I'm a bit confused as to how you can compare an element to a qnode? I just compared element to qnode.v without using ==. That would check if the value is in the queue at all. Also, more generally, can a queue have the same values? ie 2-3-2-4-5? since the first 2 points to 3 and the second 2 points to 4 they are different qnodes.
+
+My  code:
+ let contains (elt: 'a) (q: 'a queue) : bool =
+    if not (valid q) then failwith ""contains: given invalid queue"";
+    let rec element_exists_in_queue (node:'a qnode option)(element: 'a):bool = 
+      begin match node with
+      |None -&gt; false
+      |Some n -&gt; n.v = element || element_exists_in_queue n.next element
+      end
+    in element_exists_in_queue q.head elt","For this function, I wrote a recursive helper function that goes through each element in the list and enqueues it into a queue and then returns the queue at the end; it is failing the tests I wrote in queue test, but I'm pretty sure that my code makes sense. Am I on the right track, or should I be doing something more explicitly with heads and tails?"
+"For from_list in Simple Queue, how do we get around not being able to use recursion? Should we be using fold or transform?","Am I able to use fold or transform for from_list in Simple Queue? If not, do I have to use an inner loop?"
+"I have been struggling with this question. Can you please tell me what I'm doing wrong in implementing enqueue for a simple queue? Data is mutable and of type list. I am simply updating it with a version where the new element is appended to the end of the list.
+
+(* add an element to the tail of a queue *)  let enq (elt: 'a) (q: 'a queue) : unit =    q.data &lt;- q.data@[elt];
+","    let a = create() in 
+      fold (fun x acc -&gt; enq x acc) a l;
+      a
+I'm stuck with a bug where the function returns a unit instead of a queue. Would there be a way to fix this problem? My idea was to enque each element of the list to an accumulated queue.  "
+Is there a way to convert 'b option into 'b or do I need to write a helper function for this? I tried using cat_option in my match cases to convert the resulting 'b option list into a 'b list but the syntax isn't right.,"I've been struggling with the delete function for some time. I understand that I'm getting type errors because the way that my code is structured incorrectly mixes 'a qnode and 'a qnode option, but I can't figure out whether I would need to change the entire structure of my function (pattern match to a 'a qnode option instead of 'a qnode) to get it to compile or whether the problem could be fixed with syntax changes. "
+"There wasn't any error notice showing up in my Codio workspace but when I run my code there was this error. If my code does not typecheck why is it not giving my instant error notice?
+
+Error: The implementation imp.ml does not match the interface imp.cmi:
+       Values do not match:
+         val assoc : 'k -&gt; ('k * 'v) list -&gt; 'v option
+       is not included in
+         val assoc : 'k -&gt; ('k * 'v) list -&gt; 'v option
+       File ""imp.ml"", line 44, characters 8-13: Actual declaration
+Command exited with code 2.
+Compilation unsuccessful after building 8 targets (6 cached) in 00:00:00.
+make: *** [imp.native] Error 10","When I run DequeTest, all of my tests are executed except the tests written for reverse.
+The last line is codio@price-front:~workspace$ after my delete_first tests even though I have written tests for reverse after that delete_first test"
+"My code can't pass a few test in the first question.
+The code is as follows: 
+
+let rec assoc (k: 'k) (l: ('k * 'v) list) : 'v option =
+begin match l with 
+| [] -&gt; None 
+| (k1,v1):: t1 -&gt; if k = k1 then Some v1 else assoc k t1
+end","let to_list (q: 'a queue) : 'a list =let rec loop (no: 'a qnode option) (l:'a list) : 'a list =begin match no with| None -&gt; List.rev l| Some n -&gt; loop n.next (n.v::l) endin loop q.head []
+This is the to_list in the lecture notes. Why do we have to reverse the list at the end? And how does this relate to the version we're supposed to implement (without the list operators) in deque. "
+"  let contains (elt: 'a) (q: 'a queue) : bool =
+    if not (valid q) then failwith ""contains: given invalid queue"";
+    let rec loop (elt: 'a) (qn: 'a qnode) : bool =
+       begin match qn.next with
+        | None  -&gt; false
+        | Some (x) -&gt; qn.v == elt || loop elt x
+       end    
+    in
+        loop elt q.head
+In the above code I am getting an error, because q.head is an option, but my loop takes in a "" 'a qnode"" not a "" 'a qnode option"". Is there a way to feed the actual node into the loop function? I tried q.head.next but OCaml didn't like that. I tried having my loop take in 'a qnode option, but then I run into the reverse problem—I wouldn't be able to access the value v in the node.  When I would try to do so OCaml would throw a bunch of errors.
+
+Thanks","let reverse (q: 'a deque) : unit =
+  if not (valid q) then failwith ""reverse: given invalid deque"";
+  let rec loop (d: 'a dqnode option) : unit = 
+    begin match d with
+      | Some x -&gt; begin match x.next with
+          | Some y -&gt; x.next &lt;- x.prev; x.prev &lt;- Some y
+          | None -&gt; x.prev &lt;- None
+        end; loop x.prev
+      | None -&gt; ()
+    end in
+  loop q.head;
+  let temp : 'a dqnode option = q.head in
+  q.head &lt;- q.tail;
+  q.tail &lt;- temp
+In this reverse function, I am continually getting the error ""reverse: given invalid deque."" I have traced through the function many times and cannot figure out why this error is occurring. Is there a case I am missing?","let reverse (q: 'a deque) : unit =
+  if not (valid q) then failwith ""reverse: given invalid deque"";
+  let rec loop (d: 'a dqnode option) : unit = 
+    begin match d with
+      | Some x -&gt; begin match x.next with
+          | Some y -&gt; x.next &lt;- x.prev; x.prev &lt;- Some y
+          | None -&gt; x.prev &lt;- None
+        end; loop x.prev
+      | None -&gt; ()
+    end in
+  loop q.head;
+  let temp : 'a dqnode option = q.head in
+  q.head &lt;- q.tail;
+  q.tail &lt;- temp
+In this reverse function, I am continually getting the error ""reverse: given invalid deque."" I have traced through the function many times and cannot figure out why this error is occurring. Is there a case I am missing?"
+"I am confused as to how we are to implement to_list for deque using tail call recursion, without using the reverse function to reverse the list at the end. Are we allowed to use the combine function? ","I am confused as to why the reverse function cannot be executed simply by switching the head and tail markers on the deque. Since the dqnodes are linked on both ends, shouldn't this reverse the order?"
+"Is there a way I could store a temporary dqnode option ?
+
+I tried to do this and I wasn't sure if it's working :
+let temp : 'a dqnode option = q.head in ","I have really been struggling with reverse and I can't seem to figure out why this is not working. I think it has to do with how I am flipping the head and tail but I can't seem to find the bug.
+
+Could you provide any suggestions/places to look at?
+
+let reverse (q: 'a deque) : unit =  if not (valid q) then failwith ""reverse: given invalid deque"";  let rec loop (no: 'a dqnode option) (ni: 'a dqnode option): unit =   begin match no, ni with  | None, None -&gt; ()  | Some one, None -&gt; let temp_head = q.head in                      let temp_tail = q.tail in                      q.tail &lt;- temp_head; q.head &lt;- temp_tail;                       flip_to_head q.tail; flip_to_tail q.head  | None, Some two -&gt; two.next &lt;- None; loop (Some two) (two.next)  | Some one, Some two -&gt; let temp_next = two.next in                          two.prev &lt;- None; two.next &lt;- Some one; one.next &lt;- None;                          one.prev &lt;- Some two; loop (Some two) (temp_next)  end in loop (None) (q.head)
+"
+"let reverse (q: 'a deque) : unit =
+  if not (valid q) then failwith ""reverse: given invalid deque"";
+  let rec loop (d: 'a dqnode option) : unit = 
+    begin match d with
+      | Some x -&gt; begin match x.next with
+          | Some y -&gt; x.next &lt;- x.prev; x.prev &lt;- Some y
+          | None -&gt; x.prev &lt;- None
+        end; loop x.prev
+      | None -&gt; ()
+    end in
+  loop q.head;
+  let temp : 'a dqnode option = q.head in
+  q.head &lt;- q.tail;
+  q.tail &lt;- temp
+In this reverse function, I am continually getting the error ""reverse: given invalid deque."" I have traced through the function many times and cannot figure out why this error is occurring. Is there a case I am missing?","let reverse (q: 'a deque) : unit =  if not (valid q) then failwith ""reverse: given invalid deque"";  let rec fix (node: 'a dqnode option) : unit =      begin match node with      | None -&gt; ()      | Some a -&gt;                      let next = a.next in                       a.next &lt;- a.prev;                       a.prev &lt;- next;                       fix a.next      end in  fix q.head;  let temp_node = q.head in  q.head &lt;- q.tail;  q.tail &lt;- temp_node
+I don't understand why my tests for reverse aren't working?"
+When/where will we be able to see our final scores for hw03 with our style/testing graded?,When/where will we be able to see our final scores for hw03 with our style/testing graded?
+"I am trying to extract the value of q.head by pattern matching.  I am trying to match it with None as the base case and Some v in the other case and then do something with v, but I keep getting the error ""This expression has type 'a qnode but an expression was expected of type 'a.  The type variable 'a occurs inside 'a qnode.""  What is going wrong in my pattern matching?","I'm pattern matching on a 'a qnode option called no, and it's coming up as an error when I try to do no &lt;- n.next. Am I writing this code wrong or is this not possible to do?"
+"I am so stuck on ""iter"".  is the best way to solve this problem with fold since our return value is just a unit? or can i also use pattern matching?","I implemented iter using pattern matching, but just out of curiosity, is it even possible to do it with higher order functions fold and transform? (Since they return a list). Or, is there such thing as a list of units? (if there is, is it just like, ""nothing?"") "
+"In pattern matching, the compiler gives me an error before ""else"" statement that it is expecting end before ""else"". I am not sure what can be causing this error.","When I try pattern matching within pattern matching, the compiler gives me an error: This expression is type unit. This is not a function; it cannot be applied. What does this error mean exactly? and where is it possible that I'm making a mistake?"
+"if i have a node and want to see if it is the head node will q.head == Some node (in a pattern match case where you are within the Some node branch) return true as i remember in lecture it was said that ""some options "" are not equal even if they point to the same thinng-and if so how would i check if a node is the head/tail?","I am still having a hard time  understanding the alias references when  it comes to options. I've seent this answered before  in a  previous post, but if contains_alias_options r [o1] returns true, then does that mean changing the contents of r will also cause a  change to the contents value that the  Some bubble points to as well?"
+"In making the truncate function, I include a conditional to test for referential equality between a current node's value and the input value for the overall function. I think I have a bug in how I'm returning unit for the function. Codio keeps telling me that I have an unclosed begin, and the error shows up on the else keyword of the conditional. In the conditional branch before this, I have two statements that modify the queue in place, and the last statement lacks a semicolon so it is returning unit. 
+
+I feel like the way my code is structured should work, unless there is something weird about using conditionals for units that we haven't talked about.","The functions remove_head and remove_tail both return 'a. Is it possible to maintain the invariants without using a unit statement to update the queue in place? When I use a unit statement, an error is returned that the implementation of remove_head does not match the interface, and that my implementation is returning type unit. "
+"For some reason after filling in the functions for deque, I am unable to compile because of the following error:
+
+ocamlbuild -lib graphics deque.native+ /home/codio/.opam/4.04.0/bin/ocamlopt.opt -c -o deque.cmx deque.mlFile ""deque.ml"", line 1:Error: The implementation deque.ml does not match the interface deque.cmi: Values do not match: val delete_first : unit -&gt; unit deque -&gt; unit is not included in val delete_first : 'a -&gt; 'a deque -&gt; unit File ""deque.ml"", line 306, characters 4-16: Actual declarationCommand exited with code 2.Compilation unsuccessful after building 12 targets (0 cached) in 00:00:00.make: *** [deque.native] Error 10
+
+What does this mean and what am I supposed to do to fix it?","Not sure what this means or where I can find the .cmi file. No red or yellow dots in codio either. help?
+
+ocamlbuild -lib graphics dequeTest.native+ /home/codio/.opam/4.04.0/bin/ocamlopt.opt -c -o deque.cmx deque.mlFile ""deque.ml"", line 1:Error: The implementation deque.ml does not match the interface deque.cmi: Values do not match: val delete_first : unit -&gt; unit deque -&gt; unit is not included in val delete_first : 'a -&gt; 'a deque -&gt; unit File ""deque.ml"", line 302, characters 4-16: Actual declarationCommand exited with code 2.Compilation unsuccessful after building 14 targets (12 cached) in 00:00:00.make: *** [dequeTest.native] Error 10codio@tunnel-almanac:~/workspace$"
+"For removing head, I want to check if I remove a singleton, the string will be empty. But when I write remove_head d, it returns a value. How do I make it return type unit so I can check is_empty next?",Can I rewrite remove_tail to change the output to unit so that I can use it in delete_last?
+"I'm somehow getting an error for my delete last code and I'm not sure where the problem is since the line it is pointing to does not really help...
+
+Error: The implementation deque.ml does not match the interface deque.cmi:       Values do not match:         val remove_head : unit deque -&gt; unit       is not included in         val remove_head : 'a deque -&gt; 'a       File ""deque.ml"", line 251, characters 4-15: Actual declarationCommand exited with code 2.
+","I get the following error when trying to run dequeTest against my functions for removing last and first:
+
+The implementation deque.ml does not match the interface deque.cmi:Values do not match:val delete_last : unit -&gt; unit deque -&gt; unitis not included inval delete_last : 'a -&gt; 'a deque -&gt; unit
+
+Why would I get this error if the top of the function is
+let delete_last (v: 'a) (q: 'a deque) : unit =
+and everything type checks. "
+"for my insert_head I keep getting the error that this expression has type bool when unit is expected but I can't find any boolean I may have overlooked
+
+let insert_head (x: 'a) (q: 'a deque) : unit =
+  if not (valid q) then failwith ""insert_head: given invalid deque"";
+  let rec loop (new: 'a) (curr: 'a dqnode) : unit = 
+      begin match curr.prev with 
+      | None -&gt; 
+          let n = { v = new; prev = None; next = curr } in
+          curr.prev &lt;- n
+      | Some m -&gt; loop new m.prev
+      end
+  in loop x q.head
+","I keep getting a warning over a case that I thought I covered in pattern matching- for the second to last line ""Some b"" gets marked as non-exhaustive in case Some b is None but I feel that it's included in my loop function
+
+let delete_last (v: 'a) (q: 'a deque) : unit =
+  if not (valid q) then failwith ""delete_last: given invalid deque""; 
+  let rec loop (value: 'a) (curr: 'a dqnode) : unit =
+    begin match Some curr with
+    | None -&gt; ()
+    | Some m -&gt; if curr.v = value then
+                    begin match curr.prev, curr.next with 
+                    | None, None -&gt; ()
+                    | None, Some n -&gt; n.prev &lt;- None; q.head &lt;- Some n
+                    | Some o, None -&gt; o.next &lt;- None; q.tail &lt;- Some o 
+                    | Some p, Some r -&gt; p.next &lt;- Some r; r.prev &lt;- Some p                 
+                    end
+                else ()       
+    end 
+  in 
+  let Some b = q.tail in 
+  loop v b
+","let delete_first (v: 'a) (q: 'a deque) : unit =
+  if not (valid q) then failwith ""delete_first: given invalid deque"";
+  let rec loop (v: 'a) (no: 'a dqnode option) : unit =
+    begin match no with 
+      |None -&gt; ()
+      |Some x -&gt; if x.v == v then begin match x.next with
+                                   |None -&gt; begin match x.prev with
+                                             |None -&gt; q.tail &lt;- None; 
+                                                      q.head &lt;- None
+                                             |Some z -&gt; z.next &lt;- None; 
+                                                       q.tail &lt;- x.prev
+                                            end
+                                   |Some y -&gt; if x.prev = None 
+                                              then (q.head &lt;- x.next;
+                                                    y.prev &lt;- None) 
+                                              else y.prev &lt;- x.prev;
+                                              begin match y.prev with 
+                                                |None -&gt; ()
+                                                |Some t -&gt; t.next &lt;- x.next
+                                               end
+                              end
+        else  loop v x.next 
+    end 
+  in loop v q.head 
+"
+"Can I use library functions such as @ for problem 5 when I try to implement enqueue?
+",For from_list can we use functions that have been implemented in imp.ml as it is not a List Library function ? 
+"Running: LinkedQueue: delete only value ...
+Test error: `LinkedQueue: delete only value` reported `to_list: given invalid queue`
+I am getting the above error for my LinkedQueue. 
+
+  let test () : bool =
+    let q = from_list [2] in
+    delete 2 q;
+    to_list q = []
+  ;; run_test ""delete only value"" test 
+Since the error is ""to_list"" I assume it is coming from my test case (shown above). However, the test case passes for SimpleQueue, and to_List passes the test case for input from an empty list. Where could this error be coming from?","This is the failure I get when I submit my hw 4:
+
+First failure: delete 1 singleton becomes empty
+I know the failure is in my Linked Queue delete function, but I have a test in queuetest that accounts for a singleton being deleted, that passes:
+  let test () : bool =    let q = from_list [3] in    delete 3 q;    is_empty q  ;; run_test ""delete from single"" test
+"
+"Hi! I've been stuck on the delete function for deque for a while now, and wanted to know if I seemed like I was on the right track with how I'm approaching it, or if I should be thinking of the problem in another way. Thanks
+
+let delete (elt: 'a) (q: 'a queue) : unit =
+    if not (valid q) then failwith ""delete: given invalid queue"";
+    let rec loop (opt : 'a qnode option) : unit = 
+       begin match opt with
+       | None -&gt; ()
+       | Some x -&gt; if (x.v == elt &amp;&amp; q.head == Some x) then (q.head &lt;- x.next);
+         begin match x.next with 
+                   | None -&gt; (if x.v == elt then q.head &lt;- None)
+                   | Some y -&gt; if y.v == elt then 
+                   (x.next &lt;- y.next); loop x.next
+                   end
+       end
+       in
+     loop q.head
+","Hi, 
+
+I would really appreciate any feedback with my linkedqueue delete because it seems as though I have covered all necessary cases, yet the function still only works for one of my cases. 
+
+this is the code
+
+let delete (elt: 'a) (q: 'a queue) : unit = if not (valid q) then failwith ""delete: given invalid queue""; let rec loop (qn: 'a qnode option) (elt1: 'a) : unit =  begin match qn with  | None -&gt; () | Some n -&gt;  begin match n.next with  | None -&gt; () | Some m -&gt; if q.head == Some n &amp;&amp; n.v = elt1 then q.head &lt;- Some m else if  q.tail == Some m &amp;&amp; m.v == elt1 then q.tail &lt;- Some n else if m.v = elt1  then n.next &lt;- m.next else loop m.next elt1 end end in  loop q.head elt
+
+Thank you","I'm sort of stuck with how to proceed with delete for LinkedQueue. Do we create  if else statements for the three cases stated or do we pattern match on curr.next with an inner recursive function? What sort of other helper function would I need... just kinda stuck overall:
+
+  let delete (elt: 'a) (q: 'a queue) : unit =
+    if not (valid q) then failwith ""delete: given invalid queue"";
+    let rec loop (elt: 'a) (curr: 'a qnode) : unit = 
+      begin match curr.next with
+      | None -&gt; ()
+      | Some n -&gt; if n.v == elt then 
+                    begin curr.next &lt;- n.next; loop elt n
+                    end
+                  else loop elt n
+      end
+    in loop elt q.head
+","I'm sort of stuck with how to proceed with delete for LinkedQueue. Do we create  if else statements for the three cases stated or do we pattern match on curr.next with an inner recursive function? What sort of other helper function would I need... just kinda stuck overall:
+
+  let delete (elt: 'a) (q: 'a queue) : unit =
+    if not (valid q) then failwith ""delete: given invalid queue"";
+    let rec loop (elt: 'a) (curr: 'a qnode) : unit = 
+      begin match curr.next with
+      | None -&gt; ()
+      | Some n -&gt; if n.v == elt then 
+                    begin curr.next &lt;- n.next; loop elt n
+                    end
+                  else loop elt n
+      end
+    in loop elt q.head
+"
+"My delete function is failing when I try to delete the last element of a queue, and logically, I cannot understand why",My function fails whenever I try to delete the last element in a queue. I do not understand why. Any tips would be much appreciated.
+"I tried the following code 
+
+let delete (elt: 'a) (q: 'a queue) : unit =    if not (valid q) then failwith ""delete: given invalid queue"";		let rec head_loop : unit =		begin match q.head with		|None -&gt; ()		|Some n -&gt; if n.v == elt then (q.head &lt;- n.next; head_loop)   		end	in head_loop
+
+
+So I still haven't implemented the entire delete function but this should still type check and give me a partial result. But I received this error, and I'm not sure what is wrong with this
+
+File ""linkedQueue.ml"", line 242, characters 2-110:Error: This kind of expression is not allowed as right-hand side of `let rec'Command exited with code 2.
+Line 242 is this
+begin match q.head with
+What am I doing wrong here?","  let delete (elt: 'a) (q: 'a queue) : unit =
+    if not (valid q) then failwith ""delete: given invalid queue"";
+    let rec loop (e: 'a) (h: 'a qnode option) (prev: 'a qnode option): unit =
+      begin match h, prev with 
+      | Some n, None -&gt; (if n.v == e then q.head &lt;- n.next); loop e n.next h 
+      | Some n, Some n2 -&gt; if n.v == e then (n2.next &lt;- n.next; 
+      if n.next = None then q.tail &lt;- prev; loop e n.next prev) 
+      else loop e n.next h
+      | _, _ -&gt; ()
+      end
+    in loop elt q.head None
+I have this right now and it has been approved by a TA but still does not pass the test where all elements must be deleted. 
+I am pretty sure there is an error in the Some n, Some n2 match case but cannot figure out exactly what I'm missing. "
+"let rec cat_option (l: 'a option list) : 'a list =  begin match l with   | (Some x)::t -&gt; x::(cat_option t)  | None::t -&gt; cat_option t  | [] -&gt; []  end
+This expression has type 'a list. This is not a function. It cannot be applied.
+
+What is wrong?","How to debug the typecheck problems occur in testing cases? 
+
+let rec partial_transform (f: 'a -&gt; 'b option) (l: 'a list) : 'b list =
+begin match l with 
+| [] -&gt; []
+| x::t -&gt; join_option (f x) :: partial_transform (f) (t)
+end
+
+let test () : bool =
+  let f = fun x -&gt; if x &gt; 0 then Some (x * x) else None in
+  partial_transform f [0; -1; 2; -3] = [4]
+;; run_test ""partial_transform positive squaring"" test","I'm having a little trouble with cat_option, I'm not passing the text case and not completely sure why. This is my code thus far: 
+
+let rec cat_option (l: 'a option list) : 'a list =
+  begin match l with
+  | [] -&gt; []
+  | [x] -&gt;
+    begin match x with
+      | None -&gt; []
+      | Some x1 -&gt; [x1]
+    end
+  | x::xs -&gt; 
+    begin match x with
+      | None -&gt; cat_option xs
+      | Some x1 -&gt; x1::(cat_option xs)
+    end
+  end
+"
+"I'm getting an error message in the test code I was given for partial_transform:
+let test () : bool =
+  let f = fun x -&gt; if x &gt; 0 then Some (x * x) else None in
+  partial_transform f [0; -1; 2; -3] = [4]
+;; run_test ""partial_transform positive squaring"" test
+where codio gets mad that the function does not produce a 'b option- is this a problem with my original code?
+
+let rec partial_transform (f: 'a -&gt; 'b option) (l: 'a list) : 'b list =
+    begin match transform f l with
+    | [] -&gt; []
+    | hd::tl -&gt; 
+        begin match hd with
+        | None -&gt; partial_transform f tl
+        | Some b -&gt; b::(partial_transform f tl)
+        end
+    end
+
+
+","I'm getting an error message in the test code I was given for partial_transform:
+let test () : bool =
+  let f = fun x -&gt; if x &gt; 0 then Some (x * x) else None in
+  partial_transform f [0; -1; 2; -3] = [4]
+;; run_test ""partial_transform positive squaring"" test
+where codio gets mad that the function does not produce a 'b option- is this a problem with my original code?
+
+let rec partial_transform (f: 'a -&gt; 'b option) (l: 'a list) : 'b list =
+    begin match transform f l with
+    | [] -&gt; []
+    | hd::tl -&gt; 
+        begin match hd with
+        | None -&gt; partial_transform f tl
+        | Some b -&gt; b::(partial_transform f tl)
+        end
+    end
+
+
+"
+Are we allowed to use append?,Are we allowed to use while loop?

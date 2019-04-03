@@ -1,0 +1,711 @@
+"is space a considered a word character? if not, how can i account for this case when returning the next word when it is a space? ","Can a corrected word related to a typo contain only one space?
+
+For example, I know (inspite, in spite) would be a valid input, but would (visavis, vis a vis) also be a valid input?"
+"When submitting for this assignment, I get the following error:
+filecorr_efficient_layout: Invalid character found in correct word
+How does the ""efficient layout"" differ from the standard layout (I believe with regards to the input file for FileCorrector)?
+
+(Note: the error message after the colon is the message for the FileCorrection.FormatException error when an invalid character is found after the first comma, i.e. in the correct word)","Since the fileFormatException is defined as:
+public FileCorrector.FormatException(java.lang.String msg)
+
+When throwing it, should the msg include the entire line where the formatting issue arises?
+
+For example: if the issue arises for a line: ""wrong,correct,"" should the input of formatException include the entire line?
+
+
+"
+"Should the case of the corrections exactly match the case of the word? This doesn't seem logical, but in one of the test cases
+
+assertEquals(""TIGGER -&gt; {Trigger,Tiger}"", makeSet(new String[]{""Trigger"",""Tiger""}),            c.getCorrections(""TIGGER""));
+Trigger and Tiger are ""TRIGGER"" and ""tiger"" in the original file. How do we know to make it ""Trigger"" and ""Tiger""?","Hello y'all!
+
+Quick summary:
+""file"" is a TreeMap &lt;String, TreeSet&lt;String&gt;&gt;( );
+String is the misspelled word
+TreeSet&lt;String&gt; is a set of correct words that can ""replace"" the misspelled word.
+
+Question:
+1. Currently, I don't think the statement condition (b.read( ) != -1) in my while statement is good enough. Is there anything that I could improve on/consider in this conditional?
+2. When I read in the line using a buffered reader ""b,"" I take in the whole line, take in the index and substring the line according to what comes before the comma and what comes after the comma. Is this good enough, or are there other things I should consider?
+3. I'm worried my choice in data structure is too complicated... should I be looking to implement something simpler? I'm scared of moving forward in the homework b/c in HW07 I did really badly because I pushed forward with a double TreeMap and it was super hard :-(
+4. When I try to ""put"" the correct word into the TreeSet as the ""value"" of the &lt;k, v&gt; TreeMap ""file,"" should I make the TreeSet into a private field at the top of my code, or should I instantiate the TreeSet in my while loop? This is already feeling too complicated... :'(
+5. ""words.add"" returns a boolean but I need it to return a TreeSet... I am also stuck on this as well.
+
+Warmly,
+Anders.
+
+"
+Do I need to account for any possible IOExceptions in next() in TokenScanner or can I assume these will only happen in the constructor?,"If we have an auto-generated catch block that catches IOException e and the only thing it does is e.printStackTrace(), can we leave it as it is or do we have to handle exceptions another way?"
+"I wrote the following test for my TokenScanner next() method.
+
+@Test //test getNextWord edge cases
+    public void testGetNextTokenWordSingleNonWord() throws IOException {
+        Reader in = new StringReader("" ""); 
+        TokenScanner d = new TokenScanner(in);
+        try {
+            assertTrue(""has next"", d.hasNext());
+            assertEquals("" "", d.next());           
+            assertFalse(""reached end of stream"", d.hasNext());
+        } finally {
+            in.close();
+        }
+    }
+Basically I just want to test if it returns a space.
+
+But what actually happens is my next method gets caught in a while loop reading a question mark ""?"".
+However, within my while loop if I put a break statement to prevent the loop, it correctly returns the space character. What might be causing this? The relevant portion of my next method is below.
+
+//return non word characters
+    	else //if currentLetter is not the start of the word
+    	{
+    		//add it to the String and return it
+    		while (!isWordCharacter(currentLetter))
+    		{   			
+    			tokenOut += (char)currentLetter;
+    			System.out.println(""running"");
+    			System.out.println((char)currentLetter);
+    			readNextCharacter(); //update currentLetter
+    			//break;
+    		}
+    		System.out.println(""END"");
+    		return tokenOut;
+    	}
+If I don't comment out the break statement the console infinitely prints
+running
+?
+running
+?                   --&gt; for infinity
+","Hi, I keep getting a null pointer exception, but I cannot think of where it could be?
+ public void checkDocument(Reader in, InputStream input, Writer out) throws IOException {    	 Scanner sc = new Scanner(input);        TokenScanner ts = new TokenScanner(in);                        while(ts.hasNext()){        String next = ts.next();        if(!TokenScanner.isWord(next) || dict.isWord(next)){        	out.write(next); }        else{        	Map&lt;Integer, String&gt; x = new TreeMap&lt;Integer, String&gt;();        	x.put(0, next);        	x.put(1,""Should be user input"");        	Set&lt;String&gt; s = new TreeSet&lt;String&gt;();        	s = corr.getCorrections(next);        	List&lt;String&gt; sortedOptions = new LinkedList&lt;String&gt;(s);        	Collections.sort(sortedOptions);        	System.out.print(""The word: \"" ""+next+""\""is not in the dictionary. \n Please enter the number corresponding with the appropriate action:\n"");        	System.out.println(""0: Ignore and continue"");        	System.out.println(""1: Replace with another word"");        	        	for(String awesome : sortedOptions){        		x.put(sortedOptions.indexOf(awesome)+2, awesome);        		System.out.println(sortedOptions.indexOf(awesome)+2 + "": replace with ""+ awesome+""\"""");        	}        	int num = getNextInt(0, x.size()-1, sc) ;        	if(num == 0){        		out.write(x.get(0));        	}        	else if(num == 1){        		out.write(getNextString(sc));        	}        	else{        		out.write(x.get(num));        	}      	        }        }    }
+"
+"This is my code for the next() method. It passes the testGetNextTokenWord test but I don't understand how. 
+For the non word "" \n"", it's returning the correct thing. However, I'm not sure how it's doing this.
+In the second while loop, I there's a condition that it must not be a word character. However, n is a word character. How come it is still adding to the slash before it?
+
+
+
+","I am having a hard time adding things to my dictionary because a new line is being counted as a word. I think this comes from \n being seen as a word, which I'm guessing is a problem with my next function. I tried to write a case that
+ if(c.equals(""\"") 
+then the next character is also added to the current word if it is n, but this is not working, I am getting a problem with finding equality to \. Is there a different way to do this?"
+"Can we import TokenScanner in FileCorrector so we can use isWord()?
+",In FileCorrector can we use StringTokenizer?
+"Hi,
+Could you help me understand why the correct output of 
+""Tghe qiuck 45 brown Fox jumped over $ tje lazy Doggs.""
+is 
+""The quick 45 brown Fox jumped over $ the lazy Dogs.""
+
+In TheFoxMispellings.txt, 
+I do not see an entry that would convert Doggs to Dogs. I don't see how Doggs would get corrected.
+Also, the getNextInt value for ""tje"" is 0, so shouldnt ""tje"" get written into the output file.
+As to my understanding,
+the correct output should be ""The quick 45 brown Fox jumped over $ tje lazy Doggs.""","expected: &lt;The quick 45 [brown Fox jumped over $ the lazy Dogs ].&gt;
+but was: &lt;The quick 45 [ Fox jumped over $ tje lazy ].&gt;
+Not sure at all why it's skipping brown and Dogs (I thought I was returning the word if it is a TokenWord but is not found in the dictionary? Also not sure why the isn't converted to tje.
+
+
+"
+"I am running the isWord test for TokenScannerTest.java, and I get an error.This is what I have written for isWord
+public static boolean isWord(String s) {
+        boolean isWord = true;
+        if (s == null || s.equals("""")) 
+            return false;
+        else 
+            for (int i = 0; i &lt; s.length() - 1; i++) {
+                if (!isWordCharacter(s.charAt(i)))
+                    isWord = false;
+            }
+            return isWord;        
+    }
+Can you tell me what I am doing wrong?"," The tests for string ""a1"" and "" a"" are not passing.
+
+Help!
+
+  public static boolean isWord(String s) {                //Word not valid if string is null        if (s == null) {            return false;        }                //Save string to char array        char[] charArray = s.toCharArray();                       for (char c : charArray) {                        if(Character.isLetter(c)) {                return true;            }        }        return false;    }
+"
+"I am having a lot of trouble handling escape sequences in the next method of my TokenScanner class. I currently loop through the characters in the input stream until the isWordCharacter method of the current element is different than the isWordCharacter method of the next element/or there is no next element. This doesn't work for escape sequences because they are a combination of word and nonword characters. I tried to create an if statement to check if the current character is '\\' and handle it individually, but this  isn't working and it seems like the character is never equal to '\\'. Is there a better approach to handling these newline elements?","Hi TA's!
+
+1) Should I be reading the whole file at the start to determine if the file contains at least one line of invalid format? Or read it incrementally and only throw a formatException when we get to an invalid line? 
+
+2) I've spent a lot of time trying to figure out how to code whether or not a stored line from BufferReader contains invalid format. I'm trying to use the split method on the String (see code below) but am confused as to how it works (I've read the Javadoc but it contains a lot of language that we haven't learned yet).
+
+I don't know how I can proceed without falling prey to IndexOutOfBoundExceptions, since the line of code can contain so many different combinations of words/non-words/commas/non-commas. What's perhaps a simpler way for me to go about addressing the invalid cases of:
+
+     * ,correct&lt;br&gt;
+     * wrong,&lt;br&gt;
+     * wrong correct&lt;br&gt;
+     * wrong,correct,&lt;br&gt;
+
+Thank you so much!!
+
+brLine = br.readLine().toLowerCase();String [] arr;    	if (brLine != null) {    		arr = brLine.split("","");	}
+"
+"When my TokenScanner is a string of ""Aren't you /ntired"", my function is recognizing ""Aren't"" as the first word token and returning it in the first call to d.next(). However, because I'm calling rd.read() in my while-loop and again at the beginning of my try-block, I think it's skipping over the whitespace after the ""Aren't"". What should be happening is that when it hits the whitespace, it registers it as a non-word character and funnels through to the else block of this function. 
+
+However, I need to first set a to rd.read() in order to let my function recognize the input. Here, when I call it for the first time, I set ""a"" to ""A"" (for ""Aren't) and that's what gets my function off the ground. Further, I need to increment the ""a"" variable within my while loop so I traverse through the string and print out different things instead of just staying in one place. I'm not sure how to reconcile these. Any suggestions? I've been trying to print to debug and different things, and I just can't seem to get over this hump. 
+
+
+
+
+","So I'm trying to implement my next() function, but when I try to print the output to the terminal I get: A
+r
+e
+n
+'
+t
+
+y
+o
+u
+
+
+t
+i
+r
+e
+d
+
+I know that the statement return buf.toString(); in the while(isWordCharacter(c)) is wrong, but the thing is when I take it out the code ignored ""aren't"" and assumes next is "" "". Can someone please give me a hint as to what I can fix to make this work? Or is my code just wrong and getting lucky with the println statements? Thanks so much!"
+"@Test
+	 public void testSingleNonWordToken() throws IOException {
+		 Reader in = new StringReader(""\n2 ""); 
+	     TokenScanner d = new TokenScanner(in);
+	     try {
+	    	 assertTrue(""has next"", d.hasNext());
+	         assertEquals(""\n2 "", d.next());
+	         assertFalse(""reached end of stream"", d.hasNext());	           
+	            
+	     } finally {
+	            in.close();
+	     }
+	 }
+I closed the input stream in every test, and my tests go well until I add this test.
+It just stop while running this test, and I don't know why.","    @Test
+    public void testGetNextTokenWord() throws IOException {
+        Reader in = new StringReader(""Aren't you \ntired""); 
+        TokenScanner d = new TokenScanner(in);
+        try {
+            assertTrue(""has next"", d.hasNext());
+            assertEquals(""Aren't"", d.next());
+
+            assertTrue(""has next"", d.hasNext());
+            assertEquals("" "", d.next());
+
+            assertTrue(""has next"", d.hasNext());
+            assertEquals(""you"", d.next());
+
+            assertTrue(""has next"", d.hasNext());
+            assertEquals("" \n"", d.next());
+
+            assertTrue(""has next"", d.hasNext());
+            assertEquals(""tired"", d.next());
+
+            assertFalse(""reached end of stream"", d.hasNext());
+        } finally {
+            in.close();
+        }
+    }
+Why is the try block needed in this case? "
+I'm getting a NullPointerException when I try to run my test cases at line 141. I can't figure out why. I'm using a string to string map to model my data. I don't see how misspelling or correction could be null because I'm only initializing those strings if it's a valid line -- so if there's a word before and after the comma. ,"I don't think I understand what getNextInt is. The way I'm using it currently is to get the selection from the user about what to do with words that aren't in the dictionary. My code passes the tests in SpellCheckerTest, but 
+""Invalid input. Please try again!""is printed a bunch of times in my console, so that means there's an issue with how I'm calling getNextInt.
+
+"
+"Every time I call the read method on in to read next character it says my IOException isn't handled. I have handled the error in next however. I can't figure out why I get this error in my earlier methods as well as read doesn't send an exception.  
+
+src/TokenScanner.java:109: error: unreported exception IOException; must be caught or declared to be thrown
+        int c= r.read ();
+                      ^
+","I keep getting exception errors in a method I made to find which corrector to use in Spell Check and I can't figure out why. I tried putting a try catch block but that isn't resolving it. 
+
+/home/codio/workspace/src/SpellChecker.java:99: error: unreported exception FormatException; must be caught or declared to be thrown
+            return new FileCorrector (r); 
+                   ^
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+1 error
+"
+"I just opened the FileCorrector file and started to right tests for the class but it said I needed to import FileCorrector and when I tried to I ended up with several different errors and I'm not sure why they're their considering I didn't write any code and I don't know how to fix them.
+
+
+","filecorr_outer_whitespace_ignored:
+So I keep on failing this test case and I don't really understand what it means. Before I had submitted, I had tried putting whitespace all over the file but my individual tests still passed so I don't know what to do about it.
+"
+"Hello! I posted this a few hours ago but unfortunately did not get a reply to my follow up question yet. I was told to check if my test case is correct, but my question is referring to a case that did not pass when I submitted online. Thanks so much for taking a look: 
+
+I've been trying to debug an issue and just can't figure out why a certain test is failing. It seems like the test case is related to function isWordCharacter. I pasted the error message and the code below. If anyone can help point me in the right direction or give a hint, this would be greatly appreciated as I don't see anything out of the ordinary for my isWord function.
+Error: First failure is tokenscanner_isWordChar_true
+Code: public static boolean isWordCharacter(int c) {return Character.isLetter(c)||(c == '\'');}
+ 
+Thanks much!","Hi I'm posting this such that only instructors can see in case this should not be shown to students who haven't submitted yet, but 
+below is some of the feedback I received after my first submission and I'm a little confused as to what it means. Why is there nothing after ""but was:""? What does this mean my program did?
+"
+My tests for spellchecker for the ghettysberg swap runs in about 0.480 seconds in eclipse. When I ran the test in Codio it timed out. Is this ok or does this indicate a problem in my code?,"For some reason, the submission site comes up with the following error: 
+
+spellcheck_check_Gettysburg_with_swapcorrector: test timed out after 500 millisecondsBut on Eclipse, the test takes around 400-450 ms. What is the issue here?"
+"If i have an input string like ""Hello!!!"", would hasNext return false the second time because it bundles both exclamation points together and realizes there is no token after that? Or would I call hasNext until the end of the string, but for each exclamation point it would return false?","If an input string starts with a non-word token, can I skip over it so that the first token I return is a word token. Or should I return the non-word token first?"
+"Scanner sc = new Scanner(input);TokenScanner ts = new TokenScanner(in);dict = new Dictionary(ts); while(ts.hasNext()) {
+        	String s = ts.next();
+        	if (dict.isWord(s)) {
+        		out.write(s);
+        	}
+These are the first few lines of my checkDocument method. However, the code is never entering into the while loop. I printed out ts.next() and it gives me a null pointer exception, meaning there is nothing in it. Why would this be?","My checkDocument is timing out all three tests in SpellCheckerTest and I don't know why.
+
+
+public void checkDocument(Reader in, InputStream input, Writer out) throws IOException
+    {
+        Scanner sc = new Scanner(input);
+        
+        TokenScanner tokenScanner = new TokenScanner(in);
+        
+        String currentToken = """";
+        
+        while (tokenScanner.hasNext()); //while token scanner has stuff
+        {
+        	currentToken = tokenScanner.next(); //get next token
+        	if (!TokenScanner.isWord(currentToken)) //check if token is a word
+        	{
+        		//if it is not, immediately write it out
+        		out.write(currentToken);	        		
+        	}
+        	
+        	if (TokenScanner.isWord(currentToken))
+        	{
+        		//if it is a word, start spellchecking
+        		
+        		//if the word is in the dictionary (it's not missspelled) write it out
+        		if (dict.isWord(currentToken))
+        		{
+        			out.write(currentToken);
+        		}
+        		
+        		//if the word is not in the dictionary
+        		if (!dict.isWord(currentToken))
+        		{
+        			Set&lt;String&gt; setOfCorrections = corr.getCorrections(currentToken);
+        			
+        			//now sort correction alphabetically
+        			
+        			// Suppose setOfCorrections is the Set&lt;String&gt; you got from a Corrector.
+                    List&lt;String&gt; sortedOptions = new LinkedList&lt;String&gt;(setOfCorrections);
+                    Collections.sort(sortedOptions);
+
+        			int max = sortedOptions.size() - 1;
+        			
+        			int userInput = getNextInt(0, max, sc);
+        			
+        			//if user wants to skip, just write out currentToken
+        			if (userInput == 0)
+        			{
+        				out.write(currentToken);
+        			}
+        			
+        			//if user wants to input new word, get the word and write it out
+        			if (userInput == 1)
+        			{
+        				out.write(getNextString(sc));
+        			}
+        			
+        			//if the user wants to choose an option, get the user input and 
+        			if (userInput != 0 &amp;&amp; userInput !=1)
+        			{
+        				for (String option : sortedOptions)
+	                    {
+	                    	//return each option in alphabetical order
+	                    	System.out.println(option);
+	                    }
+	                    
+	                    int userOptionChoice = userInput - 2; //they always start at 2
+	                    
+	                    out.write(sortedOptions.get(userOptionChoice));
+        			}
+        				
+        		}
+        		
+        	}
+       	
+        }
+        //after while loop, flush to write everything at once
+        out.flush();
+    }
+    
+"
+"Token Scanner will only handle conditions that are strings that alternate between words and non-words right? 
+So there won't be input string such as ""&amp;%Contest%%%"" Like this? With two or more consecutive non-word following together?","I'm confused on how we are supposed to manage the token scanner alternating between words and non words.  If there is a comma, how can you group the "","" to be "", "" because mine only sees the comma as a non-word character and then the space as one as well."
+"In my implementation for hasNext and next for the token scanner, it seems like the reader is skipping white spaces and returning consecutive word tokens (instead of alternating between word and non-word). I also added some print statements in my code to try and debug, but I'm not sure why this is happening. 
+
+(I copied and pasted my TokenScanner code into codio)",I'm writing my TokenScanner code and for the next() method it always returns a string that is missing the first character of the token that it should be returning. Any ideas why?
+how do I fix this?,how do I fix this?
+"When trying to run tests on TokenScanner, a window with error appears saying: No JUnit tests found. I see JUnit4 imported into my file-tree though. What should I do?","Two questions. When I'm running the test cases you provide for SpellChecker, I get
+java.lang.AssertionError: Expected more lines, but found end of file in the output. 
+What might cause this?
+
+Also, where can I view the output file that I produce?"
+"Hi, I received a comparison failure for fourth assertion of the testGetNextTokenWord() test. The token expected should be a space and a line break; however, my actual token returned is comprised of a space and an empty string? I'm confused about what exactly is wrong and how would I go about fixing this?
+
+The test I'm failing is this (specifically the assertion on line 54):
+
+
+
+The failure message is as follows: 
+org.junit.ComparisonFailure: expected:&lt; [
+]&gt; but was:&lt; []&gt;
+
+
+My code for next( ) in TokenScanner is this: 
+
+
+
+Thank you! ","In my myTests.java file, I am getting a weird error that highlights the entire part of the code and writes ""syntax error on token."" I am not doing anything differently from when I write a normal test case though."
+"I have been trying to attempt swapCorrector but I keep failing the provided test, testSwapCorrections. What can I do to fix it?
+(I'm using codio)
+
+
+Message: oYurs -&gt; {yours} expected:&lt;[yours]&gt; but was:&lt;[]&gt;
+java.lang.AssertionError: oYurs -&gt; {yours} expected:&lt;[yours]&gt; but was:&lt;[]&gt;
+	at SwapCorrectorTest.testSwapCorrections(SwapCorrectorTest.java:39)
+	at barrypitman.junitXmlFormatter.Runner.runTests(Runner.java:27)
+	at barrypitman.junitXmlFormatter.Runner.main(Runner.java:18)","I keep the getting the following error in FileCorrector's testGetCorrection test. How can I fix it?
+
+Message: lyon -&gt; lion expected:&lt;[lion]&gt; but was:&lt;[]&gt;
+java.lang.AssertionError: lyon -&gt; lion expected:&lt;[lion]&gt; but was:&lt;[]&gt;
+	at FileCorrectorTest.testGetCorrection(FileCorrectorTest.java:49)
+	at barrypitman.junitXmlFormatter.Runner.runTests(Runner.java:27)
+	at barrypitman.junitXmlFormatter.Runner.main(Runner.java:18)"
+How do we know what the expected size of the dictionary file is?,How do we know what the expected size of the dictionary file is?
+Are we allowed to write a public getter method to access the Collection of dictionary words so we can access them in SwapCorrector?,"Can I create a getter method in Dictionary that gets all the words in the dictionary?
+I need this for my SwapCorrector constructor so I can access the set of words in the dictionary."
+"For this test: 
+The dictionary file contains a blank line in the middle. (Remember: You can always make new .txt files to help write test cases.)
+Are we just checking to see if a word in the dictionary still exists despite there being a space break in the text file?
+
+For this test: 
+The dictionary file has words with whitespace around them, and you check if one of those words is in the dictionary.
+Are we testing a word like ""A pp le"" with space between letters? If so, should that return false or true if ""apple"" does exist in the file?","The instructions say one of our test cases for isWord should be 
+
+The dictionary file has words with whitespace around them, and you check if one of those words is in the dictionary.
+But the function header in the Dictionary file says 
+
+@param word A String token to check. Assume any leading or trailing whitespace has already been removed.
+
+Which is it?"
+"org.junit.runners.model.TestTimedOutException: test timed out after 500 milliseconds	at Dictionary.&lt;init&gt;(Dictionary.java:35)	at Dictionary.make(Dictionary.java:56)	at SpellCheckerTest.spellCheckFiles(SpellCheckerTest.java:41)	at SpellCheckerTest.testCheckGettysburgSwap(SpellCheckerTest.java:96)	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)	at java.lang.reflect.Method.invoke(Method.java:498)	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)	at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:298)	at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:292)	at java.util.concurrent.FutureTask.run(FutureTask.java:266)	at java.lang.Thread.run(Thread.java:748)
+
+I am running the gettysburg swap test and this is the error I get. What does this mean?","I am getting this error for some of the tests I have written for Dictionary and even in the tests that were given in Dictionary Test.
+
+java.lang.AssertionError: 'apple' -&gt; should be true ('apple' in file)at org.junit.Assert.fail(Assert.java:88)at org.junit.Assert.assertTrue(Assert.java:41)at DictionaryTest.testDictionaryContainsSimple(DictionaryTest.java:14)at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)at java.base/java.lang.reflect.Method.invoke(Unknown Source)at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:298)at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:292)at java.base/java.util.concurrent.FutureTask.run(Unknown Source)at java.base/java.lang.Thread.run(Unknown Source)
+"
+"I am passing all of the tests that were given in DictionaryTest; however, for every test that I wrote in MyTests, I get a FileNotFoundException when I test using a text file that I created (i.e. I fail tests for ""The dictionary file contains a blank line in the middle."") I'm not really sure what the issue is or if I just created the text files the wrong way.","I have a bug in my code: the code combines data from multiple files in ""dictionary"". However, every test case establishes a new dictionary—so I don't know where this bug could be coming from"
+"So I am a bit confused on the constructor for Dictionary. I want to use a TreeSet so i do not have to worry about duplicates, but I only want to add words from the TokenScanner that are words so I was hoping to use the isWord function from TokenScanner to check every string coming from TokenScanner before adding it to the TreeSet. However, isWord is a static function (obviously for a reason), and I am just very stuck on what I should be altering in order to access this static function. Please let me know if I am just misunderstanding the constructor entirely. Thank you!
+
+public Dictionary(TokenScanner ts) {
+  if (ts == null) {
+   throw new IllegalArgumentException();
+  }
+
+  d = new TreeSet&lt;String&gt;();
+
+  // want to check that the next word in the token scanner is a word, else skip
+
+  while (ts.hasNext()) {
+   if (ts.isWord(ts.next()) {
+    d.add(ts.next());
+   }
+  }
+    }","I'm really confused about how to use the underlying data structure of dictionary in the swap collector constructor in order to be able to access and use the words in the dictionary. I tried casting the dictionary to the data structure, but I got a ClassCastException. Any tips/hints would be very helpful!"
+are we allowed to copy the makeSet function from FileCorrectorTest to MyTest to use?,Are we allowed to use break and continue in our code for SwapCorrector? 
+How should the FileCorrector behave if there is an empty line in the input file? Should it skip the line or throw the same error it throws for other invalid lines?,Do we throw a format exception if there is an empty line in the input of the filename in FileCorrector?
+"I made a new txt file with some of the cases that I want to test getCorrections with.  Every line has a comma, but every test using that file is triggering an invalid input exception which I throw when a line does not have a comma.  All of the tests that I wrote using the provided SmallMispellings.txt are passing, so I feel like it might be some problem with my file.  Any ideas?","I've read old posts about how to implement FormatException but I keep failing the tests that are testing for it- I have the try catch statements formatted like so because that's the only time I can think of when we would need to worry about the Format Exception but the FileCorrectorTest doesn't seem to recognize it and still returns ""this is bad format"" instead of recognizing the exception
+
+try {
+    		c = in.readLine();
+    	} catch (IOException e) {
+    		throw new FileCorrector.FormatException(""invalid line"");
+    	}
+"
+" public FileCorrector(Reader r) throws IOException, FormatException {
+    	try {
+    		reader = new BufferedReader(r);
+        	words = new TreeMap &lt;String, Set&lt;String&gt;&gt; (); 		//key has incorrect words, and value has a set of corrections
+        	
+    		while (reader.read() != -1) {
+    			String temp = (reader.readLine()).trim();
+    			if (temp.equals("""")) {}
+    			else if (isInvalidLine(temp)) {
+    				throw new FormatException(temp);
+    			}
+    			else {
+    				int indexOfComma = temp.indexOf(',');
+    				String wrong = (temp.substring(0, indexOfComma).trim()).toLowerCase();
+    				String correction = (temp.substring(indexOfComma+1).trim()).toLowerCase();
+    				
+    				if (words.containsKey(wrong)) {
+    					words.get(wrong).add(correction);
+    				}
+    				else {
+    					Set&lt;String&gt; entry = new TreeSet&lt;String&gt;();
+    					entry.add(correction);
+    					words.put(wrong, entry);
+    				}
+    			}
+    		}
+    	}
+    	
+    	catch (NullPointerException e) {
+    		throw new IllegalArgumentException();
+    	}    	
+    }
+When I printed out the map (words) where all of the incorrect words and their corrections are kept, I realized that the first letter of each of the incorrect words is being cut out. I have no idea why however, because I am pretty sure I am using the substring method properly. 
+
+
+
+What the printed out map shows::
+key: himpanze 
+value:  chimpanzee
+
+
+key: igger 
+value:  tiger
+trigger
+
+
+key: ose
+value:  goose
+
+
+key: yon
+value:  lion","I want to ask why the following code does not work. Like the test below does not pass.
+if (s.indexOf(',') == -1)
+                {
+                    throw new FormatException(""wrong format"");
+                }
+@Test
+    public void testInvalidFormat() throws IOException, FileCorrector.FormatException  {
+        try {
+            Corrector c = new FileCorrector(new StringReader(""no comma in this puppy""));
+            fail(""This is a bad format"");
+        } catch (FileCorrector.FormatException e) {
+            // do nothing
+        }
+    }
+"
+"If the incorrect word is not in the dictionary created, what is the intended result? Should we throw an IllegalArgumentException() or return an empty set?
+
+Also, how do we throw a FileCorrector.FormatException() in our code? Eclipse says it is undefined when I write: 
+throw new FileCorrector.FormatException();
+","I'm confused which exception we are supposed to throw in the scenario below:
+
+In the documentation for getCorrections(), it says:
+Throws:java.lang.IllegalArgumentException - If the input is not a valid word (i.e. not composed of only letters and/or apostrophes)
+
+However, in the documentation of the entire class, it says:
+You should throw a FileCorrector.FormatException if you encounter input that is invalid. For example, the FileCorrector constructor should throw an exception if any of these inputs are encountered:
+ ,correct
+ wrong,
+ wrong correct
+ wrong,correct,"
+"If the filename is null, should it throw an IllegalArgumentException or a FileNotFoundException?","if a null string is put into getCorrections in SwapCorrector, should it just throw an IllegalArgumentException (as if it was an invalid word?)"
+"Hi!I get the following error when I run the testGetNextTokenWord test for tokenscanner.javaMessage: expected:&lt;Aren['t]&gt; but was:&lt;Aren[]&gt;at TokenScannerTest.testGetNextTokenWord(TokenScannerTest.java:51) at barrypitman.junitXmlFormatter.Runner.runTests(Runner.java:27) at barrypitman.junitXmlFormatter.Runner.main(Runner.java:18)
+
+This is my implementation for next( )
+public String next() {        if (!hasNext()) {            throw new NoSuchElementException();        }        String answer = """";        try {            while (Character.isLetter(c)) {				answer = answer + (char)c;				c = r.read();			}		} catch (IOException e) {			throw new NoSuchElementException();		}		return answer;    }
+Can you tell me what i am doing wrong please?","When I run my FileCorrectorTest, I get the following error
+testInvalidFormat	0.001s	failedMessage: 1java.lang.ArrayIndexOutOfBoundsException: 1	at FileCorrector.&lt;init&gt;(FileCorrector.java:107)	at FileCorrectorTest.testInvalidFormat(FileCorrectorTest.java:59)	at barrypitman.junitXmlFormatter.Runner.runTests(Runner.java:27)	at barrypitman.junitXmlFormatter.Runner.main(Runner.java:18)
+
+My constructor looks like this:
+public FileCorrector(Reader r) throws IOException, FormatException {                if (r == null) {            throw new IllegalArgumentException();         }                correctionPair = new TreeMap&lt;String, Set&lt;String&gt;&gt;();                BufferedReader br = new BufferedReader(r);                String currLine = br.readLine();                while (currLine != null) {            String[] currLineArr = currLine.split("","");                            String wrongWord = currLineArr[0].trim();            String correction = currLineArr[1].trim();                                          if (currLineArr.length != 2) {                   throw new FormatException(""invalid line"");               }               else {                   if (!correctionPair.containsKey(wrongWord)) {                       correctWords = new TreeSet&lt;String&gt;();                       correctWords.add(correction);                       correctionPair.put(wrongWord, correctWords);                   }                   else {                       //correctWords.add(correction);                       correctionPair.put(wrongWord, correctWords);                               }                                       }               currLine = br.readLine();         }   }
+What could be going wrong?"
+"I'm getting many errors in TokenScanner.java. They all say ""cannot find symbol"". An example is one given below:
+How do I fix these? (I am working on codio)
+
+
+symbol: method printline(String) location: variable out of type PrintStreamsrc/TokenScanner.java:126: error: cannot find symbol throw new NoSuchElementException();","I keep getting an error:
+src/FileCorrector.java:100: error: exception FormatException is never thrown in body of corresponding try statement        } catch(FormatException e) {          ^
+in my FileCorrector constructor. I read through the posts on throwing FormatException, but I am not sure what I am doing wrong.
+
+I declared 
+private Reader r;private int c = -1;
+in the very beginning, and for the constructor, I currently have:
+
+public FileCorrector(Reader r) throws IOException, FormatException {               this.r = new BufferedReader(r);                if (r == null)            throw new IllegalArgumentException();                 try {            this.c = r.read();        } catch(IOException e) {            throw new IOException();        } catch(FormatException e) {            throw new FileCorrector.FormatException(""invalid line"");        }    }
+My code is also in Codio. Any insight on what is going wrong would be much appreciated","In my FileCorrector Constructor, I am trying to check for validity of the line using split(). However, I get all these errors although I thought my types all matched. Can you please help me find what I am doing wrong?
+ public FileCorrector(Reader r) throws IOException, FormatException {        
+        if (this.r == null) {
+            throw new IllegalArgumentException(); 
+        }
+        
+        correctionPair = new TreeMap&lt;String, Collection&lt;String&gt;&gt;();
+        
+        BufferedReader br = new BufferedReader(r);
+        String currLine = br.readLine();
+        while (currLine != null) {
+            String[] currLineArr = br.split(currLine, "","");
+                
+            String wrongWord = currLineArr[0];
+            String correction = currLineArr[1];
+                
+               if (currLineArr.length != 2) {
+                   throw new FileFormatException(""invalid line"");
+               }
+               else {
+                   if (!correctionPair.contains(wrongWord)) {
+                       Set&lt;String&gt; correctWords = new TreeSet&lt;String&gt;();
+                       correctWords.add(correction);
+                       correctionPair.put(wrongWord, correctWords);
+                   }
+                    else {
+                        correctWords.add(correction);
+                        correctionPair.put(wrongWord, correctWord);            
+                    }                        
+                }
+
+            }
+   }
+W
+javac -d bin src/*.java
+src/FileCorrector.java:101: error: cannot find symbol
+            String[] currLineArr = br.split(currLine, "","");
+                                     ^
+  symbol:   method split(String,String)
+  location: variable br of type BufferedReader
+src/FileCorrector.java:107: error: cannot find symbol
+                   throw new FileFormatException(""invalid line"");
+                             ^
+  symbol:   class FileFormatException
+  location: class FileCorrector
+src/FileCorrector.java:110: error: cannot find symbol
+                   if (!correctionPair.contains(wrongWord)) {
+                                      ^
+  symbol:   method contains(String)
+  location: variable correctionPair of type Map&lt;String,Collection&lt;String&gt;&gt;
+src/FileCorrector.java:116: error: cannot find symbol
+                        correctWords.add(correction);
+                        ^
+  symbol:   variable correctWords
+  location: class FileCorrector
+src/FileCorrector.java:117: error: cannot find symbol
+                        correctionPair.put(wrongWord, correctWord);
+                                                      ^
+  symbol:   variable correctWord
+  location: class FileCorrector
+src/FileCorrector.java:163: error: incompatible types: Collection&lt;String&gt; cannot be converted to Set&lt;String&gt;
+        else return correctionPair.get(wrong);
+"
+"//Constructor	public TokenScanner(java.io.Reader in) throws IOException {
+        this.r = in;
+        
+        try {
+        	c = r.read();
+        }
+        catch (IOException e){
+        	c = -1;
+        }
+    }//Has Next Function    public boolean hasNext() {
+    	return (c != -1);
+    }//Next Function    public String next() {
+       	if (!hasNext()) {
+    		throw new NoSuchElementException();
+    	}
+    	String answer = """";
+    	try {
+        	if (isWordCharacter(c)) {
+        		while (isWordCharacter(c)) {
+        			answer += (char) c;
+        			c = r.read();
+        		}
+        	}
+        	else if (!isWordCharacter(c)){
+    			while (!isWordCharacter(c)) {
+    				answer += (char) c;
+    		        try {
+    		        	c = r.read();
+    		        }
+    		        catch (IOException e){
+    		        	c = -1;
+    		        }
+    			}
+        	}
+        	return answer;
+    	}
+    	catch (IOException e) {
+    		throw new NoSuchElementException();
+    	}
+    }When I run the above code on a test that ends in a non-word token, it runs into an infinite loop. My other tests are passing. How can I fix my code to make sure that doesn't happen?
+","Why is this happening?
+
+import java.io.Reader;
+//Scanner variableprivate Reader tokenScanner;
+
+    //Throw exception if null        if (in == null) {            throw new IllegalArgumentException();        }                try {                        //Create new token scanner for argued reader            this.tokenScanner = in;        }                    //Throw exception if error in reading        catch (IOException e){            throw new IOException();        }        }
+
+"
+"I am getting a NullPointerException when my code has
+
+line = br.readLine();
+
+br is a BufferedReader and line is a String that has been constantly updating through a while loop.
+After putting some print statements in to debug my code, I confirmed that the NullPointerException is happening at the very last iteration through the while loop when the next line would be empty.
+I am confused on how to get rid of this null pointer exception. I thought my while loop and exceptions would take care of it.
+
+","The only test I'm still failing is this one, but I have absolutely no idea what this test is actually testing or how I'm missing it in my test cases. I've tested every file reader input that I can think of, but when the compiler runs this test upon submission, I get a FormatException. 
+
+Currently, I'm reading each line, parsing the substring before the first comma into a ""typo"" String, and then parsing the substring after the comma into a ""correctedWord"" String. 
+
+The exception is being thrown in a situation where I check the trimmed correctedWord String to make sure it doesn't contain any non-word characters (besides spaces).
+
+The test title makes me think I should test the efficiency of my code, but I'm not sure how I could be throwing an error in this situation after my comprehensive testing of different inputs."
+"When I write a NoSuchElement exception test as described in the FAQ, it tells me Class&lt;NoSuchElementException&gt; cannot be resolved to a type.  How do I write this test?","@Test(expected = NoSuchElementException.class)
+public void testGetNextTokenWordEmpty() throws IOException {
+
+What should we do to catch multiple exceptions? The above works to catch both exceptions, but is this the correct way? What is the difference between putting an exception next to @Test and putting in the method stub?
+
+Thank you!"
+Can we import set and treeset in spellchecker in order to create a set of suggested words?,do we need to write test cases for spellchecker()?
+"What does this error mean?
+First failure is filecorr_construct_invalidfile: This is a bad format",filecorr_construct_invalidfile: This is a bad format
+"For this test case: assertTrue(TokenScanner.isWordCharacter('\''));
+
+Does this mean that /' represents an apostrophe? Or is it a slash and then an apostrophe?","For FileCorrector, what counts as an invalid format on the left/right sides of the comma?
+
+For example, say we have one,two
+
+and ""one"" and ""two"" are all trimmed.
+Is:
+one = 123cat
+one = hello-cat
+one = funnything---:!
+
+Are the above all valid formats? or do the left and right side need to be words as defined in TokenScanner aside from allowing spaces in the middle?"
+"How do I know if my tests for TokenScanner are passing? When I run MyTests, it only runs 1/6 of the tests and has a little blue triangle next to that test.","I changed some of my code, and now when I run my tests, the symbol next to the tests looks like a pink test tube. Does this mean i made an infinite loop, or what?"
+"I'm passing the tests in SpellCheckerTest, but the ""Invalid Input. Please try again!"" is printed several times in my console. What does this mean? ","I followed the instructions exactly as they written at the bottom of the homework description, but ""error while checking document: Gettysburg.txt (No such file or directory)"" gets printed on the console and nothing happens. 
+What does this mean, and how do I get SpellCheckerRunner to run?"
+"I'm getting a NoSuchElementException when I try to call getNextInt in SpellChecker. The line it says is causing the error is:
+
+int choice = Integer.parseInt(sc.next());
+
+Does this mean I'm calling getNextInt incorrectly in my checkDocument function?",all the tests for SpellCheckerTest.java have a IOException: Stream closed error- what does that mean/ what am I doing wrong in my program? 
+"How do you go from a Reader to BufferedReader? Right now I'm trying the below code in my constructor, but it gives me the error: ""The constructor BufferedInputStream(Reader) is undefined"" and asks me to change the Reader to an InputStream in the constructor header. 
+
+     InputStream fin = new BufferedInputStream(in);","I see in the comment in FireCorrector.java ""Instead of using the TokenScanner to parse this input, you should read the input line by line using a BufferedReader.""
+However, in the constructor of FireCorrector, we only know that the parameter that we take in is of type reader. I am a bit confused how I should be able to use BufferedReader."
+"For this test case for FileCorrector, ""We ask for a word that has no corrections,"" does this mean that the txt file does not have the word in the file? Does this test expect an error/exception? 
+
+","I'm confused what the test case for when a word has Multiple Corrections should return. Because for each misspelled word isn't there only one correct word that should be suggested? For example in the misspellings.txt file, if the user entered the word ""accomodates"" the only correction would be ""accommodates"". "
+"If we have a file with ""his"" and we try to find the corrections for ""hIs"", should we be returning an empty set (since the word technically exists in the dictionary), or should we return ""his"" in a set?","Should word,correction and word,CORRECTION return a set with one of the corrections or both when getCorrections for word is called? if it is just one, which case should it return?"
+"Hello y'all,
+
+Quick 3-question:
+1. how are we supposed to pass in the string with which we want to check against the dictionary.isWord( )?
+2. do we create a private field string outside of the constructor? 
+3. will we need to map incorrect words to a set of correct words, or just store possible correct words from the dictionary into a set that we end up returning in getCorrections( )?
+
+private TreeSet&lt;String&gt; store = new TreeSet&lt;String&gt;(); // the set of corrections
+ private String word; // the word we are producing a set of corrections for
+
+    public SwapCorrector(Dictionary dict) {
+     this.word = word;","For checkDocument I've seen other posts saying that the Scanner class should be used to get the user input.
+
+1) How do we use the Scanner class to do that? Do we do sc.next()? Should this be returning an int?
+
+2) Once we've used our Corrector to output a set of corrections for the wrong word, how do we present those words (alphabetically) to the user? There are literally no instructions for how to do this.
+
+I assume that once we present the correction to the user we just use the user input to determine which of those corrections to write out. But if the user chooses the ""different"" option and inputs their own word, do we have to handle that ourselves as well?"
