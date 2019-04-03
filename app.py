@@ -21,6 +21,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 f = open('results.csv')
 hw_timestamps_file = open('PythonScripts/hw_timestamps.csv')
 references_file = open('PythonScripts/references.csv')
+output_file = open('PythonScripts/sample_output.csv')
 
 @app.route("/", methods=['GET', 'POST'])
 def main():
@@ -46,21 +47,45 @@ def main():
 
 def show_results(topic_num):
     reader = csv.reader(f)
-    data = list(reader)
+    data = ["Sample question 1", "Sample question 2", "Sample question 3"]
+
+    questions_list = get_faq()
 
     # render the results page
     labels_and_values = get_chart_labels(topic_num)
-    print(labels_and_values)
+    #print(labels_and_values)
     topics = labels_and_values[0]
     labels = labels_and_values[1]
     values = labels_and_values[2]
     return render_template('faq.html',
         curr_topic = topics[topic_num],
-        questions_list=data,
+        questions_list=questions_list,
         num_clusters=len(data),
         topics=topics,
         labels=labels,
         values=values)
+
+def get_faq():
+    output_reader = csv.reader(output_file)
+    topics_to_questions = []
+    current_topic = []
+    for row in output_reader:
+        if not row[1]:
+            # start of a new topic
+            topics_to_questions.append(current_topic)
+            current_topic = []
+            current_topic.append(row[0])
+        if row[1]:
+            # add questions to the current cluster
+            current_cluster = []
+            for col in row:
+                if col != '':
+                    current_cluster.append(col)
+
+            current_topic.append(current_cluster)
+    topics_to_questions.pop(0)
+    print(topics_to_questions[0])
+    return topics_to_questions
 
 # getting chart for specific topic
 @app.route("/chart/<int:topic_num>", methods=['GET'])
@@ -80,13 +105,13 @@ def get_chart_labels(topic_number):
     print(topic_number)
 
     for row in hw_timestamps_reader:
-        print(line_count)
+        #print(line_count)
         # add to list of topics
-        print(row)
+        #print(row)
         if row != []:
             topics.append(row[0])
             if line_count == topic_number:
-                print("hitting line count == topic number")
+                #print("hitting line count == topic number")
                 # get range of dates
                 dates = row[1].split(',')
                 dates.pop(len(dates) - 1)
