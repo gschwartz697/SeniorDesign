@@ -116,6 +116,9 @@
       .card-header {
         text-align: left !important;
       }
+      .question-text {
+        font-size: 12px;
+      }
     </style>
   </head>
   <body>
@@ -155,7 +158,13 @@
             <div id="collapseOne{{topic[0]}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body">
                 {% for question in topic[1] %}
-                  {{question}}<br><br>
+
+                  <button type="button" class="close btn btn-link" data-toggle="collapse" data-target="#collapse-{{question}}" aria-expanded="false" aria-controls="collapse-question" aria-label="Close">
+                    <div id="collapse-{{question}}" class="collapse show question-text font-weight-normal">{{question}}
+                      <span aria-hidden="true">&times;</span>
+                    </div><br><br>
+                  </button>
+
                 {% endfor %}
               </div>
             </div>
@@ -171,7 +180,11 @@
             <div id="collapseTwo{{topic[0]}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
               <div class="card-body">
                 {% for question in topic[2] %}
-                  {{question}}<br><br>
+                  <button type="button" class="close btn btn-link" data-toggle="collapse" data-target="#collapse-{{question}}" aria-expanded="false" aria-controls="collapse-question" aria-label="Close">
+                    <div id="collapse-{{question}}" class="collapse show question-text font-weight-normal">{{question}}
+                      <span aria-hidden="true">&times;</span>
+                    </div><br><br>
+                  </button>
                 {% endfor %}
               </div>
             </div>
@@ -187,7 +200,11 @@
             <div id="collapseThree{{topic[0]}}" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
               <div class="card-body">
                 {% for question in topic[3] %}
-                  {{question}}<br><br>
+                  <button type="button" class="close btn btn-link" data-toggle="collapse" data-target="#collapse-{{question}}" aria-expanded="false" aria-controls="collapse-question" aria-label="Close">
+                    <div id="collapse-{{question}}" class="collapse show question-text font-weight-normal">{{question}}
+                      <span aria-hidden="true">&times;</span>
+                    </div><br>
+                  </button>
                 {% endfor %}
               </div>
             </div>
