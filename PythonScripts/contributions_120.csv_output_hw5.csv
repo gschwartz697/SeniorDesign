@@ -1,0 +1,773 @@
+"I saw a previous question about ""unbound module draw_points"". I have an ""unbound value draw_points"" error in my paint.ml function as I am trying to add the Points (c, ps) to repaint. How can I fix this?","for my paint.ml, when i tried building my project, codio is telling me that I have a syntax error on line 143 but I don't really see onw? In addition, I keep getting errors on the side saying that I have unbound record field mode,  unbound record field color,  unbound record field shapes, and unbound module Deque. How can I fix this? Thank you!
+
+"
+Should we be utilizing the same draw_ellipse function in gctx in task 0 and task 4?,Should we be utilizing the same draw_ellipse function in gctx in task 0 and task 4?
+"I'm having a really hard time implementing the second part of change_value. The instructions say,
+    ""It calls all of the change_listeners the value_controller has stored, with the newly set value as the argument to each.""
+I'm trying to go through the list of change_listeners and apply the newly set argument to each using the List.iter function. However, I am struggling to write the function that needs to be passed into List.iter. The function needs to pass the argument into each element of the list, but I don't know how to do this without accessing each function in the list. I think I would need to write an anonymous function to pass into List.iter, but I have no idea how to illustrate that the argument v must be applied to every x of the list. Any advice would be much appreciated.","I'm currently on task 5, and writing my make_control helper function, but I'm a little confused about the add_change_listener function. I know that it is menat to take into a new change_listener function and add it to the value_controler's list of change listeners, but where is the list of change listeners being stored?"
+"Hi! I have been having trouble with compiling my project. When I click ""Build Project,"" it gives me an error and a hint that 
+
+Hint: Recursive traversal of subdirectories was not enabled for this build, as the working directory does not look like an ocamlbuild project (no '_tags' or 'myocamlbuild.ml' file). If you have modules in subdirectories, you should add the option ""-r"" or create an empty '_tags' file.
+
+I'm not sure what this means and if it was because of something I edited in the project files. ","File ""gctx.ml"", line 218, characters 7-8:
+Error: Syntax error
+Command exited with code 2.
+Hint: Recursive traversal of subdirectories was not enabled for this build,
+  as the working directory does not look like an ocamlbuild project (no
+  '_tags' or 'myocamlbuild.ml' file). If you have modules in subdirectories,
+  you should add the option ""-r"" or create an empty '_tags' file.
+
+  To enable recursive traversal for some subdirectories only, you can use the
+  following '_tags' file:
+
+      true: -traverse
+      &lt;dir1&gt; or &lt;dir2&gt;: traverse
+
+Compilation unsuccessful after building 9 targets (8 cached) in 00:00:00.
+make: *** [gdemo.byte] Error 10
+codio@pepper-simple:~/workspace$
+I am getting the following error for my draw_points function in gctx.ml 
+This only happens when OCaml tries to build the whole project. Otherwise OCaml doesn't give me any errors. Where could this error be coming from?
+
+Thanks"
+"The comments before paint.ml's with_params functions say we should modify this function during task 5. However, the comments before repaint say we have to modify repaint in tasks 2, 3, 4 and maybe 6. 
+
+Does this mean I cannot change the arguments of with_params, since I would have to update them in repaint? Or is this trivial and I can update arguments in repaint as needed?
+
+Thanks!","The instructions says that ""Add a PointMode constructor to the mode type."" for task 3. However, the mode instructions says that ""(* TODO: You will need to modify this type in Tasks 2, 4, and maybe 6. *)"". Should I just ignore this and add a third mode below LineStartMode and LineEndMode of point?"
+"When I try to implement the generic helper function (make_control), I keep getting a syntax error that says I have an unbound record field for add_change_listener. I basically have { add_change_listener = ""rest of the code""...}. Is there a reason why I keep getting this error?","I added a change listener value to the value_controller type signature in both widget.ml and widget.mli to store all of the change_listeners in, but when I define my add_change_listener function I get the error ""unbound value change_listener""?"
+"I an currently trying to add a change listener to the checkbox I created in paint.ml but I am not sure what the anonymous function should be conceptually. Is there an example I could base it off of? In lightbulb, it uses  (fun b -&gt; is_on.contents &lt;- b) and I am not really sure how that could help carry over. Thank you :)","I'm stuck on the implementation of List.iter where we're recommended to use it to implement draw_points. I know were supposed to be using the draw_point function, but the extra type gctx parameter makes it difficult. @1419 mentions (I think) using an anonymous function but I do not know how to set it up here and I'm not sure what that function would be doing. Can someone provide hints?"
+"
+This is my implementation for list_layout and I keep getting an expression type error for it. I'm unsure of what I am doing wrong for this. Does pair need to be written as an anonymous function?",My make control has an error that says some record fields are undefined despite having written all of the functions. I'm wondering why this would be happening
+Why can I not access fields of a variable of type gctx in widget.ml or other programs?,Is it bad style to name a variable max since there is an OCaml library function called max?
+"i'm having trouble implementing the 2nd part of change_value. I know I have to use List.iter to iterate over the list of change_listeners, but im not sure what anonymous function i can use to change the arguments of each function in the list. any tips?","i'm having trouble implementing the 2nd part of change_value. I know I have to use List.iter to iterate over the list of change_listeners, but im not sure what anonymous function i can use to change the arguments of each function in the list. any tips?"
+"File ""widget.ml"", line 280, characters 78-79:Error: This expression has type Gctx.gctxbut an expression was expected of typeGctx.event = Gctx.event_type * Gctx.position
+
+I am having trouble seeing how to fix this error ","i am getting the following error when i try to compile 
+
+File ""paint.ml"", line 277, characters 22-28:
+Error: This function has type
+         int -&gt; Gctx.color -&gt; Widget.widget * int Widget.value_controller
+       It is applied to too many arguments; maybe you forgot a `;'.
+Command exited with code 2.
+
+can you point me to what I am doing wrong?"
+"the only test I have failing for my make_control function is the change_value test, when the value changes from 1 to 2. I believe I have this covered when I state init.contents &lt;- x;, where init is the reference I have created, and x is the value being passed into change_value. Is there something I am missing here? A point in the right direction would be much appreciated. 
+","for handle in checkbox, when I pattern match Gctx.event with MouseUp, _, i am trying to have change_value take the opposite of whatever value is already stored in make_control. I realize vc.change_value (not vc.get_value) does not typecheck... is there anyway to have an expression that will refer to the value stored in make_control?"
+"If we make a thickness slider, do we have to display the numerical value of the line thickness next to it? Or can we just have the slider?",Do we need to display on the GUI a value for the thickness of the line if we are creating a slider that allows you to toggle the thickness of the line? Like display 5 somewhere if the width of the line is 5?
+I am trying to implement a with_thickness function similar to the with_color function in gctx.ml.  I made it almost identical to with_color but when I try to call this function it says it is an unbound value.  How can I fix this?,"I'm trying to call my with_thickness function in Gctx from paint.ml, by using the exact same way as the with_color function is called. However, Codio keeps saying that my with_thickness function is unbound. I have no idea why though."
+Can I use a recursive helper function in my make_control? I am using it to help with the change_value portion of make_control?,I'm confused as to how to implement the add_change_listener function in make_control given just a value v. Can someone help pls
+"Why is it that when I set the lower left coordinate to (0,0) for the slider that it appears inside the canvas and not on the toolbar--- but this works if I do (20,20)?","When I'm drawing an ellipse or line, if I drag the cursor off the canvas, onto the thickness slider, and back onto the canvas, the thickness of the shape changes to the new thickness value that I (accidentally) set after going off the canvas.  Is this okay? "
+all of my tests for Task 1 pass the widgetTest file and I've modified color toolbar and mode toolbar to use Widget.hlist and modified paint_widget to use Widget.vlist but when I run paint the exact same layout occurs. is the problem in widget.ml or paint.ml?,"
+Hello, I've been trying to debug why my code is not outputting the mode and color toolbar. I believe my code is right. I have tried changing
+vlist [paint_canvas; mode_toolbar; color_toolbar]intovlist [mode_toolbar; color_toolbar]
+and the mode and color toolbar shows up, but when I add paint canvas, the last 2 disappears. Perhaps the paint canvas is too big?"
+"I've been having a lot of trouble with this checkbox.
+When thick lines is activated as soon as you start drawing a line or ellipse (once you're in drag mode) everything changes thickness including all the border on different widgets. I have no idea why given I basically followed the exact same implementation that was used for color. 
+I.e. adding a thickness to the state for paint and having a thickness parameter in with params, with_thickness fxn for the gctx that assigns a line thickness etc. 
+
+Second issue:
+My checkbox toggles in that the X goes away or comes back, but it itself won't change the state of paint for some reason. I can't get it to adjust whether the lines are thick or thin. It does perform perfectly in lightbulb however, so it must be a paint issue .","Kind of confused about the syntax; I'm told that I have a syntax error, but I thought this code would be executable since I have iterated through everything in the history, and only if the preview is not none, I want to use the draw_shape to paint another line. "
+"It says we need to modify with_params in paint.ml for the task 5 thickness checkbox. I'm not sure how to modify this function, and I'm not sure how to modify paint so that the thickness changes?","can we use mouseclick listener and add_change_listener for putting the thickness checkbox in paint? if no, how do we register when somebody clicks the thickness checkbox? I'm not sure why I am getting an error when doing this... "
+"I have defined a type ""thickness"" in gtcx.ml and gtcx.mli. However, when i use it in paint, i get an error ""unbound type constructor thickness"". Any tips?",I have thickness in both gctx.ml and gctx.mli but when I try to use it in paint it gives me an unbound type constructor error. How do I fix this?
+"I added a thickness state to paint, but when I call on paint.thickness, I get an error. Is there any reason why this would be happening?","I am getting an unbound value error in paint when I try to implement my color sliders, but have no error in my widget.ml. Why is this happening?"
+"Is there a way to automatically make the Paint application pop up in a larger window? Some of my functionality works best when all of the elements are all contained on the page. I know I can always manually expand the screen, but I'm wondering if there's a way to do that automatically","I implemented slider, and now I'm trying to add a color slider so that it appears on the screen and I can test it.
+
+However, when I add a slider in paint_widget and then run paint again, not only does the slider not work but everything else in the program stops working (it only draws lines). Any ideas what might be wrong?"
+"Should checkbox always draw its label and an X? Or should checkbox be more generic? I'm thinking of lightbulb and if I remember correctly there was no rectangle with an X, the click was simply on the label and then the state changed to yellow or black. If checkbox is more generic, then what do we pass into checkbox and how does this change the repaint and handle functions within the Widget.checkbox?","For my slider I made it take in a gctx and an int so that I could give each one a distinct color like in the example, but for some reason it still draw the rectangle black and idk why. What's wrong with writing the code like this? How does draw_rect inside the repaint function decide what graphics context to use if not the one I'm providing it?
+
+Widget.slider (with_color Gctx.top_level Gctx.red)"
+"change_value: this function actually does two things:
+It updates the value of the value_controller to the argued value.
+
+Does the argued value mean the argument passed into (v: 'a) when calling the make make control generic function that creates a 'a value controller? ","change_value: this function actually does two things:
+It updates the value of the value_controller to the argued value.
+
+Does the argued value mean the argument passed into (v: 'a) when calling the make make control generic function that creates a 'a value controller? "
+"For some reason, my slider only fills up when I click outside of the rectangle used to represent this. I have narrowed it down to being an issue with the size of the widget (if I increase the size's height, then clicks farther outside the rectangle work), but I don't know how to make the size correspond to the inside of the rectangle. 
+Any tips? ","After completing task 6 I notice that my program only works in the initial state (after not scrolling down the page) and after the window is resized. If I leave the window dimensions the same and scroll down, I have to click about 10 units above any element for it to work, including the colors and checkbox. Is there any solution for this problem? What about ways to change the size of the app's launch window?"
+"Hi, in the following code I'm getting the error "" Syntax error after unclosed (, expecting ')' "" on the very last else statement. I've gone to office hours and still can't seem to find the source. Help?
+
+repaint =
+  (
+  fun (g: Gctx.gctx) -&gt;
+        let width = 2 in
+        let height = 2 in
+        Gctx.draw_rect g (0,0) (width,height); (*draw the square regardless of state*)
+        Gctx.draw_string g (width + 1, 0) s;   (*draw the string regardless of state*) (*does this have to be a label???*)
+        if checkbox_state.get_value()
+        then (*draw check on box*)
+        Gctx.draw_line g (0,0) (width,height);
+        Gctx.draw_line g (width,0) (0,height);
+        else () (*do not draw checkmark*)
+   );
+","This bug prevented me from even moving on to testing the check box functionality. I sat in office hours staring at this for 2 hours and so far no suggestions have helped. I didn't complete Task 5 because of this. 
+
+ "" Syntax error after unclosed (, expecting ')' "" on the very last else statement
+
+repaint =
+  (
+  fun (g: Gctx.gctx) -&gt;
+        let width = 2 in
+        let height = 2 in
+        Gctx.draw_rect g (0,0) (width,height); (*draw the square regardless of state*)
+        Gctx.draw_string g (width + 1, 0) s;   (*draw the string regardless of state*)
+        if checkbox_state.get_value()
+        then (*draw check on box*)
+        Gctx.draw_line g (0,0) (width,height);
+        Gctx.draw_line g (width,0) (0,height);
+        else () (*do not draw checkmark*)
+   );
+
+
+"
+"I want to see if I did task 0 correctly, but I get the error that The module Graphics is an alias for module G, which is missing. ","I want to see if I did task 0 correctly, but I get the error that The module Graphics is an alias for module G, which is missing. "
+I am having trouble understanding the last line of instruction on Task 3 where it tells me to set the color in the graphics context. Can you elaborate on this?,"What is meant by setting the color in the graphics context for points (task 3), this probably has a really simple answer. I'm using black as a placeholder."
+"All throughout my code, all gctx related functions and methods are underlined in red. It seems that this is because the graphics module is missing, or that it can't be found. The red dot I continuously get reads ""The module Graphics is alias for G, which is missing"". I made sure that the Graphics module is their, as the first line of gctx.ml is ""module Graphics = G"". Also, when I try to build the project ocaml says the package 'js_of_ocaml-lwt.graphics' not found. Please help. Thanks","I randomly started getting this compilation error in my gctx.ml file : The module Graphics is an alias for module G, which is missing. I am also getting ""Unbound module Gctx"" and ""Unbound module Widget"" in my other files. I have tried logging off and logging back on multiple times. I've tried cleaning my project, and I have even tried switching computers. I am not sure what the issue is because this was not happening before"
+"So I trying to implement the checkbox widget inside checkbox. This is the code I wrote for
+
+handle = (fun g e -&gt; 	let some_action (): unit = vc.change_value(not (vc.get_value ())) in	if Gctx.event_type e = Gctx.MouseDown then some_action () else ()		
+where vc is value controller,
+
+The tests are not passing and I received the ""Graphics.Graphic_failure(""graphic screen not opened"")"" error. The FAQrecommendss that we don't call anything from the graphics module while on the widget module. I'm unsure how to proceed. I have tried alternate implementation like this but had similar results.
+
+begin match Gctx.event_type e with	|Gctx.MouseDown -&gt; some_action ()	|_ -&gt; ()	end
+","So I trying to implement the checkbox widget inside checkbox. This is the code I wrote for
+
+handle = (fun g e -&gt; 	let some_action (): unit = vc.change_value(not (vc.get_value ())) in	if Gctx.event_type e = Gctx.MouseDown then some_action () else ()		
+where vc is value controller,
+
+The tests are not passing and I received the ""Graphics.Graphic_failure(""graphic screen not opened"")"" error. The FAQrecommendss that we don't call anything from the graphics module while on the widget module. I'm unsure how to proceed. I have tried alternate implementation like this but had similar results.
+
+begin match Gctx.event_type e with	|Gctx.MouseDown -&gt; some_action ()	|_ -&gt; ()	end
+"
+My line preview works like normal except when I drag the mouse off the canvas and release the mouse outside of the canvas the preview line does not go away unless I click the canvas again. Is this normal behavior or does this mean there's a bug in my code?,"When I am in ""preview mode"" (aka) dragging my mouse around, then I move my mouse outside the canvas and unpress my mouse, the line stays. Also when I move my mouse back over the canvas it still tracks my mouse though I am not dragging which clearly breaks the program. Can I get a hint at how I can fix this?"
+"The instructions say that the logic is straightforwards but I still don't understand the explanation. So in order to implement the drag functionality what happens is that a mouse down event is detected. Then since paint.mode is LineStartMode it will store the first point as LineEndMode p. But the mouse hasn't been unclicked yet. How does paint_action know to transition from Mouse_Down to Mouse_Drag and Mouse_Up??
+
+The instructions say ""In LineEndMode (x, y), the behavior in paint_action depends on whether or not the mouse button has been released"" but I don't see how that's the case.","I think I should be storing the x position of the mouse cursor in the value controller. I currently have the following in my handle but I don't know if this is a valid way of doing this. Furthermore the line 
+let xpos = fst pos in
+gives an error with pos underlined as ""expression is Gctx.gctx -&gt; position but expression of type 'a * 'b expected""
+
+handle = 
+ ( fun (g: Gctx.gctx) (e: Gctx.event) -&gt;  (*what do i use the Gctx.gctx for????*)
+    let click = Gctx.event_type e in
+    let pos = Gctx.event_pos e in
+    let xpos = fst pos in
+    begin match click with
+    (*how do I get the mouse coordinate to add to the int value controller? *)
+      | Gctx.MouseDown -&gt; (slider_state.change_value (xpos);)
+      | Gctx.MouseDrag -&gt; (slider_state.change_value (xpos);)
+               
+      | _ -&gt; ()     
+    end        
+    );
+Should I be storing the mouse x coords here and does this account for the dynamic updating when you're trying to drag the slider?"
+"I am done with p4 but have an error in repaint for drawing ellipses. 
+When I draw an ellipse, the radius is always a little bigger than expected--the border of the ellipse goes beyond where my mouse position is. 
+I think everything else works correctly--just not sure why this is happening.","Hi,
+This is what my sliders look like right now. I didn't quite figure out why the color bar is able to go beyond the rect frame. When I was drawing the filled rectangle, the length is dependent on the mouse position so I thought it stop right at the border. Thanks!!
+ "
+"I'm having trouble figuring out how to access the location of the mouse when it is being dragged in the handle function of my slider. I've looked at other posts, and people said to look at checkbox and paint_action, so I looked at those. I tried to use event_pos from paint_action, but that's a function in Gctx, so I cannot access it in Widget (when I try, it says Unbound value event_pos). Any tips for figuring out how to access the mouse location would be much appreciated!","When I begin dragging one of my color sliders and then continue to drag onto the canvas, a line is drawn on the canvas. I've been trying to fix this by changing paint_action at the MouseDown and MouseDrag pattern matches to add a conditional of if the mouse is in the canvas or not when it begins dragging (using Widget.event_within), but I can't figure out where to put this conditional, or even if this is the correct way to be going about this issue."
+"For my slider, I am stuck on how I can the filled rectangle to stay filled after I move my mouse away from the slider. I was thinking of putting it into the deque of shapes but shapes doesn't have a type of filled rectangle.","My thickness slider works, so the lines will change thickness when I drag a long the slider, but the rectangle within the slider does not move with my mouse. Does this stem form a problem in my widget code?"
+"For the handle in the checkbox widget, how should we check that someone clicked on the checkbox?
+Is it by::
+         pattern-matching the gctx.event that is passed in, if the event is MouseUp then change the value of the value_controller; for all other events don't do anything","When coding checkbox in widget.ml, how do we access the mutable record fields in make_control which is the second argument of the tuple for the widget itself (first argument of tuple)?"
+"I'm really stuck about how to implement fold.right in list_layout using the pair and ws inputs. I understand that pair is a function, and that it takes in two widgets to produce a new widget containing both of the original widgets. I've tried implementing fold with an anonymous function that takes in two widgets (the x and acc values for the widget list) and calls pair on both x and acc, but I get an type error that the function is expecting type 'a -&gt; 'b. When I try and implement fold without an anonymous function (by just passing in pair as the combine function) I get the same kind of error. Am I just misinterpreting fold_right?","Since we have to create a widget in the process of creating a checkbox, we have to define the functions for repaint, handle, and size.  Should we be calling repaint in handle since that will affect how to draw the checkbox?  I am calling repaint on the widget (in the definition for handle) and it is giving me an error and saying that the name of the widget is an unbound value.  How should I fix that?"
+"I tried using bool list and string list as inputs, giving out a tuple output in widget.ml which didn't give any errors. However, when instantiating radio_button in paint.ml, it keeps throwing out ""expected ('a * 'b) list rather than (widget * bool value_controller) error. Any suggestions on how I can tackle this?","I am super confused about how to make my newly defined checkbox in paint.ml listen to mouseclicks on the widget it contains. I would assume that, given my checkbox (checkbox_label, state), I would call checkbox_label.handle (g) (e), but I'm confused about where I should be getting my graphics context and event.
+
+I've also thought about implementing this listening using state.add_change_listener, but I also am not sure what I would input into this function. "
+"Is there a way to access the x value of a gctx in widget? I can access the position of an event through tuples. Since gctx is a record, why can't I use g.x (g : Gctx.gctx) to access the x value of the record? Thanks!","How does Gctx.text_size work? Does it only return the size of the string when rendered?
+
+Applied to a hypothetical widget containing a string display and a box, would we then need to define this widget's ""size"" field as(fst (Gctx.text_size str) +  x size of box, max (x size of box, snd(Gctx.text_size str)))?"
+"I'm having trouble with keeping the slider widget filled in once I have slid it a certain amount. When I'm sliding it, the widget gets filled in with a black rectangle, but as soon as I let go, it becomes white again. I have this functionality in my handle function for the widget right now, and I'm not sure if that's the best place to put it?","My slider colors work but the slider itself doesn't slide. Whenever I click it, the filled rectangle goes all the the way off the screen.
+
+I'm pretty sure my widget code is right - could this be because of how I set up things in paint? 
+"
+"In my paint.ml, all the references to functions or objects in widget have an error that it is unbound. Why is it doing that when there is no error in widget.ml?","In my paint.ml, all the references to functions or objects in widget have an error that it is unbound. Why is it doing that when there is no error in widget.ml?"
+"i am trying to implement my thickness slider so that when the checkbox isnt checked, the slider is all white, and cant be moved. I am not sure how to implement this. Am I supposed to change repaint and handle in my thickness_slider widget in the paint.ml file? Is this even possible? I have tried doing it but always get type errors. any tips would be much appreciated","I am trying to create the slider widget in the paint file similar to how I did checkbox, but it is saying that my slider function is unbound. I checked to see if I passed in checkbox somewhere else in the files, but it isn't called anywhere other than where the widget is formed."
+"When I try to implement Widget.vlist in paint_widget, I end up getting two black rectangles on the screen when I run paint. When I leave in the original hpair code, the other implementations of Widget.hlist seem to be working fine, so I don't know why this is occurring.
+
+Also, should I be making a list of widgets first and then inputting that into Widget.hlist or Widget.vlist, or is there another way to implement that which is more efficient?",When I try to submit my project I get a compiling error on gdemo.ml saying the draw_ellipse function took intoo many arguments even though running gdemo works fine. I didn't change anything in gdemo.ml so I think it's a bug with OCaml. What do I do regarding submitting the project?
+"I'm not sure I understand what add_change_listener is supposed to do.  The instructions says it adds a new change listener function ('a -&gt; unit) to the value controller's list of change_listeners.
+
+I can't see a way to create/store a list of change_listeners given the types in the record. Since add_change_listener isn't mutable in the provided type code, it doesn't seem like we're supposed to update it with each call. (I did try to create a mutable field in make_control outside of the record, but it was fruitless..
+
+I also don't follow how it's supposed to listen for changes to the values without using a bool or a counter, but these don't seem like options given the make_controller framework provided.
+
+Would it be possible to clarify what add_change_listener does and how the functions are stored? 
+
+In terms of the test, is t.contents is now a reference to v?
+
+;; run_test ""make_control change_listeners are triggered on set"" (fun () -&gt; let vc = make_control 1 in let t = ref 0 in vc.add_change_listener (fun v -&gt; t.contents &lt;- v); vc.change_value 2; t.contents = 2)
+
+Thanks!
+
+","I am currently coding the add_change_listener in make_control and I am try to update the list of change listeners by consing on the new element in the mutable record I used to store the change listeners. Codio says it won't typecheck since it's returning a list, but I'm trying to update the mutable contents of the record (which is a list) with an updated list. Shouldn't that return unit? Why doesn't this type check? "
+"OCaml is giving me an ""unbound record field"" error for one of the fields in a record I create in make_control. I don't understand. can't I declare whatever fields/field names I want? ","I am confused about the add_change_listener and change_value functions in make_control. The inputs to these functions contain type 'a, but I am getting a ""Syntax error after unclosed (, expecting expr"" everytime I try to use 'a in my implementations. How can I write these implementations where I don't know the input but I know the input type?"
+paint.ml says task 6 is supposed to involve changes to paint_action but I didn't change anything there and my sliders seem to be working. I did modify color_button though. Is that ok?,"I am in the midst of adding thickness, I added the relevant definitions in gctx and paint state etc. I didn't touch any part of the provided colors buttons and definitions. However, now all the squares in the color control bar are all black. I can draw lines, but I can't update to any color."
+"let adjustcolor (i: int) : unit =begin match paint.color with| {r; g; b} -&gt; paint.color &lt;- {i; g; b};
+
+For some reason I get an error that this record expression is supposed to have type Gctx.color but i does not belong to type Gctx.color.
+
+Isn't a color just a record with three ints?
+If I just use straight up ints e.g. {10; 10; 10} I get an error that after unclosed { expecting ""with"". What's going on here?","let make_control (v: 'a) : 'a value_controller =
+  let cntrl = {flist = []; vall = v} in
+I get an unbound value error for flist, and I don't understand why. The example in the slides uses a very similar set up doing:
+
+let mk_incr () : unit -&gt; int =
+(* this ctr is private to the returned function *)
+let ctr = { count = 0 } in
+Where could this error be coming from?
+
+Thanks","I'm trying to store the 'a value and the list of change listeners in make_control like so
+let make_control (v: 'a) : 'a value_controller =
+  let stuff = {value = v; change_listener_list = []} in
+but value is underlined as ""unbound record value"" and I don't understand why.","I'm trying to store the 'a value and the list of change listeners in make_control like so
+let make_control (v: 'a) : 'a value_controller =
+  let stuff = {value = v; change_listener_list = []} in
+but value is underlined as ""unbound record value"" and I don't understand why."
+"I'm getting the yellow warning line for MouseDown saying that my search is not exhaustive because I didn't pattern match over LineEndMode but I do not see why I should have to take care of that because it does not seem like a relevant situation- should I just insert ""LineEndMode -&gt; ()""?","There is a ""to do"" comment in gctx.ml (right above the event handling section) that I haven't addressed, though everything is working fine.  I also don't understand what it is directing, so I'm not sure whether I'm missing something necessary or not.  Can someone let me know what this is referring to?  Thanks!
+
+(* TODO: You will need to add several ""wrapped"" versions of ocaml graphics *)(* functions here for Tasks 2, 4, and possibly 5 and 6 *)"
+"I am getting unclosed brackets error in this line  paint.preview &lt;- Some (Points paint.color (p::ps)). I have other lines with same thing that don't have error, what could be wrong with this? ","When I submit my zip file I get the below message. I know that the scripts don't grade on the spot but is this message normal?
+
+Compiler Output
+make: *** No rule to make target 'gctx.cmo', needed by 'ocamlbin'.  Stop.
+
+
+Test Output
+No executable produced."
+"so in the handle portion of my slider function, I do a pattern matching on the events (mouseup, mousedown, mousedrag) but I don't know what to actually match on for begin match.
+in paint_action, i know that event was passed in as one of the parameters. am i supposed to do a similar thing here?","so in the handle portion of my slider function, I do a pattern matching on the events (mouseup, mousedown, mousedrag) but I don't know what to actually match on for begin match.
+in paint_action, i know that event was passed in as one of the parameters. am i supposed to do a similar thing here?"
+"I am working on a color slider, and I am having trouble getting the slider rectangle to slide. I have looked at the other posts on this topic, and I don't see why my slider isn't working. I know one of the posts talked about handling drawing the filled rectangle in the widget repaint, but then it makes it more difficult for me to set the color (or slider would have to take a different parameter); I'm trying to handle drawing the slider in a way similar to lightbulb. Is this possible? Any suggestions here would be appreciated.","When trying to change the color with sliders, I am attempting to change the r, g, b values of paint.color within each slider, but this doesn't seem to be working. I don't see why this wouldn't work, but I'm wondering if I have to change something in gctx or if I can do it all in paint. If I can do it all in paint, should I be updating the rgb values for color in a different location?"
+"Hello,
+
+I'm a little confused by the instructions: 
+
+""You also need to modify the function associated with the Undo button to reset the paint.preview shape toNone. In addition, if the paint.mode is LineEndMode, then reset it to LineStartMode—this prevents strange behavior when the user starts drawing a line, drags the mouse off the canvas, and then clicks the Undo button.""
+
+Should this last part also be implemented in the undo function? ","I implemented the button for Points under Task 3 and it appears on the paint application.  However, whenever I press it on the paint application, the mode doesn't switch.  Is there something I'm doing wrong or should I come to office hours?
+
+let w_points, lc_points, nc_points = button ""Point""
+
+;; nc_lines.add_event_listener (mouseclick_listener ( fun () -&gt; (paint.mode &lt;- PointMode; paint.preview &lt;- None )))"
+"I implemented ellipse in a way that is similar to line and points (or so I thought), but when I click on the Ellipse button and then try to draw an ellipse, it doesn't draw anything and all of the toolbar and color widgets disappear.","I have implemented everything for drawing Ellipses. All the other functionalities work correctly, but when I click on the ellipse button and try to draw an ellipse, my entire mode tool bar and color tool bar disappear and no ellipse can be drawn. "
+"When I click the points button and click my mouse down and start to drag, all the buttons disappear except for the canvas and no points appear. Could you help me understand which step I went wrong on? ","When I click the points button and click my mouse down and start to drag, all the buttons disappear except for the canvas and no points appear. Could you help me understand which step I went wrong on? "
+"I think I implemented all of task 3 correctly (okay, clearly not...) but I can't draw points. When I click the point button, it continues to draw lines. Can anyone see where my error might be?","When I click my Point button, my application still draws lines. 
+I have the mouseclick listener commands and I followed all of the instructions but I can't figure out where my error is that is causing the points to not draw. 
+Can someone advise?"
+"I'm having trouble adjusting the arguments in draw_ellipse to match the bounding box method. I'm confused because I would have expected ellipse to take in two positions, (1) the starting point (lower left) and (2) the ending point (upper right) but I see that it takes in a position at the center and the vertical and horizontal radii. Can you please offer some advice for thinking through this problem?","I'm having trouble adjusting the arguments in draw_ellipse to match the bounding box method. I'm confused because I would have expected ellipse to take in two positions, (1) the starting point (lower left) and (2) the ending point (upper right) but I see that it takes in a position at the center and the vertical and horizontal radii. Can you please offer some advice for thinking through this problem?"
+"let repaint (g: gctx) : unit =
+  let draw_shape (s: shape) : unit =
+    begin match s with
+      | Line (c, p1, p2) -&gt; draw_line (with_params g c) p1 p2
+      | Points (c, ps) -&gt; Gctx.draw_points (with_params g c) ps 
+    end in
+For the given code (inside the pattern match starting from Line (c, p1, p2)), it is calling draw_line inside paint.ml, but draw_line is a function defined in Gctx.ml. I was wondering how this works and whether I could do the same for draw_points instead of doing Gctx.draw_points. Thank you! ","let repaint (g: gctx) : unit =
+  let draw_shape (s: shape) : unit =
+    begin match s with
+      | Line (c, p1, p2) -&gt; draw_line (with_params g c) p1 p2
+      | Points (c, ps) -&gt; Gctx.draw_points (with_params g c) ps 
+    end in
+For the given code (inside the pattern match starting from Line (c, p1, p2)), it is calling draw_line inside paint.ml, but draw_line is a function defined in Gctx.ml. I was wondering how this works and whether I could do the same for draw_points instead of doing Gctx.draw_points. Thank you! "
+"1) Should I use a start mode and end mode in ellipse just like in line?
+
+2) The first line of paint_action is as follows:
+    let p  = event_pos event gc in  (* mouse position *)
+    In the pattern matching if I write LineEndMode p1,
+   i'm confused about which one is my original and which is my new point p1 or  p?","In my slider, I match on my event type and I know that the event e also has a position tuple but when I try to define a tuple (x,y), to access the x coordinate, I get an error when using Gctx.ocaml_coords that says Unbound value. How can I fix this error or is there a different way I'm supposed to access mouse position? "
+"My function for drag and drop is half working. When I'm dragging, I can see the preview but my previously drawn lines get deleted. My function only works if I set the None case to draw too but when I remove the None case, none of the previous lines show up. ","When I run my drag and drop code for Task 2, I get double lines for all the lines in paint.shapes while I'm previewing, but then it goes back to normal when I release the mouse. 
+while drawing first linewhile drawing second line
+after I am done drawing 2nd line"
+"I implemented draw_rect and draw_ellipse, and I clicked build project and gdemo, but nothing is drawn.
+I wonder where goes wrong","I implemented draw_rect and draw_ellipse, and I clicked build project and gdemo, but nothing is drawn.
+I wonder where goes wrong"
+"I implemented the thick lines, and it's working properly with the lines and ellipses, but for some reason my points are still thin when thick lines is on.
+Is there a problem with my code or is Graphics.plot just defined to be ""immune"" to the line width?","In paint, I've added a paint.thickness field and set line witdh to paint.thickness in the with_params function. 
+The thickness functionality works fine with lines and ellipses, however, whenever I draw a thick shape, my toolbars are also redrawn with thick borders. 
+
+I understand that this is a scoping issue, but I am not able to figure out what exactly the problem is because with_params is never called in the code to draw color toolbar (all of which was already given)"
+"Hello! I've looked at the Piazza posts and even actually asked a private post about this but still can't fix the issue (although I think I now identified it).
+
+I think the reason why my thickness toggle is also making the borders thick is because I change the thickness of the entire paint.thickness thick so that when we repaint, the borders all come out as thick. 
+
+I am stuck on how to fix that issue, namely, how to just change the thickness of the things being drawn in the canvas and not the other widgets. (For some weird reason only my borders are being drawn that way.. probably because they are being drawn in paint.m;)  I've command'f ed all the places that color goes into and made sure that my thickness behaves the same. I also add new shapes to the deque with current thickness and draw them each with the correct thickness. I've been stuck on this for quite a while, but would it be possible to receive a bit of help to identify where I am making a mistake? It would help tremendously if someone could look at my code :( Sorry if it's a bit much I am asking. 
+
+Thank You! ","I am having this weird bug in that when the slider is clicked on or dragged and the thick checkbox is selected, the thickness of the object drawn can also be changed when being dragged in the canvas. I know my slider is not repainting correctly at the moment, but I feel like the 2 functionalities should be independent? Where am I allowing the thickness of the drawn object to be constantly changed?"
+"For adding Points to the deque in paint_action, (Task 3, ""Extending the Shape Type"") how would I add a list of points? In other words, how would I get access to all the points that I pass when I am dragging my mouse?","When creating some points and storing that to paint.preview, how do I actually pass in the position list to some points??"
+"Finally, if a mouse release event (Gctx.MouseUp) was detected, the user has stopped dragging the mouse to draw points. In this case, do the following:
+Extract the list of points from paint.preview, if there is a value present, and then clear the preview.If the list of points is not empty, then insert a Points shape into the deque. (It wouldn't make sense to insert an empty shape into the deque, since it would a waste of space.)
+
+
+If I am understanding these instructions correctly, we are first checking if there is a value present in paint.preview (Some or none) and then checking again (if there is something) whether or not the list of points (ps) is empty? So would this require two pattern-matches? ","I don't completely understand these instructions:
+
+Finally, if a mouse release event (Gctx.MouseUp) was detected, the user has stopped dragging the mouse to draw points. In this case, do the following:
+Extract the list of points from paint.preview, if there is a value present, and then clear the preview.If the list of points is not empty, then insert a Points shape into the deque. (It wouldn't make sense to insert an empty shape into the deque, since it would a waste of space.)
+
+
+So far, in my pattern matching of MouseUp, I have 
+
+| PointMode -&gt;             begin match paint.preview with             | Some (Points (_, ps)) -&gt; paint.preview &lt;- None;             | _ -&gt; ()             end
+I think this satisfies the first bullet point, but I don't understand what the second one is trying to ask us to do.","Part of the instructions in this task state:
+
+""Extract the list of points from paint.preview, if there is a value present, and then clear the preview.""""If the list of points is not empty, then insert a Points shape into the deque. (It wouldn't make sense to insert an empty shape into the deque, since it would a waste of space.)""
+
+Does this mean that if the list is not empty, we are both clearing the preview and inserting the point shape into deque? What about if the list is empty? Just do nothing?"
+"For the line preview functionality of my repaint function, I'm trying to amend it so that I can draw the line preview as the very last step, but I don't know how to draw a shape option:
+
+let repaint (g: gctx) : unit =  let draw_shape (s: shape) : unit =    begin match s with      | Line (c,p1, p2) -&gt; draw_line (with_params g c) p1 p2    end in  Deque.iterate draw_shape paint.shapes;  (*Draw shape preview last*)  begin match paint.preview with  | None-&gt; ()  |Some(Line(_, (_,_), (_,_)))-&gt; draw_shape paint.preview  end
+
+I'm keep getting the error for the second to last line that the function is expecting type shape. How do I return a shape here? Or is there something else wrong with the way I've amended this function?","I can see the line button and the point button, but the point function does not work. What could I be doing wrong?
+
+
+
+
+This is my paint action:
+
+For mouse down:
+
+begin match paint.mode with | PointMode -&gt;  let (ps: point list) = p::[] in paint.preview &lt;- Some (Points(paint.color, ps))  | _ -&gt; () end
+
+| MouseDrag -&gt; (* In this case, the mouse has been clicked, and it's being dragged *) (* with the button down. Initially there is nothing to do, but you'll *) (* need to update this part for Task 2, 3, 4 and maybe 6. *) begin match paint.mode with | LineStartMode -&gt; paint.mode &lt;- LineEndMode p | LineEndMode p1 -&gt; paint.preview &lt;- Some (Line(paint.color, p1, p)) | PointMode -&gt;  let points =  begin match paint.preview with | Some (Points (_, ps)) -&gt; ps | _ -&gt; [] end in paint.preview &lt;- Some (Points(paint.color, points)) end
+
+| MouseUp -&gt; (* In this case there was a mouse button release event. TODO: Tasks 2, *) (* 3, 4, and possibly 6 need to do something different here. *) begin match paint.mode with | LineStartMode -&gt; () | LineEndMode p1 -&gt;  paint.preview &lt;- None; Deque.insert_tail (Line(paint.color, p1, p)) paint.shapes; paint.mode &lt;- LineStartMode | PointMode -&gt;  paint.preview &lt;- None; let points = begin match paint.preview with | Some (Points (_, ps)) -&gt; ps | _ -&gt; [] end in if points != []  then Deque.insert_tail (Points(paint.color, points)) paint.shapes; paint.mode &lt;- LineStartMode end"
+"So I got this to work, but I am not sure if I am doing this efficiently. Is there another more efficient way I should do this or is this ok?
+change_value = 
+    (fun (v: 'a) -&gt; r.contents &lt;- v; 
+    let rec loop (l : ('a -&gt; unit) list) : unit = 
+      begin match l with
+      | [] -&gt; ()
+      | x :: xs -&gt; x v; loop xs
+      end 
+    in loop cl_list.contents
+    )
+Like should I be creating my own recursive function loop or can I use List.iter or something?","Look, I can't come to office hours so I need help with this function so I can at least move on and not spend the next 8 hours staring at this.
+
+let make_control (v: 'a) : 'a value_controller =
+  let value : 'a ref = ref v in
+  let change_listener_list : ('a -&gt; unit) list ref = ref [] in
+  {
+    add_change_listener = fun (newl: 'a -&gt; unit) -&gt; (*cons new function onto list*)
+        change_listener_list.contents &lt;- newl :: change_listener_list.contents;
+        
+    get_value = (fun () -&gt; value.contents); (*just return v?*)
+    
+    change_value = (fun (v : 'a) -&gt; 
+    value.contents &lt;- v; 
+    let rec iterate (myval : 'a) (func : ('a -&gt; unit) list) : unit =
+      begin match func with
+        | [] -&gt; ()
+        | head::tail -&gt; head myval; iterate myval tail
+      end
+    in iterate value.contents change_listener_list.contents)
+  }
+Issues:
+  1) Both get_value and change_value are coming up as unbound and I don't understand why just these two and not also add_change_listener
+
+  2) change_value is giving the ""this is a bool instead of unit"" error that apparently happens when you don't have parenthesis. So I added parenthesis before and after the whole anonymous function but nothing happened. Is this ocaml being stupid (i mean that goes without question) or is this a logic error or something in that function?","I have been stuck on this for a while, and I can't figure out the error. It keeps saying that there is a ""Syntax error after unclosed {, expecting '}' "" I suspect I'm doing something wrong with the iterating through the list of listeners?
+let make_control (v: 'a) : 'a value_controller =  let value = ref v in  let listeners = ref [] in  { add_change_listener = (fun (x:'a -&gt; unit) -&gt; listeners := x :: !listeners);    get_value = (fun () -&gt; !value);    change_value = (fun x -&gt; value := x);      (List.iter (fun (lis:'a -&gt; unit) -&gt; lis !value) !listeners);  }
+","Are we supposed to be defining these using high-order functions? I have implemented mine to be this but my tests are failing? I am not really sure what I am supposed to doing honestly. 
+
+{ add_change_listener = (fun (c: 'a -&gt; unit) -&gt; ());  get_value = (fun () -&gt; v);  change_value = (fun v -&gt; ());  }"
+"I would like to add a change listener such that whenever the value of the value controller is changed, it tells the widget to repaint itself. If add_change_listener is type bool -&gt; unit and the widget.repaint function is gctx -&gt; unit, how would I do this?","For task 5, make_control, I created a list of change listeners equal to ref [ ]. Then, in add_change_listener, I consed on a new listener to the existing list of change listeners. However, I am getting a syntax error because the output type of add_change_listener is supposed to be unit, but mine currently outputs a list. How can I fix this?"
+"I am trying to use list iter in order to call the list of listener functions on !state by passing in an anonymous function that calls a function of type ('a -&gt; unit) on !state, but I get a bunch of red underlines saying that it is the incorrect type. I feel like what I'm trying to do is on the right track, but I'm not sure where I'm going wrong...","So in trying to implement the thickness checkbox in paint.ml I'm running into weird errors. So my goal here is to reverse the state of the value inside the checkbox's value controller. So what I want to do is is perform a unit-&gt;unit action when the mouse is clicked. So I created a helper function which by design is of type unit to unit. This is not bringing up any errors. But when I try to make it a input in mouseclick listener I keep on the getting the error ""Expr is of type unit but was expecting unit -&gt; unit"". What am I doing wrong here?For reference,  tw_vc is the value listened for the thickness widget checkbox.
+let unit_to_unit():unit =	let k:bool = not(tw_vc.get_value()) in	tw_vc.change_value(k) 	in			mouseclick_listener(unit_to_unit())"
+"let make_control (v: 'a) : 'a value_controller =
+  let state_val : 'a ref = {contents = v} in
+  let state_cl : 'a ref = {contents = []} in
+  {add_change_listener =  (fun x -&gt; (state_cl.contents &lt;- (x :: state_cl.contents));
+                        state_val.contents &lt;- v);
+   get_value = (fun () -&gt; state_val.contents);
+   change_value = (fun x -&gt; (state_val.contents &lt;- v); 
+               (List.iter (fun x -&gt; ()) state_cl.contents))}
+I know this code is pretty far off from what I am supposed to have. I have read all previous posts, the lecture notes, the slides, and FAQ's and I still don't feel like I understand how to define these records. I can't get past the error in x :: state_cl.contents, either. Based on this code, what is it that I'm missing/misunderstanding?
+
+Thank you!","let make_control (v: 'a) : 'a value_controller =
+  let value = { contents = v } in
+  let listeners = { contents = [] } in 
+  { add_change_listener = (fun (cl: 'a -&gt; unit) -&gt; 
+                           listeners := (cl :: !listeners));
+  get_value = (fun () -&gt; !value);
+  change_value = (fun (cv: 'a) -&gt; value := cv; 
+                                  let rec f (lst: ('a -&gt; unit) list) : unit = 
+                                  begin match lst with
+                                  | [] -&gt; ()
+                                  | x :: xs -&gt; x cv; f xs 
+                                  end in f !listeners)
+ }
+Hello! I wrote a bit of code and it passes the tests. However, I just wanted to be sure that I understood what was going on. Would it be appropriate to understand the references as sort of a mutable local variable in Java? Essentially, whenever I make a value controller and update it by changing it or adding listeners, will the value controller continue to have the value reference and the listeners reference to store the data? And would I just be mutating the references to store different information? I was a bit unsure as I am making the value and listeners as sort of ""local"" but I think it would make more sense to make the part of the record to be ""inherent"" to the controller. ","let make_control (v: 'a) : 'a value_controller =let l = { contents = []} in    let x = { contents = v }  in     {   add_change_listener = fun y:(a' -&gt; unit) -&gt; l::y;   get_value = fun -&gt; x.contents;   change_value = fun y:('a) -&gt; x.contents &lt;- 'a; List.iter l    }
+I am getting an error saying ""Some record fields are undefined: get_value change_value"" and I am unsure what that means. I have defined them in the record above, so I do not know what exactly it is referring to.","let make_control (v: 'a) : 'a value_controller =let l = { contents = []} in    let x = { contents = v }  in     {   add_change_listener = fun y:(a' -&gt; unit) -&gt; l::y;   get_value = fun -&gt; x.contents;   change_value = fun y:('a) -&gt; x.contents &lt;- 'a; List.iter l    }
+I am getting an error saying ""Some record fields are undefined: get_value change_value"" and I am unsure what that means. I have defined them in the record above, so I do not know what exactly it is referring to.","Why is the case? I think my logic for refreshing the value is valid;
+
+let make_control (v: 'a) : 'a value_controller =
+  let value : 'a ref = {contents = v} in
+  let value_control : ('a -&gt; unit) list ref = {contents = []} in {
+    add_change_listener = 
+      (fun a -&gt; value_control.contents &lt;- a::value_control.contents);
+    get_value = (fun () -&gt; v); 
+    change_value = (fun x -&gt; value := x;
+      let rec control_loop : unit = 
+        begin match value_control.contents with
+        | [] -&gt; ()
+        | first::rest -&gt; first value.contents
+        end
+      in
+      control_loop
+    )
+  } 
+"
+"Hi,
+I'm a bit confused how to access the listernerlist.contents in checkbox function while I defined the ('a -&gt; unit) list as the listernerList.contents in make_control? How will I be able to call on the list of the listeners in checkbox? Can I have a hint?","For the second part of change_value, I am using list.iter to go through my list of change_listeners, but I am getting an error saying that the list is of type unit. Any tips on how to fix this would be helpful."
+" I am very confused regarding the make_controller for task 5. We should be adding change_listeners (i.e. functions) to a list. However add_change_listener has type ('a -&gt; unit) -&gt; unit. This does not include space to update a list (e.g. ('a -&gt; unit) list -&gt; unit). Likewise, the construction of a value_controller doesn't have an instance variable where we can store the value (which becomes a problem when we try to change the value in change_value). How can one work around these issues?
+
+Thanks"," I am very confused regarding the make_controller for task 5. We should be adding change_listeners (i.e. functions) to a list. However add_change_listener has type ('a -&gt; unit) -&gt; unit. This does not include space to update a list (e.g. ('a -&gt; unit) list -&gt; unit). Likewise, the construction of a value_controller doesn't have an instance variable where we can store the value (which becomes a problem when we try to change the value in change_value). How can one work around these issues?
+
+Thanks"
+"when I'm in point mode on paint, the color doesn't change when i draw the points. However, if I go on line mode and change the color and then come back to point mode, the color does change. 
+
+my point state takes in the color, so I'm not sure what's wrong. ","When I change the color while in point mode, nothing happens. However, if i change the color in point mode, then go to line mode then the line will be the right color. Furthermore, if I go to point mode again, now it will be the right color. What could I be doing wrong, because this seems very strange.
+
+Thanks"
+"(** Produce a new Gctx.t with a different pen color *)
+let with_color (g: gctx) (c: color) : gctx =
+  { g with color = c }
+I found this function in the given code! Would this function be the only way to set a new color for a graphics context (or technically creating a duplicate with just the color changed) since color is an immutable field of gctx? 
+
+Also, I don't quite exactly remember where we learned ""with.""  Could I be pointed to a place in the lecture notes where its functionality is explained? ","(** This function creates a graphics context with the appropriate
+    pen color.
+*)
+(* TODO: Your will need to modify this function in Task 5 *)
+let with_params (g: gctx) (c: color) : gctx =
+  let g = with_color g c in
+  g
+For this function, it says to modify it in task 5. The description, however, only mentions setting the color, so I was wondering if I should modify this function to also take in the thickness parameter, create a function with_thickness, and modify the function accordingly. "
+"Hi!
+
+I'm working on task 6, trying to do the color sliders. My first instinct to accomplish this task was to have the sliders affect the color (i.e paint.color.r &lt;- __), however I would have to make the type mutable in gctx, which wouldn't work b/c the gctx is supposed to be immutable.
+
+My next idea is to make the widget have a value controller that holds a number from 0-255 depending on the location of the mouse. Then I would create a mutable type in paint.ml that was of the same form as the type of color and could update. Then, ideally, I could apply that mutable color type to paint.color and all would be well and good. However, I have a few concerns I would like to run past someone before I change a bunch of my code:
+
+1- Am I right in assuming I can't make the color type mutable? When I tried to change it it said that it was incompatible with the cmi but I don't know what that is.
+
+2- Will it be an issue if I use a record within paint.ml and try to apply to to paint.color? I'm not sure it will work, since one is mutable and the other is not and because the type is only defined within Gctx so I don't think it will even be applicable. 
+
+3- Is it necessary to create an entirely new mutable state in paint that co-exists with color? It does not seem efficient, but I am not sure where else to look for color mutability.
+
+Basically all I've played around with so far has lead to errors but I can't make office hours. I think my main confusion rests in what is allowed to be mutable. I want to make sure that I am understanding this conceptually before I change a bunch of code.
+
+Thank you :) ",For my slider function I had it input a gctx so that I could make the slider any color. How do you access the color of this inputted gctx because g.color (g is the name of the gctx) is coming up with an error?
+"My color slider works when I added just a red color slider. But when I add green and blue sliders they don't work, and the red one just makes the color shades of white/grey/black. Is there any place that would be causing this, I haven't been able to find the bug?","My color slider seems to interfere with the way the color black is defined. Sliding it changes everything in black, but the other pre-defined colors are fine. What could be contributing to this error? "
+"I am stuck on the last two pieces of color slider. My slider bars are all black. When drawing those filled rectangles, how to do I change only the color value passed into the gctx with g? Also, how do I change the text size for a draw_string?","Hello!
+
+In implementing my color slider, I wanted it such that my red value for the color is 255 * a fraction representing where I am in the slider in relation to the entire slider bar. 
+
+However, the fraction often comes out as a decimal value, but rgb values can't be decimals.
+
+How do you cast on Ocaml and are we allowed to?
+
+Thank You :D "
+"For slider, how do we update just either the r, g, or b value of color? It's my understanding they aren't mutable per say but color is?",If we store a redundant state for r g b in our paint.ml implementation of color slider will we get points off even if it works properly?
+"Currently, I'm calculating the center/radii from two positions (p and p1) with the ""fst"" and ""snd"" OCaml functions. I'm also using EllipseStartMode and EllipseEndMode
+
+However, every time I enter paint and select the ellipse option and try to draw, everything (including all the buttons) disappears and I'm left with a blank canvas.
+
+Could","Hi, I got my checkbox to work for all the widget tests and the lightbulb but it does not change the thickness of anything when I click on it. Am I supposed to do something similar to buttons where you call a function in paint.ml under the checkbox? The X is being drawn when clicked on and I essentially did the same thing as color in gctx.ml and paint.ml."
+"let slider (init: int) : widget * int value_controller =   let initcon = make_control init in  ({    repaint = (fun (g: Gctx.gctx) -&gt; Gctx.draw_rect g (0,0) (25,10);              Gctx.fill_rect g (0,0) ((min 0 (initcon.get_value())),10));    handle = (fun (g: Gctx.gctx) (e: Gctx.event) -&gt;         let (mouse_x, mouse_y) = Gctx.event_pos e g in         begin match (Gctx.event_type e) with         | MouseDown -&gt; ();         | MouseDrag -&gt; initcon.change_value (((min mouse_x 25)/25)*initcon.get_value())         | MouseUp -&gt; initcon.change_value (((min mouse_x 25)/25)*initcon.get_value())         | _ -&gt; ();         end);          size = (fun() -&gt; (25,10));  }, initcon)
+Why did I get errors saying MouseDown, MouseDrag, and MouseUp are not visible in the current scope? ","let slider (init: int) (c: Gctx.color) : widget * 'int value_controller = 
+  let val_controller = make_control init in 
+  { repaint = (fun (g: Gctx.gctx) -&gt; 
+                     Gctx.draw_rect g (0, 10) (100, 10);
+                     Gctx.fill_rect (Gctx.with_color g c) 
+                     (0, 10) (val_controller.get_value(), 10));
+    handle = (fun (g: Gctx.gctx) (e: Gctx.event) -&gt; 
+              let (x, _) = Gctx.event_pos e g in 
+              begin match Gctx.event_type e with 
+              | Gctx.MouseDown -&gt; val_controller.change_value (x)
+              | Gctx.MouseDrag -&gt; val_controller.change_value (x)
+              | Gctx.MouseUp -&gt; val_controller.change_value (x)
+              | _ -&gt; ()
+              end 
+              ); 
+    size = fun () -&gt; (100, 10) 
+  } , val_controller
+Hello! So for my slider widget, I patternmatched for mouesdown, mousedrag, and mouse up but honestly didn't feel like they should do things differently, so just did what I did above (and it does work!) However, in this case, would I get points off for style? Or more fundamentally, should I do things diffrently for when I drag it, mousedown, and mouse up? "
+"I can't get the lightbulb text to display. The check box toggle works, but the text will not display and I do not know why.
+
+let checkbox (init: bool) (s: string)
+  : widget * bool value_controller =
+  let value = make_control init in
+  let r = {contents = s} in
+   let par = { contents = init} in 
+   
+   (   {
+        repaint = (fun (g: Gctx.gctx) -&gt; Gctx.draw_rect g (0,10) (10, 10);
+                                     if (value.get_value ()) then (
+                                     Gctx.draw_line g (0,0) (10, 10);
+                                     Gctx.draw_line g (10,0) (0,10);)
+                                     else () ) ; 
+         handle = (fun (g: Gctx.gctx) (e: Gctx.event) -&gt; 
+                     begin match (Gctx.event_type e) with 
+                       | Gctx.MouseDown -&gt; value.change_value( not(value.get_value ()) )
+                       | _ -&gt; ()
+                       end );
+                       
+       size =(fun () -&gt; let (x1,y1) = Gctx.text_size r.contents in (x1+11, max y1 11));
+   
+   } , (value) )
+","I really don't know where I'm going wrong.
+let checkbox (init: bool) (s: string)
+  : widget * bool value_controller =
+  let (a, b) = label s in 
+  let (c, d) = notifier a in 
+  let checkvalct = make_control init in
+  let checkwidget = 
+ {
+   repaint = (if checkvalct.get_value () then (fun (g: Gctx.gctx) -&gt;
+         Gctx.draw_string g (0,0) (""X"" ^ s)) else 
+        (fun (g: Gctx.gctx) -&gt; Gctx.draw_string g (0,0) s));
+   handle =  (fun (g: Gctx.gctx) (e: Gctx.event) -&gt;
+    (begin match Gctx.event_type e with 
+   |MouseDown -&gt; 
+       checkvalct.add_change_listener (fun z -&gt; if checkvalct.get_value () then
+       (Graphics.set_line_width 5;
+       checkvalct.change_value false) else (Graphics.set_line_width 1; 
+                                            checkvalct.change_value true))
+   |_-&gt;()
+     end ) ) ;
+     size = c.size 
+ } in
+  (checkwidget, checkvalct)
+","Hello! I have the following code for the implementation part of Task 5: 
+let checkbox (init: bool) (s: string)
+  : widget * bool value_controller =
+  let (w, _) = label s in
+  let (w2, nc) = notifier w in
+  let vc = make_control init in
+  let state_change = (fun () -&gt; vc.change_value (not (vc.get_value()))) in
+  nc.add_event_listener (mouseclick_listener state_change);
+  (w, vc)
+I know I still need to modify repaint, but right now I have been struggling with understanding how to change the value from true/false when the mouse clicks; I thought the next to last line was achieving this, but it is not passing the click and click click click tests, so I recognize that the value isn't changing like it should. I think part of my problem is trying to understand the differences between code for handle (from the widget), the notifier controller's list of event listeners, and the value controller's list. Thanks","let checkbox (init: bool) (s: string)  : widget * bool value_controller =  let boolcon = make_control init in  let (lbwidget, lacon) = label s in   let (newwidget, noticontrol) = notifier lbwidget in   let flip = fun () -&gt; boolcon.change_value(not(boolcon.get_value())) in   let eventlis = mouseclick_listener flip in  ;; noticontrol.add_event_listener(eventlis)
+The last line gave me error. How can I make a command within the checkbox declaration?
+","let checkbox (init: bool) (s: string)
+  : widget * bool value_controller =
+  let (w, lc) = label s in 
+  let bool_controller = make_control init in  
+  let toggle : widget = 
+  {repaint -&gt; fun (g: Gctx.gctx) -&gt; Gctx.draw_rect g (0, 0) (snd w.size, snd w.size)
+   handle -&gt; fun _ _ -&gt; ()
+   size -&gt; (snd w.size, snd w.size) } in 
+  let (toggle', nc) = notifier hpair toggle w in 
+  nc.add_event_listener (mouseclick_listener 
+  (fun () -&gt; bool_controller.change_value (not (bool_controller.get_value()))));
+  bool_controller.add_change_listener (fun (b: boolean) -&gt; if b then *need help*)                         
+  toggle', bool_controller
+Hello! I've been struggling with the checkbox and had some questions. I chose the method of making a separate widget for the box and adding a notifier to the hpaired box + label so that wherever you click within the widget, it registers the event and changes the value in the boolean controller. I chose to implement the actual crossing by adding a change_listener to the boolean controller. 
+
+The feedback I got from a TA was, however, that ""You may also want to consider the differences between change_listeners and event_listeners.  Neither is better or worse, but it may simplify your code to choose one approach to registering events."" I do see a way I can just use event_listeners, but I don't see how I can approach the entire problem using just change_listeners as I don't see a way to register a click for the entire widget other than event_listeners. Could I get some help with that?
+
+Also, I was wondering about how to implement the change_listener. I want to change the box but don't see a way I can access the graphics context for the box. Let me know if there is anything you guys can help with. Thank you :) ","I have the following code for checkbox in widget:
+let checkbox (init: bool) (s: string) : widget * bool value_controller =
+  let new_control : 'a value_controller = make_control init in
+  { repaint = (fun (g: Gctx.gctx) -&gt; Gctx.draw_rect g (0,0) (4,4);
+                                     if new_control.get_value () 
+                                     then Gctx.draw_string g (0,0) (s^"" X"") 
+                                     else Gctx.draw_string g (0,0) (s^"""")); 
+    handle = (fun (g: Gctx.gctx) (e: Gctx.event) -&gt; 
+    new_control.change_value (not (new_control.get_value())));
+    size = (fun () -&gt;  Gctx.text_size s)}, new_control
+When I run lightbulb, I get two black boxes with the labels to the right of each, and when I run my mouse over the corresponding label, the box flickers yellow and black, like it is changing state, but in response to my mouse movement instead of mouse click. I thought of pattern matching on the event in handle, but an earlier post said do not pattern match in checkbox.
+Also, in lightbulb, the drawing of a rectangle and an ""X"" is irrelevant, so do I just draw the ""X"" in my implementation within paint?","let checkbox (init: bool) (s: string)  : widget * bool value_controller =  let (w, lc) = label s in   let (w', nc) = notifier w in   let bool_controller = make_control init in    nc.add_event_listener (mouseclick_listener   (fun () -&gt; bool_controller.change_value (not (bool_controller.get_value()))));  let cross (g: Gctx.gctx) : unit = if bool_controller.get_value() then   Gctx.draw_line g (0, 0) (1, 1); Gctx.draw_line g (0, 1) (1,0)                                in let (toggle, _) = canvas (100, 100) cross in                             border (hpair toggle (hpair (space (10, 10)) w')), bool_controller
+Hello!
+
+I implemented my checkbox, and it passed all the tests/lightbulb so now I'm on the part of making it toggle. My first question is: I noticed that for buttons, lables, notifiers, etc. we don't actually pass in a g value both in paint and widget. In what part of the program do we pass in the g and actually draw the thing? I was confused because for instance, when we do hpair, how does it know the initial graphics context to be in?
+
+And my second question is: would there be a more efficient way to do the toggle? Or in fact, I don't even think what I am doing now is correct as I don't think I am constantly checking the value of the boolean controller. Or am I because the event loop is running? Sorry for the confusing questions. 
+
+Thank You :) ","I have the following code for checkbox in widget:
+let checkbox (init: bool) (s: string) : widget * bool value_controller =
+  let new_control : 'a value_controller = make_control init in
+  { repaint = (fun (g: Gctx.gctx) -&gt; Gctx.draw_rect g (0,0) (4,4);
+                                     if new_control.get_value () 
+                                     then Gctx.draw_string g (0,0) (s^"" X"") 
+                                     else Gctx.draw_string g (0,0) (s^"""")); 
+    handle = (fun (g: Gctx.gctx) (e: Gctx.event) -&gt; 
+    new_control.change_value (not (new_control.get_value())));
+    size = (fun () -&gt;  Gctx.text_size s)}, new_control
+When I run lightbulb, I get two black boxes with the labels to the right of each, and when I run my mouse over the corresponding label, the box flickers yellow and black, like it is changing state, but in response to my mouse movement instead of mouse click. I thought of pattern matching on the event in handle, but an earlier post said do not pattern match in checkbox.
+Also, in lightbulb, the drawing of a rectangle and an ""X"" is irrelevant, so do I just draw the ""X"" in my implementation within paint?"
+"I just don't know why it keeps saying ""unbound value size"" and meanwhile saying "" undefined record fields size""...
+
+let slider (init: int) : widget * int value_controller = 
+  let sl_controller = make_control init in
+  let w' = 
+  { repaint = (fun (g: Gctx.gctx) -&gt; 
+        Gctx.draw_rect g (0,10) (256,0);
+        Gctx.fill_rect g (0,9) (sl_controller.get_value(),1));
+        
+    handle = (fun (g: Gctx.gctx) (e: Gctx.event): unit -&gt; (
+    begin match Gctx.event_type e with
+    | MouseDrag -&gt; 
+      let p = fst(Gctx.event_pos e g) in 
+        sl_controller. change_value p
+    | MouseDown -&gt;
+      let p = fst(Gctx.event_pos e g) in 
+        sl_controller. change_value p
+    | _ -&gt; ()
+    end );      
+    
+    size = (fun () -&gt; (256,10));}
+    in (w', sl_controller)","Hi, 
+I'm struggling to get my logics straight for how to handle the event in slider. This is what i got so far.
+let color_slider (init: int) (s: string) 
+  : widget * int value_controller = 
+  let (lw, lc) = label s in 
+  let vc = make_control init in 
+  let slider = 
+  {
+  repaint = (fun(g: Gctx.gctx) -&gt; Gctx.draw_rect g (0, 10 )(256, 10);
+        Gctx.fill_rect g (0, 10 )(vc.get_value(), 10));
+        
+  handle = (fun (g:Gctx.gctx) (e:Gctx.event) -&gt;
+            begin match e with (* to enable click-drag *)
+            | (Gctx.MouseDown , (p1, p2)) -&gt; ();
+            | (Gctx.MouseDrag , (p1, p2)) -&gt; vc.change_value (p1);
+            | (Gctx.MouseUp, (p1, p2)) -&gt;  (* a new value is set *) 
+                                        vc.change_value (p1);
+            | _ -&gt; ()
+            end 
+            );
+
+  size = (fun () -&gt; (256, 10));
+  } in 
+  
+  let (w_slider, nc_slider) = notifier(hlist [lw; border(slider)]) in
+  (* TODO*)
+  nc_slider.add_event_listener (mouseclick_listener( fun () -&gt; ()) );
+  (w_slider, vc)
+I know I need to work on the add_event_listener part, but I didn't quite get the logic for different mouse events. Should I update the value when dragged? If so, what's the difference between drag and mouseUp? Thank you very much!"
+"I'm trying to make my sliders be filled with the colors red green or blue. But, it's only filling it up with black. I'm using the with_color function though, I can't figure out what I'm doing wrong. 
+
+let slider (init: int)(c: Gctx.color) : widget * int value_controller = 
+  let slider_helper = make_control init in
+  let width = 200 in 
+  let height = 20 in  
+  let w = 
+    { repaint = (fun (g: Gctx.gctx) -&gt; Gctx.fill_rect (Gctx.with_color g c) 
+      (0, 20) (slider_helper.get_value (), height); 
+      Gctx.draw_rect g (slider_helper.get_value (), 20) 
+      (width - slider_helper.get_value (), height)); 
+      handle = (fun (g: Gctx.gctx) (e:Gctx.event) -&gt; 
+      begin match Gctx.event_type e with 
+      | Gctx.MouseDown -&gt; slider_helper.change_value (fst (Gctx.event_pos e g))
+      | Gctx.MouseDrag -&gt; slider_helper.change_value (fst (Gctx.event_pos e g))
+      | _ -&gt; ()
+      end);
+      
+      size = (fun () -&gt; (width, height));
+    } in
+  (w, slider_helper)
+","I am currently attempting to get my slider to slide, but I seem to be having trouble doing that. My slider consists of a widget and a int value controller. The issue is somewhere in handle. Here is my slider widget:
+  let slider (init: int) (s: string) : widget * int value_controller =  let s_control = make_control init in  let (x,y) = Gctx.text_size s in  (  {  repaint =  (fun (g: Gctx.gctx) -&gt;        Gctx.draw_string g (0,0) s;     Gctx.draw_rect g (x,y) (100,20);    Gctx.draw_line g (x+s_control.get_value(),y) (x+s_control.get_value(),y-20));      handle = (fun (g: Gctx.gctx) (e: Gctx.event) -&gt;      let helper (ev: Gctx.event) : unit =      begin match ev with       | MouseDown,_ -&gt;         let (a,_) = snd e in        if (a+x&gt;=0)&amp;&amp;(a+x&lt;=100) then         s_control.change_value(a)      | MouseDrag,_ -&gt;        let (a,_) = snd e in        if (a+x&gt;=0)&amp;&amp;(a+x&lt;=100) then         s_control.change_value(a)      | _ -&gt; ()      end in      helper e);        size = (fun () -&gt; (x+100,y));    },  s_control  )
+Any suggestions as to why my slider might not be updating the line drawing method?"
+"I am getting a ""make: Nothing to be done for `all'"" when building paint ever since implementing my slider function. I looked through everything and really can't find what's wrong with my slider function. Here is what I added to widget for slider (and I did update widget.mli): 
+
+let slider_listener (cp: int value_controller) :  event_listener =
+  fun (g: Gctx.gctx) (e: Gctx.event) -&gt;
+      let x,_  = Gctx.event_pos e g in 
+      begin match Gctx.event_type e with 
+      |Gctx.MouseDrag -&gt; cp.change_value x
+      |_ -&gt; ()
+      end
+
+let slider (init: int) (w: int) (c: Gctx.color) : widget * int value_controller =   
+   let vc = make_control init in 
+      let slider_builder (init: int) (width:int) (c: Gctx.color)
+      : widget * notifier_controller =
+
+        let repaint_slider (gc:Gctx.gctx) =
+          Gctx.fill_rect (Gctx.with_color gc c) (0, 9) (init - 1, 9);
+          in   
+       canvas (width,9) repaint_slider in 
+  
+  let slider, nc = slider_builder (vc.get_value()) w c in 
+   nc.add_event_listener (slider_listener vc); 
+      
+  let bordered = border slider in 
+  bordered, vc
+Here is what I added to paint: 
+let w_rslider, vc_rslider = slider 0 255 red 
+
+;; vc_rslider.add_change_listener (fun v -&gt; paint.color &lt;- {r = v; g = paint.color.g; b = paint.color.b} )
+
+let w_gslider, vc_gslider = slider 0 255 green 
+
+;; vc_gslider.add_change_listener (fun v -&gt; paint.color &lt;- {r = paint.color.r; g = v; b = paint.color.b} )
+
+let w_bslider, vc_bslider = slider 0 255 blue
+
+;; vc_bslider.add_change_listener (fun v -&gt; paint.color &lt;- {r = paint.color.r; g = paint.color.g; b = v} )...
+let rgb_toolbar : widget = vlist [w_rslider; spacer; w_gslider; spacer; w_bslider].....let paint_widget = vlist [paint_canvas; spacer; mode_toolbar; spacer; rgb_toolbar; spacer; color_toolbar] 
+","My RGB sliders are functional (as in they are changing the rgb values of the pen) but are not repainting themselves - my code is structured the same way as my checkbox code so I'm not sure why.  Is there any error I am overlooking in my code?
+
+
+let slider_listener (cp: int value_controller) :  event_listener =
+  fun (g: Gctx.gctx) (e: Gctx.event) -&gt;
+      let x,_  = Gctx.event_pos e g in 
+      begin match Gctx.event_type e with 
+      |Gctx.MouseDrag -&gt; cp.change_value x
+      |Gctx.MouseDown -&gt; cp.change_value x
+      |Gctx.MouseUp -&gt; cp.change_value x
+      |_ -&gt; ()
+      end
+
+let slider (init: int) (w: int) (c: Gctx.color) (name: string) : widget * int value_controller =   
+
+   let vc = make_control init in 
+
+   let slider_builder (init: int) (width:int) (c: Gctx.color)
+      : widget * notifier_controller =
+
+        let repaint_slider (gc:Gctx.gctx) =
+          Gctx.fill_rect (Gctx.with_color gc c) (0, 9) (init, 9);
+          in   
+       canvas (width,9) repaint_slider in 
+  
+  let slider, nc = slider_builder (vc.get_value()) w c in 
+   nc.add_event_listener (slider_listener vc); 
+      
+   let l, _ = label name in  
+  let full = hlist [slider; space (5,5); l] in 
+  
+      
+  let bordered = border full in 
+  bordered, vc
+
+
+
+
+
+","I really cannot figure out what is wrong with my checkbox function. It does not pass the tests with odd clicks, or the listener test. I'm not sure which parts of it are wrong and whether I'm making a logic mistake. 
+
+let checkbox (init: bool) (s: string)
+  : widget * bool value_controller =
+  let s_size = Gctx.text_size s in 
+  let box_size = (snd s_size, snd s_size) in
+  let bvc = make_control init in
+  let state : bool ref = ref init in
+  let square = 
+  { repaint = (fun (g: Gctx.gctx) -&gt; if init = true then Gctx.fill_rect g (0,0)
+    box_size else Gctx.draw_rect g (0,0) box_size);
+    handle = (fun (g: Gctx.gctx) (e: Gctx.event) -&gt; if event_within g e 
+    box_size then state := not(!state)); 
+    size = (fun _ -&gt; box_size)
+  } 
+  in
+  let label : widget =
+  { repaint = (fun (g: Gctx.gctx) -&gt; Gctx.draw_string g (0,0) s);
+    handle = (fun _ _ -&gt; ());
+    size = (fun _ -&gt; s_size)
+  }
+  in 
+  (hpair square label, bvc)
+"

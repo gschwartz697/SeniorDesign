@@ -1,0 +1,763 @@
+"Both these functions are passing in a pixel px and we are comparing them to ""another pixel"" e.g. ""@param px The pixel being compared with this"", but I'm unsure as to what this other pixel is??
+
+Is this a pixel that would be declared outside of the function? To test this function, would we declare this pixel outside of the method call for dist/equals?","The only test in MyPixelTest that's failing is my getComponents test. In my function, I'm using the Arrays.copyof() function in order to not break encapsulation. 
+
+I'm just really confused why my test is failing because I'm just using AssertTrue and then comparing the pixel's get components method to what my array is supposed to look like (using the .equals method)."
+Are we allowed to create private fields in the pixel class?,Can we add fields to the Pixel file?
+"When I run my JUnit tests for MyPixelTest, only the original ""testConstructInBounds()"" shows up. Like the runs show 1/1 instead of all the tests I've written. Is there something I should configure?","
+what does this error mean? my JUnit tests run and pass for MyPixelTest, and I have MyTest in the same directory as MyPixelTest and I have updated the path at the top of MyPixelTest to find the test images."
+"Can we use the Arrays library to use methods like the one below?
+Arrays.copyOfRange()
+",Will we need to use all of the constructors/methods in ColorMap(); for reducePalette?
+"If a pixel p is already present in the map and i call map.put(p, 1), will the int value associated with p increment to 2? I'm not sure how the int value you pass in to the function affects the map.","The directions state:
+
+If alpha is 0.5, the weightedAverage is the same as the average     * of the two numbers. If alpha is 1.0, then x is     * returned. Likewise, if it is 0.0, than the result is y
+
+Do we need to do anything other than this? The function had a return statement already written before implementation."
+"For the code that says ""// if an array has more than 3 entries..."", 
+Would this work in ignoring the 4th, 5th, etc. values? Or is the problem slightly more complex Than that and requires a for loop?  Just want to make sure before I move on and finish the other functions and write the test. 
+","For tests can we write tests that have a bunch of assertEquals statements like in the example test given where it looked at getRed, getBlue, and getGreen, or should each test only look at exactly one thing?
+
+For example, I wrote a new test for each fxn, but like my test for getRed has 3 assertEquals jawns that check make sure it returns values in [0,255] if it's out of bounds on either side, and return the normal value if it's in bounds. "
+"In order to hit every pixel in the box  I think I have to relate the two for loops to each other. Is something like this sensible:
+
+for (int j = 1; j &lt;= radius; j++)
+    	{ 
+    		for (int i = 1; i &lt;= j ; i++)
+    		{    			
+	    		if (x-i &gt;= 0)
+	    		{
+	    			Pixel a = src[x-i][y];
+	    			if (component == 0)
+	    			{
+	    			tempColor = a.getRed();
+	    			}
+	    			if (component == 1)
+	    			{
+	    			tempColor = a.getGreen();
+	    			}
+	    			if (component == 2)
+	    			{
+	    			tempColor = a.getBlue();
+	    			}
+	    			componentTotal += tempColor;
+	    			count++;   			
+	    		}
+and I have 8 blocks for the possibilities for 
+Pixel a = src[x-i][y]
+Namely:
+x-i , y
+x+i, y
+x , y-i
+x, y+i
+x-i , y-i
+x+i , y-i
+x-i , y+i
+x+i , y-i
+
+
+This current version isn't passing the Junit test.","My contrast is failing all of the tests in submission, but I feel like my calculations are correct? Is there any insight you can provide?
+int avg = sum / (w * h * 3);for (int r = 0; r &lt; w; r++) {
+			for (int c = 0; c &lt; h; c++) {
+				tPix = src[r][c];
+				newR = (int) ((tPix.getRed() - avg) * multiplier + tPix.getRed());
+				newG = (int) ((tPix.getGreen() - avg) * multiplier + tPix.getGreen());
+				newB = (int) ((tPix.getBlue() - avg) * multiplier + tPix.getBlue());
+				tgt[r][c] = new Pixel(newR, newG, newB);
+			}
+		}
+"
+"If we choose to implement pixel as an array of length 3, how do we make it immutable? Can we declare it as a final int array or would this not work??",Do we have to use Pixel arrays or can we write our code using 2D int arrays and set them equal to Pixel arrays at the end of our methods?
+"I get this error when I am submitting my zip file. It also says ERROR: compilation failed. Do you know what is wrong with my code?
+src/ManipulateTest.java:19: error: duplicate class: ManipulateTest
+public class ManipulateTest {
+       ^
+1 error
+
+","Help, I'm trying to submit and I get this error. What does it mean?
+
+src/ManipulateTest.java:19: error: duplicate class: ManipulateTest
+public class ManipulateTest {
+       ^
+1 error
+I've checked my zip file and there is in fact only one copy of ManipulateTest."
+"When I try to implement the Arrays.copyOf() mentioned in the FAQ, I get the error: ""Arrays cannot be resolved."" Should I import Arrays?","When I try to return a picture of a modified array, I use return PixelPicture (modifiedArray). (In AdvanceManipulations class) However, the compiler gives me an error that PixelPicture is not defined for the given class. Is there some other function that I am supposed to use?"
+"When I submitted, it says that I failed the PixelComponentCornerCases test. What does that mean?
+","I got an error from PixelTest after submission- what could ""PixelComponentRnegarr"" be referring to?"
+"I don't know why my code isn't working. Can you point to where I am making a mistake?
+
+public static PixelPicture adjustContrast(
+            PixelPicture pic, double multiplier) {
+        int w = pic.getWidth();
+        int h = pic.getHeight();        
+        Pixel[][] tgt = pic.getBitmap();
+        for (int x = 0; x &lt; w; x++) {
+        	for (int y = 0; y &lt; h; y++) {
+        		Pixel p = tgt[x][y];
+        		int r = p.getRed();
+        		int g = p.getGreen();
+        		int b = p.getBlue();
+        		int avg = (int) Math.round((r + g + b)/(w * h * 3));
+        		int r1 = r - avg;
+        		int g1 = g - avg;
+        		int b1 = b - avg;
+        		int r2 = (int) Math.round(r1 * multiplier);
+        		int g2 = (int) Math.round(g1 * multiplier);
+        		int b2 = (int) Math.round(b1 * multiplier);
+        		int r3 = r2 + avg;
+        		int g3 = g2 + avg;
+        		int b3 = b2 + avg;
+        		tgt[x][y] = new Pixel(r3, g3, b3);
+         	}
+        }
+        return new PixelPicture(tgt);
+    }
+","I think my code should be working. I can't figure out what is wrong in my code. Is the statement with rounding correct? 
+
+public static PixelPicture blur(PixelPicture pic, int radius) { int w = pic.getWidth(); int h = pic.getHeight(); Pixel[][] bmp = pic.getBitmap(); Pixel [][] bmc= pic.getBitmap();   for (int x = 0; x &lt; w; x++) { for (int y = 0; y &lt; h; y++) { Pixel p = bmp[x][y]; int c=0;  int rtotal =0;  int gtotal= 0; int btotal= 0;  for (int x1 =x-radius ; x1 &lt; x+radius; x1++) { for (int y1= x-radius; y1 &lt; y+radius; y1++) { if (x1&gt;=0 &amp;&amp; x1&lt;w &amp;&amp; y1&gt;=0 &amp;&amp; y1&lt;h ) { p= bmp[x1][y1];  btotal+=p.getBlue(); gtotal+=p.getGreen(); rtotal+=p.getRed();  c++;  }   } }   bmc[x][y]= new Pixel ((int)Math.round((rtotal*1.0)/c), (int )Math.round((gtotal*1.0)/c), (int )Math.round((btotal*1.0)/c));    }   }   return new PixelPicture(bmc);   }"
+"Hi, I'm a bit confused as to what reducePalette is supposed to do. From my understanding, we're supposed to create a mapping of each pixel color to its frequency (so, if Pixel(10, 10, 10) appears 20 times in the image, the pixel would map to 20).
+
+Then, we need to create a palette of pixels that have the highest color frequency. Say 20 is the max, then my palette would be those 20 pixels that have color r=10, g=10, b=10.
+
+I don't really understand what ""Then change each pixel in the picture to one with the closest matching color from your palette"" means.","Hey y'all
+
+So I'm still kind of confused. How does the equation for contrast actually work?
+
+Let's say our photo consists of 3 pixels: A (100, 150, 200), B (50, 100, 150) and C (0, 50, 100). When we sum all the values of all the color components in all of the pixels and divide it by three, do we create a new pixel ""p"" within the for loop that would produce a new pixel A of (150, 150, 150) and B of (100, 100, 100) and C of (50, 50, 50) [since the average of all three numbers in A, B, and C are 150, 100 and 50 respectively]. Or... do we add all the R components (100, 50, 0) and label the average color intensity of R as 50 (and G as 100, and B as 150)?
+
+When we subtract the average color intensity from each color component of each pixel, for pixel A.getRed ( ) would that produce 100 - 50 [the average color intensity of R] or would that produce 100 - 150 [the average color intensity of pixel A]? Then, we multiply final result by multiplier, right?
+
+Sorry for the long question, I've been a little bit confused by this problem in particular.
+
+And then for the reduceColorPalette, I just wanted to know if we were supposed to use ColorMap to create our color palette.
+
+——— INSTRUCTIONS ———
+Find the average color intensity of the picture.Sum the values of all the color components in all of the pixels.Divide the total by the number of pixels times 3 (the number of components). This is the average color intensity.Subtract the average color intensity from each color component of each pixel, resulting in a ""normalized"" color component. (This will make the average color intensity for the entire image zero.)Scale each normalized color component by multiplying them by the contrast ""multiplier"" parameter. Note that the multiplier is a double (a decimal value like 1.2 or 0.6) and normalized color values are integers.
+"
+"     * 1. Find the average color intensity of the picture.     *    a) Sum the values of all the color components for each pixel.     *    b) Divide the total by the number of pixels times the number of     *       components (3).     * 2. Subtract the average color intensity from each color component of     *    each pixel. This will make the average color intensity zero.     * 3. Scale the intensity of each pixel's color components by multiplying     *    them by the ""multiplier"" parameter. Note that the multiplier is a     *    double (a decimal value like 1.2 or 0.6) and color values are ints     *    between 0 and 255.     * 4. Add the original average color intensity back to each component of     *    each pixel.     * 5. Clip the color values so that all color component values are between     *    0 and 255. (This should be handled by the Pixel class anyway!)
+Just wanted to make sure I'm understanding all of this correctly.
+
+In question 3, are we scaling the original r, g, b values or the difference between r, g, b, and average color intensity?
+","Does ""number of pixels"" refer to the amount of pixels of the whole picture (ie. w * h)?
+
+1. Find the average color intensity of the picture.
+     *    a) Sum the values of all the color components for each pixel.
+     *    b) Divide the total by the number of pixels times the number of
+     *       components (3).","For step 1,  it states:
+
+1. Find the average color intensity of the picture.     *    a) Sum the values of all the color components for each pixel.     *    b) Divide the total by the number of pixels times the number of     *       components (3).
+
+Does this mean that after we get the bitmap,  in a for-loop, we sum the rgb components of each pixel and divide by the total number of pixels times 3? Like:
+
+(totalsum/pixelcount * 3)
+
+or:
+
+3 * (totalsum/pixelcount) "
+"I'm confused about how color map works, specifically what this line of code does:
+
+private Map&lt;Pixel, Integer&gt; m = new TreeMap&lt;Pixel, Integer&gt;();
+
+Is this initializing a new color map?
+
+In the reduce palette function, do we need to initialize our own color map or can we just call m.put() to add mappings?","I'm trying to call scaleColors() from adjustContrast() in the file Advanced Manipulations in the following manner:
+
+//Scale intensity  color value of pixel color component        bmp = scaleColors(bmp, multiplier, multiplier, multiplier);
+However I get an error that recommends I create a method call scaleColors() even though it's already been implemented in Simple Manipulations. Why can't I call it from here?"
+"When calculating the average color intensity, are we supposed to sum together the red, green, and blue of all the pixels into one sum, and divide the total by the number of pixels and multiply it by 3?
+
+Or are we supposed to sum together the red of all the pixels into one sum, divide the total by the number of pixels and multiply it by 3 and repeat for green and blue so that there are three values for average color intensity?","When calculating the average color intensity, are we supposed to sum together the red, green, and blue of all the pixels into one sum, and divide the total by the number of pixels and multiply it by 3?
+
+Or are we supposed to sum together the red of all the pixels into one sum, divide the total by the number of pixels and multiply it by 3 and repeat for green and blue so that there are three values for average color intensity?"
+"public static PixelPicture adjustContrast(
+            PixelPicture pic, double multiplier) {
+    
+    int w = pic.getWidth();
+    int h = pic.getHeight();
+    
+    Pixel[][] bmp = pic.getBitmap();
+    
+    //finding the average color intensity 
+    double sum = 0;
+    int avgci = 0;
+    int totalpixels = 0;
+    
+    for (int x = 0; x &lt; w; x++) {
+    for (int y = 0; y &lt; h; y++) {
+    Pixel p = bmp[x][y]; 
+    sum = sum + p.getRed() + p.getGreen() + p.getBlue();
+    totalpixels++;
+    }
+    }
+    totalpixels = 3 * totalpixels;
+    avgci = (int) Math.round(sum/totalpixels); 
+    
+    //normalizing the color components 
+    for (int x = 0; x &lt; w; x++) {
+    for (int y = 0; y &lt; h; y++) {
+    Pixel p = bmp[x][y];
+    int r = p.getRed() - avgci;
+    int g = p.getGreen() - avgci;
+    int b = p.getBlue() - avgci;
+    
+    bmp[x][y] = new Pixel(r, g, b);  
+    }
+    }
+    
+    //scaling each normalized color component 
+    for (int x = 0; x &lt; w; x++) {
+    for (int y = 0; y &lt; h; y++) {
+    Pixel p = bmp[x][y];
+    int r = (int) Math.round(multiplier*p.getRed()); 
+    int g = (int) Math.round(multiplier*p.getGreen());
+    int b = (int) Math.round(multiplier*p.getBlue());
+    
+    bmp[x][y] = new Pixel(r, g, b);
+    }
+    }
+I am not sure why the adjustContrast function isn't working. I've been stuck for a while. any suggestions? ","Hi y'all,
+In my reduce palette function, I increment the using this set of nested loops : 
+for (int x = 0; x&lt;w; x++) {
+    		for (int y = 0; y&lt;h; y++) {
+    			Pixel p = oldM[x][y];
+    			boolean exist = cmap.contains(p);
+    			if (exist) {
+    				int holder = cmap.getValue(p);
+    				cmap.put(p,holder+1);
+    			} else {cmap.put(p, 1);}
+    		}
+    	}
+The issue that I'm having which I discovered over a long session with debugger is that the values are not being passed into the map propperly, and it ends up only recording the key and value for one Pixel somehow. I have no idea why that is. What steps should I take to resolve this?
+(cmap refers to a Color map that was created above the for loops)."
+"I'm getting the following error when I try to run my buttons. I checked the line that's highlighted and I can't really figure out what's wrong/
+
+java.lang.StackOverflowError
+	at Pixel.&lt;init&gt;(Pixel.java:84)
+	","Hi! I already looked at the FAQ that explained how to do this, but I'm still getting an error. I also already looked at the website link provided for PCs, but I can't figure out what I'm supposed to put for my file location. This is my folder location:
+
+
+and when I put /Users/janna/OneDrive/Desktop/, I get errors in my tests, even the one that was provided. Am I writing it wrong???? Thanks!"
+I can't seem to find one in the class file.,I can't seem to find one in the class file.
+"Hey y'all, any help with my runtime would be really appreciated.
+
+To fill my colorMap, I first start with two outer loops to traverse the width and height of the picture (w and h). Then, I use pixel p[w][h] and compare ""p"" with every previous pixel q (up until the point I reached p) in a nested pair of two inner loops. 
+
+This probably creates a lot of lag.
+
+Anyway, inside my fourth inner loop, I say if(p.equals(q)), then count++, and then count ends up being the ""int"" in my ""put( )"" for the particular pixel ""p.""
+
+How else can I implement a strategy to build my colorMap that doesn't require four loops?
+
+// build the colorMap","Hi, I have reached the part where we use the distance function to check each pixel against those in our array of most common colors, but I am having trouble keeping track of the current minimum distance when looping through and checking distances. I was thinking about initializing something like a counter, but since we are finding the minimum, I don't know what to initialize that counter to...a little lost. any hints?"
+"I don't know why when I submit, it shows compiler errors, but I passed all the tests in MyTest.java, MyPixelTest and ManipulationTest.Compiler Outputsrc/PixelPicture.java:24: error: duplicate class: PixelPicturepublic class PixelPicture { ^1 error","I got the following compilation error and I'm not sure why because I copy and pasted from eclipse straight to codio (my setup wasn't exactly the same so I was told to do alternative submission)
+
+test/MyTest.java:4: error: class AdvancedManipulations is public, should be declared in a file named AdvancedManipulations.java
+public class AdvancedManipulations {
+       ^
+1 error"
+"I was just at 120 OH, and Nick (the TA) looked at my code for AlphaBlendTest, which fails a ""First failure is blend_same: blend same image"" test upon code submission. It passes all tests given in MyTest, and after a good hard look, Nick couldn't find anything wrong with it either in the AlphaBlend method or in the Pixel class. He recommended that I ask on Piazza to see if another TA can perhaps check the backend of my submission to see what went wrong, given the extremely bizarre nature of the problem. An image of my method is attached below:
+","I was just at 120 OH, and Nick (the TA) looked at my code for AlphaBlendTest, which fails a ""First failure is blend_same: blend same image"" test upon code submission. It passes all tests given in MyTest, and after a good hard look, Nick couldn't find anything wrong with it either in the AlphaBlend method or in the Pixel class. He recommended that I ask on Piazza to see if another TA can perhaps check the backend of my submission to see what went wrong, given the extremely bizarre nature of the problem. An image of my method is attached below:
+"
+"11. How do I implement the getComponents() method in Pixel without breaking encapsulation?
+Hint: You might find the Arrays.copyOf() method helpful…
+
+ 
+Above is what is suggested by the FAQ. Couldn't we just instead do (if we have red green and blue as fields):
+int [] x = new int [] {red, green, blue};return x
+
+
+Or is this wrong?
+","When i am testing getComponents(), all my tests are failing but when I print out the array of p1.getComponents() for example, I get [255, 0, 30] which is exactly what array x is. Is there something wrong with the way I wrote the test?
+
+int[] x = {255, 0, 30};
+assertEquals (x,p1.getComponents());"
+" Pixel(int[] c) {
+
+        if(c == null) {
+        	red = 0; 
+        	green = 0; 
+        	blue = 0;
+        }else if(c.length &gt;= 3) {
+    		if(c[0]&lt;0) {
+        		red = 0;
+        	}else if(c[0]&gt;255) {
+        		red = 255;
+        	}else red = c[0];
+    		
+    		if(c[1]&lt;0) {
+        		green = 0;
+        	}else if(c[1]&gt;255) {
+        		green = 255;
+        	}else green = c[1];
+    		
+        	if(c[2]&lt;0) {
+        		blue = 0;
+        	}else if(c[2]&gt;255) {
+        		blue  = 255;
+        	}else blue = c[2];
+    	}else if (c.length == 2) {
+    		if(c[0]&lt;0) {
+        		red = 0;
+        	}else if(c[0]&gt;255) {
+        		red = 255;
+        	}else red = c[0];
+    		
+    		if(c[1]&lt;0) {
+        		green = 0;
+        	}else if(c[1]&gt;255) {
+        		green = 255;
+        	}else green= c[1];    		
+    	}else if (c.length == 1) {
+    		if(c[0]&lt;0) {
+        		red = 0;
+        	}else if(c[0]&gt;255) {
+        		red = 255;
+        	}else red = c[0];
+    		
+    	}else {
+    		red = 0;
+    		blue = 0;
+    		green = 0;
+    	}}
+I don't understand why I'm getting this error when I initialize red green and blue already. ","    Pixel(int r, int g, int b) {
+    	if (r &lt; 0) {
+    		this.r = 0;
+    	}
+    	else if (r &gt; 255) {
+    		this.r = 255;
+    	}
+    	else if (g &lt; 0) {
+    		this.g = 0;
+    	}
+    	else if (g &gt; 255) {
+    		this.g = 255;
+    	}
+    	else if (b &lt; 0) {
+    		this.b = 0;
+    	}
+    	else if (b &gt; 255) {
+    		this.b = 255;
+    	}
+    	else {
+    		this.r = r;
+    		this.g = g;
+    		this.b = b;
+    	}
+    }
+For this line of code, it shows an error saying that the blank final field r (g or b) may not have been initialized. However, if I don't make it final, the error goes away. I was wondering why that was. Also, is there a way to make this code more efficient? (getting rid of all the else if else ifs) "
+"Under the ""problems"" tab at the bottom of ellipse I am seeing this message: 
+
+""This project was not built due to 'Resource/ test/bin.settings' already exists. Fix the problem and then try refreshing this project and building it since it may be inconsistent"" 
+
+All that I've done so far is try to important the homework files","I'm getting errors in all my .java files right as I import them into Eclipse (red marks next to the file and also on every line within each file.) Error message at the top of each file when I click on it is ""The declared package """" does not match the expected package src"" (or ""The declared package """" does not match the expected package test""). In the ""Problems"" toolbar at the bottom, it just says that the .java file I clicked on ""cannot be resolved."" Any suggestions how I can fix this? "
+"How do I compile the MyPixelTest.java in Folder test?
+Now it compiles only Pixel.java I think from src","What files are supposed to be downloaded and imported into the src folder? 
+
+I downloaded hw06_temp and it gives me ""AdvancedManipulations.java, ColorMap.java, Effects.java, GUI.java, etc."" 
+
+On the drop down menu all I see is MakeFile and README.md.
+
+What am I missing? "
+"Whenever I try to run my MyPixelTest.java file, it says ""no junit tests were found"" any suggestions on how I could fix this issue? ","After downloading the images folder, I changed the string location in MyTest and cleaned the project, as other piazza posts recommended, but when I run MyTest, I still get 11/11 errors. How can I fix this?"
+"I know there are a lot of posts on this but I've looked through them and I am still really confused on how to use Eclipse and move files. This is what my files look like right now. How do I move them to a Test folder that isn't src? I got a duplicate class error when I tried to submit.
+","I know there are a lot of posts on this but I've looked through them and I am still really confused on how to use Eclipse and move files. This is what my files look like right now. How do I move them to a Test folder that isn't src? I got a duplicate class error when I tried to submit.
+"
+"My file structure in eclipse matches what's in the FAQ, but when I try to submit my zipped folder, the submission page never stops loading and I get this upon submission. What does it mean?","i zipped my folder following the instructions on the hw assignment page, but when i click upload it takes forever to load and then exits the loading part. any ideas of what to do?"
+"do we need a certain file in our directory in order for eclipse to run JUnit tests? For the example test given to us in MyPixelTest, I get the error ""Test cannot be resolved to a type"" for @Test and the error ""The method arrertEquals(int, int) is undefined to the type MyPixelTest"".","On the newest version of JDK and Eclipse. 
+
+I just created my java project and imported the hw file according to the instructions. However, I ran into the same 'pennstagram/.settings' already exists problem in @2077. 
+
+After importing, I ran the project. When I clicked on RotateCW or any other pre-written function, eclipse throws a nullpointerexception. Since I have not altered any code at all, I am not sure what to do or what caused this.
+
+Exception in thread ""AWT-EventQueue-0"" java.lang.NullPointerException
+ at java.awt.image.SinglePixelPackedSampleModel.setPixel(SinglePixelPackedSampleModel.java:647)
+ at java.awt.image.WritableRaster.setPixel(WritableRaster.java:508)
+ at PixelPicture.setBitmap(PixelPicture.java:118)
+ at PixelPicture.&lt;init&gt;(PixelPicture.java:60)
+ at SimpleManipulations.rotateCW(SimpleManipulations.java:63)
+ at GUI$8.actionPerformed(GUI.java:253)
+ at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+ at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+ at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+ at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+ at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
+ at java.awt.Component.processMouseEvent(Component.java:6533)
+ at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+ at java.awt.Component.processEvent(Component.java:6298)
+ at java.awt.Container.processEvent(Container.java:2236)
+ at java.awt.Component.dispatchEventImpl(Component.java:4889)
+ at java.awt.Container.dispatchEventImpl(Container.java:2294)
+ at java.awt.Component.dispatchEvent(Component.java:4711)
+ at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4888)
+ at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4525)
+ at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4466)
+ at java.awt.Container.dispatchEventImpl(Container.java:2280)
+ at java.awt.Window.dispatchEventImpl(Window.java:2746)
+ at java.awt.Component.dispatchEvent(Component.java:4711)
+ at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+ at java.awt.EventQueue.access$500(EventQueue.java:97)
+ at java.awt.EventQueue$3.run(EventQueue.java:709)
+ at java.awt.EventQueue$3.run(EventQueue.java:703)
+ at java.security.AccessController.doPrivileged(Native Method)
+ at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:80)
+ at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:90)
+ at java.awt.EventQueue$4.run(EventQueue.java:731)
+ at java.awt.EventQueue$4.run(EventQueue.java:729)
+ at java.security.AccessController.doPrivileged(Native Method)
+ at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:80)
+ at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+ at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+ at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+ at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+ at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+ at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+ at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)"
+"Do we have to account for the inputs to our pixel methods (like to string, equals, and distance) being null or can we assume the inputs for these will never be null?","if we make a Pixel with a null array, what should getComponents() return? 
+Also, do we need to worry about dealing with a null pixel in our getRed() function?"
+How do we instantiate a null pixel (for testing)?,How do we instantiate a null pixel (for testing)?
+"I am trying to write a test case for null array so I made int [] p = null and then did three assertEquals test where I compared r, g, and b to 0. However, my test is giving me an error and i don't know why.","hi, my test for distance when comparing to a null Pixel keeps failing and just returning the value the sum of instance variables red, green, and blue of the object that the method is being called on. I tried making my if statement testing for both != null and ==null first, but neither works. How can I fix this?
+
+"
+"So, I completed all the tasks in Pixel.java and tested quite extensively with test cases and it seemed like all the tests passed. But RotateCW results in a Black rectangle, which leads me to believe that something is wrong in the constructors in Pixel.java.I have tried to run through the file multiple times, but couldn't find anything wrong. I have copy pasted my code and test cases in the Codio and was wondering if it would be possible to get any help on where I'm going wrong.","Every time I try to run one of the rotations or one of the effects, I just get a black rectangle. It has the right dimensions, but even when I adjust the Pixel constructors to always return the same color (so for example I should just get a blue rectangle), I still get the black rectangle. I also tried transferring my code to Codio in case I had accidentally deleted something, but got the same result.  Any idea what I did wrong? "
+"For my reducepalette method, i am getting this error: java.lang.AssertionError: Reduce Palette 512 expected:&lt;0&gt; but was:&lt;671055&gt;. Any tips on why this is happening? I'm not sure what this means. 
+
+","My reducepalette method passes all the tests in ManipulateTest.java, but fails the test in MyTest.java.... any idea on why this is happening? I am getting an assertion error that states the ReducePalette methods expects 0 is a very large number..."
+"When I click on load new image for the GUI, it tells me to write down the path of where the image is located (either online or on comp). Is this supposed to happen? ","Are we supposed to be able to debeug each class? I only see the GUI when I click the drop down arrow on the debug icon.  Also, when I click debug GUI, the actual GUI  is lauched.  Is this supposed to happen?"
+"Whenever I try to run these tests, I get the result in the picture below - the tests aren't running. MyPixelTest works fine however. In addition, when using any of the advanced manipulation methods, the GUI freezes and nothing happens - no errors either. Simple manipulations work however. I have no idea why this is happening.
+ ","My Rotate CCW function is passing the tests, however the button does not work in the GUI. Does anybody know why this could be?"
+"While implementing blur, I initially did it using the method defined in the docs, where a neighborhood around a single pixel is considered. However, I ran into a couple inconsistencies and wanted to know if an alternate implementation was OK.
+
+1. If the initial neighborhood centers around (0, 0), the top and left edges have half-sized (or smaller) neighborhoods. I know this can't really be avoided, but is it ok to start with squares whose top left corners were within the bounds of the picture? I think it looks better if the bottom/right edges are the ones with smaller neighborhoods.
+
+2. If the neighborhoods are defined by their center, there is a noticeable gap on the right/bottom edges at larger radii. The center is off the edge, but if the radius is 10 there could be 5 pixels on the edge where no blur is applied. Since the maximum radius is 19, the effect is noticeable.
+
+My alternative solution was to define the neighborhoods by the top left corner, which makes it look less visually bizarre (point 1) and also fix the strip of unblurred pixels (point 2) since r+1 pixels are not needed to make a neighborhood. Is this ok?","My current implementation just uses boatloads of if statements to check if a pixel is one that I care about. But then I realized I end up skipping some pixels. The resulting function will run and create a blurry picture but it's not using all of the pixels within the radius to do so. 
+
+For instance in the following picture my function will take pixels marked with O but skip those with X. Center pixel to average around is C. And so on for each ""concentric"" box in the radius.
+
+O X O X O
+X O O O X
+O O C  O O
+X O O O X
+O X O X O
+
+How can I iterate over each concentric box without missing any pixels?"
+"Hello! For my blur function, I keep getting an ArrayIndexOutOfBoundsException, but I can't figure out why. It is for the following line: 
+blurred[x][y] = new Pixel(ravg, gavg, bavg);
+in 
+    public static PixelPicture blur(PixelPicture pic, int radius) {
+        int w = pic.getWidth();
+        int h = pic.getHeight();
+        
+        Pixel[][] src = pic.getBitmap();
+        Pixel[][] blurred = new Pixel[w][h];
+        
+        for (int x = 0; x &lt; w; x++) {
+        	for (int y = 0; y &lt; h; y++) {
+        		double rsum = 0;
+                double gsum = 0;
+                double bsum = 0;
+                int count = 0;
+        		for (int x2 = x - radius; (x2 &lt;= x + radius) &amp;&amp; (x2 &gt;= x - radius); x++) {
+        			for (int y2 = y - radius; (y2 &lt;= y + radius) &amp;&amp; (y2 &gt;= y - radius); y++ ) {
+        				if (x2 &gt;= 0 &amp;&amp; x2 &lt; w &amp;&amp; y2 &gt;= 0 &amp;&amp; y2 &lt; h) {
+        					rsum = rsum + src[x2][y2].getRed();
+        					gsum = gsum + src[x2][y2].getGreen();
+        					bsum = bsum + src[x2][y2].getBlue();
+        					count++;
+        				}
+        			}
+        		}
+        		int ravg = (int) Math.round(rsum / count);
+        		int gavg = (int) Math.round(gsum / count);
+        		int bavg = (int) Math.round(bsum / count);
+        		blurred[x][y] = new Pixel(ravg, gavg, bavg);
+        	}
+        }
+        return new PixelPicture(blurred);
+    }
+I've been trying to figure this out for a while now! Am I doing something wrong in a different location or is it with how I'm defining x and y? Thanks.","I keep getting a failure for testBlur, and have been unsuccessful in figuring out why. The failure is: 
+""java.lang.AssertionError: blur 2 expected:&lt;0&gt; but was:&lt;9812354&gt;""
+
+Here is my code: 
+public static PixelPicture blur(PixelPicture pic, int radius) {    	int w = pic.getWidth();    	int h = pic.getHeight();    	    	Pixel[][] bmp = pic.getBitmap();    	for (int x = 0; x &lt; w; x++) {    		for (int y = 0; y &lt; h; y++) {    			int rsum = 0;    			int gsum = 0;    			int bsum = 0;    			int totalpix = 0;    			for (int zw = Math.max(x - radius, 0); zw &lt; Math.min(x + radius + 1, w); zw++) {    				for (int zh = Math.max(y - radius, 0); zh &lt; Math.min(y + radius + 1, h); zh++) {    					Pixel p1 = bmp[zw][zh];    					int r = p1.getRed();    					int g = p1.getGreen();    					int b = p1.getBlue();    					rsum = r + rsum;    					gsum = g + gsum;    					bsum = b + bsum;    					totalpix = 1 + totalpix;    				}    			}    			int ravg = Math.round(rsum/(totalpix));    			int gavg = Math.round(gsum/(totalpix));    			int bavg = Math.round(bsum/(totalpix));    			bmp[x][y] = new Pixel(ravg, gavg, bavg);    		}    	}    	return new PixelPicture(bmp);    }
+"
+"When I added JUnit, the only one available was JUnit 5. I assume this is a later version. Is this ok?","When I added JUnit, the only one available was JUnit 5. I assume this is a later version. Is this ok?"
+"My implementation of border passes the tests. But when I click the border button, I get an array index out of bounds. What does this mean?","When I try to debug my code for border, i get a detail formatting error that says: Evaluations must contain either an expression or a block of well-formed statements. What does that mean?"
+"I keep failing the test case for border, although on the GUI it looks right and I think that I'm approaching it correctly. Here is my code:
+
+public static PixelPicture border(
+            PixelPicture pic, int borderWidth, Pixel borderColor) {
+     Pixel[][] ans = pic.getBitmap();
+        for (int x = 0; x &lt; pic.getWidth(); x++)
+        {
+           for (int y = 0; y &lt; borderWidth; y++)
+           {
+              ans[x][y] = borderColor;
+           }
+         
+         for (int y = pic.getHeight() - borderWidth; y &lt; pic.getHeight(); y++)
+           {
+              ans[x][y] = borderColor;
+           }
+        }
+        
+        for (int x = 0; x &lt; borderWidth; x++)
+        {
+           for (int y = borderWidth; y &lt; pic.getHeight() - borderWidth; y++)
+           {
+              ans[x][y] = borderColor;
+           }
+        }
+        
+        for (int x = pic.getWidth() - borderWidth; x &lt; pic.getWidth(); x++)
+        {
+           for (int y = borderWidth; y &lt; pic.getHeight() - borderWidth; y++)
+           {
+               ans[x][y] = borderColor;
+           }
+        }
+        
+        PixelPicture ans_pp = new PixelPicture(ans);
+        return ans_pp;
+    }","Hi! I've been trying to figure out why I am getting an ArrayIndexOutOfBoundsException for the following code for my border method:
+bord[x][y] = src[x - borderWidth][y - borderWidth];
+in
+public static PixelPicture border(
+            PixelPicture pic, int borderWidth, Pixel borderColor) {
+        int w = pic.getWidth() + (2 * borderWidth);
+        int h = pic.getWidth() + (2 * borderWidth);
+        Pixel[][] src = pic.getBitmap();
+        Pixel[][] bord = new Pixel[w][h];
+        
+        for (int x = 0; x &lt; w; x++) {
+        	for (int y = 0; y &lt; h; y++) {
+        		if (x &gt; (borderWidth - 1) &amp;&amp; x &lt; (w - borderWidth) &amp;&amp;
+        	        y &gt; (borderWidth - 1) &amp;&amp; y &lt; (h - borderWidth))
+        		{
+        			bord[x][y] = src[x - borderWidth][y - borderWidth];
+        		}
+        		else {
+        			bord[x][y] = borderColor;
+        		}
+        	}
+        }
+        
+        return new PixelPicture (bord);
+    }
+I thought my conditional statement would prevent this from happening, and when I try to run it through on paper, it seems fine. Thanks!","My border test is failing with the error:
+
+
+
+But I'm not sure why. I'm pretty confident in the logic of my code but there's obviously something I'm missing?
+
+    public static PixelPicture border(            PixelPicture pic, int borderWidth, Pixel borderColor) {                //Width and height of image        int w = pic.getWidth();        int h = pic.getHeight();                //Adjust according to dimensions of border        int newWidth = (2 * borderWidth )+ w;        int newHeight = (2 * borderWidth) + h;                //Copy bitmap of original image/create image with new dimension        Pixel[][] src = pic.getBitmap();        Pixel[][] newImage = new Pixel[newWidth][newHeight];                //Draw border with new coordinates        for (int x = 0; x &lt; newWidth; x++) {            for(int y = 0; y &lt; newHeight; y++) {                //Draw image within specified coordinates, subtracting offset                if (x &gt; (borderWidth - 1) &amp;&amp;                        x &lt; (newWidth) - (borderWidth - 1) &amp;&amp;                         y &gt; (borderWidth - 1) &amp;&amp; y &lt; (borderWidth - 1)) {                    newImage[x][y] = src[x - borderWidth][y - borderWidth];                                    }                                //Draw border within specified coordinates                else {                    newImage[x][y] = borderColor;                                    }                    }        }               return new PixelPicture(newImage);    }
+"
+"I have implemented the border method and it passes the test in MyTest, but when I press the border button in the GUI, it adds a white border not a black border. I do not know why this is since I have not changed any of the code in GUI. Do you have any ideas of where to look to fix the problem? Or is it ok since it passes the test in MyTest?
+
+Thanks!","I believe I have the right code, but when i run it (the border one and the contrast one) they do not respond. There is no difference before and after I implement border and contrast. I attached a screenshot for my border code. I wonder what's wrong with this part of my code. (I post this only visible to instructors so I assume it's ok to paste a portion of my code)"
+"The description of reducePalete in our Java file reads
+
+* @param pic The Pixel for which the closest match should be found.
+     * @return The most closely matched Pixel from the palette.
+
+but based on the instructions it seems like we take in an original picture and a number of colors on our palette
+then returning a new picture with a reduced amount of colors.
+
+Just wanted to verify is this correct?","I really don't know what's causing an error (alphaBlend expected 0 but was 152689).  The logic of my code seems to make sense to me, for each position I am getting a pixel from the bitmap of each of the two different images, I am setting the different RGB values to their weighted averages, and I am replacing the pixel with these new weighted average RGB values.  If someone could please help me see where my logic/implementation is incorrect it would be much appreciated!
+   public static PixelPicture alphaBlend(
+            double alpha, PixelPicture pic, PixelPicture f) {
+        if ((pic.getHeight()==f.getHeight())&amp;&amp;(pic.getWidth()==f.getWidth())) {
+        	int w = pic.getWidth();
+            int h = pic.getHeight(); 
+            Pixel[][] bmp = pic.getBitmap();
+            Pixel[][] snd = f.getBitmap();
+            for (int x = 0; x &lt; w; x++) {
+                for (int y = 0; y &lt; h; y++) {
+                    Pixel p = bmp[x][y];
+                    Pixel pc = snd[x][y];
+                    int r = weightedAverage(alpha, p.getRed(), pc.getRed());
+                    int g = weightedAverage(alpha, p.getGreen(), pc.getGreen());
+                    int b = weightedAverage(alpha, p.getBlue(), pc.getBlue());
+                    bmp[x][y] = new Pixel(r, g, b);
+                }
+            }
+            return new PixelPicture(bmp);
+        } else {return pic;}
+    }
+"
+"public static PixelPicture scaleColors(
+            PixelPicture pic, double rfactor, double gfactor, double bfactor) {
+    	int w = pic.getWidth();
+        int h = pic.getHeight();
+
+        Pixel[][] bmp = pic.getBitmap();
+        for (int x = 0; x &lt; w; x++) {
+            for (int y = 0; y &lt; h; y++) {
+                Pixel p = bmp[x][y];
+                int r = p.getRed();
+                int g = p.getGreen();
+                int b = p.getBlue();              
+                bmp[x][y] = new Pixel((int) Math.round(r * rfactor), 
+                					  (int) Math.round(g * gfactor),
+                					  (int) Math.round(b * bfactor));
+            }
+        }
+        return new PixelPicture(bmp);
+    }"," public static ColorMap getColorMap(PixelPicture pic) {
+    	ColorMap c = new ColorMap();
+    	
+    	int w = pic.getWidth(); 
+		int h = pic.getHeight(); 
+		
+		Pixel[][] bmp = pic.getBitmap();
+		
+		for(int x = 0; x &lt; w; x++) {
+			for(int y = 0; y &lt; h; y++) {
+				if(c.contains(bmp[x][y])) {
+					c.put(bmp[x][y], c.getValue(bmp[x][y]) + 1);
+				} else {
+					c.put(bmp[x][y], 1);
+				}
+			}
+		}
+
+		
+		return c;
+    }public static PixelPicture reducePalette(PixelPicture pic, int numColors) {
+    	int w = pic.getWidth(); 
+		int h = pic.getHeight(); 
+
+		Pixel[][] bmp = pic.getBitmap();
+		Pixel[] cmlist = Arrays.copyOf(getColorMap(pic).getSortedPixels(), numColors);
+		System.out.println(cmlist[0]);
+		
+		for(int x = 0; x &lt; w; x++) {
+			for(int y = 0; y &lt; h; y++) { 
+				
+				Pixel closematch = cmlist[0];
+				
+				for(int i = 0; i &lt; cmlist.length; i++) {
+					if(bmp[x][y].distance(cmlist[i]) &lt; bmp[x][y].distance(closematch)) {
+						closematch = cmlist[i];
+					}
+				}
+				
+				bmp[x][y] = closematch;
+				
+			}
+		}
+		
+		return new PixelPicture(bmp);
+    }
+Could I get some help with my reducePallete? Is there are more efficient algorithm than this. I think this is O(n^2) time."
+"Hello! My reducePalette currently takes about 4 seconds, and since the efficient time is 1 or 2 seconds, I was wondering on how to make my code more efficient
+
+    public static PixelPicture reducePalette(PixelPicture pic, int numColors) {
+        ColorMap colorMap = new ColorMap();
+        int w = pic.getWidth();
+        int h = pic.getHeight();
+        
+        Pixel[][] bmp = pic.getBitmap();
+        for (int x = 0; x &lt; w; x++) {
+            for (int y = 0; y &lt; h; y++) {
+                Pixel p = bmp[x][y];
+                if (!colorMap.contains(p)) {
+                    colorMap.put(p, 1); 
+                }
+                else {
+                    colorMap.put(p, colorMap.getValue(p) + 1);
+                }
+            }
+        }
+        
+        Pixel[] sortedPixels = colorMap.getSortedPixels(); 
+        for (int i = 0; i &lt; w; i++) {
+            for (int j = 0; j &lt; h; j++) {
+                Pixel closest = sortedPixels[0];
+                Pixel p = bmp[i][j];   
+                for (int k = 0; k &lt; numColors; k++) {
+                    if (p.distance(closest) &gt; p.distance(sortedPixels[k])) {
+                        closest = sortedPixels[k];
+                    }
+                }  
+                bmp[i][j] = closest;
+            }
+        }   
+        return new PixelPicture(bmp);
+    }
+Since the color map needs to be formed before I found out what the closest Pixel is, I would need to seperate the two loops, so I couldn't merge them together. Could I get any hints as to how to improve it? ","I'm not sure why the test in MyTest isn't passing. Can you please help? 
+Here is my code: 
+public static PixelPicture reducePalette(PixelPicture pic, int numColors) {
+    ColorMap map = new ColorMap();
+     int w = pic.getWidth();
+        int h = pic.getHeight();
+        Pixel[][] bmp = pic.getBitmap();
+        for (int x = 0; x &lt; w; x++) {
+         for (int y = 0; y &lt; h; y++) {
+          Pixel p = bmp[x][y];
+          if (map.contains(p)) {
+           map.put(p, map.getValue(p) + 1);
+          } else {
+           map.put(p, 1); 
+          }
+         }
+        }
+        Pixel[] palette = map.getSortedPixels();
+        for (int x = 0; x &lt; w; x++) {
+           for (int y = 0; y &lt; h; y++) {
+            Pixel p = bmp[x][y];
+         int minDist = Integer.MAX_VALUE;
+            for(int j = 0; j &lt; numColors; j++){
+             minDist = Math.min(minDist, p.distance(palette[j]));
+            }
+            for(int j = 0; j &lt; numColors; j++){
+             if (p.distance(palette[j]) == minDist) {
+              bmp[x][y] = palette[j];
+             }
+            }
+           }
+        }
+        return new PixelPicture(bmp);
+  }
+
+Error: Expected &lt;0&gt; but was: &lt;271934&gt;","Why am I getting an error on the last line?
+    public static PixelPicture reducePalette(PixelPicture pic, int numColors) {    	    	int w = pic.getWidth();    	int h = pic.getHeight();    	    	ColorMap map1 = new ColorMap();    	Pixel[][] bmp = pic.getBitmap();    	    	for (int x = 0; x &lt; w; x++) {    		for (int y = 0; y &lt; h; y++) {    			Pixel p0 = bmp[x][y];    			map1.put(p0, 1);    		}    	}    	    	Pixel[] pixarray = map1.getSortedPixels();    	    }
+","Why am I getting an error on the last line?
+    public static PixelPicture reducePalette(PixelPicture pic, int numColors) {    	    	int w = pic.getWidth();    	int h = pic.getHeight();    	    	ColorMap map1 = new ColorMap();    	Pixel[][] bmp = pic.getBitmap();    	    	for (int x = 0; x &lt; w; x++) {    		for (int y = 0; y &lt; h; y++) {    			Pixel p0 = bmp[x][y];    			map1.put(p0, 1);    		}    	}    	    	Pixel[] pixarray = map1.getSortedPixels();    	    }
+"
+"Hello! I think I'm misunderstanding how to use the ColorMap class to implement getSortedPixels. I have the following code right now:
+public static PixelPicture reducePalette(PixelPicture pic, int numColors) {
+    	int w = pic.getWidth();
+        int h = pic.getHeight();
+        int dist = 255;
+        
+        Pixel p = new Pixel(0, 0, 0);
+        Pixel[][] src = pic.getBitmap();
+        ColorMap map = new ColorMap();
+        
+        Pixel[] palette = map.getSortedPixels();
+        
+    	for (int x = 0; x &lt; w; x++) {
+    		for (int y = 0; y &lt; h; y++) {
+    			for (int i = 0; i &lt; numColors - 1; i++) {
+    				if ((src[x][y].distance(palette[i])) &lt; dist) {
+    					dist = src[x][y].distance(palette[i]);
+    					p = palette[i];
+    				}
+    				src[x][y] = p;
+    			}
+    		}
+    	}
+    	return new PixelPicture(src);
+    }
+The way I was trying to approach this was to first create an array of Pixels using getSortedPixels, then loop through that for the size of the palette. As it loops, I wanted to store a value tracking distance dist and a Pixel p whenever the distance was less than the one before it. However, I have been getting an ArrayOutOfBoundsException saying that one of the arrays is empty. Am I using ColorMap wrong, or is it something else?","Why am I getting an error on the last line?
+    public static PixelPicture reducePalette(PixelPicture pic, int numColors) {    	    	int w = pic.getWidth();    	int h = pic.getHeight();    	    	ColorMap map1 = new ColorMap();    	Pixel[][] bmp = pic.getBitmap();    	    	for (int x = 0; x &lt; w; x++) {    		for (int y = 0; y &lt; h; y++) {    			Pixel p0 = bmp[x][y];    			map1.put(p0, 1);    		}    	}    	    	Pixel[] pixarray = map1.getSortedPixels();    	    }
+"
+"I'm not sure if you are allowed to answer this, but I'm not sure what this means. I got this as a test failure after submitting:
+
+First failure is PixelComponentCornerCases: Pixel Component Corner {10} R expected: but was:
+
+What is Pixel Component Corner {10} R? And why does it expect blank?","I got the following response for my first failure and I'm not sure exactly what it's referring to. What specific function is this failure for?
+
+First failure is PixelComponentRnegarr: Pixel Component Array R clipped expected:&lt;0&gt; but was:&lt;-10&gt;"

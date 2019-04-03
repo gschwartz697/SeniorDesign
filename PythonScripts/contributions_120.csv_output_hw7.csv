@@ -1,0 +1,881 @@
+"I read through task 2, and I remember that I have to override Equals at some point to test for more than just referential equality. Reading through the different collections, it says that for TreeMap and TreeSet, ""the ordering maintained by a tree map/set, like any sorted mapset, and whether or not an explicit comparator is provided, must be consistent with equals if this sorted map/set is to correctly implement the Map/Set interface."" Does this mean that once I override the equals method, these two collections will not work the way they are supposed to? 
+Also, are all three collections possible to work with, or is there a right or ""better"" answer?","Hi,
+Can I defined channel as an object of a tuple of a User (as an object) and TreeMap? Or does channel itself has to be one of the three data structures in the instruction?"
+What is this JUnit test supposed to be testing? It's the only one I am failing in the ChannelsMessagesTest module.,"What is testDeregisterSendsDisconnectedWhereMember doing exactly?
+
+It is the one test in the ChannelsMessagesTest that I'm failing"
+"when creating a channel, does the owner of that new channel already exist as a regular user or do we have to create a new user that is the owner? ","When we create a new channel, must we also create a new user or are we assuming that an already existing user is trying to create a channel?"
+"I am passing all the tests in ConnectionNicknamesTest except for the following one, which I am failing. I can not find the bug. I do not see anything wrong with my getUserID() function below.
+
+java.lang.AssertionError: User0 has ID 1 expected:&lt;1&gt; but was:&lt;-1&gt; at ConnectionNicknamesTest.testNickCollisionOnConnect(ConnectionNicknamesTest.java:127)
+
+
+
+public int getUserId(String nickname) {
+     Iterator&lt;User&gt; itr = users.values().iterator();
+     
+     while (itr.hasNext()) {
+         User next = itr.next();
+        if (next.getNickname() == nickname) {
+            return next.getId();
+        }
+     }
+     return -1;
+}
+","I'm at the end of task 4 and I'm not passing any of the tests in ChannelMessagesTest
+with each test having the error
+
+java.lang.ClassCastException: Channel cannot be cast to java.lang.String
+after a lengthy trace through.
+
+My current compareTo in Channel is this
+
+public int compareTo(String otherChannelName)
+	{
+	int comparison = channelName.compareTo(otherChannelName)	
+	return comparison;
+	}
+Where ""channelName"" is my private String field. Why is this incorrect?"
+"How do I use clone() on Set? Im using the TreeSet collection
+
+When I try to do this I get: 
+
+The method clone() is undefined for the type Set&lt;Person&gt;","I made a channel class that uses a treemap structure but when I try to use .get(key) and .keySet() for .getUserId(String nickname) and .getRegisteredUsers(), I get the error this method is not defined for ServerModel.Channel- how do I rectify this?"
+Can the owner of a channel kick themselves out?,Can the owner of a channel kick themselves out?
+"For my function, changeNickname() I have three parameters: old nickname, new nickname, and the user ID.
+Am I responsible for taking care of the case where the old nickname entered (in the test case) is not the actual nickname associated with the user ID? If it is incorrect, should I still change it to the new nickname or throw some exceptions?
+
+Should I get rid of the old nickname parameter entirely?
+
+","Is there supposed to be something stopping me from passing the incorrect nickname (constructor parameter 2). 
+The nickname of sender is supposed to be ""User0"". 
+Do I have to do something to check for this? 
+Or, do I just assume that it will be passed in correctly. 
+"
+"I'm double clicking on the jar file times as instructed. I am not running the ServerMain.java again. However, if I already have a chat client open, I can't open a second one. I believe another student had this issue too, but it was not resolved.","I am having trouble finding the menu option referred to in the instructions that opens multiple instances of the client. I have tried redouble-clicking the jar file, and that hasn't worked. The FAQ gave me the same advice. Where can I find this menu the instructions refer to?"
+"I've read through tasks 1 and 2 repeatedly and don't understand what I'm supposed to be implementing. #1 on the FAQ says ""understand the problem"" by reading through the materials. I've read everything and still don't understand. 
+
+What does ""modeling the server state"" mean? What am I supposed to be initializing under ServerModel()?
+
+Where are channels? They aren't listed anywhere in the code?
+
+Am I supposed to choose just one of the Java collections for the server model?
+
+Additionally Task 1 says ""Your job will be to implement the updateServerModel method for each concrete subclass of Command, allowing the server to process commands sent by its clients.""
+
+Am I supposed to do that before moving on to Task 2? Or does that come after other steps?
+
+These instructions are too vague.","I'm passing every test that was provided to us in all the files (green bars when I run the file tests), and every custom test I made. Yet when I turn in my homework, half of the tests are failing...Does this make sense? I don't even know where to look...
+
+My zipped project includes:
+Command.java
+ServerModel.java
+ServerModelTest.java
+PLAN.txt
+Channel.java (custom class)
+Client.java (custom class)"
+"My createChannel test is failing with the following error even though I have written a compareTo method for my channel class:
+java.lang.ClassCastException: Channel cannot be cast to java.lang.Comparable
+This is my code inside the channel class: 
+public int compareTo (Channel other) {		int comparison = (this.channelName).compareTo(other.getName());		return comparison;	}	
+
+where channelName is a private field which is just the string name of a channel and the getName method also returns the same thing. I don't understand why it still says that it can not be cast into Comparable
+","I have written code for Task 2,3 and 4 but they all test due to comparable in my users class. I have tried to figure this out but I can't find why this errror is. This is what I have right now. 
+public int compareTo (Object k) {
+	
+	User x = null; 
+	
+	if (k instanceof User) {
+		 x= (User) k; 
+	}
+	if (userID==x.getID()) {
+		return 0; 
+	}
+	else if (userID != x.getID()) {
+		return -1; 
+	}
+	
+	return 1; 
+}
+"
+"The instruction say 
+""the users already present in the channel should be notified that a new user has joined.""
+
+But I don't see anything in broadcast that would do this? Am I missing something?","If the owner deregisters causing the channels it owns to be gone as well, do we inform the users that were apart of the channel before that the channel is now gone? I can't find any directions for this. "
+"I have gotten my other commands for task 4 to work, but the nickname command test called testNickBroadcastsToChannelWhereMember has an error and it says that it throws a NoSuchElementException. I am not really sure what this means, and I don't know how to fix it. 
+
+I would appreciate any explanation of what this means. Here is my update function for NicknameCommand--I know that the implementations for these can be really different so I get it if you can't offer any advice on this, but I can also answer any questions about my implementation if that might help.
+
+Screen_Shot_20181113_at_11.33.36_PM.png
+
+Thanks--appreciate any advice on this.","
+
+Hello! This error pops up for all my JUnit tests in ChannelsMessageTest and I don't really understand what the error is. Could I get some help dealing with this error? "
+"I have this same failure as @2954 for this test. I don't know why my recipients do not contain the unaffected user. In my update function for Nickname Command, I change the user's nickname and then I make my collection called recipients equal to the list of users for each channel that the user is in. 
+
+Screen_Shot_20181113_at_11.33.36_PM.png","So when I have a person deregister as the owner of two channels, and I run the test, I get that error. I looked at what it is, but I don't know how to identify where this is occurring.
+
+Screen_Shot_20181114_at_6.17.59_PM.png
+
+Any help with this would be greatly appreciated!!"
+"I created a custom channel class and am trying to create a method to get the nickname of a channel's owner given their ID within the class. Right now, it just calls ServerMethod.getNickname(owner), but this won't compile because I ""cannot make a static reference to the non-static method getNickname(int) from the type ServerModel."" I can't make getNickname static, so is there another way to fix this method?","I am working on updateServerModel for CreateCommand in command.java. I want to broadcast okay to the owner of the channel once the channel has been successfully created. 
+Currently, I have a getOwner method in ServerModel.java which returns string. 
+
+For the updateServerModel, on the last line, I wrote
+return Broadcast.okay(this, model.getOwner(channel));
+but this is throwing an eror because the second input of the okay method has to be Collection. I can't change the getOwner return type because that means I have to change ServerModel.Api.
+
+How should I solve this type mismatch problem?"
+"Hey guys,
+
+I was told my project is failing to compile; however, it doesn't fail when i run it locally.  This is the error.
+
+src/Command.java:1: error: package com.sun.security.ntlm does not exist
+import com.sun.security.ntlm.Server;
+                            ^
+1 error
+
+Any advice?","I keep getting an illegal argument exception which I traced into Broadcast.names as if owner or recipients are null or if owner is not part of recipients. i can't tell why it's failing because i don't think any of these cases are being violated
+
+java.lang.IllegalArgumentException
+	at Broadcast.createNamesPayload(Broadcast.java:201)
+	at Broadcast.names(Broadcast.java:152)
+	at JoinCommand.updateServerModel(Command.java:171)
+	at ChannelsMessagesTest.testJoinChannelExistsNotMember(ChannelsMessagesTest.java:53)
+	at barrypitman.junitXmlFormatter.Runner.runTests(Runner.java:27)
+	at barrypitman.junitXmlFormatter.Runner.main(Runner.java:18)"
+"I've tried zipping and submitting, but I keep getting a compilation error. I've seen other piazza posts about this, but all of them seem to say that the error is in ServerModel, but mine is saying it's in Broadcast, even though I did not submit the Broadcast class. I followed the instructions for zipping very carefully so I don't know why my submission isn't working.","Hey Dorothy and Sam,
+
+I just wanted to send this bc I'm very worried that my hw 07 submission.  I ran into a compiler error when I submitted it and wasn't able to fix the issue before the deadline.  I found the error that I was having on Piazza ('cannot find symbol') and the answer said to check the file hierarchy but I didn't find any issues with it in my project.  
+
+Will this compliler error keep my hw from being graded?  If so, is there a way to get you a resolved submission?  I am very concerned about my current standing in the course and am worried that this error will prevent the hw from being properly graded.
+
+Please let me know if there is an issue, and if so what I should do.
+
+Thank you
+
+
+
+George"
+"I decided to use a TreeMap with the keys as the userIDs and the values as the nickname associated with each user. I was wondering how I would go about doing getUserID, since there is no way to map ""backwards"" (go from the value to the key)?",I'm a bit confused as to what to make the return type for changeNickname (using the implementation style recommended in the assignment). This method should just be changing the user's nickname in all associated collections right?
+"if the owner of a private channel tries to invite itself, what should happen?",Can the owner of a public channel invite a user to it? What should happen?
+Is there a picture of what the code files are supposed to look like on Eclipse? I'm getting a bunch of errors because I don't think they're in the right place,Is there a picture of what the code files are supposed to look like on Eclipse? I'm getting a bunch of errors because I don't think they're in the right place
+"Is this correctly set up in eclipse? There is a warning error in ServerModel.java. Should I be getting this error?
+
+","Is this correctly set up in eclipse? There is a warning error in ServerModel.java. Should I be getting this error?
+
+"
+"My Eclipse set up seemed to be working fine, until I tried to test ConnectionNamesTest.java. It only says ""Run Configurations"". Although JUnit 4 is set up with the Homework 7 folder, I get the following error when I try to run it from the overall project folder. Is there a way for me to move the testing docs into JUnit 4 folder, or otherwise fix the issue? Thanks!
+
+
+
+","I wrote my code in eclipse and would like to submit by copying my code into codio and submitting from there. (This worked best for me last week.) When I open codio, I can't find the ServerModelTest.java file but when I zip it, this file is included. Where can I find this file so I can copy in all the tests I wrote? Thank you!"
+"Hi! When I try to submit my zipped file, it always give me a compilation error, saying that 
+src/ServerModel.java:13: error: cannot find symbol
+	private Map userMap;
+	                     ^
+  symbol:   class User
+  location: class ServerModel
+1 error
+I'm not exactly sure how to fix it. In my program i created my own classes User and Channel. 
+
+Thank you! ","I tried copying my code to Codio to submit, and I get an error upon submission:
+
+src/ServerModel.java:16: error: cannot find symbol
+    private Set allChannels;
+                ^
+  symbol:   class Channel
+  location: class ServerModel
+1 error
+
+I think the Channel class is not being recognized by Codio, but I'm not sure how to fix it.","Hello! I've been trying to submit my homework but for some reason keep getting this error:
+
+Compiler Output
+ServerModel.java:20: error: cannot find symbol
+	private Map&lt;string, channel=""""&gt; channelList;
+	                    ^
+  symbol:   class Channel
+  location: class ServerModel
+1 error
+
+
+Test Output
+ERROR: compilation failed 
+
+
+
+I checked other posts on piazza and think I fixed everything as to what they were saying, so I'm at a bit of a loss. Any suggestions? Thanks! I've included all the necessary files (Channel.java was my additional class), so I'm not sure why this is happening. "
+"test/ServerModelTest.java:412: error: cannot find symbol    	assertNotEquals(""Changing copy shouldn't change original"", ids, c.getJoinedUsers());    	^  symbol:   method assertNotEquals(String,Collection,Collection)  location: class ServerModelTest1 error
+
+Everything compiles in Eclipse. I pasted my code into codio to zip and made sure everything compiles, but then the submission test said this. What does this mean?","I am trying to submit HW7 on the submission site with my extension till tonight, however, I am running into an issue when submitting. 
+In Codio however, the file compiles and it passes the tests.
+Compiler Output
+test/SubmissionConnectionNicknamesTest.java:14: error: cannot find symbol
+    private ServerModel model;
+            ^
+  symbol:   class ServerModel
+  location: class SubmissionConnectionNicknamesTest
+1 error
+
+
+Test Output
+ERROR: compilation failed "
+"My Join Command is not working, but I can find nothing wrong with the code. So, I am trying to use the debugger in Eclipse but I am getting this error:
+
+objc[57603]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/bin/java (0x10b6c64c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10b7994e0). One of the two will be used. Which one is undefined.
+
+So the debugger will not run. What problem might I be having?","when i try to submit my file its saying this what could be the problem?There is insufficient memory for the Java Runtime Environment to continue.
+# Cannot create GC thread. Out of system resources.
+# An error report file with more information is saved as:
+# /tmp/cis120_scratch/reddysar-55b292aa-0216-4f70-abee-77d3ac3d2e66/hs_err_pid24282.log
+
+"
+"When I submit my homework, it doesn't give me any feedback in the subcategories (as in where I lost points). Can I view this somewhere? What can I do to make sure I see next I submit, I have two of the three submissions left.","When I submit my homework, it doesn't give me any feedback in the subcategories (as in where I lost points). Can I view this somewhere? What can I do to make sure I see next I submit, I have two of the three submissions left."
+"I created a User class and am trying to implement a TreeSet of type User. I typed
+private TreeSet&lt;User&gt; users = new TreeSet&lt;&gt;();
+however there is a warning that says ""TreeSet is a raw type. References to generic type TreeSet&lt;E&gt; should be parameterized"" 
+
+What does this mean?","When I am trying to test that the JoinCommand for a private channel with give an error message, I have a test failure saying that 
+
+java.lang.AssertionError: cannot join private channel expected:&lt;{User3=[:User3 ERROR 407]}&gt; but was:&lt;{User3=[:User3 ERROR 402]}&gt;
+
+What exactly is ERROR 402? I have a User class and a Channel class to keep all the information about Users and Channels, I also used TreeSets to store User objects and Channel objects on ServerModel. I have the code for my test, my code for the Join Command as follows: 
+
+Test
+Screen_Shot_20181115_at_7.57.41_PM.png
+
+Method in ServerModel to add users
+Screen_Shot_20181115_at_8.02.06_PM.png
+
+JoinCommand
+
+Screen_Shot_20181115_at_8.03.01_PM.png
+
+Thank you!"
+"Is their anything that usually causes this exception to be invoked? My code seems to be throwing this at me inside of my deregister user method within server main, and I traced it to this loop.
+for (UserData u : users) {/*gets the desired user when the input name is equal to the user name*/}
+It is only thrown on a singleton set of users. UserData refers to a single user, users is the list stored in server main.","If my channel object stores its users in a TreeMap&lt;String,Integer&gt; where the string represents the user name and the integer the id and i am trying to return the people in the channel using treemap.keyset: do i need to entirely change my implementation as the documentation for this functions seems to suggest that the result of the function changes dynamically with the treemap itself. therefore if i called this function before removing a user from the channel-after removing the user from the channel and then returning the initial set of users I would lose that user in the set. Is there any way around this?"
+"When adding users to channels, we need to return two Broadcasts, one letting the user know the names of all the users in the channel, and one letting the users in the channel know the name of the newly joined user. How do we return both in our updateServerModel method?","Does broadcast.names() take care of both sending the existing users in the channel a notification that someone new joined and also sending the new user the names of the existing users? I implement this method when there are no errors in the JoinCommand, but I'm confused if I should also be sending a Broadcast.okay to those that already exist in the channel. "
+"Hey! Before I actually start writing task 2 in hw, I just wanted to check if my plan is reasonable/logical. 
+I plan create two additional classes user and channel - I plan to have the channel as a collection of such users, and a server as a collection of such channel. A channel has an owner (private instance variable) and a treeset that stores all the users that are in the channel. Similarly, I plan to use a treeset to store all the channels in a server. 
+I also plan on using a linkedlist to store all the user id's registered on the server (because we don't need to access it often? and can just add to the end of lists). 
+
+Sorry this is a bit long! I hope my logic makes sense. Thank you :) ","In my Channels class I have a public method called getUsers, which returns a COPY of the set of users contained within the channel.
+
+In ServerModel I have a public method to allow Command access to that set of users in a channel; in this method I also return a COPY of that set. 
+
+My question is: which ""copy"" is necessary--the one that Channel returns or the one ServerModel returns? Or is it ok to keep both? (ie. should channel return the actual data set of users within the channel and then ServerModel makes a copy?)
+
+Thanks!"
+"public Broadcast deregisterUser(int userId) {	String nickname = """";
+    	
+    	// set of nicknames of users in the same channels as disconnected user
+    	Set&lt;String&gt; recipients = new TreeSet&lt;String&gt;();
+    	
+    	// get the nickname pertaining to given userId
+    	for (User user : allUsers) {
+        	if (user.getId() == userId) {
+        		for (Channel channel : allChannels) {
+        			if (channel.getUsers().contains(user)) {
+        				for (User recipientUser : channel.getUsers()) {
+        					/* Add any users in the same channel as
+        					 * the disconnecting user to set of recipients
+        					 */
+        					recipients.add(recipientUser.getNickname());
+        				}
+        			}
+        		}
+        		
+        		// update value of nickname to reflect disconnected user's name
+        		nickname = user.getNickname();
+        		
+        		// remove user from set of all users
+        		allUsers.remove(user);
+        	}
+        }
+    	
+        return Broadcast.disconnected(nickname, recipients);
+    }
+Hello! I'm having a lot of trouble understanding why the test testDeregisterOneOfManyUsers is failing. Deregistering a single user passes, and I made sure to double check all the functions I'm calling in here. Are there any common reasons deregistering one of many users would fail but deregistering a single user passes? I can't figure out what to look out for here. Really appreciate the help!","    // map of the ID's of the current users and their corresponding nicknames    private Map&lt;Integer, String&gt; currentIdNickname;         // map of the current chanel names and the corresponding channel objects     private Map&lt;String, Channel&gt; currentChannels;        /**     * Constructs a {@code ServerModel} and initializes any collections needed for modeling the     * server state.     */    public ServerModel() {        currentIdNickname = new TreeMap&lt;Integer, String&gt;();        currentChannels = new TreeMap&lt;String, Channel&gt;();    }        // getter method for currentIdNickname    public Map&lt;Integer, String&gt; getCurrentIdNickname() {        return currentIdNickname;    }        // getter method for currentChannels     public Map&lt;String, Channel&gt; getCurrentChannels() {        return currentChannels;    }
+Hello! I had a general question about encapsulation. For private fields, I understand that it's good style to include getter methods (even if you don't really need them. Is this correct?) In this case, I was wondering if I was breaking encapsulation by returning currentChannels or currentIdNickname. How would I know if I was returning the value or if I was returning a reference? (Like the thread about encapsulation with collections) "
+"
+ 
+
+I am working on the LeaveCommand in Task 4, but I am encountering a problem with the test where two users
+join and one leaves. The error is specifically that the person who is still in the channel receives the message,
+but the one who leaves does not. I cannot see what is going wrong with my code, since my recipients variable
+is initialized and instantiated before I do any changes to the channel. Could you help me figure out where I 
+went wrong? Thank you very much for your help.","I am working on deregisterUser. I failed the test upon submission that said ""deregister sends disconnected appropriately to multiple channels."" I have written many test cases for deregister now, and have found a single error, which is that Eclipse shows that my Broadcast is sent only to {}, when it should have been sent to 2 users that I create in the test. I've been trying to figure out why this code does not add the appropriate users to the Collection of users to notify (usersNotify), for quite a long time. Do you have any advice for where I should look while debugging this?
+
+
+public Broadcast deregisterUser(int userId) {
+    	// delete user from set of users
+    	// delete user from the channels they are in
+    	Collection&lt;String&gt; usersNotify = new TreeSet&lt;String&gt;(); 
+    	User u = findUserById(userId);    	
+       	 for(Channel c : channels) {
+            if (c.containsUser(userId)) {
+            	//remove the user from that channel
+            	c.removeUser(u);
+            	usersNotify.addAll(c.getUserNames());
+            	
+            	if (c.getOwner().getId() == userId) {
+            		removeChannel(c.getChannelName());
+            	}
+            }
+        }
+        users.remove(u);
+        return Broadcast.disconnected(u.getNickname(), usersNotify);
+    }"
+"I'm confused as to how to add more instances of clients to my Server so I can test out my code (after JUnit testing of course). On HW Description it says to hit the menu option a bunch of times, but I'm not really sure what that means. To be clear, I just want to be able to add multiple users to the server so they can chat with each other and I can see what that functionality looks like. Any help? ","I know that one person posted a public Server on Piazza for people to join...is it possible for me create a public server and communicate with any of my CIS120 friends who enter it? How can I do that?
+
+Thanks!"
+"I'm getting several errors when I try to create new classes:
+
+1. insert identifier to complete method header name
+2. something about my constructor violating the type of the class i'm creating (public/ private/ protected error)
+3. making a static reference to a non-static object error when i call a function from within the collection i imported
+
+any pointers on how to start fixing this?","I created a new class, Channel, but when I use the getters and setters from that class in ServerModel, it gives me errors saying the method is undefined for the type Channel. How do I fix this? "
+"How do we use the errors defined in server error? Are all of these errors automatically checked at every modification to the server? Or is there something we have to do to invoke checking for errors? 
+
+Does isValidName check for the errors?","In tasks 3,4, and 5, are we only supposed to handle ServerErrors provided to us or do we need to handle others as well? For example, what about No_Such_User errors in the MessageCommand?"
+"I'm a little confused about organizing data in the ServerModel class. Are we supposed to create just one collection to encapsulate the state of the ServerModel class, or can we create multiple collections with different data structures?","From a design perspective, does it make sense to treat a particular channel as a Linked List/Tree, where index 0/root is the owner and everyone else is a member?This could be implemented as a class or simply as a collection within ServerModel.So is implementing every channel as a new collection a good idea, and if so, is it better to do it from within a collection in ServerModel or as a separate class?
+
+My biggest concern with both of these way is that data can go out of sync. If a user disconnects, I will have to check to every single channel and ensure the user is removed from all of them. Doing this if every channel exists as a collection within ServerModel would be a bother, so this leads me to believe that I should create a channel class. Once all the channels are stored in a collection within ServerModel I can run a for-each loop and remove the disconnected user from every channel.So, I am not sure if I'm on the right track or not.
+
+Another idea I have is to disregard everything above, and simply add a linked list field to my User class which currently stores the id and nickname. I can simply add channels to linked list of a user when the user joins a channel. When the user is deregistered, the user's channel bindings are deleted along with the user. This way all the data is stored in the main collection of users inside ServerModel. The potential issue I can see with this is when I have to send a message to all users of a particular channel, I will have to go through every single user in the main registeredUsers collections, find who all is a part of the selected channel and send a message to them. This will be very slow.I am sorry for the wall of text but I am extremeley unsure of what path to take next."
+"I chose to store the userId's and associated nicknames as a map of ints and strings. However, I don't understand how this is a subtype of the collection class or how to return all of the userId's as a collection of strings","If I have a User class and within serverModel I am creating a collection of Users, how can I convert that collection to a collection of strings? If I have a field in the User constructor that represents the nickname (string), should I be writing getter methods within the User class to return the nickname and then use those methods within serverModel?"
+"I keep failing this test because the ""recipients"" collection that I'm passing into broadcast.okay apparently does not contain the user that has left the channel. 
+
+I'm really confused though because I've specifically accounted for this in my code. Before calling broadcast.okay, I call a removeUserFromChannel method on the current model instance. This method, before removing a user from a specific channel through updates to the model state, sets a static field in the ServerModel class to be equal to the collection of users in that specified channel. In the broadcast.okay return statement in the Command class, I access this static field to act as the recipients of the broadcast.
+
+Any idea where this could be going wrong? 
+
+","I've created class data type for ""a user"" and I've also created a collection ""ClientSet"" that extends TreeSet to contain users.
+In the class signature of ClientSet, I'm getting a warning ""The serializable class ClientSet does not declare a static final serialVersionUID field of type long"".
+
+Everything works fine (ie, compiles, but also server is functional), any idea what this warning means and if I can ignore it?
+
+"
+"When I try to run the JUnit tests, I keep getting a compile error that says that my package ""collection name"" does not exist. I get this error on the line that I try to use an Iterator on the keyset of this collection (which is a Tree Map). How could I fix this error?","What's the difference between an empty collection and a null collection? I am trying to return a collection that is sometimes empty in one of my methods in ServerMode, but I keep getting a null pointer exception."
+"public Collection&lt;String&gt; getChannels() {		Collection&lt;String&gt; copyChannelMap = channelMap.keySet()		return copyChannelMap;	}
+Does something like this preserve encapsulation?","    public Broadcast deregisterUser(int userId) {
+        String deregisterNickname = currentIdNickname.get(userId);
+        currentIdNickname.remove(userId);        
+        Collection&lt;String&gt; usersToNotify = new TreeSet&lt;String&gt;();    
+        
+        for (String s: currentChannels.keySet()) {
+            Channel c = currentChannels.get(s);  
+            if (c.getChannelUsers().contains(userId)) {
+                c.dltUserFromChannel(userId);
+                usersToNotify = deregisterHelper(c.getChannelUsers(), usersToNotify);
+            }                 
+            if (c.getOwnerID() == userId) {
+                currentChannels.remove(s);
+            }
+        }
+        return Broadcast.disconnected(deregisterNickname, usersToNotify);
+    }
+
+    public Collection&lt;String&gt; deregisterHelper(Set&lt;Integer&gt; setInt, Collection&lt;String&gt; collStr) {
+        for (Integer i: setInt) {
+            collStr.add(currentIdNickname.get(i)); 
+        }     
+        return collStr;
+    }
+Hello! I'm using a helper function to constantly add to a Set of strings from a set of integers (i have a map that goes from a userID (key, integer) to a nickname (value, String). My question here is: even if I made the helper function void and just called the helper in the main function instead of updating usersToNotify, would I be able to reach the same result?? I wasn't quite sure about the ASM for this code and thought it might make a copy somewhere so just decided to be safe. Am wondering I could just make it void! (Or in fact, since usersToNotify was declared before the for each loop and has a big scope, would it just keep updating?) 
+
+Also bonus question: I understand that a set adds an element if it is not already present. IF you try to add something that is already there, does it just not do anything or does it throw an exception? "
+"Hello! For the leaveCommand, I wrote the following code in command.java. I originally had concurrentmodificationexception because I was removing the user while iterating through usersOfChannel in the for-each loop. I resolved the problem by creating uuserToRemove set, but my code is still not working and I don't know why. 
+ public Collection&lt;String&gt; removeUser(String channelName, int userId) {    	Collection&lt;String&gt; usersOfChannel = getUsersInChannel(channelName);    	Collection&lt;String&gt; userToRemove = new TreeSet&lt;&gt;();    	userToRemove.add(umap.get(userId));    	for(String user : userToRemove) {    		if (user.equals(umap.get(userId)) &amp;&amp; umap.get(userId).equals(getOwner(channelName)))    		{cmap.remove(channelName);}    		else    		{cmap.get(channelName).removeUser(userId);}    	}    	return usersOfChannel;    }
+Corresponding removeUser method in my Channel class
+public void removeUser(int userId) {
+		user.remove(userId);
+	}
+","Hi,
+I'm a bit confused what's the point of toString() in Update. So when I return a Broadcast.okay(command, Collection&lt;String&gt;), how is my return statement affected by this override function? Do I need to call toString anywhere?
+ @Override
+    public String toString() {
+        return String.format("":%s LEAVE %s"", getSender(), channel);
+    }
+"
+Are we allowed to change the signature of some get methods to static in the ServerModel class?,Are we allowed to import java.util.Set; in the files where it was not originally imported?
+"If we made new classes, is it okay if we create them in ServerModel.java, or should we create completely new files for these classes?",I created User and Channel classes in the server model file. Is that okay or should I create new files for each class?
+"I originally wrote a getChannels() method in ServerModel and I passed in channelID as one of the parameters. However, solving through task 4, it seems like channelID is unncessary so I just got rid of it in ServerModel and in my separate Channel class. Is this okay?","I'm having trouble compiling my files in Codio. I get this error message and I think I may have an issue with my innerclass Channel but I'm not sure?
+
+mkdir binjavac -d bin src/*.javasrc/ServerModel.java:3: error: package ServerModel does not existimport ServerModel.Channel; ^1 errormake: *** [Server] Error 1codio@opinion-oval:~/workspace$"
+"I understand that Integer is a wrapper class for the primitive int. If we want to do any operations on an int, we use Integer.method() and not int.method(). But what does that actually mean?I have this in context of why this
+TreeMap&lt;int, String&gt; somemap
+does not compile, but this
+TreeMap&lt;Integer, String&gt; somemap
+does?","I understand that Integer is a wrapper class for the primitive int. If we want to do any operations on an int, we use Integer.method() and not int.method(). But what does that actually mean?I have this in context of why this
+TreeMap&lt;int, String&gt; somemap
+does not compile, but this
+TreeMap&lt;Integer, String&gt; somemap
+does?"
+"for the methods getRegistredUsers, getChannels, getUsersInChannel, etc
+
+if the thing (the thing being the way  we are implementing server model) is null, for these methods above, should we return a collection that is just empty or null?","I'm not sure I understand how null works at all
+
+when is it necessary to check if the thing (the thing being the way we are implementing server model) is null explicitly by using:
+if (_ == null) {    return null;}
+and when will it just return null either way since calling some method on something that is null will probably return not true in an if statement?"
+"I currently have this piece of code.
+public String getOwner(String channelName) {        // TODO: Return owner of the channel    	for(Channel x: registeredChannels) {    		if (channelName.equals(x.getName())) {    			return x.getOwner().getNickname();    		}    	}        return null;    }
+If a particular case matches the if statement within the enhanced for loop, does the program simply exit out of this method with the given return value, or does it still continue to loop through and return null in the end?
+","It says I have a null pointer exception for NicknameSet.add(getNickname(next));
+I use a set to store all the channels and with in each channel there is a set contains all users' id in the channel.
+
+public Collection&lt;String&gt; getUsersInChannel(String channelName) { Channel theChannel = getChannel(channelName); Set&lt;String&gt; NicknameSet = new TreeSet(); Set&lt;Integer&gt; UserIdSet = theChannel.getUserIdSet(); Iterator&lt;Integer&gt; UserIdSetIterator = UserIdSet.iterator(); Integer next = null; while (UserIdSetIterator.hasNext()){ next=UserIdSetIterator.next(); NicknameSet.add(getNickname(next)); } return NicknameSet; }"
+"When I run my code for the invite command, my InviteByOwner test fails with error 403 that no such user exists. I am basically getting a null pointer when I look for the user who has to be invited. I've traced my code but can't seem to find the source of the bug and why I am getting a null pointer. Is there some place in specific that I should be looking into?","Hello,
+
+I've been working on getting a channel to create for the past few days now and I don't seem to be making any headway as to why I'm getting a Null Pointer Exception. :( I was wondering if it might be possible for someone to steer me in the right direction. 
+
+I start off by making a Map for Channels in ServerModel.java:
+ private Map&lt;Integer, String&gt; registeredUsers;
+ private Map&lt;String, Channel&gt; channelList;
+
+ public ServerModel() {
+  registeredUsers = new TreeMap&lt;&gt;(); //Initializing our map of registered users
+  channelList = new TreeMap&lt;&gt;();
+ }
+ 
+
+And then, I create a Channel:
+    public void createChannel(String channelName, String owner)
+    {
+     Channel c = new Channel (owner);
+     channelList.put(channelName, c);
+     c.addUserChannel(owner);
+    }
+
+Moving on to the Channel class itself, here's what I have for the file:
+import java.util.*;
+
+public final class Channel {
+ private Map&lt;Integer, String&gt; usersList;
+ private Set&lt;String&gt; usersInChannelList;
+ private String owner;
+
+ public Channel(String owner) {
+  usersList = new TreeMap&lt;&gt;(); //Initializing our map of users in a specific channel
+  this.owner = owner;
+ }
+
+ public String getOwner()
+ {
+  return this.owner;
+ }
+
+
+ public void addUserChannel(String nickname)
+ {
+  usersInChannelList.add(nickname);
+ }
+
+
+ public void removeUserChannel(String nickname)
+ {  
+  usersInChannelList.remove(nickname);
+ }
+
+ public Set&lt;String&gt; getUsersInChannel()
+ {
+  return usersInChannelList;
+ }
+
+}
+
+
+
+And my CreateChannel command in Command.java:
+/**
+ * Represents a {@link Command} issued by a client to create a new channel.
+ */
+class CreateCommand extends Command {
+    private String channel;
+    private boolean inviteOnly;
+
+    public CreateCommand(int senderId, String sender, String channel, boolean inviteOnly) {
+        super(senderId, sender);
+        this.channel = channel;
+        this.inviteOnly = inviteOnly;
+    }
+
+    @Override
+    public Broadcast updateServerModel(ServerModel model) {
+        String sender = getSender();
+     Collection &lt;String&gt; newCol = new TreeSet&lt;String&gt;();
+     newCol.add(sender);
+      if (ServerModel.isValidName(channel))
+         {
+          model.createChannel(channel, getSender());
+          return Broadcast.okay(this, newCol);
+         }
+      
+     if (model.getChannels().contains(channel))
+        {
+         return Broadcast.error(this, ServerError.NAME_ALREADY_IN_USE);
+        }
+       
+        return Broadcast.error(this, ServerError.INVALID_NAME);
+    }
+
+    public String getChannel() {
+        return channel;
+    }
+
+    public boolean isInviteOnly() {
+        return inviteOnly;
+    }
+
+    @Override
+    public String toString() {
+        int flag = inviteOnly ? 1 : 0;
+        return String.format("":%s CREATE %s %d"", getSender(), channel, flag);
+    }
+}
+
+
+
+Every time I run the program, it fails on a Null Pointer exception in my Channel.java class at this line: 
+public void addUserChannel(String nickname)
+ {
+  usersInChannelList.add(nickname);
+ }
+ which I don't quite understand why it is throwing such an exception.
+
+A null pointer exception is also found at my createChannel method in: 
+c.addUserChannel(owner);
+
+As well as in UpdateServerModel in: 
+model.createChannel(channel, getSender());
+
+And finally in the test itself, testCreateNewChannel, at 
+assertEquals(""broadcast"", expected, create.updateServerModel(model));
+
+
+I have been over and over my code and can't seem to find anything incorrect, although there clearly is something afoot as a null pointer exception has been found four times. I would really appreciate just even a hint as to which part to look at and try to edit. Thank you so much!"
+"I failed the 
+testNickCollision, testNickNotInChannels, testNickCollisionOnConnect
+ tests but I have no idea why ""null"". Because I have no return null statement inside my code implementation for those tests. 
+The error is
+java.lang.AssertionError: Broadcast expected:&lt;{User0=[:User0 ERROR 500]}&gt; but was:&lt;null&gt;"," I get illegal argument exceptions in the Channels Messages tests. I think its originating from the if statement in the block below, but idk what I could be doing wrong. What would make owner or nicks null? 
+
+private static String createNamesPayload(String owner, Collection&lt;String&gt; nicks) {
+        if (owner == null || nicks == null || !nicks.contains(owner)) {
+            throw new IllegalArgumentException();
+        }"
+"To whom should we send the names broadcast when a user joins or is invited to a channel? The instructions say to let the joinee know but based on the createNamesPayLoad implementation, the owner also should be informed. Does this mean we should just send the broadcast to everyone? ","I'm a bit uncertain about who gets the broadcast for a user's nickname change - 
+all users on the server or just the ones that are in the same channel as the user whose name is changed? 
+
+Thank you! "
+"I am trying to handle the case in my updateNickname method of ServerModel where you might be trying to change the nickname of a user who is not even connected to the server. Because the method returns a Broadcast is there some Broadcast error I can make that says like User Not Connected/User Does Not Exist. If not, what should I return in this case?","What if the client tries to join a channel they are already a part of? The resulting model state should be no different than the original, which means we do not need to protect the server state from this sort of error. In cases like this, it is safe to “ignore” the error and process the command as usual.
+
+I'm stuck because it's an error if a user is in the channel already, but you need to return a Broadcast. Is there a type of broadcast that doesn't do anything?"
+" public void testNickNotInChannels() {        model.registerUser(0);        Command command = new NicknameCommand(0, ""User0"", ""cis120"");        Set&lt;String&gt; recipients = Collections.singleton(""cis120"");        Broadcast expected = Broadcast.okay(command, recipients);        assertEquals(""Broadcast"", expected, command.updateServerModel(model));        Collection&lt;String&gt; users = model.getRegisteredUsers();        assertFalse(""Old nick not registered"", users.contains(""User0""));        assertTrue(""New nick registered"", users.contains(""cis120""));    }
+This is one of the test previously provided. I don't understand why the recipients actually include the new nickname. My understanding is that since this user is not in any channel, so no body should be sent the broadcast?
+
+ public Collection&lt;String&gt; changeNickname(int userId, String newNickname) {    	String nickname = getNickname(userId);    	allUsers.replace(userId, newNickname);    	Collection&lt;String&gt; recipients = new TreeSet&lt;String&gt;();    	Iterator&lt;Channel&gt; iterator = allChannels.iterator();        while(iterator.hasNext()) {            Channel c = iterator.next();            if (c.getUserNames().contains(nickname)) {    			recipients.addAll(c.getUserNames());    			recipients.remove(nickname);    			c.changeNicknameInChannel(userId,newNickname);    			if (c.getOwnerName().equals(nickname)) {    				c.setOwner(newNickname);    			}    		}        } 	   	    	    	return recipients;}
+This is my implementation in the ServerModel Class, and I intended to make it only relaying other users in the same channel, and somehow I don't know why I still pass the test..
+Can you help explain a bit? Thanks!","I have finished writing all the tasks and I been trying to find out whats wrong with my code: all my tests pass except one in task 4:
+public void testNickBroadcastsToChannelWhereMember() {
+        model.registerUser(0);
+        model.registerUser(1);
+        Command create = new CreateCommand(0, ""User0"", ""java"", false);
+        create.updateServerModel(model);
+        Command join = new JoinCommand(1, ""User1"", ""java"");
+        join.updateServerModel(model);
+
+        Command nick = new NicknameCommand(1, ""User1"", ""Duke"");
+        Set&lt;String&gt; recipients = new TreeSet&lt;&gt;();
+        recipients.add(""User0"");
+        recipients.add(""Duke"");
+        Broadcast expected = Broadcast.okay(nick, recipients);
+        
+        assertEquals(2, model.getUsersInChannel(""java"").size());
+        assertFalse(""old nick not in channel new"", model.getUsersInChannel(""java"").contains(""User1""));
+        assertTrue(""new name is in channel new"", model.getUsersInChannel(""java"").contains(""Duke""));
+        
+        assertEquals(""broadcast"", expected, nick.updateServerModel(model));
+        assertFalse(""old nick not in channel"", model.getUsersInChannel(""java"").contains(""User0""));
+        assertEquals(""Duke owner"",""Duke"", model.getOwner(""java""));
+        assertEquals(2, model.getRegisteredUsers().size());
+        assertTrue(""new nick is in channel"", model.getUsersInChannel(""java"").contains(""Duke""));
+I will include all the relevant pieces of codes, it seems that all the functions are written ok the problem might be in the logic itself:
+all my data is stored in 4 TreeMaps:
+  private TreeMap &lt;Integer, String&gt; ID_Nickname;
+  private TreeMap &lt;String, Integer&gt; Channel_ID_owner;
+  private TreeMap &lt;String, Boolean&gt; Channel_privacy;
+  private TreeMap &lt;String, Set&lt;Integer&gt;&gt; Channel_users;
+Code for registerUser:
+ public Broadcast registerUser(int userId) {
+        String nickname = generateUniqueNickname();
+        Broadcast brd= Broadcast.connected(nickname);
+        ID_Nickname.put(userId,nickname);
+        return brd;
+    }
+Code for nickname:
+public Broadcast changeNickname (Command command, int userId, String g) {	
+		// if the name already used 
+		
+        Iterator&lt;Integer&gt; itr = ID_Nickname.keySet().iterator();
+        while (itr.hasNext()){
+        	if (g.equals(ID_Nickname.get(itr.next()))){
+        		Broadcast error= Broadcast.error(command, ServerError.NAME_ALREADY_IN_USE);
+        		return error;
+        	}
+         }  
+             if (!(isValidName(g))){             
+             Broadcast error_2= Broadcast.error(command, ServerError.INVALID_NAME);
+             return error_2;
+         }
+        //ID_Nickname.replace(userId, g);
+        ID_Nickname.remove(userId);
+        ID_Nickname.put(userId,g);
+        Broadcast okay= Broadcast.okay(command, users_channels (userId));
+             return okay;
+     }
+Code for create channel:
+public Broadcast createChannel (Command command,int userId,String name,boolean invite) {
+		Iterator&lt;String&gt; itr= Channel_ID_owner.keySet().iterator();
+		while (itr.hasNext()){
+	        if (name.equals(Channel_ID_owner.get(itr.next()))){
+	         Broadcast Error= Broadcast.error(command, ServerError.CHANNEL_ALREADY_EXISTS);
+	         return Error;
+	              }
+	         }  
+		 if (!(isValidName(name))){             
+             Broadcast Error_2= Broadcast.error(command, ServerError.INVALID_NAME);
+             return Error_2;
+		
+	      }
+     Set&lt;Integer&gt; owner=new TreeSet&lt;Integer&gt;();
+     owner.add(userId);     
+     Channel_ID_owner.put(name, userId);
+     Channel_users.put(name, owner);  
+     Channel_privacy.put(name, invite);
+     Set&lt;String&gt; owner_nickname= new TreeSet&lt;String&gt;();
+     owner_nickname.add(ID_Nickname.get(userId));
+	 Broadcast okay= Broadcast.okay(command,owner_nickname);
+	 return okay;	
+	}
+public Broadcast joinChannel (Command command,String channel, int userId) {	    
+
+		if (Channel_privacy.get(channel)==false) {
+		Iterator&lt;String&gt; iter= Channel_ID_owner.keySet().iterator();		
+		while (iter.hasNext()){ 
+			if (channel.equals(iter.next())){	
+				Channel_users.get(channel).add(userId);
+				System.out.println(Channel_users.get(channel).contains(Channel_ID_owner.get(channel)));				
+				int owner_channel=Channel_ID_owner.get(channel);
+				String owner_nickname=ID_Nickname.get(owner_channel);
+				Set&lt;String&gt; nicknames= Id_to_nicknames(Channel_users.get(channel));				
+				Broadcast name= Broadcast.names(command, nicknames, owner_nickname);
+				return name;
+			}
+		}
+			 Broadcast error= Broadcast.error(command, ServerError. NO_SUCH_CHANNEL);
+			 return error;
+		}
+		
+		 Broadcast error_2= Broadcast.error(command, ServerError.JOIN_PRIVATE_CHANNEL);
+		 return error_2;
+	}
+ public Collection&lt;String&gt; getUsersInChannel(String channelName) {
+         if (Channel_users.containsKey(channelName)){
+            Set&lt;Integer&gt;a=Channel_users.get(channelName);
+            Set &lt;String&gt; users= new TreeSet &lt;String&gt;();
+            Iterator&lt;Integer&gt; itr = a.iterator();
+            System.out.println(""started iteration"");
+            while (itr.hasNext()){
+            	String n=ID_Nickname.get(itr.next());
+            	users.add(n);
+            	System.out.println(n);
+            	
+            }            
+            return users;
+        }
+        return null;
+    }
+Thank you!"
+" For my leave command class i have the following : 
+public Broadcast updateServerModel(ServerModel model) {
+         if (!model.getChannels().contains(channel)) { 
+          return Broadcast.error(this, ServerError.NO_SUCH_CHANNEL);
+         }
+         else if (!model.getChannelUsersTreeMap(channel).containsKey(getSenderId())) {
+          return Broadcast.error(this, ServerError.USER_NOT_IN_CHANNEL);
+         }
+         else { 
+           Collection&lt;String&gt; recipients = model.getUsersInChannel(channel);
+          model.removeUserFromChannel(getSenderId(),channel);
+          return Broadcast.okay(this,recipients);
+         }
+    }
+
+I am receiving a failure i think because i am not broadcasting the okay to the right recipients. I think this may be because when I remove the User from the Channel, my recipient variable gets affected too because of referential equality. How can I debug this?","Hello! I currently have the following for the updateSeverModel method of CreateCommand:
+    public Broadcast updateServerModel(ServerModel model) {
+        // TODO: Handle create command
+        Collection&lt;String&gt; channels = model.getChannels();
+        String channel = getChannel();
+        Set&lt;String&gt; recipients = Collections.singleton(getSender());
+        		
+        if (channels.contains(channel)) {
+        	Broadcast taken = Broadcast.error(this, ServerError.CHANNEL_ALREADY_EXISTS);
+        	return taken;
+        }
+        else if (!(ServerModel.isValidName(channel))) {
+        	Broadcast invalid = Broadcast.error(this, ServerError.INVALID_NAME);
+        	return invalid;
+        }
+        
+        model.addChannel(getSenderId(), channel, getMap());
+
+        Broadcast valid = Broadcast.okay(this, recipients);
+        
+        return valid;
+    }
+Tests for the addChannel method pass; error tests for CreateCommand pass as well. For a test of the method adding a single channel, however, I am getting that the number of channels I have is 0 when it should be 1, implying that it isn't adding the channel like it should be. What should I do, or how am I approaching this wrong? 
+Thanks!"
+"First failure is nick change broadcast to all channels where member: broadcast expected:&lt;{Duke=[:User2 NICK Duke], User0=[:User2 NICK Duke], User1=[:User2 NICK Duke]}&gt; but was:&lt;{Duke=[:User2 NICK Duke], User0=[:User2 NICK Duke]}&gt;","When I submitted my code, I got:
+
+First failure is nick change not broadcast to channels where not member: broadcast expected:&lt;{Duke=[:User2 NICK Duke], User0=[:User2 NICK Duke]}&gt; but was:&lt;{Duke=[:User2 NICK Duke], User0=[:User2 NICK Duke], User1=[:User2 NICK Duke]}&gt;
+I have no idea what this error is trying to tell me. Ideally it would be phrased in something more comprehensible. What is this error trying to say?"
+"The behavior of this method if the given user ID is not registered with the	 * model is undefined
+What do we do if the user we want to de-register does not exist? What does ""undefined"" mean? What should we return?","The instructions say ""The behavior of this method if the given user ID is not registered with the model is undefined."" Does this mean I should do nothing or throw an exception?"
+"I'm getting an error saying channel cannot be casted to java.lang.comparable for the channel messages tests. What do these mean? 
+","What does this error mean:
+
+User cannot be cast to java.base/java.lang.Comparable
+
+?"
+"public static Broadcast error(Command command, ServerError error)
+
+I'm a little confused about how to pass in a Command. Do I have to create a new Command using the command constructor? In that case would the senderId and the String sender just be the Id and nickname of the user?","I'm having trouble writing out the command and error that need to be inputted into the factory method to make a make an error-broadcast. My intuition was to write something like this: 
+return Broadcast.error(Command.NicknameCommand, INVALID_NAME); but Eclipse doesn't seem to recognize the command name or the error - what should I be doing differently?"
+"I initially did the bulk of my command implementations in ServerModel and was just calling them in Command. For example,
+
+ public Broadcast updateServerModel(ServerModel model) {        return model.createChannel(getSenderId(), getSender(), getChannel(), isInviteOnly());    }
+Should this be backwards? Should I be implementing in Command and calling Command.updateServerModel in ServerModel?","I am now writing tests for invitecommand.
+
+@Test   public void testInviteNoSuchChannel() {	   model.registerUser(0);	   model.registerUser(1);	   model.addChannel(0, ""channel"", true);	   Command command = new InviteCommand(0,""User0"",""channel2"",""User1"");	   Broadcast expected = Broadcast.error(command, ServerError.NO_SUCH_CHANNEL);	   System.out.println(expected);	   assertEquals(""invite error no such channel"", expected, command.updateServerModel(model));   }
+The tests fails ,and I try to print out the broadcast, and it says ""{User0=[:User0 ERROR 402]}""
+what does this mean?"
+Can I import java.util.Lists into the Command class?,can we paste import java.util.*; in the beginning of Command class?
+"I'm confused whether to use ""this"" or not. In the command classes, for example, the getChannel() methods return channel and not this.channel. 
+Another question I have about ""this"" is when creating command objects. Are the ""this's"" below necessary?
+
+InviteCommand c = new InviteCommand(this.getSenderId(), this.getSender(), this.channel, this.userToInvite);
+
+Thanks!","If we are writing a method in this class, but want access to the values of the fields for the Command class (sender and senderId), will using this.getSender() and this.getSenderId() in a method body of NicknameCommand give those values?"
+"Can we define any number function we want in servermodel if it will help us in command? Even if they are not directly the related to the method we are implementing in common? For instance, the instructions say ""For instance, you might consider adding a changeNickname method to your ServerModel class,"" but could we add other functions that are not changeNickname or equivalent functions for equivalent methods in command?","When writing JUnit tests, can we just test different command scenarios, which indirectly tests the ServerModel class methods? 
+
+If not, do we have to also test the methods within ServerModel individually (e.g. whether it returns null when it's supposed to)?"
+"""If the command can be handled successfully by the model, then you should relay the command to any clients in the same channels as the sender by using the okay static method in Broadcast.""
+
+Does ""any clients in the same channels as the sender"" include the sender or should we remove the sender from that collection of people?","For updateServerModel it says:
+
+If the command can be handled successfully by the model, then you should relay the command to any clients in the same channels as the sender by using the okay static method in Broadcast.
+
+Should we also relay the message to the sender or should we take them out of the list of clients as we are passing in?"
+"I'm failing this test, so I tried printing out the expected output and the actual output and this is what I got
+
+actual: {User0=[:User1 JOIN java], User1=[:User1 JOIN java]}expected: {User0=[:User1 JOIN java], User1=[:User1 JOIN java, :User1 NAMES java :@User0 User1]}
+What do the extra things at the end of expected indicate?","Hello! I'm getting the following error for the JoinCommand, and was confused about what the extra User0 means:
+java.lang.AssertionError: Broadcast expected:
+
+&lt;{User0=[:User0 JOIN My Channel, :User0 NAMES My Channel :User0 @User1], User1=[:User0 JOIN My Channel]}&gt; but was:
+
+&lt;{User0=[:User0 JOIN My Channel, :User0 NAMES My Channel :User0 User0 @User1], User1=[:User0 JOIN My Channel]}&gt;
+"
+How do I initialize a treemap field to start as empty before I have added any keys/values? I have looked at the java docs but am still unsure of how to proceed.,"I've looked at the java docs and all of the methods associated with TreeMap but it's not immediately apparent to me which of them is able to insert a key and value pairing.
+
+"
+Can we overload methods in Java such that they have the same name but take in different arguments?,are we allowed to use the String compareTo method in java for our compareTo method if we are using a TreeSet of Strings?
+"Hi!
+
+I followed the instructions: ""What if the client tries to join a channel they are already a part of?...In cases like this, it is safe to “ignore” the error and process the command as usual.""
+
+However, inside the client/server window, there is a slight variation in the display when the user tries to join a channel they just created. Is this a problem? (Pictures attached showing the change in display)
+
+
+
+
+
+
+
+","On the instructions for JoinCommand, it says 
+""What if the client tries to join a channel they are already a part of? The resulting model state should be no different than the original, which means we do not need to protect the server state from this sort of error. In cases like this, it is safe to “ignore” the error and process the command as usual.""
+
+Does that mean that I don't need to check if the user is already in the channel? Are the only things I need to check before registering the user and broadcasting the name method 1) whether the channel that user wants to join is one of the existing channels 2) whether the channel is public for the user to join ?"
+"java.lang.AssertionError: broadcast expected:&lt;{User0=[:User1 JOIN java], User1=[:User1 JOIN java, :User1 NAMES java :@User0 User1]}&gt; but was:&lt;{User0=[:User1 JOIN java], User1=[:User1 JOIN java, :User1 NAMES java :User0 @User1]}&gt;I'm getting this error when I try to run the test for joining channels. Everything seems to be right except at the end when the expected has NAMES java:@ User0 User1 and the actual outcome was NAMES java :User0 @User1. I'm not really sure what's going on here?
+","Message: broadcast expected:&lt;{User0=[:User1 JOIN java], User1=[:User1 JOIN java, :User1 NAMES java :@User0 User1]}&gt; but was:&lt;{User0=[:User1 JOIN java], User1=[:User1 JOIN java]}&gt;
+
+I don't understand why the expected broadcast includes "":User1 NAMES java :@User0 User1""","My test case is getting the following error:
+
+java.lang.AssertionError: broadcast expected:&lt;{User0=[:User1 JOIN java], User1=[:User1 JOIN java, :User1 NAMES java :@User0 User1]}&gt; but was:&lt;{User0=[:User1 JOIN java], User1=[:User1 NAMES java :@User0]}&gt;
+
+Here is my code for JoinCommand:
+
+public Broadcast updateServerModel(ServerModel model) {
+        // TODO: Handle join command
+		if (model.getChannels().contains(channel)) {
+			Collection recipients = new TreeSet();
+			
+			model.addUserToChannel(this.getSenderId(),channel);
+			recipients = model.getUsersInChannel(channel);
+			
+			String channelOwner = model.getOwner(channel);
+			
+			return Broadcast.names(this, recipients, channelOwner);
+		}
+		else {
+			return Broadcast.error(this, ServerError.NO_SUCH_CHANNEL);
+		}
+    }
+
+I don't really understand why I'm getting this error. I think it might be that my addUserToChannel does not work?"
+"I feel like I am confused with how to use information stored in another class.
+I want to create a class for channels.
+If I have a static field in channel class which is a list of channelnames, can I directly call it with Channel.*** in ServerModel class?
+And how should I deal with the constructors in Channel class and in Server Model Class?","Hello! I implemented my list of current Channels in the server through a map, where a channel (key) maps to a value (name of Channel). 
+
+private Map&lt;Channel, String&gt; currentChannels;
+However, I could have also implemented this by having a private field inside the Channel class called Channel Name. I just chose to do the map because alot of the methods pass the channel name as parameters and it is easier to use a map to find the corresponding Channel. I could have also, however, iterated over a set of channels, find the channel with the corresponding nickname, and do something with it. What are the pros/cons of each approach and which one should I use? "
+"I am having an issue, that my chat works for one channel, but when I create the second channel, it does not seem to be adding it to the list of channels. When I run the client jar, a second channel is created, but I get the 402 error when I try to interact with it. I have made an equivalent junit test, and it seems that the channel is simply not being added to the channels within the server, but I cannot figure out why. If I import the treeset class, should the tree.add(object) function work as expected?
+","I am testing my create command and when I create two different channels with one user and then try to add another user to each of them, the test I run says that the channel name for the second created channel does not exist. Is there something that would allow my code to work for creating a first channel but not a second?"
+"I was wondering if there was a simple way to consolidate all the users that should be receiving a notification from a user changing his/her nickname (particularly if this user is on multiple channels).
+
+Right now, I'm using 2/3 helper methods that traverse through the channels and checks to see if the user is in them, then adds the rest of the people on the channel to the recipient ""set."" This isn't working for me though, any suggestions?","My first failure when I submitted the homework was: ""deregister sends disconnected appropriately to multiple channels.""
+
+I am a bit confused on what this means. My code adds all users who were in a channel with the disconnected user to a set of users to be notified. I am not necessarily supposed to send this to ""multiple channels,"" just users from any channel that the original user was in, right?
+
+Here is my code for this method:
+public Broadcast deregisterUser(int userId) {
+    	// delete user from set of users
+    	// delete user from the channels they are in
+    	Set&lt;String&gt; usersNotify = new TreeSet&lt;String&gt;();
+    	User u = findUserById(userId);
+        String userToRemove = u.getNickname();
+        users.remove(u);
+        for(Channel c : channels) {
+            if (c.containsUser(userId)) {
+            	//remove the user from that channel
+            	c.removeUserById(userId);
+            	Set&lt;String&gt; usersInChannel = c.getUserNames();
+            	//add all user names of people from that channel to the set of users to be notified
+            	for (String s : usersInChannel) {
+            		if (!usersNotify.contains(s)) 
+            			usersNotify.add(s);
+            	} 
+            }
+        }
+        return Broadcast.disconnected(userToRemove, usersNotify);
+    }
+"
+"What is this test case?
+deregister owner of multiple channels removes channels: channel1 does not exist","I am confused as to what the following error message means upon submitting:
+
+First failure is deregister owner of multiple channels removes channels: channel1 does not exist"

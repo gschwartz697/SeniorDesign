@@ -1,0 +1,156 @@
+"The hamming distance compares the first element of the list with the first of the second list, etc, right?
+
+For example,
+
+hamming_distance [G; C; T] [G; C; A] = 0 or 2?
+
+
+@266 made me confused
+","parent_child_hamming (LNode (LLeaf [], [T; A], LNode (LLeaf [A; A], [A; A],  LLeaf [G; C]))) 
+
+if there was a statement like the one above, with a depth-3 list and one of the leafs is empty like the left one above, what would the statement produce?
+"
+"Should the top line of danTest.ml read "";; open Dna"" or "";; open dna""? Mine is currently the first, and I am not able to access function / types from dna.ml.","For both dna.ml and dnaTest.ml, codio told me the very first line of the code "";; open Assert"" is wrong and it says ""unbound module assert"". What is possibly wrong with open assert?
+
+Thank you."
+"I had been building without issue, but I have since started getting this error.
+
+
+
+When I look on the side bar, I do not see an src/display.ml tab, and when I try to click on dnaTest.byte nothing opens. I'm not sure what to do next so any pointers would be helpful!","I'm not able to access the HW on codio. I keep getting a 404 not found error for various pages, sometimes the login page sometimes other pages. It varies every time I refresh and try, but I am unable to get to the homework. Is anyone else getting this issue/is there anything I can do to fix this?"
+"I am getting the following error. How can I get rid of it?
+
+Exception File ""src/display.ml"", line 176, characters 2-8: Assertion failed.Compilation unsuccessful after building 1 target (0 cached) in 00:00:00.make: *** [dnaTest.byte] Error 100","Exception File ""src/display.ml"", line 176, characters 2-8: Assertion failed.Compilation unsuccessful after building 1 target (0 cached) in 00:00:00.make: *** [dnaTest.byte] Error 100
+
+I keep getting this error. There are no red squiggly lines in either my dnaTest or dna file. ","I have finished all of the problems and had been able to test and run functions great up until this point, but when I tried to run the entire completed program. I am getting this error:
+File ""dna.ml"", line 785, characters 0-0:Error: Syntax errorCommand exited with code 2.Compilation unsuccessful after building 11 targets (10 cached) in 00:00:00.make: *** [dnaTest.byte] Error 10codio@hazard-reverse:~/workspace$
+
+I currently have nothing at line 785. I believe it has something to do with discrepancies between the dna.ml and dna.mli file, but am wondering what the exact source of this error is. "
+"How would you go about using 
+
+;; print_endline for helixes?
+
+would you have to create a recursive function for it? If so, how would you do it since you don't have tools like string_of_helix available?","For problem 3 I'm not passing any tests and I want to see what my function is outputting. But I don't know how to do that since the print_endline command needs a string....  
+
+Is there a generic print command that will just spit out the function value (like python??)"
+"I opened the assignment for Homework 2 on Codio, and I have a red dot next to the Assert statement at the top and next to practically every line of code in the test file. I haven't written any code yet--I have only filled in the tests for the first function we are supposed to write, so I don't know why this is happening. I know Codio gets glitchy sometimes, so I tried to refresh and reopen the assignment, but I just wanted to make sure that there wasn't anything wrong with my file.","When I added more test cases for hamming_distance, only the one that was given appeared to run and the others don't appear in the Run Project window. I wrote them in the same way all the test cases are written so what could be the problem?"
+"When decoding acids in groups of 3 nucleotides, after decoding a group of three, the next group 3 shouldn't overlap the previous group, right?
+
+Eg, [a; b; c; d; e; f] = two acids: [a; b; c] and [d; e; f]      NOT [a; b; c] [b; c; d] [c; d; e] etc..","The test case is [A; G; T; A; C; C; C; A; T; C; G; G] and shows up as [Met; Gly; Ser]
+But shouldn't there be AGT be Ser, ACC be Trp, etc and shouldn't there be 4 amino acids?"
+"Hi,
+
+All of my decreasing_similarity test cases received the failure comment as `Invalid_argument(""compare: functional value"")
+
+In my understanding the input should just be a helix list (ex [gorilla; chimp]), so I don't quite understand why it leads to a test failure.
+
+Thanks!","I get this compiler error when submitting but no errors on codio:
+
+make: *** No rule to make target 'dna.cmo', needed by 'ocamlbin'.  Stop.
+
+What I did was zip the entire HW2 folder. I wasn't sure how to zip DNA.ml and dnaTest.ml into one file from Codio "
+"I am confused with the following instructions, can't a labeled tree have multiple internal nodes and leaves, and therefore can't it have more than one helix? What does it mean when it is asking us to find the contained helix?
+
+(* Find the helix contained within the given tree. The type definition will be * helpful here. *)
+
+let helix_of_tree (t: labeled_tree) : helix = failwith ""helix_of_tree: unimplemented""","let rec count_leaves (t: tree) : int =
+  begin match t with 
+    | Leaf (helix1) -&gt; 1
+    | Node (tree1, tree2) -&gt; count_leaves tree1 + count_leaves tree2
+  end
+For type matching in the trees, why can't we say Leaf (helix) or Node (tree * tree) to represent the general type of what t is? Also, I just added a 1 after helix just so that it doesn't get confused with the data type helix, but why would it be wrong to put the data type there instead of just filler variable names?"
+"Can someone help me make sense of this error? As it stands, this seems like the most intuitive way of implementing this function. I need a way of recursively passing the tail of the helix list back into decreasing_similarity()
+
+let rec decreasing_similarity (apes: helix list) : bool =  begin match apes with   |[]-&gt; true  |hd::[]-&gt; true  |hd::hd2::tl-&gt;if (hamming_distance human hd2)-(hamming_distance human hd) &gt; 0     then decreasing_similarity hd2::tl else false  end
+""This variant expression is expected to have type bool, the constructor does not belong to type bool""","is it a bad idea to not use recursion if ""rec"" is in the constructor?
+
+I think I made a way around using recursion using a helper function or maybe I'm making more problems for myself
+
+let rec smallest (s: labeled_tree list) : labeled_tree =
+  begin match s with
+  | [] -&gt; failwith ""invalid input: non-empty list of labeled_trees""
+  | x::tl -&gt; if parent_child_hamming x &lt; parent_child_hamming (smallest tl) then x else smallest tl
+  end
+
+let rec simplest_tree (ts: labeled_tree list) : labeled_tree * int =
+  begin match ts with
+  | [] -&gt; failwith ""invalid input: non-empty list of labeled_trees""
+  | x::tl -&gt; (smallest ts, parent_child_hamming (smallest ts))
+  end
+"
+"I commented out the section where you guys warn that it might go slow if we run the print commands. However, whenever I run my tests, Codio is taking forever to evaluate the simplest_lesser and simplest_greater functions that were created for us. Is this a problem with just me or is this fine? Not sure how to approach it because I'm not sure if there's something I need to fix (the homework came with these functions pre-written). ","Is there a specific style that we should follow for writing out trees? Sometimes it seems that it would make most sense to have everything on the same line (if there is not much code), but other times I need to split the tree up because of the 80 character limit. Should I just split the shorter trees too? Where should I split the lines?"
+"For Prblem 2 I get a warning that my pattern match is not exhaustive - however, the question states WE CAN assume equal length so cases where one helix is null and the other is non null are redundant. CAn I ignore the warning?","Looking over my code and I'm seeing that my hamming distance function is non-exhaustive because it does not account for the case where i might compare a non-empty helix to an empty one.
+
+Since we were explicitly told not to test for different length helices, should I leave this as non-exhaustive? Or should I account for the case that Codio gives me and put it in my pattern match so that the annoying yellow warning dot goes away?"
+"When I tried to compile my codes, it keeps saying the following:
+
+File ""dna.ml"", line 1:Error: The implementation dna.ml does not match the interface dna.cmi: The value `all_acids_of_helix' is required but not providedCommand exited with code 2.
+
+What should I do to fix this?","After I write my code for count_leaves in problem 4, an error pumps out in the subsequent given-codes which says ""This expression has type tree/2538 but an expression was expected for type tree/2497"".
+How can I fix my code? ty"
+"for ""add_ancestor_labels"" I am trying to pattern match types but I keep getting the error ""expression has type 'a * 'b but an expression was expected of type helix = nucleotide list"" even though I explicitly am dictating the type- I think it gets confused when I put LLeaf in LNode where a tree is defined but I am not sure what else to do","for ""add_ancestor_labels"" I am trying to pattern match types but I keep getting the error ""expression has type 'a * 'b but an expression was expected of type helix = nucleotide list"" even though I explicitly am dictating the type- I think it gets confused when I put LLeaf in LNode where a tree is defined but I am not sure what else to do"
+"According to the definition given in the homework, can the tree ever be empty i.e count leaves returns zero?  because from what I understand a tree must have either a leaf or a node.The leaf itself can be a helix of an empty list but the leaf would still exist.","Is the helix associated with a labeled leaf considered ""the helix contained within the given tree"". That is, should we just return that helix if passed a leaf?"
+"for the beginning part of this test case, it says ""this expression has type a*b but an expression was expected of type Dna.tree"" but I'm not sure what is wrong with it?
+
+add_ancestor_labels (Node  (Node ((Node (Leaf [T; C], Leaf [T; C])) , Leaf [A; C])), Leaf [G; C])=","There're two scenarios that I'm particularly curious about for add_ancestor_labels()
+
+1) Just a leaf
+      *
+    /
+ T
+
+2) A Leaf that shares a node with the empty set
+    *
+ /    \
+[A; T] [ ]
+
+Would [A] be returned in 1) and [A; A] in 2)?"
+"For the unlabel_tree function in Q5, if the tree is just a labeled leaf, do we return back that leaf or return empty?  ",If we pass in a leaf with no Helix ( Leaf []) what should the function return? Just a Leaf [] ?
+"I get this error when writing my function for count_leaves. Another question asked about this on the first homework, and I tried all of the suggested fixes there but still get this inline error message. ","Are these test cases right for the count_leaves function? My test cases all pass, but when I submitted the homework I had 4 failures on Problem 4 (and this is the only function we had to write in it), so I'm concerned that my understanding of the function is not entirely correct.
+
+"
+"For problem 8 (refactoring), are we supposed to be writing our own test cases or just making sure the ones already written pass?","Are we supposed to write our own tests for problem 8 too? Most of the other test sections say what to do, but 8 just says that it should equal the same thing and then tests the greater and lesser apes problems using both functions."
+"I'm a bit confused about how to implement question 3. Once we find the first TAC, how do we mark the list and start appending at that point? Is this done with a helper function? Any hints would be appreciated.","I'm a bit confused about how to implement question 3. Once we find the first TAC, how do we mark the list and start appending at that point? Is this done with a helper function? Any hints would be appreciated."
+"I wrote a couple test cases for my helper function in dna.ml, but they aren't showing up when I run the project. Here is the syntax for one of my cases:
+
+let test () : bool =  end_of_acid_chain A T T ;; run_test ""end_of_acid_chain correct stop codon"" test
+
+I'm not sure what's wrong.",To test acids_of_helix i needed to use some helper functions to print acid lists in a string form so i modified dna.mli by adding 2 functions at the end. I intended to remove them before submitting but accidentally forgot to. Is there going be any deduction for this?
+"If the input is just an LLeaf for parent_child_hamming, should the function return 0?","if only a LLeaf of any value is the input for parent_child_hamming, should the function always return 0?"
+"In my pattern match for the add_ancestor_labels function, when I return the new labeled tree, I am having trouble figuring out how to write the ""label"" portion for the node. I am calling guess_parent_helix left right, but left and right are leafs so they can't be inputted, and if I make them Leafs in the pattern match, then the match is incomplete and leads to a whole repetitive sequence of non-exhaustive cases. I know in the comments it suggests making a variable to handle this repetitive code, and the only variable I can think of that would be appropriate is a boolean to test if the node has two Leafs and then use if statements in my pattern match--is this on the right track? ","For add_ancestor_labels, I'm having a hard time figuring out how to use recursion on larger depth trees. if you guess the parent helix of the lowest two children it would change the tree into a labeled tree, and thus, not be able to be recursed since there are still regular nodes at the top and labeled nodes at the bottom. Or am I just going about this completely incorrectly? "
+"I'm implementing my count_leaves function in problem four but when I say | Empty -&gt; 0, Codio says that constructor does not belong to type tree. Why is that? How do I account for when the tree is empty if this function throws this error?","The empty line is displaying this error:
+""This variant pattern is expected to have type tree"" and that ""the constructor Empty does not belong to type tree."" 
+Do you know what could be wrong with my code?
+
+
+let rec count_leaves (t: tree) : int = begin match t with  | Empty -&gt; 0 | Leaf -&gt; 1 | Node(lt,x,rt) -&gt; (count_leaves(lt) + count_leaves(rt)) end"
+"In question 7 when I uncommented the given code to print out the computed evolutionary tree for greater apes, it prints a tree with the same hierarchy levels and apes as Figure A, but the left/right branches of the tree are swapped...is this ok? 
+
+Thank you ","This is the comment written before the printing of the simplest lesser apes tree:
+
+""However, trying this out for lesser apes produces something close, but not * quite exactly what we wanted. Uncomment the printing commands below to see * how close we get.""
+
+My greater apes tree matches the one from the problem but my lesser apes one doesn't. Does this comment mean that it's ok if our lesser apes tree doesn't exactly fit the lesser apes tree from figure A?"
+"For question 2, I have this code for one of my match statements which I believe is correct thus far:
+
+let hamm_count = 0 in
+  begin match x1, x2 with
+  |_,[]-&gt; 0
+  |[],_-&gt; 0
+  |hd1::tl1,hd2::tl2-&gt; if hd1 = hd2 then hamming_distance tl1 tl2 
+    else hamm_count + 1 + hamming_distance tl1 tl2
+  end
+However in trying to simplify my final match statement with Boolean operators, 
+
+(hd1 = hd2 &amp;&amp; hamming_distance tl1 tl2) || (hamm_count + 1 + hamming_distance tl1 tl2)
+
+I get the error, this expression is type int but is expecting type bool and vice versa. What could I be missing?
+","Hi can someone explain why something like the following might throw an unbound value error?
+
+Say I have a list that I'm pattern matching
+begin match x with
+| [x1::x2::x3::xtail] -&gt; if function x1 x2 x3 then 'do a thing' else 'do another thing'
+end
+
+And ocaml objects with an ""Unbound value x1"" and again for x2 and x3.
+Why?"

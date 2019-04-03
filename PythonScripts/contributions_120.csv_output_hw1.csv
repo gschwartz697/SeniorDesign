@@ -1,0 +1,166 @@
+Can we assume that the input for the coins is going to an integer value?,"For the coins question, should we be planning to handle a negative input for amounts, or can we expect all inputs to be positive integers?"
+"After doing some problems, I realized that there are some problems that do not need to be solved using recursion. However, the pre-existing format of the  homework looks like it used ""rec"" in each function. Do we have to try to make each of the functions recursive after we implement the test cases?","So I am facing a conceptual issue and visualizing the answer for the Kudos Question. I understand how to find the permutations for 2 element lists and 3 element lists but I do not understand how to do it for 4 and above. Even for 3, I was unable to use recursion.
+This is my progress so far, and I was wondering if I could get any pointers to continue with? Also, are we allowed to use @ operator in the kudos problem?"
+"In the two test cases that are provided to us, why do we not have to provide an expected output for the test? I have provided the example below. 
+
+let test () : bool = not (exists [false; false]);; run_test ""exists all false"" test
+
+Shouldn't it be 
+let test () : bool = not (exists [false; false]) = false;; run_test ""exists all false"" test","Just to be clear, for the following test cases:
+
+A) let test () : bool =
+not (exists [false; false]);; run_test ""exists all false"" test
+
+B)
+let test () : bool = not (exists [false; true]);; run_test ""exists all false"" test
+
+A would return true and B would return false for a properly implemented function because of the not operator?
+"
+"For the second part of number 8, what should the output be if the two lists are for example [""Mike""; ""Mike""; ""Bob""] and [""Mike""; ""Bill""; ""Alex""]? Should Mike repeat? ","I'm a little unclear on the instructions for problem 8 even after reading the faq page.  For example, if:
+
+in_both [""Garnet""; ""Amethyst""; ""Pearl""] [""Pearl""; ""Steven""])
+
+Then it should return
+
+ [""Pearl""]
+What if the string ""Pear"" appears twice in both lists? Or twice in the second list? Should it return [""Pearl Pear""]? If so, how should it be formatted?"
+"Hi, I'm stuck on the int_join exercise and keep getting an error that the (bolded) tailend is of type int when it should be string. Can you please point me in the right direction?
+
+let rec int_join (separator: string) (l: int list) : string = begin match l with | [] -&gt; """" | x::tail -&gt;  begin match tail with | [] -&gt; (string_of_int(x) ^ (join (separator) ([]))) | y::tailend -&gt; ((string_of_int(x) ^ separator) ^ (join (separator) (string_of_int(y)::tailend))) end end","I've implemented my join function and it works, so I tried to modify it using with int_join so that it takes in a string and I'm not sure that I comprehend the errors:
+
+let rec int_join (separator: string) (l: int list) : string =  begin match l with   | []-&gt; """"  | [hd]-&gt; string_of_int hd  | string_of_int """"::tl-&gt; int_join separator tl  | hd::tl-&gt; hd ^ separator ^ int_join separator tl  end
+I get a syntax error saying error after unclosed begin, expecting -&gt; as well as an error saying this expression has type ""a-list"" but an expression was expected of type ""a-list"" and I'm not sure what these errors mean. I literally used used the same code from the join function. Any help is appreciated","When I try to call the recursive step, it throws the above error.  I am making a really stupid mistake but I can't figure out what it is.  
+
+let rec sumPositive (sumList: int list) int = 
+  begin match sumList with 
+  | [] -&gt; 0
+  | a::rest -&gt; 
+  if(a &gt; -1) then (
+    a + (sumPositive rest)
+  ) else if(a = -999) then (
+    0
+  ) else (
+    sumPositive rest
+  )
+  end"
+"For the join function, I am trying to handle the general recursive situation, the case of an empty list, and the case of the last item in the list (using """" as the separator) with pattern matching, but when I try to do this it keeps saying that I'm trying to append two empty lists. I know this is probably because I'm handling the second to last case and the last case and I probably only need to be handling two total cases, but I can't seem to figure this out. I was thinking of using an if statement in the general recursive part of the function, but I'm not really sure how to implement that in this instance.","For the pattern matching that I am using in the join function, I have the recursive call for the main case figured out, and I have the base case (empty list) figured out, but for the case of the last element in the list (which I do not want to be followed by a separator) I tried concatenating the term with the join function of """" and the remaining empty list, and I get the above error statement. I have tried all different outputs as well as if-then statements, but I feel like my code is on the right track, I just need to denote that the empty string I want to join for the last element in the list is the ""tail"" or the bade case not just some random empty list that I'm introducing. 
+
+Does anyone have any suggestions that might help with this?"
+"If it is explicitly stated in the comments that an input will only be x or y, do we still have to write failing test cases for invalid inputs y, z, etc?","In the instructions, it says that if we cannot compute the answer for whatever reason, we should return -1. Does this mean that if we have an empty list as a test case, it should return -1? "
+"Hi! I've been working on homework 1 all week with no issues on codio. The last few times I've tried to run my code, I've been getting this weird message. What should I do to continue running/testing my code?
+
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 4
+* Documentation: https://help.ubuntu.com * * Welcome to the Codio Terminal! * * README: https://codio.com/docs/ide/boxe * * Your Codio Box domain is: sulfur-toga.c *Last login: Fri Sep 7 04:38:57 2018 fromcodio@sulfur-toga:~/workspace$ make all &amp;&amp;ocamlbuild -lib graphics intro.native+ /home/codio/.opam/4.04.0/bin/ocamlopt.opFile ""intro.ml"", line 1:Error: The implementation intro.ml does no The value `append' is required butCommand exited with code 2.Compilation unsuccessful after building 8make: *** [intro.native] Error 10codio@sulfur-toga:~/workspace$","I am unable to run any of test cases or see if they have passed. Every time I run I keep getting this message. 
+
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 4.15.0-33-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+ *
+ * Welcome to the Codio Terminal!
+ *
+ * README: https://codio.com/docs/ide/boxes/
+ *
+ * Your Codio Box domain is: picture-secret.codio.io[:1024-9999]
+ *
+Last login: Sun Sep  9 17:15:29 2018 from 192.168.10.79
+codio@picture-secret:~/workspace$ make
+ocamlbuild -lib graphics intro.native
++ /home/codio/.opam/4.04.0/bin/ocamldep.opt -modules intro.ml &gt; intro.ml.depends
+File ""intro.ml"", line 678, characters 0-2:
+Error: Syntax error
+Command exited with code 2.
+Compilation unsuccessful after building 1 target (0 cached) in 00:00:00.
+make: *** [intro.native] Error 10
+codio@picture-secret:~/workspace$
+
+How can I fix this?"
+"Is there a way to efficiently write multiple or statements in one line in ocaml? 
+
+For example: if x = 5 or 7 or 9 or 11 then ... 
+
+Thank you!","Is the convention for splitting an expression more than 80 characters the same as in Java? For example, do we split the code before an operation (like + ...) to put the remainder of the expression on the next line?"
+Is there a way to restart to the original intro.ml file? I feel like I deleted instructions and formatting that I want to see again.,"If I’m going back and fixing some of my programs after already having made a submission, how do I rezip and get a new file? It doesn’t seem to be creating a new file. I keep getting a message that I’ve lost connection to “@“ with the options of either closing the tab or reconnecting. Any suggestions? "
+and what is the syntax for using modulo in ocaml?,What is the syntax for putting pattern matching inside a then statement? 
+"Hi, I keep getting this error when I compile.
+
+Exception File ""src/display.ml"", line 176, characters 2-8: Assertion failed.Compilation unsuccessful after building 1 target (0 cached) in 00:00:00.make: *** [intro.native] Error 100codio@sardine-user:~/workspace$
+
+How do I fix this?","I fixed my code and it compiles in codio, but when I submit I get the following:
+
+File ""introTest.ml"", line 7, characters 35-40:
+Error: Unbound value coins
+Hint: Did you mean cos?
+File ""_none_"", line 1:
+Error: Cannot find file introTest.cmo"
+"I am trying to combine items in the list by using concat to add the separator, but codio is giving me an error of this expression has type error string list -&gt; but an expression was expecting type string. Why will it not allow me to use the recursion on the tail? ","For one of my tests on problem 11 ;; run_test is highlighted with an error that says
+
+ This function has type string -&gt; (unit -&gt; bool) -&gt; unit It is applied to too many arguments; maybe you forgot a `;'.
+
+However, if I remove this code or comment it out it just moves up to the previous test. Any ideas what is causing this?"
+"let rec join (separator: string) (l: string list) : string =
+  begin match l with
+  | [] -&gt; """"
+  | x :: [] -&gt; x
+  | x :: xs -&gt; x ^ separator ^ join separator xs
+  end
+Hello! 
+
+I solved question 6 like this, and it worked, but I am just wondering why it is necessary to have the [] -&gt; """" case to be exhaustive. Recursively thinking about it, doesn't x :: [] take care of the issue? I guess it's because l can be an empty list? ","let rec append (l1: string list) (l2: string list) : string list =
+  begin match l1 with 
+  | [] -&gt; l2
+  | x :: xs -&gt; x :: append xs l2 
+  end 
+
+Hello! I was wondering if for singletons, for instance [2], x = 2 and xs = [] in this case for pattern matching. Thank You! ","So if I want two things to happen after an if statement
+like say in a pattern match:
+
+let rec function l1 l2 : int =
+begin match l1 l2 with
+[], [] -&gt; []
+x::t, x2::t2 -&gt; if x &lt; x2 then do something 
+                    else (x*x) and then after the (x*x) can I do something in the same line like x::function
+?"
+does empty set [] count as a sorted list? ,"Can an empty list be considered one type of a list? 
+I.e. is [] be considered a boolean list?"
+"Ok, I am kind of at a loss as to how to fix my code in problem 12. I understand why it's wrong (I walked through the last test case and I ultimately end up at a place where I have [ ], _ and that returns true) however I am not quite sure how to fix it. 
+
+I would go to office hours, however my computer broke so I am forced to work in the library! Any help would be appreciated! ","In my geometry one, when I submit, one of the cases is not passing. I am not sure what I am doing wrong and I traced through my couple times. I feel as though it is a pretty simple function so I'm not sure where my bug is. If I could get an example of a case that would fail, that would be super helpful. Thanks!
+
+"
+"When I try to run my project from the dropdown menu, the terminal only shows ""make all &amp;&amp; clear &amp;&amp; make run"" and not any lines I'm trying to print or the results of any tests. How can this be resolved?","Hello, for question 9, only my first test runs and it only outputs ""make all &amp;&amp; clear &amp;&amp; make run"". What could a potential issue be? Thank you."
+"On Problem 9, I keep getting this error: ""make all &amp;&amp; clear &amp;&amp; make run"" when I try to run my test cases. What does this mean?","For number 8 I keep getting this error that says:
+""Running: append different lengths ... make a
+
+ll &amp;&amp; clear &amp;&amp; make run                     
+make all &amp;&amp; clear &amp;&amp; make run""
+I just have no idea what this means so I'm having a really hard time fixing it.
+"
+"This is my complete code for problem 4. I don't understand the errors Codio is giving me. For example for lines 349-350, I get the error, ""This expression has type unit but an expression of type string was expected"". Why am I being told this? Similarly line 352 is giving me a,  syntax error, expecting ""in"". Can someone help me make sense of why I'm getting these errors? Also the bottom got cut off. I'm returning the string ""direction""
+
+
+
+","Can someone please look at my helper function for question 12? I don't understand why my sublistHelperContains function is not compiling. I'm trying to pass in ""l1"" in a match, but it was the type is not correct. "
+"Whenever I run code in the .ml file the run project tab runs through my code entirely (even though I haven't gone past question 6) but then I cannot scroll up in the run project tab to see any of my test cases/verify if things work. I can't come into Office Hours today because I'm an RA and I have to take my kids to an event from 3-7, so I was wondering if you could check remotely to see what is going on. Also, I'm coming from a Python background and I was wondering if there is an equivalent to the python console where you can try things out and then see if they work?",";; print_endline (join "","" [in_both [""Garnet""; ""Amethyst""; ""Pearl""] [""Pearl""; ""Steven""]])
+
+ I tried this for printing the list in the second part of question 8 but it didn't compile. Is there something I change with that code to make it work or is there another way to print the list. My tests aren't passing but I'm not sure what's wrong with the code."
+"I am working on Problem 7 and I feel as though I have written code that should work, but it isn't passing the tests. I am also not sure how to use the print function to see what the output actually is and narrow down the issue. So I guess my question is twofold -- 1. Is there a logical error in my code that I just am not seeing? and 2. how do I use the print command to show me what the output is right now? ","I have a quick question about what we should do for certain test cases for the simulating robot movement question...
+
+if there is a test case with a negative position or negative amount of steps (both of which don't make sense), what should we do? Change the number to 0 or call out that the input is not correct?
+
+Thanks!"
+"Hi, I was working on my homework in Codio when it said something about how the server wasn't loading, so I refreshed the page. Once it loaded again, there was nothing in my intro.ml. After multiple refreshes, there still is nothing.  Did I lose my code? And if so, is there any way to get back the code I had before? 
+
+Thank you.","As I was working on question 8, all of the tests in my code starting from the beginning show an error message that says: unbound value run_test. I know someone else had a similar problem but their solution wasn't working for me. I tried erasing/commenting out my code for question 8 but it didn't fix the problem. "
+"for my tests, they keep on showing ""Unbound value run_test"" . What would be the problem here?","There are a bunch of red dots showing up on the left side of my hw. It starts with: unbound module assert, and then for my test cases it says: unbound value run_test. Do you know what the problem might be?"
+"I know that this question is very similar to other ones that have been asked about this problem, but I read through those answers and am still confused.
+
+Can I use a recursive helper function in lieu of the rainfall function? What I mean is can the body of the rainfall function just be a call to a helper function?","I know that the instructions say that we should use a helper function, but is it possible to solve this question without using helper functions? "
+"When I go to Zip up my Codio file, I get the following message; the file that downloads is then an intro.ml file, not a .zip. Any advice? Thanks. 
+
+""This file `hw01-submit(2018-09-11-02:48:16).zip` cannot be opened as it is either a binary file or is larger than 500Kb.""","Does the zip file we submit have to be titled ""hw01-submit.zip"" like it shows on the dashboard or can we leave the filename as ""hwXX-(YYYY-MM-DD-HH-MM-SS).zip"" ?"
+"Do we also have to account for repeats in both lists? So for [""a""; ""b""; ""b""; ""a""] [""b""; ""b""; ""a""; ""a""], would the solution be [""a""; ""b""; ""b""; ""a""] or just [""a""; ""b""]?","Do we also have to account for repeats in both lists? So for [""a""; ""b""; ""b""; ""a""] [""b""; ""b""; ""a""; ""a""], would the solution be [""a""; ""b""; ""b""; ""a""] or just [""a""; ""b""]?"
+"I am having problems submitting my assignment (hw01). The screen freezes when I attempt to submit (screenshot below). I did get an email saying that the homework was submitted, however when I reloaded the submissions page it said I had not submitted the homework. Likewise none of the submission tests were run.
+
+Stefan
+
+","Many of us in office hours are having trouble submitting.  It just says ""Loading. Please wait..."" indefinitely. We got several emails that say the file has been submitted AND that there has been a compiling error. The homework doesn't show as submitted on the CIS 120 website"

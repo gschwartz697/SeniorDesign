@@ -1,0 +1,267 @@
+Should we be using a helper function or an extra variable to do tree_max? Or can we do it without any extra stuff?,"when writing the functions in listSet, are we allowed to use functions that come later in the code as helper functions in order to ""short-circuit"" or does OCaml not allow for this?"
+"I was wondering how to make a set in order to test the functions for sets. In one of the given tests, set_of_list was used. Should we be creating all of our sets with this function in our test cases? ","Is there anyway to instantiate/create a set besides doing set_of_list on a list, i.e. if we want set {1, 2, 3} we do set_of_list [1; 2; 3]?
+
+Is this even the correct way to do this when we want to create sets to test the functions in the set interface?"
+Why do the tests provided have an error 'unbound value run_test' ?,run_test or run_failing_test produce an error that says unbound value for all my test cases.
+A previous post said that we should not need to use helper functions to implement set_of_list. How are we supposed to remove duplicates and sort the list without helpers? Any hints would be appreciated. ,How can we make transform work on part of the tuple in a tuple list? I was thinking of writing a helper function but there must be a more efficient way. Can I have some hint on this? Thank you!!
+"Appending tuple to tuple list
+
+I'm trying to append a tuple to the end of ""assoc_list"" in one of my test cases as follows:
+let assoc_list2 = assoc_list @ (110, ""C"") in
+but it's giving me the error:
+Error: This expression has type 'a * 'b
+       but an expression was expected of type (int * string) list
+Why's this a problem?
+","I'm getting this error when I try to transform texts_as_lists using set_of_list as the function:
+
+This expression has type (string * string list) list but an expression was expected of type 'a list list Type string * string list is not compatible with type 'a list
+
+Do generics not work with tuples?"
+"Is it okay to make a helper function for list_of_set on an ordered list? I'm using fold for the function and within the combine function input I use a find_min helper function on the x and acc values . 
+
+On my first submission I failed a test related to efficiency for this function, but I'm not sure if it was the inefficiency in my helper function or the fact that I called a helper function. ","I had created a size helper function in tree.ml 
+When I tried to use it in treeSet.ml, so as to not repeat code, it did not work (resulting in an infinite loop). Is this because the function was not listed in tree.mli? And if I were to change tree.mli would that mess up the automatic grader?"
+"When I build and run SetTest, the other test cases I wrote do not appear under ""Running tests for OLSet / BSTSet"". I have already tried cleaning the project and rebuilding it. Why is this?","When I run Vocab, only tests from higherorder and set are shown, nothing printed in Vocab.ml is shown. How do I resolve this?"
+"Can we use set_of_list of listSet in treeSet? If so, what is the syntax calling the function?","For Q7, can we just straight up call functions written in previous questions?For example for list_of_set can we just call inorder? It's the same function"
+"I try to test the functions in listset by running settest
+but  when I run set test and scroll up to see all the results,
+it somehow shows the test results of the tests in higherorder file, 
+plus ""Running: equals: different structured trees ...
+Test error: `equals: different structured trees` reported `BSTSet.equals: unimplemented`""
+
+Am I doing anything wrong?",When I try to run SetTest it shows all my tests from higherOrder.ml and tree.ml passing but does not show any of my tests from the setTest.ml file. It also ends with a Test Error from BSTSet.equals being unimplemented.
+"let rec assoc (key: 'k) (l: ('k * 'v) list) : 'v =
+  begin match l with
+  | [] -&gt; failwith ""key not found""
+  | ((k, v)::rest) -&gt; if key = k then v else assoc key rest
+  end
+I'm having an error here and not sure what it is. It says unbound value run_test. Checked other piazza posts and can't seem to fix it. When I try to run it I get :
+Running: assoc: key found ...Test error: `assoc: key found` reported `HigherOrder.assoc: not implemented`ocamlbuild -lib graphics higherOrder.nativeFinished, 9 targets (6 cached) in 00:00:00../higherOrder.native
+
+This is in higherOrder.ml
+
+Thanks!","let rec transform (f: 'a -&gt; 'b) (l: 'a list) : 'b list =
+  begin match l with
+  | [] -&gt; []
+  | x :: xs -&gt; f x :: transform f xs
+  end
+
+let rec texts_as_sets (s: (string * string list) list) : 
+        (string * string set) list = 
+        begin match s with 
+        | [] -&gt; []
+        | (x, y) :: xs -&gt; (x, set_of_list y) :: texts_as_sets xs 
+        end
+Hello! 
+
+I was trying to write the texts_as_sets function that I wrote above using transform, but couldn't figure out how to apply a function only to the 2nd value of the tuple (as in when I pass in (x,y), I want to only apply set_of_list to y). Is there any way I can do that in the transform syntax? "
+"For some reason, I am getting an error on the function we were provided string_of_counts. It is saying that String.concat is applied to too many arguments. Thoughts? Vocab.ml will not run currently. Thanks. ","When I run SetTest, the program always congested at a certain test. However, it is not denoting that I am trying to run an infinite loop. Is it because I accidentally changed some of the mli. files? Thank you so much."
+"ocamlbuild -lib graphics tree.native+ /home/codio/.opam/4.04.0/bin/ocamlopt.opt -c -o tree.cmx tree.mlFile ""tree.ml"", line 1:Error: The implementation tree.ml does not match the interface tree.cmi: Values do not match: val delete : ('a tree -&gt; 'a) -&gt; ('a tree -&gt; 'a) tree -&gt; ('a tree -&gt; 'a) tree is not included in val delete : 'a -&gt; 'a tree -&gt; 'a tree File ""tree.ml"", line 302, characters 8-14: Actual declarationCommand exited with code 2.Compilation unsuccessful after building 12 targets (11 cached) in 00:00:00.make: *** [tree.native] Error 10codio@stretch-robot:~/workspace$
+
+
+What does this error mean","Wocamlbuild -lib graphics higherOrder.native+ /home/codio/.opam/4.04.0/bin/ocamlopt.opt -c -o higherOrder.cmx higherOrder.mlFile ""higherOrder.ml"", line 1:Error: The implementation higherOrder.ml does not match the interface higherOrder.cmi: Values do not match: val assoc : int -&gt; (int * string) list -&gt; string is not included in val assoc : 'k -&gt; ('k * 'v) list -&gt; 'v File ""higherOrder.ml"", line 70, characters 8-13: Actual declarationCommand exited with code 2.Compilation unsuccessful after building 8 targets (6 cached) in 00:00:00.make: *** [higherOrder.native] Error 10codio@jacob-sound:~/workspace$
+
+unclear as to what the issue is and what is the .cmi file?
+How do i fix this error, there are no red dots on codio text editor"
+"When tree max, the following error appears:
+Error: The implementation tree.ml does not match the interface tree.cmi:                                                    Values do not match: 
+val tree_max : int tree -&gt; int, is not included in                                                                                                    val tree_max : 'a tree -&gt; 'a
+
+This is really strange since I thought a generic 'a would accept any type","When I tried to compile my tree.ml, the following error shows up:
+
+Error: The implementation tree.ml does not match the interface tree.cmi: Values do not match: val delete : int -&gt; int tree -&gt; int tree is not included in val delete : 'a -&gt; 'a tree -&gt; 'a tree File ""tree.ml"", line 238, characters 8-14: Actual declaration
+
+","Hello, I receive this error in my code: 
+
+File ""tree.ml"", line 1:Error: The implementation tree.ml does not match the interface tree.cmi: Values do not match: val delete : int -&gt; int tree -&gt; int tree is not included in val delete : 'a -&gt; 'a tree -&gt; 'a tree
+
+What does this mean? Thank you.","Hello, I receive this error in my code: 
+
+File ""tree.ml"", line 1:Error: The implementation tree.ml does not match the interface tree.cmi: Values do not match: val delete : int -&gt; int tree -&gt; int tree is not included in val delete : 'a -&gt; 'a tree -&gt; 'a tree
+
+What does this mean? Thank you."
+"let rec tree_max (t: 'a tree) : 'a =
+  begin match t with
+  | Node (Empty, x, Empty)-&gt; x
+  | Node (lt, x, rt) -&gt; max (x, (max (tree_max lt, tree_max rt)))
+  | Empty -&gt; failwith ""empty tree doesn't have maximum element""
+  end
+I keep getting an error for the 2nd line of pattern matching, specifically the right part of the arrow. I was wondering what's wrong with it! ","let num_leaves (t: 'a tree) : int =
+  begin match t with 
+  | Empty -&gt; 0
+  | Node (lt, x, rt) -&gt; if (lt = Empty) &amp;&amp; (rt = Empty) then 0 else if
+                        (lt = Empty) then 1 else if (rt = Empty) then 1
+                        else 2
+  end
+I thought a helper function to check whether the left tree and the right tree have the same amount of leaves would help, but am kind of lost as to how I would go about it. Could I get any hints :( "
+"Hello,
+
+The grading script is telling me that my first error is ""cannot pass in empty tree"" for question three on binary trees. All of my functions for this section include an ""empty"" clause in the pattern match so I am not sure what is prompting this error. ","I'm getting an error in problem 8: ""Running: delete: node does not exist ... Test error: should have failed.""
+
+I'm confused because I thought Vocab never runs the delete function, so how could this error message have been produced?"
+What should we return for the edge case that in_order's input is an empty tree?,Should is_complete () return true if inputing an empty tree?
+"When I run higherOrder.ml and try to test assoc: key found, the code does not finish running. Does this mean I am causing it to enter an infinite loop? I cannot tell where this might be happening though.","I am trying to run vocab.ml right now, and I keep getting the above error, even though the code I used is that from the lecture, which definitely assumes BST variants. What could the problem be? "
+"what does:
+
+""After the tests are written, you should be able to implement the functions one at a time in the same order and see your tests incrementally pass.""
+
+mean? 
+
+also, i'm a bit confused how we are supposed to write tests with generic values. in class, we tested using integers but that assumes that type 'a is an integer, correct? even testing for both strings and integers doesn't cover nearly all the combinations... is it possible to define values of type 'a and use it for all the tests?","For setTest, I am using int sets for all my test cases. Is this ok? I remembered somewhere earlier in the assignment it stated that if we can prove a generic function works for ints it will work everything. Is it bad style to not try any other data type?"
+"When testing functions like ""add"" and ""remove,"" should we be using the ""equals"" function to check if they create sets that are equal? Would you recommend not using it, and testing equals separately?","In setTest, if we want to see if two sets are equal, can we do set1 = set2 or will this fail to cover BST abstraction?"
+"So I have been trying to implement set_of_list for a while and it doesn't seem to be working. I tried 
+let rec set_of_list (l: 'a list) : 'a set = begin match l with |[] -&gt; [] |x :: rest -&gt; if (exists (fun z -&gt; z &lt; x) l) then set_of_list((filter' (fun z -&gt; z &lt; x) l) @ [x] @ (filter' (fun z -&gt; z &gt; x) l)) else x :: set_of_list rest end
+
+This leads to all my test cases passing besides the ones where there are multiple repeating elements. So I tried adding onto it doing:
+
+let rec set_of_list (l: 'a list) : 'a set = begin match l with |[] -&gt; [] |x :: rest -&gt; if (exists (fun z -&gt; z &lt; x) l) then set_of_list((filter' (fun z -&gt; z &lt; x) l) @ [x] @ (filter' (fun z -&gt; z &gt; x) l)) else if (exists (fun z -&gt; z = x) l) then set_of_list rest else x :: set_of_list rest end
+
+but this seemed to make half of test cases go wrong. Do you know what might be the problem?","Something is very wrong with my add or set_of_list functions. When I print out the output of the size function with an input of size 6 using the current implementations of add and set_of_list, I get 50. Any suggestions as to why this would be happening?
+
+ let rec add (x: 'a) (s: 'a set) : 'a set =     begin match s with      | [] -&gt; []     | y::tl -&gt; if x &lt; y then x::y::tl else y::(add x tl)      end
+
+  let rec set_of_list (l: 'a list) : 'a set =    fold (fun x acc -&gt; add x acc) empty l
+"
+"Having some trouble on the reverse function - seems the input type is different - any tips?
+
+This is my code:
+
+let reverse (l: 'a list) : 'a list =  fold (fun x acc -&gt; acc @ x) [] l
+","I am getting an error ""Unbound value fold"" for this function in treeSet.ml and don't know why because I converted the BST into a list before putting it into fold. Any ideas?
+
+(* Note that there's no `size` function in tree.ml -- you'll * have to implement this yourself rather than reusing code. *) let rec size (s: 'a set) : int = fold (fun x acc -&gt; 1 + acc) 0 list_of_set s"
+"Hi!
+
+Do we have to annotate the input type for the fun in fold functions/all anon functions?
+
+fun (x: int) (acc: int) -&gt; x + acc
+vs.
+fun x acc -&gt; x + acc
+
+Is the second one acceptable?","For the anonymous functions, do we need to include the type of the input? Or it doesn't matter?
+
+For example, fold (fun x acc -&gt; xxx) or fold (fun (x : int) (acc: bool) -&gt; xxx.
+
+Thanks!"
+Do we need to write our own additional test cases for Problem 1?,"Do we need to write our own test cases for every function in question four? Will they be graded?
+
+"
+"The tests that I write in the higher order file to test the functions that I implement do not appear in the terminal when I run high order, is there a way for me to be able to see them in the terminal ?","The question 3 on the FAQ says ""When testing inside the module, you can write tests with visibility to the underlying data structure by simply calling functions as you would at the top level.""
+
+I want to write tests within my setList module so that i can ensure all my functions are behaving properly, however in the dropdown menu at the top, there is no option to run setList - is there a way i can change this?"
+"The directions say:
+
+(* Replace the 0's below with the number of SAT words that appear in each of
+ * the texts (the answers will be printed to the console when you run
+ * vocab.exe). You must replace these with the correct answers to receive credit
+ * for this component of the assignment. *)
+
+Does this mean we should hard code the printed number as the value for each one? Should we do the same for the problem below that counts words with a length greater than 7?","For some reason, SAT words is printing out 0 even though all my code looks correct (a TA looked over it) and printing works for the next part with words with length &gt; 7. What should I do?"
+"In the lecture notes and the slides, why does the insert code not account for the instance where the pattern is Node(Empty, x, Empty). Without considering this, wouldn't the algorithm not work if the original BST was just a single leaf?","For Q5 set_of_list, I don't understand the comment above the function - if we construct the set using add, won't that automatically insure the variants are followed? Why do we have to test for this separately?"
+"I can't seem to figure out why my code for tree_of_list isn't working. Can you point me in the right direction:
+
+let tree_of_list (l: 'a list) : 'a tree =  fold (fun (x: 'a)(t: 'a tree) -&gt; insert(x)(t)) Empty l","I have no idea if syntax is correct, and I don't think I have any way to check, but intuition tells me this should be write for the first part of q8
+
+let texts: (string * string set) list = transform (fun (x, y) -&gt; (x, set_of_list y) texts_as_lists
+
+
+Am I missing anything?"
+"I keep getting this error when testing assoc function:
+
+Error: This expression has type (int * string) list but an expression was expected of type (int * 'a list) list Type string is not compatible with type 'a list
+
+How am I supposed to test this function if I can't pass it any arguments of a certain type??","I keep getting this error for list_of_set
+""This expression has type 'a set = 'a list but an expression was expected of type 'a The type variable 'a occurs inside 'a list""
+shouldn't the expression have those types?"
+"If  tree_max should return a failwith on an Empty tree, what does the problem mean when they hint that you should think about the base case of recursion? Doesn't the base case involve changing what Empty returns to if it's already returning a failwith?","For the set_of_list function, should the function fail if the list passed to it doesn't follow the invariants, or should it correct the list and then make it into a set?"
+"A bunch of random errors just popped up in my setTest that weren't there a few days ago and I don't understand them... They accompany some sporadic ""set_of_list""s and say: 
+","A bunch of random errors just popped up in my setTest that weren't there a few days ago and I don't understand them... They accompany some sporadic ""set_of_list""s and say: 
+"
+"I think I implemented transform in texts correctly, but I am not sure because it is a tuple and I'm only performing an operation on the second term in the tuple. I know that there really isn't any way to test our functions in vocab until we submit the entire assignment, but I'm just wondering if I'm going about changing the second part of a tuple in the right way...","I am confused about the texts function for problem 8. I was able to create the function, but I did it without using transform. Will I get points off for not using transform?
+
+I understand that transform should only be applied to the second element of the tuples, but I don't understand how you would go about implementing this. "
+is there a function in ocaml similar to math.pow in java to calculate exponents?,Are we allowed to use the exponent function in ocaml?
+"Why is this test case true? Since there are no elements in the list, x is not more than zero, hence it is false right? What is the fallacy in my reasoning?
+
+
+let test () : bool =
+  for_all (fun x -&gt; x &gt; 0) []
+;; run_test ""for_all: empty list"" test
+","This is one of the test cases that was already written in problem 1, what exactly is it doing? Seeing if the strings are a boolean that is false? What wouldn't this throw a type error?
+let test () : bool =
+  filter' (fun _ -&gt; false) [""a""; ""b""; ""c""] = []
+;; run_test ""filter': multiple elements; all are filtered"" test
+"
+"I was wondering how tree_of_list works. Would this test pass?
+
+let test () : bool =      tree_of_list [1; 4; 3] = Node(Empty, 1, Node(Node(Empty, 3, Empty), 4, Empty));; run_test ""tree_of_list test"" test","Would this be a valid test for list_of_set because I feel it tests set_of_list more than it tests list_of_set?
+let test () : bool =    (list_of_set (set_of_list [8;8;1;2;7;2;1;8])) = [1;2;7;8];; run_test ""list_of_set: unordered and many duplicates"" test
+"
+"let for_all (pred: 'a -&gt; bool) (l: 'a list) : bool =
+  fold (fun x acc -&gt; pred x &amp;&amp; pred acc) false l
+When I write this for my for_all function, it checks out but creates now errors in my test cases - what's going on?","Writing the following fold function for this question checks out but it fails all the tests. What gives?
+
+let  for_all (pred: 'a -&gt; bool) (l: 'a list) : bool =fold (fun x acc -&gt;  pred x &amp;&amp; acc) false l
+
+"
+"I went to office hours and was having some trouble with problem 8. I was instructed by the TA to make a private post with snippets of my code so someone could look at it. Below are the functions I have implemented. 
+
+let count_if (pred: 'a -&gt; bool) (l: 'a list) : int =  list_length(filter pred l)let count_words_in_text (vocabulary: string list) (text: string set) : int =
+  count_if (fun x -&gt; member x text) vocabularylet count_sat_words: string set -&gt; int =
+  count_words_in_text sat_vocab
+When I use 
+ ;; print_endline (string_of_counts ""SAT WORDS"" count_sat_words) 
+the code seems to be taking an extremely long time to run. When it finally stops running, there is nothing printed. Any suggestions?","Hi, 
+
+So I have been struggling to get the SAT words to print out correctly. I think it may be an issue with my count_if function. I took the length of the list returned from the higher order filter function, but it seems that I may be approaching this problem the wrong way. 
+
+let count_if (pred: 'a -&gt; bool) (l: 'a list) : int =
+list_length( filter (pred) l )
+
+let count_words_in_text (vocabulary: string list) (text: string set) : int = count_if( fun(x)-&gt; member x (text) ) ( vocabulary )"
+"let for_all (pred: 'a -&gt; bool) (l: 'a list) : bool =
+  fold (fun x y -&gt; (pred x) &amp;&amp; (pred y)) false l
+
+let test () : bool =
+  for_all (fun x -&gt; x &gt; 0) []
+;; run_test ""for_all: empty list"" test
+I keep getting an error highlighting 0 saying ""This expression has type int but an expression is expected of type boolean.""Is x&gt;0 not a boolean?","Hello, I'm having issues with my fold function for for_all():
+
+let for_all (pred: 'a -&gt; bool) (l: 'a list) : bool = fold (fun(x:'a)(acc: bool)-&gt; x &amp;&amp; acc )false l
+let test () : bool = for_all (fun x -&gt; x &gt; 0) [];; run_test ""for_all: empty list"" test
+let test () : bool = not (for_all (fun x -&gt; x &gt; 0) [1; 2; -5; 3])
+For both of the test cases, I get multiple errors for each individual element, saying the expression has type int but is expecting type bool. Is the problem in the AND clause of my fold function? If so, what's missing?"
+"The description for the add function include this bit: ""Remember, we're maintaining the invariants that this list is sorted and contains no duplicate elements."" When it states ""this list"", are you referring to the input or the output? In other orders, is the list that is being pattern matched already sorted and contains no duplicate elements, or do we have to write the add function in a way that the output is sorted and contains no duplicates?","Is a set always sorted? Under implementing the list add function, it says:
+Remember, we're maintaining the invariants that this list is sorted and contains no duplicate elements."
+"let test () : bool =
+  list_of_set (set_of_list [1; 2]) = [1; 2]
+;; run_test ""list_of_set: non-empty set"" test
+is this an acceptable way to test list_of_set or do I have to use the add function? and like add continually to construct the set??
+I mean something like:
+add 1 (add (2 empty)
+","I've been working on the same problem in my code for a good 5 hours by now, and I still can't find the problem. Could someone help me with it? let test () : bool =  set_of_list (2 :: 3 :: []) = add 2 (set_of_list (3 :: []));; run_test ""set_of_list: why doesn't this test work"" testThis test I wrote, for ListSet, doesn't work. (right now it's beyond me why it works for BST and not for list) It is the last test case within my setTest.ml file. Here is my function for set_of_list:  let rec set_of_list (l: 'a list) : 'a set = begin match l with  | [] -&gt; empty | hd :: tl -&gt;  if member hd tl then set_of_list tl  else add hd (set_of_list tl) endAnd here is my function for add:  let rec add (x: 'a) (s: 'a set) : 'a set = begin match s with | [] -&gt; x :: empty | hd :: tl -&gt; if hd = x then s else  if x &lt; hd then x :: s else hd :: add x tl endBoth of these functions are located in listSet. I've run it through on paper countless times, and it seems that it has to work. Can someone help me?"
+"Is there a way to do partial application where you use the second argument instead of the first to make the fxn? 
+E.g. partially apply member (which was 'a then 'a set) to check if something is part of a specific set such as student_member x checks if x is part of a set of students/ ","I can't seem to find a predicate function that can take a string and properly return a boolean.
+ 
+There is member. However, member must first take in a string then take in a set. I want to pass in (member text) as the predicate. However, since member must take the string first and not the set, it is giving me an error."
+I'm having trouble implementing count_words_in_text. The instructions say to use member and recurse over the list? Is there a higher order function I should be using here for the list recursion? When I try to I get type errors.,I've been stumped on count_words_in_text for about a day now--I'm still not sure how to access any of the terms in vocab to use in member--I know I probably need to write a helper using member of 'a -&gt; bool but I don't know how to reference only one of the elements... should I be using fold or transform in the count_words_in_text function or is there another function that's already been written that might be of help?
+"Hello!
+
+I'm a little confused by the invariance on sets. In problem 6 it states: "" NOTE: We are going to maintain the additional invariants that this list is sorted in ascending order, and contains no duplicates."" Is this referring to the ""output"" of our functions or the sets themselves?
+
+If so, then why are there explicit instructions for list_of_set in setInterface: ""This list should be sorted in ascending order and may not contain duplicate elements""? Is this just to reiterate and remind us? 
+
+Thanks!",Why is list_of_set in treeSet recursive when it appears that you can just call inorder s and the tree will be returned as a list? Unless i'm missing something here. 
+Should the lists inputed into tree_of_list be in order?,Should the lists inputed into tree_of_list be in order?
+"Just to clarify, should concat for the list of lists : [ [1; 3]; [2; 4]; [6; 7] ] return the list [1; 2; 3; 4; 6; 7] or should the elements stay in the same order but just be returned as a single list - [1; 3; 2; 4; 6; 7]?
+","Just to clarify, should concat for the list of lists : [ [1; 3]; [2; 4]; [6; 7] ] return the list [1; 2; 3; 4; 6; 7] or should the elements stay in the same order but just be returned as a single list - [1; 3; 2; 4; 6; 7]?
+"
+"What exactly are errors in the autograder? I had 0 failures in my submission, but 2 errors. The first ""failure"" was ""cannot take max of empty tree"" which is the failwith text I used for trying to perform max on an empty tree in tree_max from problem 3. Were we supposed to have used a different message? ","Hi,
+
+I just submitted homework 3, and I get 2 errors (not failures) when I get to tree_max. However, I notice that it refers to a failwith case when passing an Empty tree, which is required for the function to work as stated by the problem. Is there something wrong with the way I did my pattern match ?
+"
+"For Tree_of_list, can we assume that we will never input a list that has duplicates?","For Tree_of_list, can we assume that we will never input a list that has duplicates?"
+"For Problem 5 list_of_set can we assume that all input of sets will be actual sets (therefore no need to check cases where there are duplicates of elements?)
+
+Thanks","In problem 6, in add and remove, are we supposed to check for the invariants (that there are no duplicates and list is sorted) or do we assume that the list that is input into these functions already follows these invariants?"
+"For set_of_list, does ""arbitrary input of type `'a list`"" mean that the input list may be unordered and have duplicates?",Can I assume that the 'a list inputted into set_of_list is in order based on the usual invariants of a list? I know that the list may contain duplicates.
