@@ -1,0 +1,268 @@
+hw1,,,,
+Will Question 3 just be graded by the TAs looking at our code? What we print out shouldn't matter right?,Will Question 3 just be graded by the TAs looking at our code? What we print out shouldn't matter right?,,,
+"What is a frontier? Does revisiting a node after it has been visited count as a step? If yes, doesn't this trivially mean the number of edges in the graph?",Is it okay if our directed graph has paralell edges? It doesn't say anywhere that this isn't possible. ,,,
+how do i do this? i can't figure out if i should be using prewritten code from online or if i should figure out some way to read in the text file myself. is there some function in java that i can use to do this more easily?,Are there some sample values for nodes and their corresponding depths that we can use to test our code to find depth? I can't tell right now if my program is working correctly.,,,
+I was wondering if we need to return anything in BFS or DFS or print anything in the function? Thanks.,"I'm having problems running my bfs to see if the network is connected– when I hit run it says ""java.io.IOException: Stream closed"" (with a bunch of other stuff below)– does anyone know how to solve this?",,,
+"The BFS algorithm itself explicitly only gives you an array of elements, ordered by distance, but does not actually tell you what the distance of a particular node is to the start node. Should we add a field in our algorithm to also return the distance of each node, along with where it is returned in the resulting array. Basically, what I'm saying is should our BFS algorithm return a tuple array, where each tuple consits of the node/distance, or instead should we make a separate method to calculate the distance between any two given nodes?",If the graph is 1-&gt; 2 and we run bfs (with the start node being 1). Would the number of frontiers be 1 or 2?,,,
+"When implementing BFS, do we have to choose a different random start node each time the program is run?","When implementing the bfs and printing our the remove elements from the queue
+
+There should be always 4039 outputs regardless of what target node we select right?",,,
+"Does the ""distance"" between two nodes refer to the length of the shortest path between the nodes?","When it asks for distance is it asking for the number of edges between them? If not, what is the metric for distance here?",,,
+"This question is basically asking to find an algorithm that can tell if the graph is bipartite right? We should be able to separate the graph into two groups, but it should not be possible to label one of those groups as mainstream or indie right?","Do we have to proof that our algorithm works for question two (i.e. our algorithm always returns mainstream/indie classification sets if they are possible, and always fails if impossible), or is giving the algorithm enough?",,,
+Will we be graded on efficient runtime? My DFS runs for a few seconds.,Will we be graded on efficient runtime? My DFS runs for a few seconds.,,,
+Hi quick question! Is the number of nodes in the test file equal to 3957? Can someone confirm that? Thanks!,Do you care how we implement an adjacency list? If I used a map from a key to a list of values is that okay? Thank you,,,
+"In Q2, let's say we have the following list:
+1. A-B (A and B are rivals)
+2. C-D (C and D are rivals)
+Given this information, we know that A and B belong to separate categories. Similarly, C and D belong to separate categories. Should our algorithm tell us the relationship between A and C, B and C, A and D, and B and D as well? Because unless we're given the relationship between at least one node in 1 and one node in 2, we cannot conclusively tell the relationship between the nodes in 1 and 2.","For the designation of the pair of actors, can we store values associated to the actors? For example, if the input is pair A-&gt; B and pair A-&gt; C, can we store the value of A so that it is recognized if it appears later in the list of the r pairs?",,,
+"How is our program supposed to deal with vertices which have no edges? Since our input file takes in pairs of vertices, do we have to deal with this case?",In our dfs implementation do we have to return anything or can it be a void function?,,,
+"Hi, I've had an extremely busy week and was unable to get HW1 in on time. I was planning on finishing it by the late deadline but I realized just today that I completely screwed up the deadline; I thought it was due at midnight (read 12am instead of 12pm) today instead of noon! Is there any way I can still get some credit for the assignment?? Really sorry about this, I realize it's completely my own fault for misreading the late deadline!","Hi, I would like to find a time to meet with professor sheth to talk about my HW1 and 2 grades. When would be a good time? 
+
+Thank you, 
+davis",,,
+Should these algorithms terminate when they have visited all the nodes in the same connected component as the start node? Or should they then choose an arbitrary node in another component and repeat the process?,"For both DFS and BFS, I am taking in a source as the input, and running the search using the source as the starting point. In the methods, I am storing the nodes and their distance from the source node in a map, and returning this map.
+
+If the nodes are not within the same connected component as the source, how should I account for the distance? Is it necessary that I do so or can I just have a map that explores all nodes with paths from the source?","For question 4c is it sufficient to use one rather than both algorithms? Finding the steps (which I am interpreting as the ""longest path"" between vertices) is much simpler if using DFS. ","What is BFS/DFS supposed to do in the case of a disconnected graph? Should I be traversing every component every time, or is it alright if it just traverses the component containing the start node?",
+Should we pass the file in as an argument before running the program or should we assume the file name will be the same and can just hardcode it?,"Should our program be generalized (i.e. able to model any text file of nodes and edges with the one-pair-per-line format) or may it be specific to the facebook-combined.txt file.?
+
+(e.g. should the program have to determine number of nodes in the graph, or can I hardcode in that its 4039)",,,
+Are we allowed to hardcode how many nodes there are? ,Are we allowed to hardcode how many nodes there are? ,,,
+Are we allowed to use Java 8 for this assignment?,Do we have to do a java docs style comment when we declare private instance variables even if the names are self explanatory?,,,
+"For homework 1 I wrote the program in Eclipse but when I submitted it and opened it again on the homework site where I submitted it, it opened with Dr. java on my Mac and not Eclipse. I was wondering if this would be a problem when grading? Will it be viewable in eclipse? ",Hi! I had submitted my homework before but just resubmitted it. For some reason when I resubmit my file becomes renamed jianingw-1.zip instead of jianingw.zip (my pennkey.) Is this an issue? Sorry!,,,
+"For question 1, I was wondering what it means to show the order of the nodes visited. If we have visited a node x before, and we revisit the node, but since we know the node has been added to the order already,  in our answer do we need to show that we visit this node again?","We just have to show the order in which the vertices are visited, right? Is there a need to show our working?",,,
+hw2,,,,
+"Two questions:
+
+1). I wanted to run an experiment that needs to consider an increasing number of populations (ranging from 3-5 populations instead of 2 like the examples you gave in the file), but it doesn't open the visualizer or finish any of the tests. I saw @110, but do you have any suggestions for this in particular that might help some more? 
+
+2). Could you explain what the seed number does and how a lower/higher number might change my tests?","I wanted to know if this counted as something to experiment--I wanted to test a different definition of happiness (to include people a distance of 2 or 4 away instead of just 1 away) with different minNeighbor thresholds. This doesn't really require me to change much code (only the isHappy() function), but does this count as a valid experiment?","I'm confused about what we are being asked to do. Are we just adjusting parameters when making a new Schelling object to test out a certain segmentation?
+
+For example, if I wanted to see how people in different economical classes segment, would I just be changing the class size? Or would I have to make more adjustments to the program? 
+
+",,
+"The book only defines a violation of the triadic closure principle. If a node does not have two strong edges coming out of it, and therefore cannot violate the principle, does it then fulfill the principle by default? ","If there is no direct edge from node A to node B, but there is an intermediary node C that has edges to A and to B, does that count as an edge between A and B (in terms of strong triadic closure)?",,,
+"For part 1, question 1 what is meant by ""the start time of B must be less than or equal to the finish time of A"". What is the start time? Like is it when DFS reaches node B? Is the finish time the time when A is taken off the recursive stack (if DFS is recursively implemented)? I am just confused by the wording of this question.","The question says that when we have a choice, we should go for the node that appears earlier in the alphabet. Is this talking about when we are implementing DFS? Or how the final outcome should look like?
+
+For example, should we start our DFS with $$m$$ because it goes earlier in the alphabet? Or start our DFS with $$z$$ so that the final outcome puts $$z$$ towards the end, like in the alphabet?",,,
+"Do the Schelling programs count 8 neighbors as the max, or are they only counting the adjacent ones (so maximum of 4 like neighbors?)","In CIS 121, we learned that the topological sort algorithm is
+1) Run DFS
+2) Return the nodes in reverse postorder (reverse order of the DFS finish times)
+
+Should we use this or the method from class which was
+1) Remove the nodes and all their edges in order of increasing in-degree (ex. start with those with 0 incoming edges, etc.)
+?
+
+I know both are conceptually the same, but since we are choosing nodes alphabetically, the result changes.
+For example, does that mean choose the nodes alphabetically while doing DFS? Or does it mean choose alphabetically when choosing which remaining node of minimum in-degree?",,,
+"What was the correct solution for homework 2, question 2?","What was the correct solution for homework 2, question 2?",,,
+"Was there somewhere on the homework 2 instructions where it said the hypothesis and conclusion had to be interesting? I thought that our conclusion had to explain the data we gathered and support our hypothesis, and I did not know that it would be subjectively graded.","Was there somewhere on the homework 2 instructions where it said the hypothesis and conclusion had to be interesting? I thought that our conclusion had to explain the data we gathered and support our hypothesis, and I did not know that it would be subjectively graded.",,,
+"Hi, I'm not really sure what to do for the coding portion of the homework. When it wants us to test a sociological question and expand parameters, does it mean that we should modify one of the parameters passed into the SchellingSimulator object or should we create a new parameter and modify all of the methods to take into account the effect of the new parameter? If it is the latter, I'm not really sure how I should modify the other methods. ","For part 2 I think I misinterpreted the question. I thought we were supposed to modify the actual model instead of just expanding the set of parameters. I modified the program to see if segregation still occurs as much if instead of considering the nodes that are directly up, down, left, right, and diagonal to be a neighbor, we just considered diagonal nodes as neighbors. Is what I did wrong and should I redo this part of the assignment?","If we change the numClasses parameter in SchellingSimulator to a different number (say 5), would we have to change anything else to make the code work?  I've been trying to change the number of classes to 5 but am not sure what else I would have to modify besides the numClasses parameter.",,
+"How is our program supposed to deal with vertices which have no edges? Since our input file takes in pairs of vertices, do we have to deal with this case?",Because of the modification of our algorithm should we start at node m because it is the smallest letter,,,
+"Hi guys! My board gets populated, but not in the quantities that I want it to per class. I am trying the following modification to populate(), is there anything super obvious that I am missing? 
+
+	private void populate() {
+		if (population &gt; width * height)
+			throw new RuntimeException(""Only "" + width * height + "" cells exist!"");
+		
+		for (int i = 0; i &lt; population; i++) {
+			int xChoice;
+			int yChoice;
+			
+			int input = randGen.nextInt(classes) + 1;
+			int c1 = 0;
+			int c2 = 0;
+			int c3 = 0;
+			
+			do {
+				xChoice = randGen.nextInt(width);
+				yChoice = randGen.nextInt(height);
+			} while (grid[xChoice][yChoice] != 0);
+			
+			if(input == 1 &amp;&amp; c1 &lt;= Math.ceil(population*.48)){
+			 grid[xChoice][yChoice] =  input;
+			 c1++;
+			} else if (input == 2 &amp;&amp; c2 &lt;= Math.ceil(population*.43)){
+			 grid[xChoice][yChoice] =  input;
+			 c2++;
+			} else if (input == 3 &amp;&amp; c3 &lt;= Math.ceil(population*.09)){
+			 grid[xChoice][yChoice] =  input;
+			 c3++;
+			} else {grid[xChoice][yChoice] = 0;}
+			
+		}
+	}
+","Can someone explain the following syntax to me?
+
+private void simulateUntilHappy() {  while (!movementRound())    ;}
+
+I understand that putting movementRound() while condition will run the method, and then check to see the value it returns. Why is there a sole ';' inside the brackets, however?",,,
+"When I try to run this program with the following arguments, the program stops running before it does all 100 trials and the visual representation doesn't show up. Any idea why? I increased the number of classes argument by 1 and kept the other arguments the same.
+simulator = new SchellingSimulator(1, 3, (int) (50 * 50 * 0.92), 4, 50, 50);","For some cases, I get NAN as output
+simulator = new SchellingSimulator(50, 2, 20, 2, 10, 10);
+
+What should I do?"," simulator = new SchellingSimulator(100, 3, 20000, 4, 150, 150);
+How come I only see two colors yellow and blue? The black denotes empty spaces right?",,
+Should we write a topo sort algo and apply it to the graph or can we do it by hand?,"If we don't use Schelling Visualizer in our experimentation, is it ok to only submit our write up and the Schelling Simulator code?",,,
+"So I was messing around with the simulator for part 2, and changing the number of groups. I realized that when I increased the number of groups, the simulator wouldn't get through all 100 trials and would get stuck in an infinite loop within the simulate function. However, what I really thought was interesting is that it seems to get stuck on the same trial number each time I run the program. But if it's actually randomly populating the grid each time simulate runs, shouldn't it also randomly get stuck on a certain trial?","I'm working on the Schelling Model for HW 2 am confused about what the question is asking. It asks to model some sociological question with the simulator, which I understand. However, after doing this and making comparisons, do I need to compare the results of the simulation to what actually ended up happening in real life? Or should I just analyze the results of the model and explain why they are what they are?",,,
+How do we submit a regrade request? My score in the comments for HW2  does not match up with the score inputted to Canvas,"I used Kahn's algorithm on question 2 of homework 2. How should I go about submitting a regrade request? I emailed the TA who graded my homework, but haven't heard back yet. Thanks! ",,,
+"Are we to assume that in the directed graph G, the only node that has a path to node B is node A?","In a directed graph G, if there is a path from node A to node B, then in any DFS on G, the start time of B must be less than or equal to the finish time of A",,,
+"In dijkstra's if a node has already been ""finished"" but we find out later that there is a shorter path from another node do we update the distance of the finished node with the new shorter distance? ","In the homework for part 1, question 3 says to show the shortest path cost using Djikstra's– does this mean we have to somehow indicate the iterations in a diagram or can we just write the shortest path for each node by calculating it ourselves?",Can we just draw a graph where we get the incorrect shortest path or do we need to show why it gives us the wrong path? ,Can we just draw a graph where we get the incorrect shortest path or do we need to show why it gives us the wrong path? ,
+Can we assume that all start and finish times are distinct? (In what situations would this not be the case?),Can we assume that Node A and Node B are distinct?,,,
+"For the Best Original Screenplay award, list the writers for the movie that was nominated/won
+titled Divorce, Italian Style.
+The movie appears in wikipedia as Divorce Italian Style. Is this a typo in the instructions?","Can we assume that we're only looking for awards that are titled exactly as the user inputs it as? For example, for number 6, if the user inputs Best Picture, can we assume that we're only looking at awards called Best Picture? Because some of the older award ceremonies called the same award ""Best Motion Picture"" instead. ",,,
+"Should we only be turning in the two PDF files (theory and experiment), or should we turn in code as well?",Is it necessary to zip up the files in one folder? Or can we submit the java files and the write up separately? Do we need a ReadMe for the java files? ,,,
+hw3,,,,
+Is there any way that HW3 could be posted soon so we could get a head start during break if we want?,Is there any way that HW3 could be posted soon so we could get a head start during break if we want?,,,
+My current understanding of this homework is that our program is supposed to ask the user which question they want to answer and then print out the answers to that question. Why is taking in the italicized input necessary?,"I'm a little confused with this line in the hw: ""Describe in detail the algorithm you used for each question"". For most of the questions, I'm not really using an algorithm per say to get the answer. I'm mostly just finding elements by their tag (e.g. table) and iterating through sub-elements (e.g. rows) to get what I want. Does that mean I'm perhaps not doing the assignment correctly since I'm not using algorithms to get my answer?","Two questions:
+
+1) Would it be possible to see expected behavior/output for the example inputs given in the homework specs? I would like to write tests against these examples without finding all the results by hand, if possible.
+
+2) For question 4, for the input king, there is a case where the role is ""Stephen Hawking"" which technically contains the string ""king"" - should this be included in the list of results? Or are we looking specifically for the role King, and thus this element should be excluded? Also, should our lookups be case-sensitive (that is, King and king are 2 different searches)?
+Thank you!","Two questions:
+
+1) Would it be possible to see expected behavior/output for the example inputs given in the homework specs? I would like to write tests against these examples without finding all the results by hand, if possible.
+
+2) For question 4, for the input king, there is a case where the role is ""Stephen Hawking"" which technically contains the string ""king"" - should this be included in the list of results? Or are we looking specifically for the role King, and thus this element should be excluded? Also, should our lookups be case-sensitive (that is, King and king are 2 different searches)?
+Thank you!",
+"
+I have managed to select the table in the photo above.
+Then i use select(""tr"") and i get all the rows, and when I check the size of Elements of tr it is 13 which is correct. 
+Bu then when I iterate through the &lt;tr&gt;s, I try to use select(""td""), but every time i get the size of that to be zero. ","For the hw I have accessed tables by the .select(""table"").get(some_integer) method, but for "".get"" I hardcode an actual number that I got from figuring out what table Im trying to extract data from. is this okay?",,,
+"In the writeup, it says :
+
+
+
+The class should ask the user which question they want to answer 
+
+Should we allow the user to pass in the number as an argument in main? Or is it sufficient to answer all the questions in Main and just separate them by section?
+
+
+","Two questions:
+
+1) Would it be possible to see expected behavior/output for the example inputs given in the homework specs? I would like to write tests against these examples without finding all the results by hand, if possible.
+
+2) For question 4, for the input king, there is a case where the role is ""Stephen Hawking"" which technically contains the string ""king"" - should this be included in the list of results? Or are we looking specifically for the role King, and thus this element should be excluded? Also, should our lookups be case-sensitive (that is, King and king are 2 different searches)?
+Thank you!",,,
+"When I use the URLGetter and URLTester code from class on the Academy Award Portal website, it is able to pull all of the contents from the page, but when I use the same exact code on a different Wikipedia page (e.g. Best Animated Feature or Best Original Screenplay), it seems to only pull a portion of the contents at the end of the page.
+
+When getting contents from the Portal page, I get the HTML header at the start:
+&lt;!DOCTYPE html&gt;&lt;html class=""client-nojs"" lang=""en"" dir=""ltr""&gt;&lt;head&gt;
+
+But for the other pages, it starts with:
+&lt;li id=""cite_note-10""&gt;&lt;span class=""mw-cite-backlink""&gt;&lt;b&gt;&lt;a href=""#cite_ref-10""&gt;^&lt;/a&gt;&lt;/b&gt;&lt;/span&gt; &lt;span class=""reference-text""&gt;...... etc.
+I'm using the same exact code and only replacing the URL, so not sure what could be causing this?","I am able to parse the tables on the Wikipedia page but when I get to the final column that I need information from, I'm not sure how to identify the URL and use that using JSoup. How would I do that?","Is it valid to assume that when looking for the link to the Best Animated Feature page, the URL will contain ""Best"" ""Animate"" and ""Feature"" ?",,
+"For question 3, I am able to find the header that contains 1980s. However, I need the table that comes right after this header. I've tried using after() as well as next(), but those return siblings rather than the next line. Is there a way to find the next table?","In the instruction, it says italicized parts should be able to be replaced by similar inputs. For question 5, can we assume that the input wth be 4 or greater since directors with 4 nominations or more are all listed in a separate table at the bottom of the page? Or do we have to account for numbers less that 4 and thus, have to parse the main table?","I noticed that within the Best Documentary Feature page, there are time periods with a table and others that don't. 
+For example, the list of movies for 1980's is stored within a table, and 1940's is not.
+Do we need to handle each case or is it reasonable to assume that the data will always be in a table format?",,
+"For Q1, are we assuming the user can input any award category, or will it always be Best Animated Feature? Not sure since it's not italicized.","For questions in which the award is italicized, such as ""Best Documentary Feature"" in #3 or ""Best Picture"" in #6, is it okay to assume that the user will input the link to the Wikipedia page? ",,,
+"For this question, best documentary feature is italicized, does this mean we should be able to return this for other categories? or is this only ever going to be best documentary feature?","For this question, best documentary feature is italicized, does this mean we should be able to return this for other categories? or is this only ever going to be best documentary feature?",,,
+"Will we be expected to handle this? For example, the film mentioned in question 2: ""Divorce, Italian Style"" is actually written on Wikipedia as ""Divorce Italian Style.""Should we be accounting for punctuation/formatting errors, or can we assume that all input is well-formatted?","For question 2 the assignments suggest so search for ""Divorce, Italian Style"", but the wikipedia page for this movie is titled ""Divorce Italian Style"". Do we need to able to account for these deviations?",,,
+"I'm feeling very confused about properly using regex to parse through the Wikipedia HTML. It's not that I don't understand what it is or how to use it, but how can we analyze multiple lines at a time? For example, for the first programming problem, sometimes that section of HTML will have 2 numbers, one preceeded by ""rowspace"" to indicate that it also account for the next company. This seems relatively irregular to me--how are we supposed to account for that? In addition, the numbers come BEFORE their corresponding company. If we want to associate the two, how can we ""back up"" lines to know what goes with what? Any tips would be greatly appreciated.","If we're using JSoup to look at the links on the wikipedia portal, is it considered hardcoding to have code like
+""link.endsWith(""Category:Academy_Awards"")"", in order to navigate to the correct next page towards the answer? Or should we be matching somehow more generically? I don't see an obvious other way to do the navigation, but this seems inefficient since it implies I already know the exact link to go to.
+Thanks!!","I understand that we aren't hardcoding in case Wikipedia changes any URL's. However, can we assume that each Wikipedia page's overall format/structure (i.e. table format, table headings, etc...) won't change? ie. For Best Animated Feature, can we code our program to directly collect data from the ""Studio Breakdown"" table?","Hi, I'm trying to complete question 3 using jsoup, but I'm having a lot of trouble getting the code to work. There are a lot of attributes such as bold, text box color, etc. but I can't figure out what jsoup function to use to filter those out. Is there any direction I should be looking in? I know it's not a tag or a contains text.",
+"For question 7, there are some actors that don't have a table containing their basic information (specifically, their birth year). If they don't have this table, we would have to find their birth year by sorting through the lines on the page. Can we hardcode their birth year instead (ie in the case of Laurence Olivier)?","Is it okay to hardcode characteristics of tables? For example, in question 1, each nomination number doesn't correspond to just 1 company in the Studio Breakdown table. In the cases where it corresponds to 2 companies, can I hardcode how to get the company names for that specific nomination number? In some cases, it corresponds to 2. I'm not sure how to generalize this.",,,
+"Does anyone know the jsoup syntax for getting this specific table?
+&lt;table class=""infobox biography vcard"" style=""width:22em""&gt;","Does anyone know the jsoup syntax for getting this specific table?
+&lt;table class=""infobox biography vcard"" style=""width:22em""&gt;",,,
+"Hi! I stopped into Allison's OH today with this question and was told to post on Piazza. For question 6, I am looping through each winning movie title and trying to go to that movie's individual page in order to find box office sales. When encountering a URL with an apostrophe, something happens where the method is changing the URL to one that does not exist and thus the program cannot navigate to the correct URL.
+
+For example:
+
+Document newFilmDoc = Jsoup.connect(""https://en.wikipedia.org/wiki/You_Can%27t_Take_It_with_You_(film)"").get();
+
+gives the error:
+
+Exception in thread ""main"" org.jsoup.HttpStatusException: HTTP error fetching URL. Status=400, URL=https://en.wikipedia.org/wiki/You_Can%2527t_Take_It_with_You_(film)
+
+This happens with any movie with an apostrophe - the ""%27"" in place of the apostrophe gets changed into ""%2527"" and thus the URL cannot be found. I am not sure why this is happening or what to do other than to hardcode to account for this situation. 
+
+Thanks!","Hi! I stopped into Allison's OH today with this question and was told to post on Piazza. For question 6, I am looping through each winning movie title and trying to go to that movie's individual page in order to find box office sales. When encountering a URL with an apostrophe, something happens where the method is changing the URL to one that does not exist and thus the program cannot navigate to the correct URL.
+
+For example:
+
+Document newFilmDoc = Jsoup.connect(""https://en.wikipedia.org/wiki/You_Can%27t_Take_It_with_You_(film)"").get();
+
+gives the error:
+
+Exception in thread ""main"" org.jsoup.HttpStatusException: HTTP error fetching URL. Status=400, URL=https://en.wikipedia.org/wiki/You_Can%2527t_Take_It_with_You_(film)
+
+This happens with any movie with an apostrophe - the ""%27"" in place of the apostrophe gets changed into ""%2527"" and thus the URL cannot be found. I am not sure why this is happening or what to do other than to hardcode to account for this situation. 
+
+Thanks!",,,
+"I'm trying to filter the box office sales of each winning film and I'm getting stuck on how to parse a box office sales value (String) in the following forms: {All Quiet on the Western Front=1.5 million  3,000,000} and               {Marty=2,000,000  1,500,000}. 
+
+Does anyone know how to handle these cases? 
+
+
+
+","Some of the movies (namely two, Avatar and Titanic), have sales larger than 2147483647 ($$2^{31} - 1$$. When storing sales in an integer, however, no number greater than this can be stored, and the same goes for doubles. I encountered the same problem for longs as well.
+
+How could I go about solving this?",,,
+"I can get the correct absolute URLs from the best picture page, but something seems to be going wrong when I try to access pages with HTML % symbol encodings with JSoup. For example, I know I pass in the correct url
+https://en.wikipedia.org/wiki/The_King%27s_Speech
+from print statements (where the %27 encodes an apostrophe), but then when I try to connect, I get some errors like 
+org.jsoup.HttpStatusException: HTTP error fetching URL. Status=400, URL=https://en.wikipedia.org/wiki/The_King%2527s_Speech
+where the % is being replaced by its own encoding %25. Any idea how to fix this?","I can get the correct absolute URLs from the best picture page, but something seems to be going wrong when I try to access pages with HTML % symbol encodings with JSoup. For example, I know I pass in the correct url
+https://en.wikipedia.org/wiki/The_King%27s_Speech
+from print statements (where the %27 encodes an apostrophe), but then when I try to connect, I get some errors like 
+org.jsoup.HttpStatusException: HTTP error fetching URL. Status=400, URL=https://en.wikipedia.org/wiki/The_King%2527s_Speech
+where the % is being replaced by its own encoding %25. Any idea how to fix this?","I have a hashmap called awards that maps films to their wikipedia urls. Now, when I get the value of the url directly from the hashmap, I get the correct url. But when I input literally the same string into Jsoup using Jsoup.connect(url).get() it seems to be reading in a different url. Here are screenshots to clarify: This piece of code: 
+Gives me this error: 
+As you can see, the url that is printed out is different from the url in the error message, even though clearly the same url is put into the function. ",,
+"On the portal page, a lot of the links are hrefs relative to the main wikipedia homepage. Is it ok if we hardcode the wikipedia homepage and concatenate the relative link that we scrape dynamically? Or what did you intend for us to do instead of this? Thanks!","Hello! In the first problem, I used a method similar to the one in the recitation of looping through urls, and then connecting to such a new link. It works! However, in problem 2, the url remains unchanged --- *does anyone know if there is a difference between the Best Original Screenplay and the Best Animated Feature link? I can't find one when comparing HTML code. I really appreciate it!
+
+String url = """";Document doc = Jsoup.connect(baseURL).get();urls = doc.select(""[href]""); // relative href:String absHref = """";for (Element e : urls) {	absHref = e.attr(""abs:href""); // absolute href:: ""/next""	if ((absHref.contains(""Best_Original_Screenplay""))) {		url = absHref;	}}System.out.println(""the url="" + url);doc = Jsoup.connect(url).get();
+","I have a hashmap called awards that maps films to their wikipedia urls. Now, when I get the value of the url directly from the hashmap, I get the correct url. But when I input literally the same string into Jsoup using Jsoup.connect(url).get() it seems to be reading in a different url. Here are screenshots to clarify: This piece of code: 
+Gives me this error: 
+As you can see, the url that is printed out is different from the url in the error message, even though clearly the same url is put into the function. ",,
+"getting this error when i try to run my program and not sure how to fix it:
+
+ 
+javax.net.ssl.SSLException: java.lang.RuntimeException: Could not generate DH keypair
+
+Caused by: java.security.InvalidAlgorithmParameterException: Prime size must be multiple of 64, and can only range from 512 to 1024 (inclusive)
+","When I try to run the recitation code, the following error shows up 
+javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+
+I'm not sure what the problem is here and how to avoid that while running my own code? ",,,
+Is it okay if the code for our  wild card question is similar to the code of another question?,Is it okay if the code for our  wild card question is similar to the code of another question?,,,
+"I'm having issues parsing tables on wikipedia. The rows and columns are inconsistent.
+For example, in question 1 we have to get the studio with the highest number of nominations, but if you try to parse this table there are blocks of numbers that encompass multiple studios so it's not possible to parse row by row. Any suggestions?","For Q7 - can we assume the award argument provided will only be one that has an article that lists winners by age? Otherwise, we would have to go to each individual's Wikipedia page and start scraping for age?
+
+For Q8 - what are the guidelines for defining this question? Should it take at least one argument like questions 2-7, or can it be something straightforward like Q1? What about for the extra credit wildcard question?
+
+Thanks!",,,
+"For stuff that is not italicized can we start directly on the wikipedia link to that page? Do we instead have to start at the Portal link given for every question? For example, for #1, can we start on the Best Animated Feature film wiki page, or do we have to start on the Wikipedia Portal Academy Awards page and get to there?","Can we assume that we're only looking for awards that are titled exactly as the user inputs it as? For example, for number 6, if the user inputs Best Picture, can we assume that we're only looking at awards called Best Picture? Because some of the older award ceremonies called the same award ""Best Motion Picture"" instead. ",,,
+"Does it matter what we assume the user's input to be? Right now I have it so that the user actually types ""ADD 3 2""--should I change it so that the user answers certain prompts instead?","Can we assume that the user will only put in valid inputs as in for #2, the user will input a movie which was nominated or won Best Original Screenplay and not garbage?",,,
+"So the academy awards are not celebrated on the year a film ""won the price"". For instance, the winners of the 1927 awards received the price until May 16, 1929, which is when the ceremony took place.
+When looking at how old the actors were, do we compare it with the actual date the ceremony took place (the more realistic approach)? Or we assume that all ceremonies happened on January 1st and calculate the age from that date?","The year the ceremony took place is 1 + the year listed in the portal. For example, the 53rd Academy Award took place in 1981, but is listed as 1980 on the portal. For the purposes of q7, I used the year when the ceremony took place to calculate the ages of the award winners, since it made the most sense. However, for q3, when you say 1980s are you referring to the decade in which the awards took place or how they're listed on the portal? ",,,
+"Are we restricted to only following links within the Academy Awards portal or can we use other Wikipedia pages? More specifically, for question 6 I would like to use the list of top grossing movies and cross reference that with the list of best picture winners to find which one has the highest gross sales. Is this acceptable?","Are we restricted to only following links within the Academy Awards portal or can we use other Wikipedia pages? More specifically, for question 6 I would like to use the list of top grossing movies and cross reference that with the list of best picture winners to find which one has the highest gross sales. Is this acceptable?",,,
+hw4,,,,
+Hello! I am getting an error accessing the specific columns of the table using get- I am using JSoup. I was wondering if anyone knows why that might be. I have looked online but not found an answer.,I am having a hard time finding the online java source for Part 2. Where should i be looking for it?,,,
+"I've been attempting HW4 by adding several of an author's books to the corpus, then comparing each of the documents together. However, the calculated cosine similarities are VERY low (&lt;0.05), which I thought didn't make any sense. I then realized that, if there are a lot of words that appear in ALL the documents, each of them will be represented by a ""0"" in the Weight vector of each document (since the IDF of that term will be 0). How do we account for this in determining how similar documents actually are?","Do we need to normalize our tf values? (i.e. instead of just using the frequency of the term in for a specific document, using the frequency of the term divided by the total number of words in the document). I did not normalize and the IR book (https://nlp.stanford.edu/IR-book/pdf/06vect.pdf) doesn't, but I just wanted to check that this was okay.",,,
+"I know the programming part of the HW must be submitted tonight to meet the deadline, but since the original writeup said we could submit the theory section in class if we wanted, would it be acceptable to bring a hardcopy of that section at the start of class tomorrow? ","Extra Credit is listed twice - once in part 1, and once again in part 2. Is this supposed to mean that we are supposed to implement in code something like the theoretical results for part 1 in code form toward part 2 (10 points + 10 points = 20 points total), or should we just do the written section (10 points)? ",,,
+"What does this instruction imply: ""ignore the rest of the terms in all the documents""? Does it mean, for example, document B would be ""Dobby elf"" instead since we're ignoring other words in the document?",Is it alright if for 4 c) in theory we consider all words in the document and take the tf as a faction of all the words? Or must we ignore every other word other than the words in question? ,,,
+"Let's say we have a document that only contains one phrase.
+
+When comparing that document to other documents that also contain that phrase, won't cosine similarity favor the documents that have the phrase only once (as opposed to a document that may have the phrase several times). This seems counterintuitive to me, because more frequency should mean more similarity. Or am I not doing my calculation correctly?","My impression is that cos similarity is supposed to be higher when 2 documents are similar. However, when I use nearly identical documents in the simulator(I'm talking 1 just omits a few words compared to the other) I get that it equals 0.0. Am I doing something wrong?",,,
+"Whenever I import the contents into a project, I get a ton of compilation errors because eclipse thinks the Document class is from Jsoup not from Ir.","Whenever I import the contents into a project, I get a ton of compilation errors because eclipse thinks the Document class is from Jsoup not from Ir.",,,
+"I collected a bunch of news articles for a class last year (Introduction to Linguistics), and manually converted them all to .txt files. I think they would be nice to use as data for part 2. Is this OK?","Hi,Sorry, but I was looking through my prakharb folder for my HW4 submission and I realized I only zipped one of the files - I've attached the correct zip file here - let me know if I should resubmit to Canvas!- Prakhar Bhandariprakharb.zip",,,
+hw5,,,,
+"For question 6, since the box office sales have many variations in how they display $ sales, do we need to have 3 separate cases (written in millions, billions, and completely written out)? Or should we just go with millions because that's the most commonly used notation?","The textbook just defines this as n-1/n+1 with n as the number of bidders, but obviously this does not calculate out correctly in the context of our problems. Is there a different formula we should be using?",,,
+"Could we scrape data to do an empirical analysis project, or do we have to use a pre-existing dataset?",Is it ok if we import outside libraries to utilize certain algorithms? ,,,
+"If our data set is extremely large (&gt;1 GB), would it be alright to include a link to the data on SNAP in the summary.txt file instead of including the entire dataset?","The graphs (up to 8748x4359 pixels) and logs (as many as 700 pages for one file) produced in my study were too large to include comfortably fit into the report itself, so I have them in separate folders (the directory structure is explainedin summary.txt) and referenced specific parts where appropriate - is this okay with the instructors?",,,
+"Hi! I'm interested in doing an analysis of people's reactions to the NHL playoffs on Twitter based on their location (or some similar question, i haven't quite settled on specific topic yet). In class, Professor Swapneel mentioned that people did similar projects, but I have no idea how those people were able to gather the data for this. Are there any applications that they used? What's the best way to collect and analyze this sort of information? I imagine that there would be a lot of information to collect, so what's the best way to compile it all?","Hi, 
+
+For HW5, my group is analyzing Amazon data (~500,000 products). I implemented Dijkstra's algorithm to calculate the average shortest path length between all pairs of products. I was going to compare that value with the average shortest path length between all products and the product with the best sales rank. However, my runtime is horrible and I can't figure out how to improve it. I've tested the code on small inputs (~30 products) and it works, but it's been running for 12.5hrs and it's only calculated ~5,000 shortest paths. Do you have any advice? I've attached my code for Dijkstra's, in case that helps. My underlying graph is a HashMap, so lookup is constant, and my Item objects store neighbors in HashMaps as well. I'm using Iterators to get the objects for calculating the paths. 
+
+Thanks
+
+Dijkstra.txt",,,
+"When submitting the proposal, should everyone on the team submit the same proposal on canvas? or should one representative from each team submit the proposal on canvas?","Submitting Final Project
+
+Do we have to submit all individually the same files?
+Or could one person submit the files as a representative.",,,
+"For EC 2, is player 1 the (LCR) player or the (UMD) player, for clarification?","For EC 2, are we supposed to be using a weak or strict strategy for deletion?",,,
+"For mixed strategy Nash Equilibrium, must the resulting pair of coordinates add up to 1?","For mixed strategy Nash Equilibrium, must the resulting pair of coordinates add up to 1?",,,
+Is it possible that we can get the deadline extended to midnight on the 5th rather than noon?,Is it possible that we can get the deadline extended to midnight on the 5th rather than noon?,,,

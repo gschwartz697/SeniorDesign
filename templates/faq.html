@@ -118,6 +118,7 @@
       }
       .question-text {
         font-size: 12px;
+        text-align: left;
       }
     </style>
   </head>
@@ -138,10 +139,6 @@
         <a href="/graph/{{curr_topic}}" class="btn btn-info" role="button" id="reference-btn">See {{curr_topic}} Reference Graph</a>
       </div>
 
-      <div class="section" id="stats">
-        <h4>{{num_clusters}} FAQs found</h4>
-      </div>
-
       <h4>Questions:</h4>
       {% for topic in questions_list %}
         <h5>{{topic[0]}}</h5>
@@ -159,11 +156,11 @@
               <div class="card-body">
                 {% for question in topic[1] %}
 
-                  <button type="button" class="close btn btn-link" data-toggle="collapse" data-target="#collapse-{{question}}" aria-expanded="false" aria-controls="collapse-question" aria-label="Close">
-                    <div id="collapse-{{question}}" class="collapse show question-text font-weight-normal">{{question}}
-                      <span aria-hidden="true">&times;</span>
-                    </div><br><br>
-                  </button>
+                <button type="button" class="close btn btn-link" data-toggle="collapse" data-target="#collapse-{{question}}" aria-expanded="false" aria-controls="collapse-question" aria-label="Close">
+                  <div id="collapse-{{question}}" class="collapse show question-text font-weight-normal">{{question}}
+                    <span aria-hidden="true">&times;</span>
+                  </div><br><br>
+                </button>
 
                 {% endfor %}
               </div>
